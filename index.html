@@ -57,10 +57,7 @@
                     <div>
                         <label class="block text-[11px] font-bold text-amber-400 uppercase tracking-wider mb-1">Select Week</label>
                         <select id="weekSelect" onchange="changeWeek()" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-1.5 text-xs font-semibold text-slate-200 focus:outline-none focus:border-amber-500">
-                            <option value="1">Week 1: Baseline</option>
-                            <option value="2">Week 2: Progression</option>
-                            <option value="3">Week 3: Complexity</option>
-                            <option value="4">Week 4: Peak Base</option>
+                            <!-- Dynamically populated -->
                         </select>
                     </div>
                     <div>
@@ -278,7 +275,7 @@
     </main>
 
     <script>
-        // Full 12-Week Workout Data Architecture with all Phase 1, 2, and 3 details
+        // Complete 12-Week Workout Data Architecture spanning all Phases (1, 2, and 3)
         const workoutsData = {
             1: { // Phase 1: Base Phase (Weeks 1-4)
                 1: { // Week 1
@@ -373,6 +370,12 @@
                             { series: "A-Series", name: "Incline DB Press", sets: 3, reps: "10-12", rest: "90 sec", rpe: 7, wt: "60 lbs" },
                             { series: "B1", name: "Machine Chest Press", sets: 4, reps: "12-15", rest: "-", rpe: 7, wt: "110 lbs" },
                             { series: "B1", name: "V-Grip Cable Row", sets: 4, reps: "12-15", rest: "90 sec", rpe: 7, wt: "110 lbs" }
+                        ]},
+                        { name: "Day 6: Arms / Calves / Abs", exercises: [
+                            { series: "Accessory", name: "Cable Curl", sets: 3, reps: "12-15", rest: "60 sec", rpe: 7, wt: "40 lbs" }
+                        ]},
+                        { name: "Day 7: Off / Recovery", exercises: [
+                            { series: "Recovery", name: "Outdoor Walk", sets: 1, reps: "20 min", rest: "-", rpe: 2, wt: "BW" }
                         ]}
                     ]
                 },
@@ -389,8 +392,20 @@
                             { series: "B1", name: "Chin-Up", sets: 4, reps: "AMRAP", rest: "-", rpe: 9, wt: "BW" },
                             { series: "C-Series", name: "Incline DB Y-Raise", sets: 4, reps: "15-20", rest: "90 sec", rpe: 9, wt: "15 lbs" }
                         ]},
+                        { name: "Day 3: Lower", exercises: [
+                            { series: "A-Series", name: "Front Squat", sets: 6, reps: "4", rest: "2-3 min", rpe: 9, wt: "140 lbs" }
+                        ]},
                         { name: "Day 4: Recovery / Mobility", exercises: [
                             { series: "Mobility", name: "Mobility Circuit & Diaphragmatic Breaths", sets: 2, reps: "10 reps each", rest: "-", rpe: 3, wt: "BW" }
+                        ]},
+                        { name: "Day 5: Upper Pump", exercises: [
+                            { series: "A-Series", name: "Incline DB Press", sets: 4, reps: "8-10", rest: "90 sec", rpe: 8, wt: "60 lbs" }
+                        ]},
+                        { name: "Day 6: Arms / Calves / Abs", exercises: [
+                            { series: "Accessory", name: "Cable Curl", sets: 4, reps: "12-15", rest: "60 sec", rpe: 8, wt: "40 lbs" }
+                        ]},
+                        { name: "Day 7: Off / Recovery", exercises: [
+                            { series: "Recovery", name: "Walk", sets: 1, reps: "20 min", rest: "-", rpe: 2, wt: "BW" }
                         ]}
                     ]
                 },
@@ -401,8 +416,23 @@
                             { series: "B1", name: "Machine Press", sets: 4, reps: "10-12", rest: "-", rpe: 8, wt: "110 lbs" },
                             { series: "C-Series", name: "Pec Deck", sets: 4, reps: "15-20", rest: "90 sec", rpe: 8, wt: "100 lbs" }
                         ]},
+                        { name: "Day 2: Pull", exercises: [
+                            { series: "A-Series", name: "Pendlay Row", sets: 4, reps: "8", rest: "2-3 min", rpe: 7, wt: "120 lbs" }
+                        ]},
+                        { name: "Day 3: Lower", exercises: [
+                            { series: "A-Series", name: "Front Squat", sets: 4, reps: "8", rest: "2-3 min", rpe: 7, wt: "120 lbs" }
+                        ]},
                         { name: "Day 4: Recovery / Mobility", exercises: [
                             { series: "Mobility", name: "Mobility Circuit & Diaphragmatic Breaths", sets: 2, reps: "10 reps each", rest: "-", rpe: 3, wt: "BW" }
+                        ]},
+                        { name: "Day 5: Upper Pump", exercises: [
+                            { series: "A-Series", name: "Incline DB Press", sets: 3, reps: "12", rest: "90 sec", rpe: 7, wt: "50 lbs" }
+                        ]},
+                        { name: "Day 6: Arms / Calves / Abs", exercises: [
+                            { series: "Accessory", name: "Cable Curl", sets: 4, reps: "15-20", rest: "60 sec", rpe: 7, wt: "35 lbs" }
+                        ]},
+                        { name: "Day 7: Off / Recovery", exercises: [
+                            { series: "Recovery", name: "Walk", sets: 1, reps: "20 min", rest: "-", rpe: 2, wt: "BW" }
                         ]}
                     ]
                 }
@@ -425,6 +455,15 @@
                         ]},
                         { name: "Day 4: Recovery / Mobility", exercises: [
                             { series: "Mobility", name: "Mobility Circuit", sets: 2, reps: "10 reps each", rest: "-", rpe: 3, wt: "BW" }
+                        ]},
+                        { name: "Day 5: Upper Pump", exercises: [
+                            { series: "A-Series", name: "Flat DB Press", sets: 3, reps: "10-12", rest: "90 sec", rpe: 7, wt: "60 lbs" }
+                        ]},
+                        { name: "Day 6: Arms / Calves / Abs", exercises: [
+                            { series: "Accessory", name: "Dual-Cable Bicep Curl", sets: 3, reps: "12-15", rest: "60 sec", rpe: 7, wt: "35 lbs" }
+                        ]},
+                        { name: "Day 7: Off / Recovery", exercises: [
+                            { series: "Recovery", name: "Walk", sets: 1, reps: "20 min", rest: "-", rpe: 2, wt: "BW" }
                         ]}
                     ]
                 },
@@ -437,8 +476,20 @@
                         { name: "Day 2: Pull", exercises: [
                             { series: "A-Series", name: "Weighted Pull-Up", sets: 4, reps: "6", rest: "2-3 min", rpe: 8, wt: "BW + 10 lbs" }
                         ]},
+                        { name: "Day 3: Lower", exercises: [
+                            { series: "A-Series", name: "Hack Squat", sets: 4, reps: "10", rest: "2-3 min", rpe: 8, wt: "145 lbs" }
+                        ]},
                         { name: "Day 4: Recovery / Mobility", exercises: [
                             { series: "Mobility", name: "Mobility Circuit", sets: 2, reps: "10 reps each", rest: "-", rpe: 3, wt: "BW" }
+                        ]},
+                        { name: "Day 5: Upper Pump", exercises: [
+                            { series: "A-Series", name: "Flat DB Press", sets: 4, reps: "10-12", rest: "90 sec", rpe: 7, wt: "60 lbs" }
+                        ]},
+                        { name: "Day 6: Arms / Calves / Abs", exercises: [
+                            { series: "Accessory", name: "Dual-Cable Bicep Curl", sets: 4, reps: "12-15", rest: "60 sec", rpe: 7, wt: "35 lbs" }
+                        ]},
+                        { name: "Day 7: Off / Recovery", exercises: [
+                            { series: "Recovery", name: "Walk", sets: 1, reps: "20 min", rest: "-", rpe: 2, wt: "BW" }
                         ]}
                     ]
                 },
@@ -447,8 +498,23 @@
                         { name: "Day 1: Push", exercises: [
                             { series: "A-Series", name: "Incline Barbell Bench Press", sets: 4, reps: "5", rest: "60-90s", rpe: 8, wt: "135 lbs" }
                         ]},
+                        { name: "Day 2: Pull", exercises: [
+                            { series: "A-Series", name: "Weighted Pull-Up", sets: 4, reps: "6", rest: "60-90s", rpe: 8, wt: "BW + 10 lbs" }
+                        ]},
+                        { name: "Day 3: Lower", exercises: [
+                            { series: "A-Series", name: "Hack Squat", sets: 4, reps: "8", rest: "60-90s", rpe: 8, wt: "135 lbs" }
+                        ]},
                         { name: "Day 4: Recovery / Mobility", exercises: [
                             { series: "Mobility", name: "Mobility Circuit", sets: 2, reps: "10 reps each", rest: "-", rpe: 3, wt: "BW" }
+                        ]},
+                        { name: "Day 5: Upper Pump", exercises: [
+                            { series: "A-Series", name: "Flat DB Press", sets: 4, reps: "10-12", rest: "60s", rpe: 7, wt: "55 lbs" }
+                        ]},
+                        { name: "Day 6: Arms / Calves / Abs", exercises: [
+                            { series: "Accessory", name: "Dual-Cable Bicep Curl", sets: 4, reps: "15-20", rest: "45s", rpe: 7, wt: "30 lbs" }
+                        ]},
+                        { name: "Day 7: Off / Recovery", exercises: [
+                            { series: "Recovery", name: "Walk", sets: 1, reps: "20 min", rest: "-", rpe: 2, wt: "BW" }
                         ]}
                     ]
                 },
@@ -457,8 +523,23 @@
                         { name: "Day 1: Push", exercises: [
                             { series: "A-Series", name: "Incline Barbell Bench Press", sets: 3, reps: "10", rest: "2-3 min", rpe: 7, wt: "115 lbs" }
                         ]},
+                        { name: "Day 2: Pull", exercises: [
+                            { series: "A-Series", name: "Weighted Pull-Up", sets: 3, reps: "6", rest: "2-3 min", rpe: 7, wt: "BW + 5 lbs" }
+                        ]},
+                        { name: "Day 3: Lower", exercises: [
+                            { series: "A-Series", name: "Hack Squat", sets: 3, reps: "12", rest: "2-3 min", rpe: 7, wt: "115 lbs" }
+                        ]},
                         { name: "Day 4: Recovery / Mobility", exercises: [
                             { series: "Mobility", name: "Mobility Circuit", sets: 2, reps: "10 reps each", rest: "-", rpe: 3, wt: "BW" }
+                        ]},
+                        { name: "Day 5: Upper Pump", exercises: [
+                            { series: "A-Series", name: "Flat DB Press", sets: 3, reps: "12", rest: "90 sec", rpe: 7, wt: "50 lbs" }
+                        ]},
+                        { name: "Day 6: Arms / Calves / Abs", exercises: [
+                            { series: "Accessory", name: "Dual-Cable Bicep Curl", sets: 4, reps: "20-30", rest: "60 sec", rpe: 7, wt: "25 lbs" }
+                        ]},
+                        { name: "Day 7: Off / Recovery", exercises: [
+                            { series: "Recovery", name: "Walk", sets: 1, reps: "20 min", rest: "-", rpe: 2, wt: "BW" }
                         ]}
                     ]
                 }
@@ -471,8 +552,23 @@
                             { series: "B1", name: "Flat Barbell Press (Chest)", sets: 3, reps: "12-15", rest: "-", rpe: 7-8, wt: "115 lbs" },
                             { series: "B2", name: "Chest-Supported High Row", sets: 3, reps: "12-15", rest: "60-75 sec", rpe: 7-8, wt: "50 lbs" }
                         ]},
+                        { name: "Day 2: Pull", exercises: [
+                            { series: "A-Series", name: "Weighted Pull-Ups", sets: 3, reps: "6-8", rest: "2 min", rpe: 7, wt: "BW + 5 lbs" }
+                        ]},
+                        { name: "Day 3: Lower", exercises: [
+                            { series: "A-Series", name: "Hack Squat", sets: 4, reps: "12", rest: "2 min", rpe: 7, wt: "115 lbs" }
+                        ]},
                         { name: "Day 4: Recovery / Mobility", exercises: [
                             { series: "Mobility", name: "Mobility Circuit", sets: 2, reps: "10 reps each", rest: "-", rpe: 3, wt: "BW" }
+                        ]},
+                        { name: "Day 5: Upper Pump", exercises: [
+                            { series: "A-Series", name: "Flat DB Press", sets: 3, reps: "12", rest: "90 sec", rpe: 7, wt: "45 lbs" }
+                        ]},
+                        { name: "Day 6: Arms / Calves / Abs", exercises: [
+                            { series: "Accessory", name: "Dual-Cable Bicep Curl", sets: 3, reps: "15-20", rest: "60 sec", rpe: 7, wt: "25 lbs" }
+                        ]},
+                        { name: "Day 7: Off / Recovery", exercises: [
+                            { series: "Recovery", name: "Walk", sets: 1, reps: "20 min", rest: "-", rpe: 2, wt: "BW" }
                         ]}
                     ]
                 },
@@ -482,8 +578,23 @@
                             { series: "A-Series", name: "Incline Dumbbell Press", sets: 4, reps: "10", rest: "75-90s", rpe: 7, wt: "50 lbs" },
                             { series: "B1", name: "Flat Barbell Press (Tri-Set)", sets: 3, reps: "12-15", rest: "-", rpe: 7-8, wt: "115 lbs" }
                         ]},
+                        { name: "Day 2: Pull", exercises: [
+                            { series: "A-Series", name: "Weighted Pull-Ups", sets: 3, reps: "6-8", rest: "75-90s", rpe: 7, wt: "BW + 5 lbs" }
+                        ]},
+                        { name: "Day 3: Lower", exercises: [
+                            { series: "A-Series", name: "Hack Squat", sets: 4, reps: "12", rest: "75-90s", rpe: 7, wt: "115 lbs" }
+                        ]},
                         { name: "Day 4: Recovery / Mobility", exercises: [
                             { series: "Mobility", name: "Mobility Circuit", sets: 2, reps: "10 reps each", rest: "-", rpe: 3, wt: "BW" }
+                        ]},
+                        { name: "Day 5: Upper Pump", exercises: [
+                            { series: "A-Series", name: "Flat DB Press", sets: 3, reps: "12", rest: "75-90s", rpe: 7, wt: "45 lbs" }
+                        ]},
+                        { name: "Day 6: Arms / Calves / Abs", exercises: [
+                            { series: "Accessory", name: "Dual-Cable Bicep Curl", sets: 3, reps: "20-25", rest: "45s", rpe: 7, wt: "20 lbs" }
+                        ]},
+                        { name: "Day 7: Off / Recovery", exercises: [
+                            { series: "Recovery", name: "Walk", sets: 1, reps: "20 min", rest: "-", rpe: 2, wt: "BW" }
                         ]}
                     ]
                 },
@@ -493,8 +604,23 @@
                             { series: "A-Series", name: "Incline Dumbbell Press (4-sec eccentric)", sets: 4, reps: "12-15", rest: "90s", rpe: 6, wt: "40 lbs" },
                             { series: "B1", name: "Flat Chest Press (Mechanical Drop)", sets: 3, reps: "12-15", rest: "-", rpe: 8, wt: "100 lbs" }
                         ]},
+                        { name: "Day 2: Pull", exercises: [
+                            { series: "A-Series", name: "Weighted Pull-Ups (4-sec eccentric)", sets: 3, reps: "10-12", rest: "90s", rpe: 6, wt: "BW" }
+                        ]},
+                        { name: "Day 3: Lower", exercises: [
+                            { series: "A-Series", name: "Hack Squat (4-sec eccentric)", sets: 4, reps: "12-15", rest: "90s", rpe: 6, wt: "90 lbs" }
+                        ]},
                         { name: "Day 4: Recovery / Mobility", exercises: [
                             { series: "Mobility", name: "Mobility Circuit", sets: 2, reps: "10 reps each", rest: "-", rpe: 3, wt: "BW" }
+                        ]},
+                        { name: "Day 5: Upper Pump", exercises: [
+                            { series: "A-Series", name: "Flat DB Press (4-sec eccentric)", sets: 3, reps: "12-15", rest: "90s", rpe: 6, wt: "35 lbs" }
+                        ]},
+                        { name: "Day 6: Arms / Calves / Abs", exercises: [
+                            { series: "Accessory", name: "Dual-Cable Bicep Curl", sets: 3, reps: "25-30", rest: "30s", rpe: 8, wt: "20 lbs" }
+                        ]},
+                        { name: "Day 7: Off / Recovery", exercises: [
+                            { series: "Recovery", name: "Walk", sets: 1, reps: "20 min", rest: "-", rpe: 2, wt: "BW" }
                         ]}
                     ]
                 },
@@ -504,8 +630,23 @@
                             { series: "A-Series", name: "Incline DB Press (Light/Controlled)", sets: 3, reps: "10-12", rest: "90s", rpe: 6, wt: "30 lbs" },
                             { series: "B1", name: "Flat Barbell Press", sets: 3, reps: "12-15", rest: "-", rpe: 6-7, wt: "85 lbs" }
                         ]},
+                        { name: "Day 2: Pull", exercises: [
+                            { series: "A-Series", name: "Neutral Lat Pulldown (Light)", sets: 3, reps: "10-12", rest: "90s", rpe: 6, wt: "60 lbs" }
+                        ]},
+                        { name: "Day 3: Lower", exercises: [
+                            { series: "A-Series", name: "Hack Squat (Light)", sets: 3, reps: "10-12", rest: "90s", rpe: 6, wt: "70 lbs" }
+                        ]},
                         { name: "Day 4: Recovery / Mobility", exercises: [
                             { series: "Mobility", name: "Mobility Circuit", sets: 2, reps: "10 reps each", rest: "-", rpe: 3, wt: "BW" }
+                        ]},
+                        { name: "Day 5: Upper Pump", exercises: [
+                            { series: "A-Series", name: "Flat DB Press (Light)", sets: 3, reps: "10-12", rest: "90s", rpe: 6, wt: "30 lbs" }
+                        ]},
+                        { name: "Day 6: Arms / Calves / Abs", exercises: [
+                            { series: "Accessory", name: "Dual-Cable Bicep Curl", sets: 3, reps: "20-25", rest: "60s", rpe: 6, wt: "15 lbs" }
+                        ]},
+                        { name: "Day 7: Off / Recovery", exercises: [
+                            { series: "Recovery", name: "Walk & Reset", sets: 1, reps: "20-30 min", rest: "-", rpe: 2, wt: "BW" }
                         ]}
                     ]
                 }
