@@ -11,7 +11,6 @@
         .tab-content { display: none; }
         .tab-content.active { display: block; }
         input[type="checkbox"] { accent-color: #f59e0b; }
-        /* Hide scrollbars completely while keeping smooth horizontal scrolling */
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
@@ -67,14 +66,14 @@
                 </div>
             </div>
 
-            <!-- DAY SELECTOR BUTTONS (NO SCROLLBAR) -->
+            <!-- DAY SELECTOR BUTTONS -->
             <div class="flex overflow-x-auto space-x-2 py-1 no-scrollbar" id="dayButtonsContainer">
                 <!-- Dynamically populated -->
             </div>
 
-            <!-- ACTIVE WORKOUT CARD -->
-            <div id="workoutCardContainer" class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-2xl">
-                <!-- Dynamically loaded workout table & details -->
+            <!-- ACTIVE WORKOUT CARD (CARD STACK LAYOUT FOR MOBILE NO SCROLL) -->
+            <div id="workoutCardContainer" class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-2xl space-y-3">
+                <!-- Dynamically loaded card stack -->
             </div>
 
             <!-- SESSION REVIEW NOTES -->
@@ -98,7 +97,7 @@
                 <p class="text-[11px] text-slate-400">Calculate precise BAC water dilution ratios, concentrations, and syringe draw measurements.</p>
             </div>
 
-            <!-- PEPTIDE 1: RETATRUTIDE -->
+            <!-- RETATRUTIDE -->
             <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-xl space-y-3">
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-800 pb-2 gap-2">
                     <div>
@@ -128,7 +127,7 @@
                 </p>
             </div>
 
-            <!-- PEPTIDE 2: BPC-157 / TB-500 -->
+            <!-- BPC-157 / TB-500 -->
             <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-xl space-y-3">
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-800 pb-2 gap-2">
                     <div>
@@ -158,7 +157,7 @@
                 </p>
             </div>
 
-            <!-- PEPTIDE 3: CJC w/o DAC -->
+            <!-- CJC w/o DAC -->
             <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-xl space-y-3">
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-800 pb-2 gap-2">
                     <div>
@@ -188,7 +187,7 @@
                 </p>
             </div>
 
-            <!-- PEPTIDE WEEKLY SCHEDULER MATRIX -->
+            <!-- PEPTIDE MATRIX -->
             <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-xl space-y-3">
                 <div class="flex items-center space-x-2 border-b border-slate-800 pb-2">
                     <span class="text-amber-500 text-lg">📅</span>
@@ -204,9 +203,7 @@
                                 <th class="p-2.5 rounded-r-xl">CJC w/o DAC (Mon-Fri)</th>
                             </tr>
                         </thead>
-                        <tbody class="divide-y divide-slate-800/60" id="peptideMatrixBody">
-                            <!-- Populated via JS -->
-                        </tbody>
+                        <tbody class="divide-y divide-slate-800/60" id="peptideMatrixBody"></tbody>
                     </table>
                 </div>
             </div>
@@ -518,63 +515,50 @@
             const container = document.getElementById('workoutCardContainer');
             
             let html = `
-                <div class="flex items-center justify-between mb-3 border-b border-slate-800 pb-2">
+                <div class="flex items-center justify-between mb-2 border-b border-slate-800 pb-2">
                     <div>
                         <span class="text-[10px] text-amber-400 font-bold uppercase tracking-wider">Phase ${currentPhase} • Week ${currentWeek}</span>
                         <h2 class="font-extrabold text-sm text-slate-100 mt-0.5">${activeDay.name}</h2>
                     </div>
                 </div>
-                <div class="overflow-x-auto no-scrollbar">
-                    <table class="w-full text-left text-xs text-slate-300">
-                        <thead class="bg-slate-950 text-slate-400 uppercase font-bold tracking-wider text-[10px]">
-                            <tr>
-                                <th class="p-2 rounded-l-xl">Series</th>
-                                <th class="p-2">Exercise</th>
-                                <th class="p-2">Sets</th>
-                                <th class="p-2">Reps</th>
-                                <th class="p-2">Rest</th>
-                                <th class="p-2">RPE</th>
-                                <th class="p-2">Weight</th>
-                                <th class="p-2 rounded-r-xl text-center">Set Tracking</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-slate-800/60 text-xs">
+                <div class="space-y-2.5">
             `;
 
             activeDay.exercises.forEach((ex, exIdx) => {
                 const totalSets = parseInt(ex.sets) || 1;
-                let checkboxesHtml = `<div class="flex items-center justify-center space-x-1.5">`;
+                let checkboxesHtml = `<div class="flex items-center flex-wrap gap-1 mt-1">`;
                 for (let s = 1; s <= totalSets; s++) {
                     const storageKey = `w_${currentWeek}_d_${activeDayIndex}_ex_${exIdx}_set_${s}`;
                     const isChecked = localStorage.getItem(storageKey) === 'true';
                     checkboxesHtml += `
-                        <label class="flex flex-col items-center cursor-pointer text-[9px] text-slate-400">
-                            <span>S${s}</span>
-                            <input type="checkbox" ${isChecked ? 'checked' : ''} onchange="toggleSet('${storageKey}', this.checked)" class="w-3.5 h-3.5 rounded cursor-pointer mt-0.5">
+                        <label class="flex items-center space-x-1 bg-slate-950 px-2 py-1 rounded-lg border border-slate-800 cursor-pointer text-[10px] text-slate-300">
+                            <span class="font-bold text-amber-400">S${s}</span>
+                            <input type="checkbox" ${isChecked ? 'checked' : ''} onchange="toggleSet('${storageKey}', this.checked)" class="w-4 h-4 rounded cursor-pointer">
                         </label>
                     `;
                 }
                 checkboxesHtml += `</div>`;
 
                 html += `
-                    <tr class="hover:bg-slate-950/40 transition">
-                        <td class="p-2 font-bold text-amber-400 whitespace-nowrap text-[11px]">${ex.series}</td>
-                        <td class="p-2 font-semibold text-slate-200 text-[11px]">${ex.name}</td>
-                        <td class="p-2 text-slate-300">${ex.sets}</td>
-                        <td class="p-2 text-slate-300">${ex.reps}</td>
-                        <td class="p-2 text-slate-400 text-[11px]">${ex.rest}</td>
-                        <td class="p-2 text-slate-300">${ex.rpe}</td>
-                        <td class="p-2 text-slate-200 font-medium whitespace-nowrap text-[11px]">${ex.wt}</td>
-                        <td class="p-2 text-center">${checkboxesHtml}</td>
-                    </tr>
+                    <div class="bg-slate-950/80 border border-slate-800/80 rounded-xl p-3 space-y-1.5">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[10px] font-extrabold text-amber-400 uppercase bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20">${ex.series}</span>
+                            <span class="text-[11px] text-slate-400 font-semibold">Wt: <strong class="text-slate-200">${ex.wt}</strong></span>
+                        </div>
+                        <div class="font-bold text-slate-100 text-xs">${ex.name}</div>
+                        <div class="flex items-center justify-between text-[11px] text-slate-400 pt-0.5">
+                            <span>Sets: <strong>${ex.sets}</strong> | Reps: <strong>${ex.reps}</strong></span>
+                            <span>Rest: <strong>${ex.rest}</strong> | RPE: <strong>${ex.rpe}</strong></span>
+                        </div>
+                        <div class="pt-1 border-t border-slate-900">
+                            <div class="text-[10px] text-slate-500 font-bold uppercase tracking-wider mb-1">Set Tracking</div>
+                            ${checkboxesHtml}
+                        </div>
+                    </div>
                 `;
             });
 
-            html += `
-                        </tbody>
-                    </table>
-                </div>
-            `;
+            html += `</div>`;
             container.innerHTML = html;
         }
 
