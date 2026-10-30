@@ -25,7 +25,7 @@ st.markdown("""
 st.title("🦁 Chase the Lion: 12-Week Lift Program")
 st.caption("Phase & Week Architecture | Mobile Optimized")
 
-# --- MASTER PROGRAM DATA STRUCTURE ---
+# --- MASTER PROGRAM DATA STRUCTURE (WEEKS 1-12) ---
 PROGRAM_DATA = {
     "Phase 1: Base Phase (Weeks 1-4)": {
         "Week 1: Baseline": {
@@ -495,13 +495,12 @@ with st.expander("🍽️ View Daily Nutrition & Macro Targets"):
     * **12:00 PM Lunch:** 45g Protein | 75g Carbs | 20g Fat (Chicken, Rice, Avocado)
     * **3:30 PM Afternoon Snack:** 35g Protein | 40g Carbs | 15g Fat (Greek Yogurt, Almonds, Berries)
     * **7:00 PM Dinner:** 50g Protein | 70g Carbs | 25g Fat (Steak, Sweet Potato, Green Beans)
-    * **Rest Day Adjustments (Thurs/Sun):** Lower carbs (~50g per meal), slightly higher fats for hormone recovery[cite: 6].
+    * **Rest Day Adjustments (Thurs/Sun):** Lower carbs (~50g per meal), slightly higher fats for hormone recovery.
     """)
 
 # --- EXPORT HISTORY SECTION ---
 st.markdown("### 📊 Workout Log & History")
 if st.button("Export Workout History (.CSV)"):
-    # Create sample export dataframe
     history_df = pd.DataFrame(workout_exercises)
     csv_data = history_df.to_csv(index=False).encode('utf-8')
     st.download_button(
