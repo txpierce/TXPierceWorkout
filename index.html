@@ -43,9 +43,9 @@
         <!-- ================= WORKOUTS TAB ================= -->
         <div id="tab-workouts" class="tab-content active space-y-4">
             
-            <!-- PHASE & WEEK SELECTOR -->
+            <!-- PHASE, WEEK & DAY SELECTOR -->
             <div class="bg-slate-900 border border-slate-800 rounded-2xl p-3 shadow-xl">
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
                     <div>
                         <label class="block text-[11px] font-bold text-amber-400 uppercase tracking-wider mb-1">Select Phase</label>
                         <select id="phaseSelect" onchange="changePhase()" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-1.5 text-xs font-semibold text-slate-200 focus:outline-none focus:border-amber-500">
@@ -63,15 +63,16 @@
                             <option value="4">Week 4: Peak Base</option>
                         </select>
                     </div>
+                    <div>
+                        <label class="block text-[11px] font-bold text-amber-400 uppercase tracking-wider mb-1">Select Day</label>
+                        <select id="daySelect" onchange="changeDay()" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-1.5 text-xs font-semibold text-slate-200 focus:outline-none focus:border-amber-500">
+                            <!-- Dynamically populated -->
+                        </select>
+                    </div>
                 </div>
             </div>
 
-            <!-- DAY SELECTOR BUTTONS -->
-            <div class="flex overflow-x-auto space-x-2 py-1 no-scrollbar" id="dayButtonsContainer">
-                <!-- Dynamically populated -->
-            </div>
-
-            <!-- ACTIVE WORKOUT CARD (CARD STACK LAYOUT FOR MOBILE NO SCROLL) -->
+            <!-- ACTIVE WORKOUT CARD -->
             <div id="workoutCardContainer" class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-2xl space-y-3">
                 <!-- Dynamically loaded card stack -->
             </div>
@@ -560,20 +561,27 @@
             saveState();
         }
 
+        function changeDay() {
+            activeDayIndex = parseInt(document.getElementById('daySelect').value);
+            renderWorkouts();
+        }
+
         function renderWorkouts() {
             const phaseObj = workoutsData[currentPhase] || workoutsData[1];
             const weekObj = phaseObj[currentWeek] || phaseObj[Object.keys(phaseObj)[0]];
             const days = weekObj.days;
             if (activeDayIndex >= days.length) activeDayIndex = 0;
 
-            const dayBtnsContainer = document.getElementById('dayButtonsContainer');
-            dayBtnsContainer.innerHTML = '';
+            const daySelect = document.getElementById('daySelect');
+            daySelect.innerHTML = '';
             days.forEach((day, idx) => {
-                let btn = document.createElement('button');
-                btn.onclick = () => { activeDayIndex = idx; renderWorkouts(); };
-                btn.className = `px-3 py-1.5 rounded-xl text-xs font-bold transition whitespace-nowrap border ${idx === activeDayIndex ? 'bg-amber-500 text-slate-950 border-amber-500 shadow-md' : 'bg-slate-900 text-slate-300 border-slate-800 hover:bg-slate-800'}`;
-                btn.textContent = day.name;
-                dayBtnsContainer.appendChild(btn);
+                let opt = document.createElement('option');
+                opt.value = idx;
+                opt.textContent = day.name;
+                if (idx === activeDayIndex) {
+                    opt.selected = true;
+                }
+                daySelect.appendChild(opt);
             });
 
             const activeDay = days[activeDayIndex];
