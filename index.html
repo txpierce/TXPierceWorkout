@@ -277,7 +277,7 @@
     </main>
 
     <script>
-        // 12-Week Workout Data Architecture (Phases 1, 2, 3)
+        // 12-Week Workout Data Architecture with Day 4 Recovery & Checkable Sets
         const workoutsData = {
             1: { // Phase 1
                 1: { // Week 1
@@ -311,6 +311,17 @@
                             { series: "C-Series", name: "Leg Extension", sets: 3, reps: "15-20", rest: "-", rpe: 8, wt: "50 lbs" },
                             { series: "C-Series", name: "Split Squat ISO Hold", sets: 3, reps: "20-30s", rest: "90 sec", rpe: 8, wt: "BW" }
                         ]},
+                        { name: "Day 4: Recovery / Mobility", exercises: [
+                            { series: "Warm-Up", name: "Easy Cardio & Diaphragmatic Breaths", sets: 1, reps: "3 min / 5 breaths", rest: "-", rpe: 3, wt: "BW" },
+                            { series: "Mobility", name: "Cat-Cow", sets: 2, reps: "10 reps", rest: "-", rpe: 3, wt: "BW" },
+                            { series: "Mobility", name: "Thoracic Rotations (Each Side)", sets: 2, reps: "10 reps", rest: "-", rpe: 3, wt: "BW" },
+                            { series: "Mobility", name: "Hip Airplanes (Each Side)", sets: 2, reps: "10 reps", rest: "-", rpe: 3, wt: "BW" },
+                            { series: "Mobility", name: "Ankle Dorsiflexion Rocks", sets: 2, reps: "10 reps", rest: "-", rpe: 3, wt: "BW" },
+                            { series: "Mobility", name: "Band Pull-Aparts & External Rotations", sets: 2, reps: "10 reps", rest: "-", rpe: 3, wt: "Light Band" },
+                            { series: "Quality", name: "Bodyweight Squats (Slow) & Hinge Pattern", sets: 2, reps: "10 reps", rest: "-", rpe: 3, wt: "BW" },
+                            { series: "Quality", name: "Step-Downs (Each Leg) & Scap Push-Ups", sets: 2, reps: "10 reps", rest: "-", rpe: 3, wt: "BW" },
+                            { series: "Cardio", name: "Easy Row or Incline Walk", sets: 1, reps: "10 min", rest: "-", rpe: 3, wt: "Easy" }
+                        ]},
                         { name: "Day 5: Upper Pump", exercises: [
                             { series: "A-Series", name: "Incline DB Press", sets: 3, reps: "10-12", rest: "90 sec", rpe: 7, wt: "55 lbs" },
                             { series: "B1", name: "Machine Chest Press", sets: 3, reps: "12-15", rest: "-", rpe: 7, wt: "110 lbs" },
@@ -319,6 +330,17 @@
                             { series: "B2", name: "Tricep Rope Pushdown", sets: 3, reps: "10-12", rest: "90 sec", rpe: 7, wt: "40 lbs" },
                             { series: "C-Series", name: "Straight-Arm Pulldown", sets: 3, reps: "12-15", rest: "-", rpe: 7, wt: "60 lbs" },
                             { series: "C-Series", name: "DB Spider Curl", sets: 3, reps: "12-15", rest: "90 sec", rpe: 7, wt: "25 lbs" }
+                        ]},
+                        { name: "Day 6: Arms / Calves / Abs", exercises: [
+                            { series: "Accessory", name: "Cable Curl", sets: 3, reps: "12-15", rest: "60 sec", rpe: 7, wt: "40 lbs" },
+                            { series: "Accessory", name: "Overhead Rope Extension", sets: 3, reps: "12-15", rest: "60 sec", rpe: 7, wt: "40 lbs" },
+                            { series: "Accessory", name: "Preacher Curl", sets: 3, reps: "10-12", rest: "60 sec", rpe: 7, wt: "40 lbs" },
+                            { series: "Accessory", name: "Bench Dips", sets: 3, reps: "15-20", rest: "60 sec", rpe: 7, wt: "BW" },
+                            { series: "Accessory", name: "Standing Calf Raise", sets: 4, reps: "12-15", rest: "60 sec", rpe: 7, wt: "135 lbs" },
+                            { series: "Accessory", name: "Hanging Knee Raise", sets: 3, reps: "10-12", rest: "60 sec", rpe: 7, wt: "BW" }
+                        ]},
+                        { name: "Day 7: Off / Recovery", exercises: [
+                            { series: "Recovery", name: "Outdoor Walk & Hydration", sets: 1, reps: "20-30 min", rest: "-", rpe: 2, wt: "BW" }
                         ]}
                     ]
                 },
@@ -334,17 +356,20 @@
                             { series: "C-Series", name: "Rope Overhead", sets: 3, reps: "12-15", rest: "90 sec", rpe: 8, wt: "35 lbs" }
                         ]},
                         { name: "Day 2: Pull", exercises: [
-                            { series: "A-Series", name: "Pendlay Row", sets: 4, reps: "6-8", rest: "2-3 min", rpe: 8, wt: "135-140 lbs" },
+                            { series: "A-Series", name: "Pendlay Row", sets: 4, reps: "6-8", rest: "2-3 min", rpe: 8, wt: "135 lbs" },
                             { series: "B1", name: "Chin-Up", sets: 4, reps: "AMRAP", rest: "-", rpe: 8, wt: "BW" },
                             { series: "B1", name: "Face Pull", sets: 4, reps: "12-15", rest: "90 sec", rpe: 8, wt: "40 lbs" },
                             { series: "B2", name: "Seated Cable Row", sets: 4, reps: "10-12", rest: "-", rpe: 8, wt: "100 lbs" },
                             { series: "B2", name: "DB Hammer Curl", sets: 4, reps: "10-12", rest: "90 sec", rpe: 8, wt: "25 lbs" }
                         ]},
                         { name: "Day 3: Lower", exercises: [
-                            { series: "A-Series", name: "Front Squat", sets: 4, reps: "6-8", rest: "2-3 min", rpe: 8, wt: "135-140 lbs" },
+                            { series: "A-Series", name: "Front Squat", sets: 4, reps: "6-8", rest: "2-3 min", rpe: 8, wt: "135 lbs" },
                             { series: "B1", name: "Romanian Deadlift", sets: 4, reps: "12-15", rest: "-", rpe: 8, wt: "135 lbs" },
                             { series: "B1", name: "DB Walking Lunges", sets: 4, reps: "10-12", rest: "90 sec", rpe: 8, wt: "30 lbs" },
                             { series: "B2", name: "Glute Ham Raise", sets: 4, reps: "10-12", rest: "-", rpe: 8, wt: "BW" }
+                        ]},
+                        { name: "Day 4: Recovery / Mobility", exercises: [
+                            { series: "Mobility", name: "Mobility Circuit & Diaphragmatic Breaths", sets: 2, reps: "10 reps each", rest: "-", rpe: 3, wt: "BW" }
                         ]},
                         { name: "Day 5: Upper Pump", exercises: [
                             { series: "A-Series", name: "Incline DB Press", sets: 3, reps: "10-12", rest: "90 sec", rpe: 7, wt: "60 lbs" },
@@ -356,39 +381,69 @@
                 3: { // Week 3
                     days: [
                         { name: "Day 1: Push", exercises: [
-                            { series: "A-Series", name: "Overhead Barbell Press", sets: 6, reps: "4", rest: "2-3 min", rpe: 9, wt: "100-105 lbs" },
+                            { series: "A-Series", name: "Overhead Barbell Press", sets: 6, reps: "4", rest: "2-3 min", rpe: 9, wt: "100 lbs" },
                             { series: "B1", name: "Incline DB Press", sets: 4, reps: "8-10", rest: "-", rpe: 9, wt: "55 lbs" },
                             { series: "B1", name: "Face Pull", sets: 4, reps: "12-15", rest: "90 sec", rpe: 9, wt: "45 lbs" },
                             { series: "C-Series", name: "Cable Press-Out", sets: 4, reps: "15-20", rest: "90 sec", rpe: 9, wt: "30 lbs" }
                         ]},
                         { name: "Day 2: Pull", exercises: [
-                            { series: "A-Series", name: "Pendlay Row", sets: 6, reps: "4", rest: "2-3 min", rpe: 9, wt: "140-145 lbs" },
+                            { series: "A-Series", name: "Pendlay Row", sets: 6, reps: "4", rest: "2-3 min", rpe: 9, wt: "140 lbs" },
                             { series: "B1", name: "Chin-Up", sets: 4, reps: "AMRAP", rest: "-", rpe: 9, wt: "BW" },
                             { series: "C-Series", name: "Incline DB Y-Raise", sets: 4, reps: "15-20", rest: "90 sec", rpe: 9, wt: "15 lbs" }
+                        ]},
+                        { name: "Day 4: Recovery / Mobility", exercises: [
+                            { series: "Mobility", name: "Mobility Circuit & Diaphragmatic Breaths", sets: 2, reps: "10 reps each", rest: "-", rpe: 3, wt: "BW" }
                         ]}
                     ]
                 },
                 4: { // Week 4
                     days: [
                         { name: "Day 1: Push", exercises: [
-                            { series: "A-Series", name: "Overhead Barbell Press", sets: 4, reps: "8", rest: "2-3 min", rpe: 7, wt: "85-90 lbs" },
+                            { series: "A-Series", name: "Overhead Barbell Press", sets: 4, reps: "8", rest: "2-3 min", rpe: 7, wt: "85 lbs" },
                             { series: "B1", name: "Machine Press", sets: 4, reps: "10-12", rest: "-", rpe: 8, wt: "110 lbs" },
                             { series: "C-Series", name: "Pec Deck", sets: 4, reps: "15-20", rest: "90 sec", rpe: 8, wt: "100 lbs" }
+                        ]},
+                        { name: "Day 4: Recovery / Mobility", exercises: [
+                            { series: "Mobility", name: "Mobility Circuit & Diaphragmatic Breaths", sets: 2, reps: "10 reps each", rest: "-", rpe: 3, wt: "BW" }
                         ]}
                     ]
                 }
             },
             2: { // Phase 2 (Weeks 5-8)
-                5: { days: [{ name: "Day 1: Push", exercises: [{ series: "A-Series", name: "Incline Barbell Bench Press", sets: 5, reps: "5", rest: "2-3 min", rpe: 8, wt: "135 lbs" }] }] },
-                6: { days: [{ name: "Day 1: Push", exercises: [{ series: "A-Series", name: "Incline Barbell Bench Press", sets: 4, reps: "8", rest: "2-3 min", rpe: 8, wt: "135 lbs" }] }] },
-                7: { days: [{ name: "Day 1: Push", exercises: [{ series: "A-Series", name: "Incline Barbell Bench Press", sets: 4, reps: "5", rest: "60-90s", rpe: 8, wt: "135 lbs" }] }] },
-                8: { days: [{ name: "Day 1: Push", exercises: [{ series: "A-Series", name: "Incline Barbell Bench Press", sets: 3, reps: "10", rest: "2-3 min", rpe: 7, wt: "115 lbs" }] }] }
+                5: { days: [
+                    { name: "Day 1: Push", exercises: [{ series: "A-Series", name: "Incline Barbell Bench Press", sets: 5, reps: "5", rest: "2-3 min", rpe: 8, wt: "135 lbs" }] },
+                    { name: "Day 4: Recovery / Mobility", exercises: [{ series: "Mobility", name: "Mobility Circuit", sets: 2, reps: "10 reps each", rest: "-", rpe: 3, wt: "BW" }] }
+                ] },
+                6: { days: [
+                    { name: "Day 1: Push", exercises: [{ series: "A-Series", name: "Incline Barbell Bench Press", sets: 4, reps: "8", rest: "2-3 min", rpe: 8, wt: "135 lbs" }] },
+                    { name: "Day 4: Recovery / Mobility", exercises: [{ series: "Mobility", name: "Mobility Circuit", sets: 2, reps: "10 reps each", rest: "-", rpe: 3, wt: "BW" }] }
+                ] },
+                7: { days: [
+                    { name: "Day 1: Push", exercises: [{ series: "A-Series", name: "Incline Barbell Bench Press", sets: 4, reps: "5", rest: "60-90s", rpe: 8, wt: "135 lbs" }] },
+                    { name: "Day 4: Recovery / Mobility", exercises: [{ series: "Mobility", name: "Mobility Circuit", sets: 2, reps: "10 reps each", rest: "-", rpe: 3, wt: "BW" }] }
+                ] },
+                8: { days: [
+                    { name: "Day 1: Push", exercises: [{ series: "A-Series", name: "Incline Barbell Bench Press", sets: 3, reps: "10", rest: "2-3 min", rpe: 7, wt: "115 lbs" }] },
+                    { name: "Day 4: Recovery / Mobility", exercises: [{ series: "Mobility", name: "Mobility Circuit", sets: 2, reps: "10 reps each", rest: "-", rpe: 3, wt: "BW" }] }
+                ] }
             },
             3: { // Phase 3 (Weeks 9-12)
-                9: { days: [{ name: "Day 1: Push", exercises: [{ series: "A-Series", name: "Incline Dumbbell Press", sets: 4, reps: "10", rest: "2 min", rpe: 7, wt: "50 lbs" }] }] },
-                10: { days: [{ name: "Day 1: Push", exercises: [{ series: "A-Series", name: "Incline Dumbbell Press", sets: 4, reps: "10", rest: "75-90s", rpe: 7, wt: "50 lbs" }] }] },
-                11: { days: [{ name: "Day 1: Push", exercises: [{ series: "A-Series", name: "Incline Dumbbell Press", sets: 4, reps: "12-15", rest: "90s", rpe: 6, wt: "40 lbs" }] }] },
-                12: { days: [{ name: "Day 1: Push", exercises: [{ series: "A-Series", name: "Incline Dumbbell Press", sets: 3, reps: "10-12", rest: "90s", rpe: 6, wt: "30 lbs" }] }] }
+                9: { days: [
+                    { name: "Day 1: Push", exercises: [{ series: "A-Series", name: "Incline Dumbbell Press", sets: 4, reps: "10", rest: "2 min", rpe: 7, wt: "50 lbs" }] },
+                    { name: "Day 4: Recovery / Mobility", exercises: [{ series: "Mobility", name: "Mobility Circuit", sets: 2, reps: "10 reps each", rest: "-", rpe: 3, wt: "BW" }] }
+                ] },
+                10: { days: [
+                    { name: "Day 1: Push", exercises: [{ series: "A-Series", name: "Incline Dumbbell Press", sets: 4, reps: "10", rest: "75-90s", rpe: 7, wt: "50 lbs" }] },
+                    { name: "Day 4: Recovery / Mobility", exercises: [{ series: "Mobility", name: "Mobility Circuit", sets: 2, reps: "10 reps each", rest: "-", rpe: 3, wt: "BW" }] }
+                ] },
+                11: { days: [
+                    { name: "Day 1: Push", exercises: [{ series: "A-Series", name: "Incline Dumbbell Press", sets: 4, reps: "12-15", rest: "90s", rpe: 6, wt: "40 lbs" }] },
+                    { name: "Day 4: Recovery / Mobility", exercises: [{ series: "Mobility", name: "Mobility Circuit", sets: 2, reps: "10 reps each", rest: "-", rpe: 3, wt: "BW" }] }
+                ] },
+                12: { days: [
+                    { name: "Day 1: Push", exercises: [{ series: "A-Series", name: "Incline Dumbbell Press", sets: 3, reps: "10-12", rest: "90s", rpe: 6, wt: "30 lbs" }] },
+                    { name: "Day 4: Recovery / Mobility", exercises: [{ series: "Mobility", name: "Mobility Circuit", sets: 2, reps: "10 reps each", rest: "-", rpe: 3, wt: "BW" }] }
+                ] }
             }
         };
 
@@ -420,7 +475,6 @@
 
         function changePhase() {
             currentPhase = parseInt(document.getElementById('phaseSelect').value);
-            // Adjust week selector accordingly
             const weekSelect = document.getElementById('weekSelect');
             weekSelect.innerHTML = '';
             let startWeek = (currentPhase - 1) * 4 + 1;
@@ -444,12 +498,10 @@
         }
 
         function renderWorkouts() {
-            // Get week data, fallback to week 1 if missing
             const weekObj = workoutsData[currentPhase][currentWeek] || workoutsData[1][1];
             const days = weekObj.days;
             if (activeDayIndex >= days.length) activeDayIndex = 0;
 
-            // Render day tabs
             const dayBtnsContainer = document.getElementById('dayButtonsContainer');
             dayBtnsContainer.innerHTML = '';
             days.forEach((day, idx) => {
@@ -460,7 +512,6 @@
                 dayBtnsContainer.appendChild(btn);
             });
 
-            // Render workout table for active day
             const activeDay = days[activeDayIndex];
             const container = document.getElementById('workoutCardContainer');
             
@@ -482,15 +533,27 @@
                                 <th class="p-2.5">Rest</th>
                                 <th class="p-2.5">RPE</th>
                                 <th class="p-2.5">Weight</th>
-                                <th class="p-2.5 rounded-r-xl text-center">Done</th>
+                                <th class="p-2.5 rounded-r-xl text-center">Set Tracking</th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-slate-800/60">
             `;
 
             activeDay.exercises.forEach((ex, exIdx) => {
-                const storageKey = `w_${currentWeek}_d_${activeDayIndex}_ex_${exIdx}`;
-                const isChecked = localStorage.getItem(storageKey) === 'true';
+                const totalSets = parseInt(ex.sets) || 1;
+                let checkboxesHtml = `<div class="flex items-center justify-center space-x-1.5">`;
+                for (let s = 1; s <= totalSets; s++) {
+                    const storageKey = `w_${currentWeek}_d_${activeDayIndex}_ex_${exIdx}_set_${s}`;
+                    const isChecked = localStorage.getItem(storageKey) === 'true';
+                    checkboxesHtml += `
+                        <label class="flex flex-col items-center cursor-pointer text-[10px] text-slate-400">
+                            <span>S${s}</span>
+                            <input type="checkbox" ${isChecked ? 'checked' : ''} onchange="toggleSet('${storageKey}', this.checked)" class="w-4 h-4 rounded cursor-pointer mt-0.5">
+                        </label>
+                    `;
+                }
+                checkboxesHtml += `</div>`;
+
                 html += `
                     <tr class="hover:bg-slate-950/40 transition">
                         <td class="p-2.5 font-bold text-amber-400 whitespace-nowrap">${ex.series}</td>
@@ -500,9 +563,7 @@
                         <td class="p-2.5 text-slate-400">${ex.rest}</td>
                         <td class="p-2.5 text-slate-300">${ex.rpe}</td>
                         <td class="p-2.5 text-slate-200 font-medium">${ex.wt}</td>
-                        <td class="p-2.5 text-center">
-                            <input type="checkbox" ${isChecked ? 'checked' : ''} onchange="toggleExercise('${storageKey}', this.checked)" class="w-5 h-5 rounded cursor-pointer">
-                        </td>
+                        <td class="p-2.5 text-center">${checkboxesHtml}</td>
                     </tr>
                 `;
             });
@@ -515,17 +576,16 @@
             container.innerHTML = html;
         }
 
-        function toggleExercise(key, val) {
+        function toggleSet(key, val) {
             localStorage.setItem(key, val);
         }
 
-        // Peptide calculators
         function calcReta() {
             const bac = parseFloat(document.getElementById('reta_bac').value) || 2.0;
             const vialMg = 10.0;
-            const targetMcg = 250; // 0.25 mg
+            const targetMcg = 250;
             const mgPerMl = vialMg / bac;
-            const mcgPerUnit = (mgPerMl * 1000) / 100; // mcg per unit in 100u syringe
+            const mcgPerUnit = (mgPerMl * 1000) / 100;
             const units = targetMcg / mcgPerUnit;
 
             document.getElementById('reta_conc').textContent = mgPerMl.toFixed(2) + ' mg/mL';
@@ -534,8 +594,8 @@
 
         function calcBpc() {
             const bac = parseFloat(document.getElementById('bpc_bac').value) || 2.0;
-            const vialMg = 10.0; // total blend
-            const targetMcg = 500; // total blend mcg
+            const vialMg = 10.0;
+            const targetMcg = 500;
             const mgPerMl = vialMg / bac;
             const mcgPerUnit = (mgPerMl * 1000) / 100;
             const units = targetMcg / mcgPerUnit;
@@ -606,7 +666,7 @@
         }
 
         function resetData() {
-            if (confirm('Are you sure you want to reset all workout checkmarks and saved notes?')) {
+            if (confirm('Are you sure you want to reset all workout set checkmarks and saved notes?')) {
                 localStorage.clear();
                 location.reload();
             }
