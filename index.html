@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TX Pierce Workout & Protocol Hub</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="[suspicious link removed]"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
         body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #090d16; color: #f1f5f9; }
@@ -50,6 +51,15 @@
         <!-- DASHBOARD TAB (HOME PAGE & FIRST TAB) -->
         <div id="tab-dashboard" class="tab-content active space-y-4">
             
+            <!-- LIVE DATE & TIME BANNER -->
+            <div class="bg-slate-950 border border-slate-800 rounded-xl px-4 py-2 flex items-center justify-between text-xs shadow-inner">
+                <div class="flex items-center space-x-2">
+                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                    <span id="liveDateTime" class="font-bold text-slate-200">Loading date & time...</span>
+                </div>
+                <span class="text-[9px] font-extrabold uppercase text-amber-500 bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20">LIVE PROTOCOL</span>
+            </div>
+
             <!-- HERO WELCOME & QUICK START CARD -->
             <div class="bg-gradient-to-r from-slate-900 via-slate-900 to-slate-950 border border-slate-800 rounded-2xl p-4 shadow-xl space-y-3">
                 <div class="flex items-center justify-between">
@@ -64,12 +74,12 @@
                 </div>
             </div>
 
-            <!-- DASHBOARD METRICS SUMMARY GRID -->
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            <!-- DASHBOARD METRICS SUMMARY GRID (PHASE COMPLETION, ACTIVE PHASE, DAILY MACROS) -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 <div class="bg-slate-900 border border-slate-800 rounded-2xl p-3.5 shadow-lg text-center">
-                    <span class="block text-[10px] text-slate-400 font-bold uppercase tracking-wider mb-1">Today's Sets</span>
-                    <span id="dashTodaySets" class="text-xl font-black text-amber-400">0 / 0</span>
-                    <span id="dashTodayPct" class="block text-[10px] text-emerald-400 font-bold mt-0.5">0% Completed</span>
+                    <span class="block text-[10px] text-slate-400 font-bold uppercase tracking-wider mb-1">Phase Progress</span>
+                    <span id="dashPhaseSets" class="text-xl font-black text-amber-400">0 / 0 Sets</span>
+                    <span id="dashPhasePct" class="block text-[10px] text-emerald-400 font-bold mt-0.5">0% Completed</span>
                 </div>
                 <div class="bg-slate-900 border border-slate-800 rounded-2xl p-3.5 shadow-lg text-center">
                     <span class="block text-[10px] text-slate-400 font-bold uppercase tracking-wider mb-1">Active Phase</span>
@@ -81,10 +91,18 @@
                     <span class="text-base font-black text-slate-100">2,800 kcal</span>
                     <span class="block text-[10px] text-slate-400 font-bold mt-0.5">200P / 315C / 80F</span>
                 </div>
-                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-3.5 shadow-lg text-center">
-                    <span class="block text-[10px] text-slate-400 font-bold uppercase tracking-wider mb-1">Peptide Target</span>
-                    <span class="text-xs font-extrabold text-amber-400">250 mcg Reta</span>
-                    <span class="block text-[10px] text-slate-400 font-bold mt-0.5">500 mcg BPC/TB</span>
+            </div>
+
+            <!-- INTERACTIVE WEEKLY COMPLETION CHART -->
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-xl space-y-3">
+                <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+                    <h3 class="font-bold text-xs text-slate-100 flex items-center gap-1.5">
+                        <span class="text-amber-500">📊</span> Weekly Training Volume & Completion
+                    </h3>
+                    <span class="text-[10px] text-slate-400 font-semibold">Sets Completed per Week</span>
+                </div>
+                <div class="h-48 w-full relative">
+                    <canvas id="weeklyVolumeChart"></canvas>
                 </div>
             </div>
 
@@ -308,8 +326,10 @@
     <script>
         let PROGRAM_DATA = {};
         let currentPhase, currentWeek, currentDay;
+        let volumeChart = null;
 
         window.addEventListener('DOMContentLoaded', async () => {
+            startLiveClock();
             const filesToTry = ['program_data-v3.json', 'program_data-v2.json', 'program_data.json'];
             let loaded = false;
 
@@ -337,6 +357,17 @@
             loadSavedNotes();
         });
 
+        function startLiveClock() {
+            function update() {
+                const now = new Date();
+                const options = { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+                const el = document.getElementById('liveDateTime');
+                if (el) el.textContent = now.toLocaleDateString('en-US', options);
+            }
+            update();
+            setInterval(update, 1000);
+        }
+
         function switchTab(tabId) {
             document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
             document.querySelectorAll('.tab-btn').forEach(el => {
@@ -345,8 +376,10 @@
             });
             document.getElementById('tab-' + tabId).classList.add('active');
             const activeBtn = document.getElementById('btn-' + tabId);
-            activeBtn.classList.remove('bg-slate-900', 'text-slate-400');
-            activeBtn.classList.add('bg-amber-500', 'text-slate-950');
+            if (activeBtn) {
+                activeBtn.classList.remove('bg-slate-900', 'text-slate-400');
+                activeBtn.classList.add('bg-amber-500', 'text-slate-950');
+            }
 
             if (tabId === 'dashboard') {
                 updateDashboardMetrics();
@@ -451,32 +484,122 @@
 
         function updateDashboardMetrics() {
             if (!PROGRAM_DATA || !currentPhase || !currentWeek || !currentDay) return;
-            const exercises = PROGRAM_DATA[currentPhase]?.[currentWeek]?.[currentDay] || [];
-            let totalSets = 0;
-            let checkedSets = 0;
+            
+            // Calculate Phase Completion Metrics
+            let phaseTotalSets = 0;
+            let phaseCheckedSets = 0;
 
-            exercises.forEach((ex, exIdx) => {
-                const sets = parseInt(ex.Sets) || 1;
-                totalSets += sets;
-                for (let s = 1; s <= sets; s++) {
-                    const checkKey = `${currentPhase}_${currentWeek}_${currentDay}_${exIdx}_s${s}`;
-                    if (localStorage.getItem(checkKey) === 'true') checkedSets++;
+            const weeksInPhase = PROGRAM_DATA[currentPhase] || {};
+            for (let weekKey in weeksInPhase) {
+                const daysInWeek = weeksInPhase[weekKey] || {};
+                for (let dayKey in daysInWeek) {
+                    const exercises = daysInWeek[dayKey] || [];
+                    exercises.forEach((ex, exIdx) => {
+                        const sets = parseInt(ex.Sets) || 1;
+                        phaseTotalSets += sets;
+                        for (let s = 1; s <= sets; s++) {
+                            const checkKey = `${currentPhase}_${weekKey}_${dayKey}_${exIdx}_s${s}`;
+                            if (localStorage.getItem(checkKey) === 'true') phaseCheckedSets++;
+                        }
+                    });
                 }
-            });
+            }
 
-            const pct = totalSets > 0 ? Math.round((checkedSets / totalSets) * 100) : 0;
+            const phasePct = phaseTotalSets > 0 ? Math.round((phaseCheckedSets / phaseTotalSets) * 100) : 0;
             
-            const dashTodaySets = document.getElementById('dashTodaySets');
-            if (dashTodaySets) dashTodaySets.textContent = `${checkedSets} / ${totalSets}`;
+            const dashPhaseSets = document.getElementById('dashPhaseSets');
+            if (dashPhaseSets) dashPhaseSets.textContent = `${phaseCheckedSets} / ${phaseTotalSets} Sets`;
             
-            const dashTodayPct = document.getElementById('dashTodayPct');
-            if (dashTodayPct) dashTodayPct.textContent = `${pct}% Completed`;
+            const dashPhasePct = document.getElementById('dashPhasePct');
+            if (dashPhasePct) dashPhasePct.textContent = `${phasePct}% Completed`;
             
             const dashActivePhase = document.getElementById('dashActivePhase');
             if (dashActivePhase) dashActivePhase.textContent = currentPhase.split(':')[0] || currentPhase;
             
             const dashActiveWeek = document.getElementById('dashActiveWeek');
             if (dashActiveWeek) dashActiveWeek.textContent = currentWeek;
+
+            renderWeeklyVolumeChart();
+        }
+
+        function renderWeeklyVolumeChart() {
+            const ctx = document.getElementById('weeklyVolumeChart');
+            if (!ctx) return;
+
+            let labels = [];
+            let completedData = [];
+            let totalData = [];
+
+            for (let phaseKey in PROGRAM_DATA) {
+                for (let weekKey in PROGRAM_DATA[phaseKey]) {
+                    const shortLabel = weekKey.replace('Week ', 'W');
+                    labels.push(shortLabel);
+
+                    let wTotal = 0;
+                    let wDone = 0;
+                    const days = PROGRAM_DATA[phaseKey][weekKey];
+                    for (let dayKey in days) {
+                        const exercises = days[dayKey];
+                        exercises.forEach((ex, exIdx) => {
+                            const sets = parseInt(ex.Sets) || 1;
+                            wTotal += sets;
+                            for (let s = 1; s <= sets; s++) {
+                                const checkKey = `${phaseKey}_${weekKey}_${dayKey}_${exIdx}_s${s}`;
+                                if (localStorage.getItem(checkKey) === 'true') wDone++;
+                            }
+                        });
+                    }
+                    totalData.push(wTotal);
+                    completedData.push(wDone);
+                }
+            }
+
+            if (volumeChart) {
+                volumeChart.data.labels = labels;
+                volumeChart.data.datasets[0].data = completedData;
+                volumeChart.data.datasets[1].data = totalData;
+                volumeChart.update();
+            } else {
+                volumeChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: labels,
+                        datasets: [
+                            {
+                                label: 'Completed Sets',
+                                data: completedData,
+                                backgroundColor: '#f59e0b',
+                                borderRadius: 4
+                            },
+                            {
+                                label: 'Planned Target',
+                                data: totalData,
+                                backgroundColor: '#1e293b',
+                                borderRadius: 4
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                labels: { color: '#94a3b8', font: { size: 10, weight: 'bold' } }
+                            }
+                        },
+                        scales: {
+                            x: {
+                                ticks: { color: '#94a3b8', font: { size: 9 } },
+                                grid: { display: false }
+                            },
+                            y: {
+                                ticks: { color: '#94a3b8', font: { size: 9 } },
+                                grid: { color: '#1e293b' }
+                            }
+                        }
+                    }
+                });
+            }
         }
 
         function generateBadge() {
@@ -513,7 +636,7 @@
             const pct = totalSets > 0 ? Math.round((checkedSets / totalSets) * 100) : 0;
 
             document.getElementById('badgeTitle').textContent = currentDay;
-            document.getElementById('badgeSub').textContent = `${currentPhase.split(':')} • ${currentWeek.split(':')}`;
+            document.getElementById('badgeSub').textContent = `${currentPhase.split(':')[0]} • ${currentWeek.split(':')[0]}`;
             document.getElementById('badgeSetsDone').textContent = `${checkedSets} / ${totalSets}`;
             document.getElementById('badgePercent').textContent = `${pct}%`;
             document.getElementById('badgeExerciseList').innerHTML = listHtml;
