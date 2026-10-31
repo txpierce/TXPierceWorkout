@@ -25,16 +25,22 @@
                 <p class="text-[10px] text-slate-400 mt-0.5">12-Week Architecture & Progression Hub</p>
             </div>
             <div class="flex items-center space-x-2">
-                <button onclick="exportCSV()" class="text-[11px] bg-amber-500 hover:bg-amber-600 text-slate-950 px-2.5 py-1.5 rounded-lg font-extrabold transition shadow">📥 Export CSV</button>
-                <button onclick="resetData()" class="text-[11px] bg-slate-800 hover:bg-red-950 text-slate-300 px-2.5 py-1.5 rounded-lg border border-slate-700 transition font-bold">Reset Logs</button>
+                <button onclick="exportCSV()" class="text-[11px] bg-slate-800 hover:bg-slate-700 text-slate-200 px-2.5 py-1.5 rounded-lg font-bold border border-slate-700 transition">📥 CSV</button>
+                <button onclick="resetData()" class="text-[11px] bg-slate-800 hover:bg-red-950 text-slate-300 px-2.5 py-1.5 rounded-lg border border-slate-700 transition font-bold">Reset</button>
             </div>
         </div>
 
         <!-- NAVIGATION TABS -->
-        <nav class="flex overflow-x-auto px-4 space-x-2 border-t border-slate-800/80 bg-slate-950/60 py-2 no-scrollbar max-w-3xl mx-auto">
-            <button onclick="switchTab('workouts')" id="btn-workouts" class="tab-btn px-4 py-1.5 rounded-xl text-xs font-bold transition bg-amber-500 text-slate-950 shadow-md">Workout Logs</button>
-            <button onclick="switchTab('peptides')" id="btn-peptides" class="tab-btn px-4 py-1.5 rounded-xl text-xs font-bold transition bg-slate-900 text-slate-400 hover:text-white border border-slate-800">Peptide Tracker</button>
-            <button onclick="switchTab('nutrition')" id="btn-nutrition" class="tab-btn px-4 py-1.5 rounded-xl text-xs font-bold transition bg-slate-900 text-slate-400 hover:text-white border border-slate-800">Nutrition & Grocery</button>
+        <nav class="flex overflow-x-auto px-4 space-x-2 border-t border-slate-800/80 bg-slate-950/60 py-2 no-scrollbar max-w-3xl mx-auto items-center justify-between">
+            <div class="flex space-x-2">
+                <button onclick="switchTab('workouts')" id="btn-workouts" class="tab-btn px-4 py-1.5 rounded-xl text-xs font-bold transition bg-amber-500 text-slate-950 shadow-md">Workout Logs</button>
+                <button onclick="switchTab('peptides')" id="btn-peptides" class="tab-btn px-4 py-1.5 rounded-xl text-xs font-bold transition bg-slate-900 text-slate-400 hover:text-white border border-slate-800">Peptide Tracker</button>
+                <button onclick="switchTab('nutrition')" id="btn-nutrition" class="tab-btn px-4 py-1.5 rounded-xl text-xs font-bold transition bg-slate-900 text-slate-400 hover:text-white border border-slate-800">Nutrition & Grocery</button>
+            </div>
+            <!-- SHARE BADGE BUTTON -->
+            <button onclick="generateBadge()" class="px-3 py-1.5 rounded-xl text-xs font-extrabold bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 shadow-md hover:brightness-110 transition flex items-center gap-1">
+                📸 Share Badge
+            </button>
         </nav>
     </header>
 
@@ -160,6 +166,48 @@
 
     </main>
 
+    <!-- SCREENSHOT STATS BADGE MODAL -->
+    <div id="badgeModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-slate-900 border-2 border-amber-500/80 rounded-3xl p-5 max-w-md w-full shadow-2xl space-y-4 text-slate-100">
+            
+            <!-- BADGE HEADER -->
+            <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                <div>
+                    <span class="text-[9px] font-extrabold uppercase bg-amber-500 text-slate-950 px-2 py-0.5 rounded tracking-widest">TXP ATHLETIC LOG</span>
+                    <h2 id="badgeTitle" class="font-black text-base text-slate-100 mt-1">WORKOUT STATS</h2>
+                    <p id="badgeSub" class="text-[10px] text-amber-400 font-bold"></p>
+                </div>
+                <button onclick="closeBadge()" class="text-slate-400 hover:text-white text-lg font-bold">✕</button>
+            </div>
+
+            <!-- STATS HIGHLIGHT GRID -->
+            <div class="grid grid-cols-2 gap-2 text-center">
+                <div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800">
+                    <span class="block text-[9px] text-slate-400 uppercase font-bold">Sets Completed</span>
+                    <span id="badgeSetsDone" class="text-base font-black text-amber-400">0 / 0</span>
+                </div>
+                <div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800">
+                    <span class="block text-[9px] text-slate-400 uppercase font-bold">Completion Rate</span>
+                    <span id="badgePercent" class="text-base font-black text-emerald-400">0%</span>
+                </div>
+            </div>
+
+            <!-- EXERCISE & WEIGHT SUMMARY LIST -->
+            <div class="bg-slate-950 p-3 rounded-2xl border border-slate-800 space-y-2 max-h-56 overflow-y-auto no-scrollbar">
+                <h4 class="text-[10px] font-bold text-slate-400 uppercase tracking-wider border-b border-slate-800/80 pb-1">Today's Lifts & Load</h4>
+                <div id="badgeExerciseList" class="space-y-1.5 text-xs"></div>
+            </div>
+
+            <!-- FOOTER BRANDING -->
+            <div class="flex items-center justify-between text-[10px] text-slate-400 border-t border-slate-800 pt-2.5 font-bold">
+                <span id="badgeDate"></span>
+                <span class="text-amber-500">📸 SCREENSHOT TO SHARE</span>
+            </div>
+
+            <button onclick="closeBadge()" class="w-full bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold py-2 rounded-xl border border-slate-700">Close Badge</button>
+        </div>
+    </div>
+
     <script>
         let PROGRAM_DATA = {};
         let currentPhase, currentWeek, currentDay;
@@ -184,7 +232,7 @@
 
             if (!loaded) {
                 document.getElementById('workoutContainer').innerHTML = 
-                    '<div class="p-4 bg-red-950 border border-red-800 rounded-xl text-xs text-red-200">Error loading JSON data. Ensure program_data-v3.json is uploaded to your GitHub repository root.</div>';
+                    '<div class="p-4 bg-red-950 border border-red-800 rounded-xl text-xs text-red-200">Error loading JSON data. Ensure program_data-v3.json is uploaded to root.</div>';
             }
 
             calcPeptides();
@@ -296,6 +344,54 @@
                     </div>
                 `;
             });
+        }
+
+        function generateBadge() {
+            if (!PROGRAM_DATA || !currentPhase || !currentWeek || !currentDay) return;
+            const exercises = PROGRAM_DATA[currentPhase]?.[currentWeek]?.[currentDay] || [];
+
+            let totalSets = 0;
+            let checkedSets = 0;
+            let listHtml = '';
+
+            exercises.forEach((ex, exIdx) => {
+                const sets = parseInt(ex.Sets) || 1;
+                totalSets += sets;
+
+                let loggedWeights = [];
+                for (let s = 1; s <= sets; s++) {
+                    const checkKey = `${currentPhase}_${currentWeek}_${currentDay}_${exIdx}_s${s}`;
+                    const weightKey = `${currentPhase}_${currentWeek}_${currentDay}_${exIdx}_wt_s${s}`;
+                    
+                    if (localStorage.getItem(checkKey) === 'true') checkedSets++;
+                    const wt = localStorage.getItem(weightKey);
+                    if (wt) loggedWeights.push(`${wt} lbs`);
+                }
+
+                const wtStr = loggedWeights.length > 0 ? loggedWeights.join(', ') : (ex.Wt || 'BW');
+
+                listHtml += `
+                    <div class="flex justify-between items-center py-1 border-b border-slate-900/60 last:border-0">
+                        <span class="font-bold text-slate-200">${ex.Exercise}</span>
+                        <span class="text-[11px] font-extrabold text-amber-400">${wtStr}</span>
+                    </div>
+                `;
+            });
+
+            const pct = totalSets > 0 ? Math.round((checkedSets / totalSets) * 100) : 0;
+
+            document.getElementById('badgeTitle').textContent = currentDay;
+            document.getElementById('badgeSub').textContent = `${currentPhase.split(':')[0]} • ${currentWeek.split(':')[0]}`;
+            document.getElementById('badgeSetsDone').textContent = `${checkedSets} / ${totalSets}`;
+            document.getElementById('badgePercent').textContent = `${pct}%`;
+            document.getElementById('badgeExerciseList').innerHTML = listHtml;
+            document.getElementById('badgeDate').textContent = new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+
+            document.getElementById('badgeModal').classList.remove('hidden');
+        }
+
+        function closeBadge() {
+            document.getElementById('badgeModal').classList.add('hidden');
         }
 
         function exportCSV() {
