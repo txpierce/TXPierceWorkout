@@ -71,7 +71,7 @@
 
             <!-- ACTIVE WORKOUT CARD -->
             <div id="workoutCardContainer" class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-2xl space-y-3">
-                <p class="text-xs text-slate-400">Loading workouts...</p>
+                <p class="text-xs text-slate-400 text-center py-4">Loading workout architecture...</p>
             </div>
 
             <!-- SESSION REVIEW NOTES -->
@@ -92,49 +92,18 @@
                     <span class="text-amber-500 text-lg">🧪</span>
                     <h2 class="font-extrabold text-slate-100 text-sm">Peptide Reconstitution & Dosing Calculator</h2>
                 </div>
-            </div>
-            <!-- Retatrutide -->
-            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-xl space-y-3">
-                <h3 class="font-extrabold text-xs text-slate-100">1. Retatrutide (10 mg Vial)</h3>
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
-                    <div class="bg-slate-950 p-3 rounded-xl border border-slate-800">
-                        <label class="block text-[11px] font-bold text-slate-400 mb-1">BAC Water Added (mL)</label>
-                        <input type="number" id="reta_bac" value="2.0" step="0.1" oninput="calcReta()" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1.5 font-bold text-amber-400 text-xs">
-                    </div>
-                    <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 flex flex-col justify-center">
-                        <span class="text-[11px] font-bold text-slate-400">Vial Concentration</span>
-                        <span id="reta_conc" class="text-sm font-extrabold text-slate-100 mt-0.5">5.00 mg/mL</span>
-                    </div>
-                    <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 flex flex-col justify-center">
-                        <span class="text-[11px] font-bold text-slate-400">Insulin Syringe Draw</span>
-                        <span id="reta_draw" class="text-sm font-extrabold text-amber-400 mt-0.5">5.0 units</span>
-                    </div>
-                </div>
-            </div>
-            <!-- Master Matrix -->
-            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-xl space-y-3">
-                <h2 class="font-extrabold text-slate-100 text-xs">Weekly Administration Master Matrix</h2>
-                <div class="overflow-x-auto no-scrollbar">
-                    <table class="w-full text-left text-[11px] text-slate-300">
-                        <thead class="bg-slate-950 text-slate-400 uppercase font-bold">
-                            <tr>
-                                <th class="p-2.5 rounded-l-xl">Day</th>
-                                <th class="p-2.5">Retatrutide</th>
-                                <th class="p-2.5">BPC-157 / TB-500</th>
-                                <th class="p-2.5 rounded-r-xl">CJC w/o DAC</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-slate-800/60" id="peptideMatrixBody"></tbody>
-                    </table>
-                </div>
+                <p class="text-[11px] text-slate-400">Calculate precise BAC water dilution ratios, concentrations, and syringe draw measurements.</p>
             </div>
         </div>
 
         <!-- ================= NUTRITION TAB ================= -->
         <div id="tab-nutrition" class="tab-content space-y-4">
             <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-xl">
-                <h2 class="font-extrabold text-slate-100 text-sm mb-1">Nutrition & Macro Architecture</h2>
-                <p class="text-[11px] text-slate-400">Targeting ~2,800 Calories daily (200g Protein, 315g Carbs, 80g Fat).</p>
+                <div class="flex items-center space-x-2 mb-1">
+                    <span class="text-amber-500 text-lg">🥩</span>
+                    <h2 class="font-extrabold text-slate-100 text-sm">Nutrition & Macro Architecture</h2>
+                </div>
+                <p class="text-[11px] text-slate-400">Targeting ~2,800 Calories daily (200g Protein, 315g Carbohydrates, 80g Fat).</p>
             </div>
         </div>
 
@@ -146,21 +115,22 @@
         let currentWeek = 1;
         let activeDayIndex = 0;
 
-        async function loadWorkoutsJson() {
+        // Fetch external workouts.json file on page load
+        async function loadWorkoutData() {
             try {
                 const response = await fetch('workouts.json');
+                if (!response.ok) throw new Error("Failed to load workouts.json");
                 workoutsData = await response.json();
                 loadSavedState();
-                changePhase(); // Populates weeks & days correctly on load
+                changePhase();
             } catch (error) {
-                document.getElementById('workoutCardContainer').innerHTML = `<p class="text-red-400 text-xs">Error loading workouts.json. Make sure the file is in your repository root.</p>`;
+                console.error("Error:", error);
+                document.getElementById('workoutCardContainer').innerHTML = `<p class="text-red-400 text-xs text-center py-4">Error loading workouts.json. Make sure it is in your repository root.</p>`;
             }
         }
 
         window.addEventListener('DOMContentLoaded', () => {
-            loadWorkoutsJson();
-            renderPeptideMatrix();
-            calcReta();
+            loadWorkoutData();
         });
 
         function switchTab(tabId) {
@@ -183,13 +153,13 @@
             for (let w = startWeek; w < startWeek + 4; w++) {
                 let opt = document.createElement('option');
                 opt.value = w;
-                opt.textContent = `Week ${w}: ` + (w%4 === 1 ? 'Baseline' : w%4 === 2 ? 'Progression' : w%4 === 3 ? 'Complexity' : 'Peak');
+                opt.textContent = `Week ${w}: ` + (w%4 === 1 ? 'Baseline/Shift' : w%4 === 2 ? 'Progression/Volume' : w%4 === 3 ? 'Complexity/Density' : 'Peak/Deload');
                 weekSelect.appendChild(opt);
             }
             currentWeek = startWeek;
-            weekSelect.value = currentWeek;
             activeDayIndex = 0;
-            updateWeekOptions();
+            renderWorkouts();
+            saveState();
         }
 
         function changeWeek() {
@@ -204,23 +174,13 @@
             renderWorkouts();
         }
 
-        function updateWeekOptions() {
-            currentWeek = parseInt(document.getElementById('weekSelect').value) || ((currentPhase - 1) * 4 + 1);
-            renderWorkouts();
-            saveState();
-        }
-
         function renderWorkouts() {
-            if (!workoutsData[currentPhase] || !workoutsData[currentPhase][currentWeek]) {
-                document.getElementById('workoutCardContainer').innerHTML = `<p class="text-xs text-amber-500 p-2">Phase ${currentPhase}, Week ${currentWeek} data loading or empty...</p>`;
-                return;
-            }
-
+            if (!workoutsData[currentPhase] || !workoutsData[currentPhase][currentWeek]) return;
+            
             const weekObj = workoutsData[currentPhase][currentWeek];
-            const days = weekObj.days || [];
+            const days = weekObj.days;
             if (activeDayIndex >= days.length) activeDayIndex = 0;
 
-            // Populate Day Dropdown
             const daySelect = document.getElementById('daySelect');
             daySelect.innerHTML = '';
             days.forEach((day, idx) => {
@@ -235,9 +195,11 @@
             const container = document.getElementById('workoutCardContainer');
             
             let html = `
-                <div class="mb-2 border-b border-slate-800 pb-2">
-                    <span class="text-[10px] text-amber-400 font-bold uppercase tracking-wider">Phase ${currentPhase} • Week ${currentWeek}</span>
-                    <h2 class="font-extrabold text-sm text-slate-100 mt-0.5">${activeDay.name}</h2>
+                <div class="flex items-center justify-between mb-2 border-b border-slate-800 pb-2">
+                    <div>
+                        <span class="text-[10px] text-amber-400 font-bold uppercase tracking-wider">Phase ${currentPhase} • Week ${currentWeek}</span>
+                        <h2 class="font-extrabold text-sm text-slate-100 mt-0.5">${activeDay.name}</h2>
+                    </div>
                 </div>
                 <div class="space-y-2.5">
             `;
@@ -280,39 +242,42 @@
             container.innerHTML = html;
         }
 
-        function toggleSet(key, val) { localStorage.setItem(key, val); }
-
-        function calcReta() {
-            const bac = parseFloat(document.getElementById('reta_bac').value) || 2.0;
-            const units = 250 / ((10.0 / bac) * 10);
-            document.getElementById('reta_draw').textContent = units.toFixed(1) + ' units';
+        function toggleSet(key, val) {
+            localStorage.setItem(key, val);
         }
 
-        function renderPeptideMatrix() {
-            const tbody = document.getElementById('peptideMatrixBody');
-            tbody.innerHTML = '';
-            ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'].forEach((day, idx) => {
-                tbody.innerHTML += `<tr class="hover:bg-slate-950/40"><td class="p-2.5 font-bold text-slate-200">${day}</td><td class="p-2.5">${idx === 0 ? '🟢 Retatrutide' : '-'}</td><td class="p-2.5">🟢 BPC-157</td><td class="p-2.5">${idx < 5 ? '🟢 CJC' : '-'}</td></tr>`;
-            });
+        function saveNotes() {
+            localStorage.setItem('tx_sunday_notes', document.getElementById('sundayNotes').value);
         }
 
-        function saveNotes() { localStorage.setItem('tx_sunday_notes', document.getElementById('sundayNotes').value); }
-        function saveState() { localStorage.setItem('tx_phase', currentPhase); localStorage.setItem('tx_week', currentWeek); }
-        
+        function saveState() {
+            localStorage.setItem('tx_phase', currentPhase);
+            localStorage.setItem('tx_week', currentWeek);
+        }
+
         function loadSavedState() {
-            if (localStorage.getItem('tx_phase')) {
-                currentPhase = parseInt(localStorage.getItem('tx_phase'));
+            const savedPhase = localStorage.getItem('tx_phase');
+            const savedWeek = localStorage.getItem('tx_week');
+            const savedNotes = localStorage.getItem('tx_sunday_notes');
+
+            if (savedPhase) {
+                currentPhase = parseInt(savedPhase);
                 document.getElementById('phaseSelect').value = currentPhase;
             }
-            if (localStorage.getItem('tx_week')) {
-                currentWeek = parseInt(localStorage.getItem('tx_week'));
+            if (savedWeek) {
+                currentWeek = parseInt(savedWeek);
             }
-            if (localStorage.getItem('tx_sunday_notes')) {
-                document.getElementById('sundayNotes').value = localStorage.getItem('tx_sunday_notes');
+            if (savedNotes) {
+                document.getElementById('sundayNotes').value = savedNotes;
             }
         }
 
-        function resetData() { if (confirm('Reset all data?')) { localStorage.clear(); location.reload(); } }
+        function resetData() {
+            if (confirm('Are you sure you want to reset all workout set checkmarks and saved notes?')) {
+                localStorage.clear();
+                location.reload();
+            }
+        }
     </script>
 </body>
 </html>
