@@ -747,7 +747,7 @@
                     checkboxesHtml += `
                         <label class="flex items-center space-x-1 bg-slate-950 px-2 py-1 rounded-lg border border-slate-800 cursor-pointer text-[10px] text-slate-300">
                             <span class="font-bold text-amber-400">S${s}</span>
-                            <input type="checkbox" isChecked?'checked':''onchange="toggleSet('{storageKey}', this.checked)" class="w-4 h-4 rounded cursor-pointer">
+                            <input type="checkbox" ${isChecked ? 'checked' : ''} onchange="toggleSet('${storageKey}', this.checked)" class="w-4 h-4 rounded cursor-pointer">
                         </label>
                     `;
                 }
@@ -761,8 +761,8 @@
                         </div>
                         <div class="font-bold text-slate-100 text-xs">${ex.name}</div>
                         <div class="flex items-center justify-between text-[11px] text-slate-400 pt-0.5">
-                            <span>Sets: <strong>ex.sets</strong>|Reps:<strong>{ex.reps}</strong></span>
-                            <span>Rest: <strong>ex.rest</strong>|RPE:<strong>{ex.rpe}</strong></span>
+                            <span>Sets: <strong>${ex.sets}</strong> | Reps: <strong>${ex.reps}</strong></span>
+                            <span>Rest: <strong>${ex.rest}</strong> | RPE: <strong>${ex.rpe}</strong></span>
                         </div>
                         <div class="pt-1 border-t border-slate-900">
                             <div class="text-[10px] text-slate-500 font-bold uppercase tracking-wider mb-1">Set Tracking</div>
@@ -828,9 +828,9 @@
                 tbody.innerHTML += `
                     <tr class="hover:bg-slate-950/40">
                         <td class="p-2.5 font-bold text-slate-200">${day}</td>
-                        <td class="p-2.5 idx===0?'text-amber-400font-semibold':'text-slate-500'">{reta}</td>
+                        <td class="p-2.5 ${idx === 0 ? 'text-amber-400 font-semibold' : 'text-slate-500'}">${reta}</td>
                         <td class="p-2.5 text-slate-300">${bpc}</td>
-                        <td class="p-2.5 idx<5?'text-amber-400font-semibold':'text-slate-500'">{cjc}</td>
+                        <td class="p-2.5 ${idx < 5 ? 'text-amber-400 font-semibold' : 'text-slate-500'}">${cjc}</td>
                     </tr>
                 `;
             });
@@ -874,8 +874,3 @@
     </script>
 </body>
 </html>
-
-```
-
-
-
