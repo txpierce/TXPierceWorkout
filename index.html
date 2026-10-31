@@ -166,40 +166,43 @@
 
     </main>
 
-    <!-- SCREENSHOT STATS BADGE MODAL -->
-    <div id="badgeModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-slate-900 border-2 border-amber-500/80 rounded-3xl p-5 max-w-md w-full shadow-2xl space-y-4 text-slate-100">
+    <!-- EXPANDED SCREENSHOT STATS BADGE MODAL -->
+    <div id="badgeModal" class="fixed inset-0 bg-slate-950/85 backdrop-blur-md z-50 hidden flex items-center justify-center p-3 sm:p-4 overflow-y-auto">
+        <div class="bg-slate-900 border-2 border-amber-500/80 rounded-3xl p-4 sm:p-5 max-w-lg w-full shadow-2xl space-y-3.5 text-slate-100 my-auto">
             
             <!-- BADGE HEADER -->
-            <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-2.5">
                 <div>
                     <span class="text-[9px] font-extrabold uppercase bg-amber-500 text-slate-950 px-2 py-0.5 rounded tracking-widest">TXP ATHLETIC LOG</span>
                     <h2 id="badgeTitle" class="font-black text-base text-slate-100 mt-1">WORKOUT STATS</h2>
                     <p id="badgeSub" class="text-[10px] text-amber-400 font-bold"></p>
                 </div>
-                <button onclick="closeBadge()" class="text-slate-400 hover:text-white text-lg font-bold">✕</button>
+                <button onclick="closeBadge()" class="text-slate-400 hover:text-white text-lg font-bold px-2 py-1">✕</button>
             </div>
 
             <!-- STATS HIGHLIGHT GRID -->
             <div class="grid grid-cols-2 gap-2 text-center">
-                <div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800">
+                <div class="bg-slate-950 p-2 rounded-xl border border-slate-800">
                     <span class="block text-[9px] text-slate-400 uppercase font-bold">Sets Completed</span>
                     <span id="badgeSetsDone" class="text-base font-black text-amber-400">0 / 0</span>
                 </div>
-                <div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800">
+                <div class="bg-slate-950 p-2 rounded-xl border border-slate-800">
                     <span class="block text-[9px] text-slate-400 uppercase font-bold">Completion Rate</span>
                     <span id="badgePercent" class="text-base font-black text-emerald-400">0%</span>
                 </div>
             </div>
 
-            <!-- EXERCISE & WEIGHT SUMMARY LIST -->
-            <div class="bg-slate-950 p-3 rounded-2xl border border-slate-800 space-y-2 max-h-56 overflow-y-auto no-scrollbar">
-                <h4 class="text-[10px] font-bold text-slate-400 uppercase tracking-wider border-b border-slate-800/80 pb-1">Today's Lifts & Load</h4>
-                <div id="badgeExerciseList" class="space-y-1.5 text-xs"></div>
+            <!-- EXERCISE & SET/REP BREAKDOWN LIST (Full Un-scrolled View) -->
+            <div class="bg-slate-950 p-3 rounded-2xl border border-slate-800 space-y-1.5">
+                <div class="flex justify-between items-center border-b border-slate-800/80 pb-1.5">
+                    <h4 class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Exercise Plan</h4>
+                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Sets × Reps</span>
+                </div>
+                <div id="badgeExerciseList" class="space-y-1"></div>
             </div>
 
             <!-- FOOTER BRANDING -->
-            <div class="flex items-center justify-between text-[10px] text-slate-400 border-t border-slate-800 pt-2.5 font-bold">
+            <div class="flex items-center justify-between text-[10px] text-slate-400 border-t border-slate-800 pt-2 font-bold">
                 <span id="badgeDate"></span>
                 <span class="text-amber-500">📸 SCREENSHOT TO SHARE</span>
             </div>
@@ -358,22 +361,21 @@
                 const sets = parseInt(ex.Sets) || 1;
                 totalSets += sets;
 
-                let loggedWeights = [];
                 for (let s = 1; s <= sets; s++) {
                     const checkKey = `${currentPhase}_${currentWeek}_${currentDay}_${exIdx}_s${s}`;
-                    const weightKey = `${currentPhase}_${currentWeek}_${currentDay}_${exIdx}_wt_s${s}`;
-                    
                     if (localStorage.getItem(checkKey) === 'true') checkedSets++;
-                    const wt = localStorage.getItem(weightKey);
-                    if (wt) loggedWeights.push(`${wt} lbs`);
                 }
 
-                const wtStr = loggedWeights.length > 0 ? loggedWeights.join(', ') : (ex.Wt || 'BW');
+                const seriesBadge = ex.Series ? `<span class="text-[9px] font-extrabold text-amber-400 bg-amber-500/10 px-1.5 py-0.5 rounded border border-amber-500/20 mr-1.5">${ex.Series}</span>` : '';
+                const setsRepsStr = `${ex.Sets || '-'} Sets × ${ex.Reps || '-'} Reps`;
 
                 listHtml += `
                     <div class="flex justify-between items-center py-1 border-b border-slate-900/60 last:border-0">
-                        <span class="font-bold text-slate-200">${ex.Exercise}</span>
-                        <span class="text-[11px] font-extrabold text-amber-400">${wtStr}</span>
+                        <div class="flex items-center">
+                            ${seriesBadge}
+                            <span class="font-bold text-slate-200 text-xs">${ex.Exercise}</span>
+                        </div>
+                        <span class="text-[11px] font-extrabold text-amber-400 whitespace-nowrap ml-2">${setsRepsStr}</span>
                     </div>
                 `;
             });
