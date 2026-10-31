@@ -79,7 +79,7 @@
                 </div>
             </div>
 
-            <!-- HERO WELCOME CARD (GO TO LIFTS BUTTON REMOVED) -->
+            <!-- HERO WELCOME CARD -->
             <div class="bg-gradient-to-r from-slate-900 via-slate-900 to-slate-950 border border-slate-800 rounded-2xl p-4 shadow-xl space-y-3">
                 <div class="flex items-center justify-between">
                     <div>
@@ -129,6 +129,61 @@
                         <p id="todayPeptideSub" class="text-[10px] text-slate-300">Daily Morning Recovery Draw</p>
                     </div>
                     <span id="todayDayBadge" class="text-[10px] font-extrabold bg-amber-500/10 text-amber-400 px-2 py-1 rounded-lg border border-amber-500/20 uppercase">TODAY</span>
+                </div>
+            </div>
+
+            <!-- 4. 1-GALLON HYDRATION & 6. DAILY CHECK-IN GRID -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <!-- 4. HYDRATION TRACKER -->
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-3.5 shadow-lg space-y-2">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[10px] text-slate-400 font-bold uppercase tracking-wider flex items-center gap-1">💧 Daily Hydration Target</span>
+                        <span id="hydrationStatus" class="text-[10px] font-extrabold text-amber-400">0% (0 / 1 Gal)</span>
+                    </div>
+                    <div class="grid grid-cols-4 gap-1.5">
+                        <button onclick="setHydration(25)" id="hyd-25" class="bg-slate-950 hover:bg-slate-800 border border-slate-800 text-[10px] font-bold py-1.5 rounded-xl text-slate-300 transition">25%</button>
+                        <button onclick="setHydration(50)" id="hyd-50" class="bg-slate-950 hover:bg-slate-800 border border-slate-800 text-[10px] font-bold py-1.5 rounded-xl text-slate-300 transition">50%</button>
+                        <button onclick="setHydration(75)" id="hyd-75" class="bg-slate-950 hover:bg-slate-800 border border-slate-800 text-[10px] font-bold py-1.5 rounded-xl text-slate-300 transition">75%</button>
+                        <button onclick="setHydration(100)" id="hyd-100" class="bg-slate-950 hover:bg-slate-800 border border-slate-800 text-[10px] font-bold py-1.5 rounded-xl text-slate-300 transition">100%</button>
+                    </div>
+                </div>
+
+                <!-- 6. DAILY RECOVERY & PUMP CHECK-IN -->
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-3.5 shadow-lg space-y-2">
+                    <span class="text-[10px] text-slate-400 font-bold uppercase tracking-wider block">🦴 Daily Recovery Check-In</span>
+                    <div class="grid grid-cols-3 gap-2 text-[10px]">
+                        <div>
+                            <span class="block text-slate-400 font-semibold mb-1">Pump</span>
+                            <select id="scorePump" onchange="saveCheckinScores()" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-1 text-amber-400 font-bold">
+                                <option value="-">-</option><option value="1">1/5</option><option value="2">2/5</option><option value="3">3/5</option><option value="4">4/5</option><option value="5">5/5</option>
+                            </select>
+                        </div>
+                        <div>
+                            <span class="block text-slate-400 font-semibold mb-1">Joints</span>
+                            <select id="scoreJoints" onchange="saveCheckinScores()" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-1 text-amber-400 font-bold">
+                                <option value="-">-</option><option value="1">1/5</option><option value="2">2/5</option><option value="3">3/5</option><option value="4">4/5</option><option value="5">5/5</option>
+                            </select>
+                        </div>
+                        <div>
+                            <span class="block text-slate-400 font-semibold mb-1">Sleep</span>
+                            <select id="scoreSleep" onchange="saveCheckinScores()" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-1 text-amber-400 font-bold">
+                                <option value="-">-</option><option value="1">1/5</option><option value="2">2/5</option><option value="3">3/5</option><option value="4">4/5</option><option value="5">5/5</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. A-SERIES HEAVY STRENGTH PR TRACKER -->
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-xl space-y-2.5">
+                <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+                    <h3 class="font-bold text-xs text-slate-100 flex items-center gap-1.5">
+                        <span class="text-amber-500">🏋️</span> A-Series Primary Strength PRs
+                    </h3>
+                    <span class="text-[10px] text-slate-400">Live Working Loads</span>
+                </div>
+                <div id="prTrackerContainer" class="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs">
+                    <!-- Populated dynamically via JS -->
                 </div>
             </div>
 
@@ -365,6 +420,8 @@
             startLiveClock();
             updateFuelingClock();
             updateTodayPeptideCard();
+            loadHydration();
+            loadCheckinScores();
             
             setInterval(updateFuelingClock, 60000);
 
@@ -394,6 +451,7 @@
             renderPeptideSchedule();
             loadSavedNotes();
             checkResumeBanner();
+            renderPRTracker();
         });
 
         function startLiveClock() {
@@ -473,6 +531,101 @@
             if (bEl) bEl.textContent = dayName;
         }
 
+        // 4. HYDRATION TRACKER JS
+        function setHydration(pct) {
+            localStorage.setItem('tx_hydration', pct);
+            loadHydration();
+        }
+
+        function loadHydration() {
+            const saved = localStorage.getItem('tx_hydration') || 0;
+            [25, 50, 75, 100].forEach(val => {
+                const btn = document.getElementById(`hyd-${val}`);
+                if (btn) {
+                    if (parseInt(saved) === val) {
+                        btn.className = "bg-amber-500 text-slate-950 font-black py-1.5 rounded-xl border border-amber-400 shadow-md text-[10px] transition";
+                    } else {
+                        btn.className = "bg-slate-950 hover:bg-slate-800 border border-slate-800 text-[10px] font-bold py-1.5 rounded-xl text-slate-300 transition";
+                    }
+                }
+            });
+            const status = document.getElementById('hydrationStatus');
+            if (status) status.textContent = `${saved}% (${(saved/100).toFixed(2)} / 1 Gal)`;
+        }
+
+        // 6. DAILY CHECK-IN RECOVERY SCORES JS
+        function saveCheckinScores() {
+            const p = document.getElementById('scorePump').value;
+            const j = document.getElementById('scoreJoints').value;
+            const s = document.getElementById('scoreSleep').value;
+            localStorage.setItem('tx_score_pump', p);
+            localStorage.setItem('tx_score_joints', j);
+            localStorage.setItem('tx_score_sleep', s);
+        }
+
+        function loadCheckinScores() {
+            const p = localStorage.getItem('tx_score_pump') || '-';
+            const j = localStorage.getItem('tx_score_joints') || '-';
+            const s = localStorage.getItem('tx_score_sleep') || '-';
+            if (document.getElementById('scorePump')) document.getElementById('scorePump').value = p;
+            if (document.getElementById('scoreJoints')) document.getElementById('scoreJoints').value = j;
+            if (document.getElementById('scoreSleep')) document.getElementById('scoreSleep').value = s;
+        }
+
+        // 5. A-SERIES HEAVY STRENGTH PR TRACKER JS
+        function renderPRTracker() {
+            const container = document.getElementById('prTrackerContainer');
+            if (!container || !PROGRAM_DATA || Object.keys(PROGRAM_DATA).length === 0) return;
+
+            const aSeriesMap = {};
+
+            for (let phase in PROGRAM_DATA) {
+                for (let week in PROGRAM_DATA[phase]) {
+                    for (let day in PROGRAM_DATA[phase][week]) {
+                        const exercises = PROGRAM_DATA[phase][week][day];
+                        exercises.forEach((ex, exIdx) => {
+                            if (ex.Series && ex.Series.startsWith('A')) {
+                                const name = ex.Exercise;
+                                const sets = parseInt(ex.Sets) || 1;
+                                for (let s = 1; s <= sets; s++) {
+                                    const weightKey = `${phase}_${week}_${day}_${exIdx}_wt_s${s}`;
+                                    const loggedVal = parseFloat(localStorage.getItem(weightKey));
+                                    if (!isNaN(loggedVal) && loggedVal > 0) {
+                                        if (!aSeriesMap[name] || loggedVal > aSeriesMap[name]) {
+                                            aSeriesMap[name] = loggedVal;
+                                        }
+                                    }
+                                }
+                            }
+                        });
+                    }
+                }
+            }
+
+            let html = '';
+            const keys = Object.keys(aSeriesMap);
+
+            if (keys.length === 0) {
+                container.innerHTML = `
+                    <div class="col-span-full bg-slate-950 border border-slate-800 p-2.5 rounded-xl text-center text-[10px] text-slate-400">
+                        No A-Series weights logged yet. Start entering set weights in Workout Logs!
+                    </div>
+                `;
+                return;
+            }
+
+            keys.forEach(exName => {
+                html += `
+                    <div class="bg-slate-950 border border-slate-800 p-2.5 rounded-xl flex flex-col justify-between">
+                        <span class="text-[10px] font-bold text-slate-300 line-clamp-1">${exName}</span>
+                        <span class="text-sm font-black text-amber-400 mt-1">${aSeriesMap[exName]} <span class="text-[9px] font-normal text-slate-400">lbs</span></span>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
+        }
+
         function switchTab(tabId) {
             document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
             document.querySelectorAll('.tab-btn').forEach(el => {
@@ -488,6 +641,7 @@
 
             if (tabId === 'dashboard') {
                 updateDashboardMetrics();
+                renderPRTracker();
             }
         }
 
@@ -585,7 +739,7 @@
                         <div class="flex items-center space-x-1.5 bg-slate-950 px-2.5 py-1 rounded-lg border border-slate-800 text-[10px]">
                             <span class="font-bold text-amber-400">S${s}</span>
                             <input type="checkbox" ${checked ? 'checked' : ''} onchange="localStorage.setItem('${checkKey}', this.checked); updateDashboardMetrics(); checkResumeBanner();">
-                            <input type="number" placeholder="lbs" value="${savedWeight}" oninput="localStorage.setItem('${weightKey}', this.value)" class="w-12 bg-slate-900 border border-slate-700 rounded text-center text-amber-300 font-bold focus:outline-none focus:border-amber-500 py-0.5 text-[10px]">
+                            <input type="number" placeholder="lbs" value="${savedWeight}" oninput="localStorage.setItem('${weightKey}', this.value); renderPRTracker();" class="w-12 bg-slate-900 border border-slate-700 rounded text-center text-amber-300 font-bold focus:outline-none focus:border-amber-500 py-0.5 text-[10px]">
                         </div>
                     `;
                 }
@@ -612,7 +766,6 @@
             updateDashboardMetrics();
         }
 
-        // SMART QUICK LAUNCH ADVANCEMENT LOGIC
         function getActiveOrNextWorkout() {
             if (!PROGRAM_DATA || Object.keys(PROGRAM_DATA).length === 0) return null;
 
@@ -628,7 +781,6 @@
             let d = localStorage.getItem('tx_last_day') || days[0];
             if (!PROGRAM_DATA[p]?.[w]?.[d]) d = days[0];
 
-            // Calculate if current day is 100% completed
             const exercises = PROGRAM_DATA[p]?.[w]?.[d] || [];
             let totalSets = 0;
             let checkedSets = 0;
@@ -642,7 +794,6 @@
                 }
             });
 
-            // If ALL sets completed, automatically calculate the NEXT workout day
             if (totalSets > 0 && checkedSets === totalSets) {
                 let nextP = p, nextW = w, nextD = d;
                 let dayIdx = days.indexOf(d);
@@ -680,7 +831,7 @@
             const btn = document.getElementById('resumeBtn');
 
             if (activeObj && banner && text) {
-                const shortP = activeObj.phase.split(':') || activeObj.phase;
+                const shortP = activeObj.phase.split(':')[0] || activeObj.phase;
                 if (activeObj.isNext) {
                     if (tag) tag.textContent = "Next Workout Up";
                     text.textContent = `${shortP} • ${activeObj.week} • ${activeObj.day}`;
@@ -719,8 +870,8 @@
         function updateDashboardMetrics() {
             if (!PROGRAM_DATA || Object.keys(PROGRAM_DATA).length === 0) return;
             
-            if (!currentPhase) currentPhase = Object.keys(PROGRAM_DATA);
-            if (!currentWeek && PROGRAM_DATA[currentPhase]) currentWeek = Object.keys(PROGRAM_DATA[currentPhase]);
+            if (!currentPhase) currentPhase = Object.keys(PROGRAM_DATA)[0];
+            if (!currentWeek && PROGRAM_DATA[currentPhase]) currentWeek = Object.keys(PROGRAM_DATA[currentPhase])[0];
 
             const deloadShield = document.getElementById('deloadShield');
             if (deloadShield) {
@@ -759,7 +910,7 @@
             if (dashPhasePct) dashPhasePct.textContent = `${phasePct}% Completed`;
             
             const dashActivePhase = document.getElementById('dashActivePhase');
-            if (dashActivePhase) dashActivePhase.textContent = currentPhase.split(':') || currentPhase;
+            if (dashActivePhase) dashActivePhase.textContent = currentPhase.split(':')[0] || currentPhase;
             
             const dashActiveWeek = document.getElementById('dashActiveWeek');
             if (dashActiveWeek) dashActiveWeek.textContent = currentWeek;
@@ -796,7 +947,7 @@
                     if (wTotal > maxSetsInAnyWeek) maxSetsInAnyWeek = wTotal;
                     
                     const match = weekKey.match(/\d+/);
-                    const wNum = match ? match : weekCounter;
+                    const wNum = match ? match[0] : weekCounter;
                     const shortLabel = `W${wNum}`;
                     weekCounter++;
 
@@ -865,7 +1016,7 @@
             const pct = totalSets > 0 ? Math.round((checkedSets / totalSets) * 100) : 0;
 
             document.getElementById('badgeTitle').textContent = currentDay;
-            document.getElementById('badgeSub').textContent = `${currentPhase.split(':')} • ${currentWeek}`;
+            document.getElementById('badgeSub').textContent = `${currentPhase.split(':')[0]} • ${currentWeek}`;
             document.getElementById('badgeSetsDone').textContent = `${checkedSets} / ${totalSets}`;
             document.getElementById('badgePercent').textContent = `${pct}%`;
             document.getElementById('badgeExerciseList').innerHTML = listHtml;
@@ -918,10 +1069,18 @@
             }
 
             const notes = localStorage.getItem('tx_notes');
-            if (notes) {
-                rows.push([]);
-                rows.push(["Session Review Notes", notes]);
-            }
+            const hyd = localStorage.getItem('tx_hydration') || '0';
+            const pump = localStorage.getItem('tx_score_pump') || '-';
+            const joints = localStorage.getItem('tx_score_joints') || '-';
+            const sleep = localStorage.getItem('tx_score_sleep') || '-';
+
+            rows.push([]);
+            rows.push(["DAILY PROTOCOL SUMMARY"]);
+            rows.push(["Hydration Level", `${hyd}%`]);
+            rows.push(["Pump Score", pump]);
+            rows.push(["Joint Integrity", joints]);
+            rows.push(["Sleep Quality", sleep]);
+            if (notes) rows.push(["Session Notes", notes]);
 
             let csvContent = rows.map(e => e.map(val => `"${String(val).replace(/"/g, '""')}"`).join(",")).join("\n");
 
@@ -973,7 +1132,7 @@
         }
 
         function resetData() {
-            if (confirm('Reset set checkmarks and weight logs?')) {
+            if (confirm('Reset set checkmarks, weights, hydration, and ratings?')) {
                 localStorage.clear();
                 location.reload();
             }
