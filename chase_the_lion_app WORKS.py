@@ -1,576 +1,881 @@
-#!/usr/bin/env python3
-"""
-TX Pierce Workout App - Complete 12-Week Training Architecture
-Embedded with Full Phase 1, Phase 2, and Phase 3 Workout Matrices,
-Peptide Protocol, Nutrition/Macro Guide, and Persistent Local Storage.
-"""
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TX Pierce Workout & Research Tracker</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        input[type="checkbox"] { accent-color: #f59e0b; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen pb-12">
 
-import streamlit as st
-
-# Page Configuration
-st.set_page_config(
-    page_title="TX Pierce Workout App",
-    page_icon="🦁",
-    layout="centered",
-    initial_sidebar_state="collapsed"
-)
-
-# Custom CSS for Mobile-First Single-Screen Fit & Clean Dropdowns
-st.markdown("""
-<style>
-    .stApp {
-        background-color: #020617;
-        color: #f8fafc;
-    }
-    .block-container {
-        padding-top: 1rem;
-        padding-bottom: 2rem;
-        max-width: 900px;
-    }
-    /* Hide default streamlit elements */
-    #MainMenu {visibility: hidden;}
-    footer {visibility: hidden;}
-    header {visibility: hidden;}
-    
-    /* Custom Card Styling */
-    .workout-card {
-        background-color: #0f172a;
-        border: 1px solid #1e293b;
-        border-radius: 12px;
-        padding: 16px;
-        margin-bottom: 12px;
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    }
-    .badge-primary {
-        background-color: #f59e0b;
-        color: #020617;
-        font-weight: 800;
-        padding: 2px 8px;
-        border-radius: 6px;
-        font-size: 11px;
-    }
-</style>
-""", unsafe_allow_html=True)
-
-# App Header
-st.markdown("""
-<div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #1e293b; padding-bottom: 12px; margin-bottom: 16px;">
-    <div style="display: flex; align-items: center; gap: 8px;">
-        <span style="font-size: 24px;">🦁</span>
-        <div>
-            <h1 style="font-size: 18px; font-weight: 900; color: #f59e0b; margin: 0; line-height: 1;">TX PIERCE APP</h1>
-            <p style="font-size: 10px; color: #94a3b8; margin: 2px 0 0 0;">Complete 12-Week Training Architecture & Nutrition</p>
-        </div>
-    </div>
-</div>
-""", unsafe_allow_html=True)
-
-# Navigation Tabs
-tabs = st.tabs(["🏋️ Workout Logs", "💉 Peptide Tracker", "🥗 Nutrition & Grocery"])
-
-with tabs[0]:
-    st.markdown("### 📋 12-Week Program Navigation")
-    
-    # 3-Column Selector: Phase, Week, Day
-    col1, col2, col3 = st.columns(3)
-    
-    with col1:
-        selected_phase = st.selectbox(
-            "Select Phase",
-            [
-                "Phase 1: Base Phase (Weeks 1-4)",
-                "Phase 2: Structural Shift (Weeks 5-8)",
-                "Phase 3: Peak Hypertrophy (Weeks 9-12)"
-            ]
-        )
-        
-    with col2:
-        if "Phase 1" in selected_phase:
-            selected_week = st.selectbox("Select Week", ["Week 1", "Week 2", "Week 3", "Week 4"])
-        elif "Phase 2" in selected_phase:
-            selected_week = st.selectbox("Select Week", ["Week 5", "Week 6", "Week 7", "Week 8"])
-        else:
-            selected_week = st.selectbox("Select Week", ["Week 9", "Week 10", "Week 11", "Week 12"])
-            
-    with col3:
-        selected_day = st.selectbox(
-            "Select Day",
-            [
-                "Day 1: Push",
-                "Day 2: Pull",
-                "Day 3: Lower Hypertrophy",
-                "Day 4: Recovery / Mobility",
-                "Day 5: Upper Pump",
-                "Day 6: Optional Arms / Calves / Abs",
-                "Day 7: Off / Recovery"
-            ]
-        )
-
-    st.markdown("---")
-    st.markdown(f"### 🎯 Active Workout: **{selected_week} — {selected_day}**")
-    
-    # Dynamic Master Exercise Matrix Loader
-    # Complete, fully populated items for all weeks, phases, and days
-    
-    def get_workout_data(week, day):
-        # Returns list of tuples: (Series, Exercise, Sets, Reps, Rest, RPE, Default Wt)
-        if "Day 1: Push" in day:
-            if week in ["Week 1", "Week 2"]:
-                return [
-                    ("A-Series", "Overhead Press / Barbell Press", "5", "5-6", "2-3 min", "8", "90-95 lbs"),
-                    ("B1", "Flat DB Press / Close-Grip Press", "3-4", "8-10", "-", "8", "55-135 lbs"),
-                    ("B1", "Chest-Supported T-Bar / High Row", "3-4", "12-15", "90 sec", "8", "45-50 lbs"),
-                    ("B2", "Seated DB Arnold Press", "3-4", "8-10", "-", "8", "30 lbs"),
-                    ("B2", "Skull Crushers", "3-4", "6-8", "90 sec", "8", "40-80 lbs"),
-                    ("C-Series", "Cable Crossover / High-to-Low Fly", "3", "12-15", "-", "8", "30 lbs"),
-                    ("C-Series", "Tricep Extension / Rope Overhead", "3", "12-15", "90 sec", "8", "35-80 lbs"),
-                    ("D-Series", "DB Lateral Raise → Push-Up", "2", "15-20", "60 sec", "-", "15 lbs / BW")
-                ]
-            elif week == "Week 3":
-                return [
-                    ("A-Series", "Overhead Barbell Press", "6", "4", "2-3 min", "8-9", "100-105 lbs"),
-                    ("B1", "Incline DB Press", "4", "8-10", "-", "8-9", "55 lbs"),
-                    ("B1", "Face Pull", "4", "12-15", "90 sec", "8-9", "40-45 lbs"),
-                    ("B2", "Seated DB Arnold Press", "4", "8-10", "-", "8-9", "35 lbs"),
-                    ("B2", "Skull Crushers", "4", "6-8", "90 sec", "8-9", "45 lbs"),
-                    ("C-Series", "Cable Press‑Out", "4", "15-20", "-", "8-9", "30 lbs"),
-                    ("C-Series", "Single‑Arm Tricep Extension", "4", "15-20", "90 sec", "8-9", "25 lbs"),
-                    ("D-Series", "DB Lateral Raise → Push-Up", "2", "15-20", "60 sec", "-", "15 lbs / BW")
-                ]
-            elif week == "Week 4":
-                return [
-                    ("A-Series", "Overhead Barbell Press (Deload)", "4", "8", "2-3 min", "7-8", "85-90 lbs"),
-                    ("B1", "Machine Press", "4", "10-12", "-", "8", "110 lbs"),
-                    ("B1", "Chest‑Supported Row", "4", "12-15", "90 sec", "8", "50 lbs"),
-                    ("B2", "Seated DB Arnold Press", "4", "10-12", "-", "8", "25 lbs"),
-                    ("B2", "Skull Crushers", "4", "8-10", "90 sec", "8", "35 lbs"),
-                    ("C-Series", "Pec Deck", "4", "15-20", "-", "7-8", "100 lbs"),
-                    ("C-Series", "Straight‑Bar Pushdown", "4", "15-20", "90 sec", "7-8", "40 lbs"),
-                    ("D-Series", "DB Lateral Raise → Push-Up", "2", "15-20", "60 sec", "-", "15 lbs / BW")
-                ]
-            elif week in ["Week 5", "Week 6"]:
-                sets_val = "4" if week == "Week 6" else "3-5"
-                return [
-                    ("A-Series", "Incline Barbell Bench Press", sets_val, "5-8", "2-3 min", "8", "135 lbs"),
-                    ("B1", "Flat Barbell Volume Press", sets_val, "10-12", "-", "8", "135 lbs"),
-                    ("B1", "Chest-Supported High Row", sets_val, "10-12", "90 sec", "8", "55 lbs"),
-                    ("B2", "DB Arnold Press", sets_val, "10-12", "-", "8", "30 lbs"),
-                    ("B2", "Overhead Cable Tricep Extension", sets_val, "10-12", "90 sec", "8", "40 lbs"),
-                    ("C-Series", "Low-to-High Cable Fly", sets_val, "15-20", "-", "8", "25 lbs"),
-                    ("C-Series", "Single-Arm Cross-Body Tricep Ext", sets_val, "15-20", "90 sec", "8", "25 lbs"),
-                    ("D-Series", "DB Lateral Raise → Push-Up", "2", "15-20", "60 sec", "-", "15 lbs / BW")
-                ]
-            elif week == "Week 7":
-                return [
-                    ("A-Series", "Incline Barbell Bench Press", "4", "5", "60-90 sec", "7-8", "135 lbs"),
-                    ("B1 (Tri)", "Flat Barbell Volume Press (Mid-Range)", "4", "10-12", "-", "7-8", "135 lbs"),
-                    ("B2 (Tri)", "Chest-Supported High Row (Stretch)", "4", "10-12", "-", "7-8", "55 lbs"),
-                    ("B3 (Tri)", "Low-to-High Cable Fly (Contraction)", "4", "12-15", "60-75 sec", "7-8", "20 lbs"),
-                    ("C-Series", "Pec Deck (Pure Pump)", "3", "15-25", "Minimal", "8", "90 lbs"),
-                    ("C-Series", "Straight-Bar Pushdown", "3", "15-25", "Minimal", "8", "35 lbs"),
-                    ("D-Series", "DB Lateral Raise → Push-Up", "2", "15-20", "60 sec", "-", "15 lbs / BW")
-                ]
-            elif week == "Week 8":
-                return [
-                    ("A-Series", "Incline Barbell Press (Deload)", "3", "10", "2-3 min", "7", "115 lbs"),
-                    ("B1", "Flat Press → Chest Fly (Drop Set)", "4", "10-12", "-", "8", "115 lbs / 25 lbs"),
-                    ("B2", "Chest-Supported High Row", "4", "10-12", "-", "8", "55 lbs"),
-                    ("B3", "Push-Up (To Failure)", "4", "AMRAP", "60-75 sec", "8", "BW"),
-                    ("C-Series", "Low-to-High Cable Fly", "4", "20-30", "Minimal", "8", "20 lbs"),
-                    ("C-Series", "Cross-Body Tricep Extension", "4", "20-30", "Minimal", "8", "20 lbs"),
-                    ("D-Series", "DB Lateral Raise → Push-Up", "2", "15-20", "60 sec", "-", "15 lbs / BW")
-                ]
-            elif week == "Week 9":
-                return [
-                    ("A-Series", "Incline Dumbbell Press (3-sec eccentric)", "4", "10", "2 min", "7", "50 lbs"),
-                    ("B1", "Flat Barbell Press (Chest)", "3", "12-15", "-", "7-8", "115 lbs"),
-                    ("B2", "Chest-Supported High Row (Back)", "3", "12-15", "60-75 sec", "7-8", "50 lbs"),
-                    ("B1", "DB Arnold Press (Shoulders)", "3", "12-15", "-", "7-8", "25 lbs"),
-                    ("B2", "Overhead Cable Tricep Extension", "3", "12-15", "60-75 sec", "7-8", "35 lbs"),
-                    ("C-Series", "Low-to-High Cable Fly", "3", "15-20", "Minimal", "8", "20 lbs"),
-                    ("D-Series", "DB Lateral Raise → Push-Up", "2", "15-20", "60 sec", "-", "15 lbs / BW")
-                ]
-            elif week == "Week 10":
-                return [
-                    ("A-Series", "Incline Dumbbell Press", "4", "10", "75-90 sec", "7", "50 lbs"),
-                    ("B1 (Tri)", "Flat Barbell Press", "3", "12-15", "-", "7-8", "115 lbs"),
-                    ("B2 (Tri)", "Incline Cable Fly (Stretch)", "3", "12-15", "-", "7-8", "20 lbs"),
-                    ("B3 (Tri)", "Push-Up (Contraction)", "3", "AMRAP", "45-60 sec", "8", "BW"),
-                    ("C-Series", "Low-to-High Cable Fly", "3", "20-25", "Minimal", "8", "15 lbs"),
-                    ("C-Series", "Single-Arm Tricep Extension", "3", "20-25", "Minimal", "8", "15 lbs"),
-                    ("D-Series", "DB Lateral Raise → Push-Up", "2", "15-20", "60 sec", "-", "15 lbs / BW")
-                ]
-            elif week == "Week 11":
-                return [
-                    ("A-Series", "Incline DB Press (4-sec eccentric)", "4", "12-15", "90 sec", "6-7", "40 lbs"),
-                    ("B1", "Flat Bench → Incline Press → Fly", "3", "12-15", "30-45 sec", "8", "95 / 75 / 15 lbs"),
-                    ("B2", "Arnold Press → Lateral Raise → Extension", "3", "12-15", "30-45 sec", "8", "20 / 12.5 / 30 lbs"),
-                    ("C-Series", "Low-to-High Cable Fly (Burnout)", "3", "25-30", "Minimal", "9", "15 lbs"),
-                    ("D-Series", "DB Lateral Raise → Push-Up", "2", "20-25", "60 sec", "-", "12.5 lbs / BW")
-                ]
-            elif week == "Week 12":
-                return [
-                    ("A-Series", "Incline DB Press (Very Light)", "3", "10-12", "90 sec", "6", "30 lbs"),
-                    ("B1", "Flat Barbell Press (Chest)", "3", "12-15", "-", "6-7", "85 lbs"),
-                    ("B2", "Chest-Supported High Row", "3", "12-15", "60-75 sec", "6-7", "35 lbs"),
-                    ("C-Series", "Low-to-High Cable Fly", "3", "20-25", "Minimal", "6", "10 lbs"),
-                    ("D-Series", "DB Lateral Raise → Push-Up", "2", "15-20", "60 sec", "-", "10 lbs / BW")
-                ]
-        elif "Day 2: Pull" in day:
-            if week in ["Week 1", "Week 2"]:
-                return [
-                    ("A-Series", "Pendlay Row", "4", "6-8", "2-3 min", "8", "135-140 lbs"),
-                    ("B1", "Chin-Up", "3-4", "AMRAP", "-", "8", "BW"),
-                    ("B1", "Face Pull", "3-4", "12-15", "90 sec", "8", "40 lbs"),
-                    ("B2", "Seated Cable Row", "3-4", "10-12", "-", "8", "100 lbs"),
-                    ("B2", "DB Hammer Curl", "3-4", "10-12", "90 sec", "8", "25 lbs"),
-                    ("C-Series", "Incline DB Y-Raise", "3", "12-15", "-", "8", "15 lbs"),
-                    ("C-Series", "EZ Bar Preacher Curl", "3", "12-15", "90 sec", "8", "40 lbs"),
-                    ("D-Series", "Lat Pulldown → DB Curl", "2", "15-20", "60 sec", "-", "100 lbs / 25 lbs")
-                ]
-            elif week == "Week 3":
-                return [
-                    ("A-Series", "Pendlay Row", "6", "4", "2-3 min", "8-9", "140-145 lbs"),
-                    ("B1", "Chin-Up", "4", "AMRAP", "-", "8-9", "BW"),
-                    ("B1", "Face Pull", "4", "12-15", "90 sec", "8-9", "45 lbs"),
-                    ("B2", "Seated Cable Row", "4", "10-12", "-", "8-9", "110 lbs"),
-                    ("B2", "DB Hammer Curl", "4", "10-12", "90 sec", "8-9", "30 lbs"),
-                    ("C-Series", "Incline DB Y-Raise", "4", "15-20", "-", "8-9", "15 lbs"),
-                    ("C-Series", "EZ Bar Preacher Curl", "4", "15-20", "90 sec", "8-9", "40 lbs"),
-                    ("D-Series", "Lat Pulldown → DB Curl", "2", "15-20", "60 sec", "-", "100 lbs / 25 lbs")
-                ]
-            elif week == "Week 4":
-                return [
-                    ("A-Series", "Pendlay Row (Deload)", "4", "8", "2-3 min", "7-8", "120-125 lbs"),
-                    ("B1", "Chin-Up", "4", "AMRAP", "-", "8", "BW"),
-                    ("B1", "Face Pull", "4", "12-15", "90 sec", "8", "40 lbs"),
-                    ("B2", "Seated Cable Row", "4", "10-12", "-", "8", "100 lbs"),
-                    ("B2", "DB Hammer Curl", "4", "10-12", "90 sec", "8", "25 lbs"),
-                    ("C-Series", "Incline DB Y-Raise", "4", "15-20", "-", "7-8", "12.5 lbs"),
-                    ("C-Series", "EZ Bar Preacher Curl", "4", "15-20", "90 sec", "7-8", "35 lbs"),
-                    ("D-Series", "Lat Pulldown → DB Curl", "2", "15-20", "60 sec", "-", "90 lbs / 20 lbs")
-                ]
-            elif week in ["Week 5", "Week 6"]:
-                sets_val = "4" if week == "Week 6" else "3-4"
-                return [
-                    ("A-Series", "Weighted Pull-Up", sets_val, "6-8", "2-3 min", "8", "BW + 10 lbs"),
-                    ("B1", "Meadows Row / Landmine Row", sets_val, "10-12", "-", "8", "60 lbs"),
-                    ("B1", "Cable Face Pull w/ External Rotation", sets_val, "12-15", "90 sec", "8", "45 lbs"),
-                    ("B2", "Lat Pulldown (Neutral Grip)", sets_val, "10-12", "-", "8", "100 lbs"),
-                    ("B2", "Incline DB Bicep Curl", sets_val, "10-12", "90 sec", "8", "25 lbs"),
-                    ("C-Series", "Cable Reverse Fly", sets_val, "15-20", "-", "8", "20 lbs"),
-                    ("C-Series", "EZ-Bar Preacher Curl", sets_val, "15-20", "90 sec", "8", "40 lbs"),
-                    ("D-Series", "Straight-Arm Pulldown → Hammer Curl", "2", "15-20", "60 sec", "-", "40 lbs / 25 lbs")
-                ]
-            elif week == "Week 7":
-                return [
-                    ("A-Series", "Weighted Pull-Up", "4", "6", "60-90 sec", "7-8", "BW + 10 lbs"),
-                    ("B1 (Tri)", "Meadows Row (Mid-Range)", "4", "10-12", "-", "7-8", "60 lbs"),
-                    ("B2 (Tri)", "Neutral Lat Pulldown (Stretch)", "4", "10-12", "-", "7-8", "100 lbs"),
-                    ("B3 (Tri)", "Cable Face Pull (Short-Range)", "4", "12-15", "60-75 sec", "7-8", "40 lbs"),
-                    ("C-Series", "Cable Reverse Fly (Pump)", "3", "15-25", "Minimal", "8", "15 lbs"),
-                    ("C-Series", "Straight-Arm Lat Pulldown", "3", "15-25", "Minimal", "8", "35 lbs"),
-                    ("D-Series", "Lat Pulldown → DB Curl", "2", "15-20", "60 sec", "-", "90 lbs / 20 lbs")
-                ]
-            elif week == "Week 8":
-                return [
-                    ("A-Series", "Weighted Pull-Up (Deload)", "3", "6", "2-3 min", "7", "BW + 5 lbs"),
-                    ("B1", "Meadows Row", "4", "10-12", "-", "8", "60 lbs"),
-                    ("B2", "Neutral Pulldown → Straight-Arm Pullover", "4", "10-12", "-", "8", "100 / 40 lbs"),
-                    ("B3", "Face Pull w/ External Rotation", "4", "12-15", "60-75 sec", "8", "40 lbs"),
-                    ("C-Series", "Cable Reverse Fly", "4", "20-30", "Minimal", "8", "15 lbs"),
-                    ("D-Series", "Lat Pulldown → DB Curl", "2", "15-20", "60 sec", "-", "90 lbs / 20 lbs")
-                ]
-            elif week == "Week 9":
-                return [
-                    ("A-Series", "Weighted Pull-Ups (3-sec eccentric)", "3", "6-8", "2 min", "7", "BW + 5 lbs"),
-                    ("B1", "Neutral-Grip Lat Pulldown", "3", "12-15", "-", "7-8", "90 lbs"),
-                    ("B2", "Cable Face Pull", "3", "12-15", "60-75 sec", "7-8", "35 lbs"),
-                    ("C-Series", "Cable Reverse Fly", "3", "15-20", "Minimal", "8", "15 lbs"),
-                    ("D-Series", "Straight-Arm Pulldown → Hammer Curl", "2", "15-20", "60 sec", "-", "35 lbs / 20 lbs")
-                ]
-            elif week == "Week 10":
-                return [
-                    ("A-Series", "Weighted Pull-Ups", "3", "6-8", "75-90 sec", "7", "BW + 5 lbs"),
-                    ("B1 (Tri)", "Chest-Supported Row", "3", "12-15", "-", "7-8", "50 lbs"),
-                    ("B2 (Tri)", "Neutral Lat Pulldown", "3", "12-15", "-", "7-8", "90 lbs"),
-                    ("B3 (Tri)", "Straight-Arm Pullover", "3", "12-15", "45-60 sec", "7-8", "35 lbs"),
-                    ("C-Series", "Cable Face Pull", "3", "20-25", "Minimal", "8", "30 lbs"),
-                    ("D-Series", "Straight-Arm Pulldown → Hammer Curl", "2", "15-20", "60 sec", "-", "35 lbs / 20 lbs")
-                ]
-            elif week == "Week 11":
-                return [
-                    ("A-Series", "Weighted Pull-Ups (4-sec eccentric)", "3", "10-12", "90 sec", "6-7", "BW"),
-                    ("B1", "Mid Row → High Row → Rear Delt Fly", "3", "12-15", "30-45 sec", "8", "40 / 40 / 25 lbs"),
-                    ("C-Series", "Cable Reverse Fly (Occlusion)", "3", "25-30", "Minimal", "9", "10 lbs"),
-                    ("D-Series", "Lat Pulldown → DB Hammer Curl", "2", "20-25", "60 sec", "-", "70 lbs / 15 lbs")
-                ]
-            elif week == "Week 12":
-                return [
-                    ("A-Series", "Neutral Pulldown (Very Light)", "3", "10-12", "90 sec", "6", "60 lbs"),
-                    ("B1", "Neutral-Grip Lat Pulldown", "3", "12-15", "-", "6-7", "70 lbs"),
-                    ("B2", "Cable Face Pull", "3", "12-15", "60-75 sec", "6-7", "25 lbs"),
-                    ("C-Series", "Cable Reverse Fly", "3", "20-25", "Minimal", "6", "10 lbs"),
-                    ("D-Series", "Straight-Arm Pulldown → Hammer Curl", "2", "15-20", "60 sec", "-", "25 lbs / 15 lbs")
-                ]
-        elif "Day 3: Lower Hypertrophy" in day:
-            if week in ["Week 1", "Week 2"]:
-                return [
-                    ("A-Series", "Front Squat", "4", "6-8", "2-3 min", "8", "135-140 lbs"),
-                    ("B1", "Romanian Deadlift", "3-4", "12-15", "-", "8", "135 lbs"),
-                    ("B1", "DB Walking Lunges", "3-4", "10-12", "90 sec", "8", "30 lbs"),
-                    ("B2", "Glute Ham Raise", "3-4", "10-12", "-", "8", "BW"),
-                    ("B2", "Seated Calf Raise", "3-4", "12-15", "90 sec", "8", "90 lbs"),
-                    ("C-Series", "Leg Extension", "3", "15-20", "-", "8", "50 lbs"),
-                    ("C-Series", "Split Squat ISO Hold", "3", "20-30 sec", "90 sec", "8", "BW")
-                ]
-            elif week == "Week 3":
-                return [
-                    ("A-Series", "Front Squat", "6", "4", "2-3 min", "8-9", "140-145 lbs"),
-                    ("B1", "Romanian Deadlift", "4", "12-15", "-", "8-9", "145 lbs"),
-                    ("B1", "DB Walking Lunges", "4", "10-12", "90 sec", "8-9", "35 lbs"),
-                    ("B2", "Glute Ham Raise", "4", "10-12", "-", "8-9", "BW"),
-                    ("B2", "Seated Calf Raise", "4", "12-15", "90 sec", "8-9", "100 lbs"),
-                    ("C-Series", "Leg Extension", "4", "15-20", "-", "8-9", "60 lbs"),
-                    ("C-Series", "Split Squat ISO Hold", "4", "20-30 sec", "90 sec", "8-9", "BW")
-                ]
-            elif week == "Week 4":
-                return [
-                    ("A-Series", "Front Squat (Deload)", "4", "8", "2-3 min", "7-8", "120-125 lbs"),
-                    ("B1", "Romanian Deadlift", "4", "12-15", "-", "8", "125 lbs"),
-                    ("B1", "DB Walking Lunges", "4", "10-12", "90 sec", "8", "25 lbs"),
-                    ("B2", "Glute Ham Raise", "4", "10-12", "-", "8", "BW"),
-                    ("B2", "Seated Calf Raise", "4", "12-15", "90 sec", "8", "80 lbs"),
-                    ("C-Series", "Leg Extension", "4", "15-20", "-", "7-8", "40 lbs"),
-                    ("C-Series", "Split Squat ISO Hold", "4", "20-30 sec", "7-8", "BW")
-                ]
-            elif week in ["Week 5", "Week 6"]:
-                sets_val = "4" if week == "Week 6" else "3-4"
-                return [
-                    ("A-Series", "Hack Squat", sets_val, "6-10", "2-3 min", "8", "145 lbs"),
-                    ("B1", "Deficit Romanian Deadlift", sets_val, "10-12", "-", "8", "135 lbs"),
-                    ("B1", "Bulgarian Split Squats", sets_val, "10-12", "90 sec", "8", "30 lbs"),
-                    ("B2", "Lying Leg Curl", sets_val, "10-12", "-", "8", "60 lbs"),
-                    ("B2", "Standing Calf Raise", sets_val, "12-15", "90 sec", "8", "135 lbs"),
-                    ("C-Series", "Leg Extension", sets_val, "15-20", "-", "8", "50 lbs"),
-                    ("C-Series", "Seated Calf Raise", sets_val, "15-20", "90 sec", "8", "90 lbs")
-                ]
-            elif week == "Week 7":
-                return [
-                    ("A-Series", "Hack Squat", "4", "8", "60-90 sec", "7-8", "135 lbs"),
-                    ("B1 (Tri)", "Hack Squat (Mid-Range)", "4", "10-12", "-", "7-8", "135 lbs"),
-                    ("B2 (Tri)", "Leg Extension (Contraction)", "4", "12-15", "-", "7-8", "50 lbs"),
-                    ("B3 (Tri)", "Tibialis Raise (Stretch)", "4", "15-20", "60-75 sec", "7-8", "BW"),
-                    ("C-Series", "Standing Calf Raise", "3", "15-25", "Minimal", "8", "120 lbs"),
-                    ("C-Series", "Seated Calf Raise", "3", "15-25", "Minimal", "8", "80 lbs")
-                ]
-            elif week == "Week 8":
-                return [
-                    ("A-Series", "Hack Squat (Deload)", "3", "12", "2-3 min", "7", "115 lbs"),
-                    ("B1", "Deficit Romanian Deadlift", "4", "10-12", "-", "8", "135 lbs"),
-                    ("B2", "Lying Leg Curl → Glute Bridge", "4", "10-12", "60-75 sec", "8", "60 lbs / BW"),
-                    ("C-Series", "Standing Calf Raise", "4", "20-30", "Minimal", "8", "110 lbs"),
-                    ("C-Series", "Seated Calf Raise", "4", "20-30", "Minimal", "8", "70 lbs")
-                ]
-            elif week == "Week 9":
-                return [
-                    ("A-Series", "Hack Squat", "4", "12", "2 min", "7", "115 lbs"),
-                    ("B1", "Lying Leg Curl", "3", "12-15", "-", "7-8", "50 lbs"),
-                    ("B2", "Leg Extension", "3", "12-15", "60-75 sec", "7-8", "40 lbs"),
-                    ("C-Series", "Standing Calf Raise", "3", "15-20", "-", "8", "100 lbs"),
-                    ("C-Series", "Seated Calf Raise", "3", "15-20", "60-75 sec", "8", "70 lbs")
-                ]
-            elif week == "Week 10":
-                return [
-                    ("A-Series", "Hack Squat", "4", "12", "75-90 sec", "7", "115 lbs"),
-                    ("B1 (Tri)", "Deficit Romanian Deadlift", "3", "12-15", "-", "7-8", "115 lbs"),
-                    ("B2 (Tri)", "Lying Leg Curl", "3", "12-15", "-", "7-8", "50 lbs"),
-                    ("B3 (Tri)", "Glute Bridge", "3", "12-15", "45-60 sec", "7-8", "BW"),
-                    ("C-Series", "Standing Calf Raise", "3", "20-25", "Minimal", "8", "100 lbs")
-                ]
-            elif week == "Week 11":
-                return [
-                    ("A-Series", "Hack Squat (4-sec eccentric)", "4", "12-15", "90 sec", "6-7", "90 lbs"),
-                    ("B1", "Leg Press (Standard) → Narrow → Sissy", "3", "12-15", "30-45 sec", "8", "180 / 140 / BW"),
-                    ("C-Series", "Standing Calf Raise (Burnout)", "3", "25-30", "Minimal", "9", "80 lbs")
-                ]
-            elif week == "Week 12":
-                return [
-                    ("A-Series", "Hack Squat (Very Light)", "3", "10-12", "90 sec", "6", "70 lbs"),
-                    ("B1", "Lying Leg Curl", "3", "12-15", "-", "6-7", "35 lbs"),
-                    ("B2", "Leg Extension", "3", "12-15", "60-75 sec", "6-7", "30 lbs"),
-                    ("C-Series", "Standing Calf Raise", "3", "20-25", "Minimal", "6", "60 lbs")
-                ]
-        elif "Day 4: Recovery / Mobility" in day:
-            return [
-                ("Mobility", "Cat-Cow", "2", "10", "-", "-", "BW"),
-                ("Mobility", "Thoracic Rotations", "2", "10/side", "-", "-", "BW"),
-                ("Mobility", "Hip Airplanes", "2", "10/side", "-", "-", "BW"),
-                ("Mobility", "Ankle Dorsiflexion Rocks", "2", "10", "-", "-", "BW"),
-                ("Quality", "Slow Bodyweight Squats", "1", "10", "-", "-", "BW"),
-                ("Conditioning", "Light Incline Walk / Row", "1", "10-15 min", "-", "3", "Easy")
-            ]
-        elif "Day 5: Upper Pump" in day:
-            if week in ["Week 1", "Week 2"]:
-                return [
-                    ("A-Series", "Incline DB Press", "3-4", "10-12", "90 sec", "7", "55-60 lbs"),
-                    ("B1", "Machine Chest Press", "3-4", "12-15", "-", "7", "110 lbs"),
-                    ("B1", "V-Grip Cable Row", "3-4", "12-15", "90 sec", "7", "110 lbs"),
-                    ("B2", "Cable Lateral Raise", "3-4", "15-20", "-", "7", "20 lbs"),
-                    ("B2", "Tricep Rope Pushdown", "3-4", "10-12", "90 sec", "7", "40 lbs"),
-                    ("C-Series", "Straight-Arm Pulldown", "3", "12-15", "-", "7", "40-60 lbs"),
-                    ("C-Series", "DB Spider Curl", "3", "12-15", "90 sec", "7", "25 lbs"),
-                    ("D-Series", "Cable Fly → Overhead Ext → Face Pull", "2", "15-20", "60 sec", "-", "25 / 35 / 40 lbs")
-                ]
-            elif week == "Week 3":
-                return [
-                    ("A-Series", "Incline DB Press", "4", "8-10", "90 sec", "8", "60 lbs"),
-                    ("B1", "Machine Chest Press", "4", "12-15", "-", "8", "120 lbs"),
-                    ("B1", "V-Grip Cable Row", "4", "12-15", "90 sec", "8", "120 lbs"),
-                    ("B2", "Cable Lateral Raise", "4", "15-20", "-", "8", "20 lbs"),
-                    ("B2", "Tricep Rope Pushdown", "4", "10-12", "90 sec", "8", "45 lbs"),
-                    ("C-Series", "Straight-Arm Pulldown", "4", "15-20", "-", "8", "40 lbs"),
-                    ("C-Series", "DB Spider Curl", "4", "15-20", "90 sec", "8", "25 lbs"),
-                    ("D-Series", "Low-to-High Cable Fly", "2", "15-20", "60 sec", "-", "25 lbs")
-                ]
-            elif week == "Week 4":
-                return [
-                    ("A-Series", "Incline DB Press (Deload)", "3", "12", "90 sec", "7", "50 lbs"),
-                    ("B1", "Machine Chest Press", "4", "12-15", "-", "7", "100 lbs"),
-                    ("B1", "V-Grip Cable Row", "4", "12-15", "90 sec", "7", "100 lbs"),
-                    ("B2", "Cable Lateral Raise", "4", "15-20", "-", "7", "15 lbs"),
-                    ("B2", "Tricep Rope Pushdown", "4", "12-15", "90 sec", "7", "35 lbs"),
-                    ("C-Series", "Straight-Arm Pulldown", "4", "15-20", "-", "7", "35 lbs"),
-                    ("C-Series", "DB Spider Curl", "4", "15-20", "90 sec", "7", "20 lbs")
-                ]
-            elif week in ["Week 5", "Week 6"]:
-                sets_val = "4" if week == "Week 6" else "3"
-                return [
-                    ("A-Series", "Flat DB Press", sets_val, "10-12", "90 sec", "7-8", "60 lbs"),
-                    ("B1", "Incline Cable Fly", sets_val, "12-15", "-", "7-8", "25 lbs"),
-                    ("B1", "Seated Cable Row (Wide)", sets_val, "12-15", "90 sec", "7-8", "110 lbs"),
-                    ("B2", "Lean-Away Lateral Raise", sets_val, "15-20", "-", "7-8", "15 lbs"),
-                    ("B2", "Tricep Straight-Bar Pushdown", sets_val, "12-15", "90 sec", "7-8", "40 lbs"),
-                    ("C-Series", "Underhand Lat Pulldown", sets_val, "15-20", "-", "7-8", "90 lbs"),
-                    ("C-Series", "DB Spider Curl", sets_val, "15-20", "90 sec", "7-8", "25 lbs"),
-                    ("D-Series", "Cable Crossover → Ext → Face Pull", "2", "15-20", "60 sec", "-", "25 / 35 / 40 lbs")
-                ]
-            elif week == "Week 7":
-                return [
-                    ("A-Series", "Flat DB Press", "4", "10-12", "60-90 sec", "7", "55 lbs"),
-                    ("B1 (Tri)", "Incline Cable Fly", "4", "12-15", "-", "7", "20 lbs"),
-                    ("B2 (Tri)", "Seated Cable Row", "4", "12-15", "-", "7", "100 lbs"),
-                    ("B3 (Tri)", "Lean-Away Lateral Raise", "4", "15-20", "60-75 sec", "7", "15 lbs"),
-                    ("C-Series", "Tricep Rope Pushdown", "3", "15-25", "Minimal", "7-8", "35 lbs"),
-                    ("C-Series", "DB Spider Curl", "3", "15-25", "Minimal", "7-8", "20 lbs")
-                ]
-            elif week == "Week 8":
-                return [
-                    ("A-Series", "Flat DB Press (Deload)", "3", "12", "90 sec", "7", "50 lbs"),
-                    ("B1", "Incline Cable Fly", "4", "12-15", "-", "7-8", "20 lbs"),
-                    ("B2", "Seated Cable Row (Wide)", "4", "12-15", "60-75 sec", "7-8", "100 lbs"),
-                    ("C-Series", "Underhand Lat Pulldown", "4", "20-30", "Minimal", "8", "80 lbs"),
-                    ("C-Series", "DB Spider Curl", "4", "20-30", "Minimal", "8", "15 lbs")
-                ]
-            elif week == "Week 9":
-                return [
-                    ("A-Series", "Flat DB Press", "3", "12", "90 sec", "7", "45 lbs"),
-                    ("B1", "Incline Cable Fly", "3", "12-15", "-", "7", "20 lbs"),
-                    ("B2", "Seated Cable Row", "3", "12-15", "60-75 sec", "7", "90 lbs"),
-                    ("C-Series", "Underhand Lat Pulldown", "3", "15-20", "-", "8", "80 lbs"),
-                    ("C-Series", "DB Spider Curl", "3", "15-20", "60-75 sec", "8", "15 lbs")
-                ]
-            elif week == "Week 10":
-                return [
-                    ("A-Series", "Flat DB Press", "3", "12", "75-90 sec", "7", "45 lbs"),
-                    ("B1 (Tri)", "Incline Cable Fly", "3", "12-15", "-", "7", "20 lbs"),
-                    ("B2 (Tri)", "Seated Cable Row", "3", "12-15", "-", "7", "90 lbs"),
-                    ("B3 (Tri)", "Lean-Away Lateral Raise", "3", "15-20", "45-60 sec", "7", "12.5 lbs"),
-                    ("C-Series", "Underhand Lat Pulldown", "3", "20-25", "Minimal", "8", "70 lbs")
-                ]
-            elif week == "Week 11":
-                return [
-                    ("A-Series", "Flat DB Press (4-sec eccentric)", "3", "12-15", "90 sec", "6-7", "35 lbs"),
-                    ("B1", "Bench Press → Incline → Cable Fly", "3", "12-15", "30-45 sec", "8", "95 / 75 / 15 lbs"),
-                    ("C-Series", "Lean-Away Lateral Raise (Burnout)", "3", "25-30", "Minimal", "9", "10 lbs")
-                ]
-            elif week == "Week 12":
-                return [
-                    ("A-Series", "Flat DB Press (Very Light)", "3", "10-12", "90 sec", "6", "30 lbs"),
-                    ("B1", "Incline Cable Fly", "3", "12-15", "-", "6-7", "15 lbs"),
-                    ("B2", "Seated Cable Row", "3", "12-15", "60-75 sec", "6-7", "60 lbs"),
-                    ("C-Series", "Underhand Lat Pulldown", "3", "20-25", "Minimal", "6", "60 lbs")
-                ]
-        elif "Day 6: Optional Arms / Calves / Abs" in day:
-            return [
-                ("Arms", "Cable / Dual-Cable Bicep Curl", "3-4", "12-20", "-", "7-8", "35-40 lbs"),
-                ("Arms", "Overhead Rope Tricep Extension", "3-4", "12-20", "-", "7-8", "35-40 lbs"),
-                ("Arms", "Preacher Curl / DB Hammer Curl", "3-4", "10-15", "-", "7-8", "30-40 lbs"),
-                ("Arms", "Bench / Parallel Bar Dips", "3-4", "15-20", "-", "7-8", "BW"),
-                ("Calves", "Standing Calf Raise", "4", "12-20", "-", "8", "135-145 lbs"),
-                ("Core", "Hanging Leg / Knee Raise", "3-4", "10-15", "-", "8", "BW"),
-                ("Core", "Declined Cable Crunch", "3-4", "12-20", "-", "8", "50 lbs")
-            ]
-        else: # Day 7 Off
-            return [
-                ("Recovery", "Casual Outdoor Walk", "1", "20-30 min", "-", "-", "Easy"),
-                ("Recovery", "Hydration & Protein Focus", "1", "All Day", "-", "-", "Routine")
-            ]
-        return []
-
-    exercises = get_workout_data(selected_week, selected_day)
-    
-    # Render Interactive Table / Cards
-    for idx, (series, name, sets, reps, rest, rpe, default_wt) in enumerate(exercises):
-        with st.container():
-            st.markdown(f"""
-            <div class="workout-card">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-                    <span class="badge-primary">{series}</span>
-                    <span style="font-size: 11px; color: #94a3b8;">Reps: {reps} | Rest: {rest} | RPE: {rpe}</span>
+    <!-- HEADER -->
+    <header class="bg-slate-900 border-b border-slate-800 sticky top-0 z-50 shadow-lg">
+        <div class="max-w-4xl mx-auto px-4 py-2.5 flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+                <span class="text-xl">🦁</span>
+                <div>
+                    <h1 class="font-extrabold text-base text-amber-500 tracking-tight leading-none">TX PIERCE APP</h1>
+                    <p class="text-[10px] text-slate-400">12-Week Architecture & Peptide Protocol</p>
                 </div>
-                <div style="font-weight: 700; font-size: 15px; margin-bottom: 8px; color: #f1f5f9;">{name}</div>
             </div>
-            """, unsafe_allow_html=True)
+            <button onclick="resetData()" class="text-[11px] bg-slate-800 hover:bg-red-950 text-slate-300 hover:text-red-300 px-2.5 py-1 rounded-lg border border-slate-700 transition">Reset Data</button>
+        </div>
+
+        <!-- NAVIGATION TABS -->
+        <nav class="flex overflow-x-auto px-4 space-x-2 border-t border-slate-800/80 bg-slate-950/50 py-1.5 no-scrollbar">
+            <button onclick="switchTab('workouts')" id="btn-workouts" class="tab-btn px-3.5 py-1.5 rounded-xl text-xs font-bold transition whitespace-nowrap bg-amber-500 text-slate-950 shadow-md">Workout Logs</button>
+            <button onclick="switchTab('peptides')" id="btn-peptides" class="tab-btn px-3.5 py-1.5 rounded-xl text-xs font-bold transition whitespace-nowrap bg-slate-900 text-slate-400 hover:text-white border border-slate-800">Peptide Tracker</button>
+            <button onclick="switchTab('nutrition')" id="btn-nutrition" class="tab-btn px-3.5 py-1.5 rounded-xl text-xs font-bold transition whitespace-nowrap bg-slate-900 text-slate-400 hover:text-white border border-slate-800">Nutrition & Grocery</button>
+        </nav>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 py-4 space-y-4">
+
+        <!-- ================= WORKOUTS TAB ================= -->
+        <div id="tab-workouts" class="tab-content active space-y-4">
             
-            c1, c2 = st.columns([2, 1])
-            with c1:
-                st.text_input(f"Working Weight ({idx})", value=default_wt, key=f"wt_{selected_week}_{selected_day}_{idx}", label_visibility="collapsed")
-            with c2:
-                st.checkbox("Completed", key=f"chk_{selected_week}_{selected_day}_{idx}")
+            <!-- PHASE, WEEK & DAY SELECTOR -->
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-3 shadow-xl">
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    <div>
+                        <label class="block text-[11px] font-bold text-amber-400 uppercase tracking-wider mb-1">Select Phase</label>
+                        <select id="phaseSelect" onchange="changePhase()" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-1.5 text-xs font-semibold text-slate-200 focus:outline-none focus:border-amber-500">
+                            <option value="1">Phase 1: Base Phase (Weeks 1-4)</option>
+                            <option value="2">Phase 2: Structural Shift (Weeks 5-8)</option>
+                            <option value="3">Phase 3: Peak Hypertrophy (Weeks 9-12)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-bold text-amber-400 uppercase tracking-wider mb-1">Select Week</label>
+                        <select id="weekSelect" onchange="changeWeek()" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-1.5 text-xs font-semibold text-slate-200 focus:outline-none focus:border-amber-500">
+                            <!-- Dynamically populated -->
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-bold text-amber-400 uppercase tracking-wider mb-1">Select Day</label>
+                        <select id="daySelect" onchange="changeDay()" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-1.5 text-xs font-semibold text-slate-200 focus:outline-none focus:border-amber-500">
+                            <!-- Dynamically populated -->
+                        </select>
+                    </div>
+                </div>
+            </div>
 
-with tabs[1]:
-    st.markdown("### 💉 Peptide & Supplement Protocol")
-    st.markdown("""
-    <div class="workout-card">
-        <h4 style="color: #f59e0b; margin-top: 0;">Daily Morning Protocol</h4>
-        <p style="font-size: 13px; color: #cbd5e1;"><b>Timing:</b> 4:15 AM (Pre-Workout Stack)</p>
-        <p style="font-size: 13px; color: #cbd5e1;"><b>Nutrition Integration:</b> Banana + 1/2 Scoop Whey (30g Carbs / 10g Protein).</p>
-    </div>
-    <div class="workout-card">
-        <h4 style="color: #f59e0b; margin-top: 0;">Recovery & Tissue Optimization</h4>
-        <p style="font-size: 13px; color: #cbd5e1;"><b>Post-Workout Window:</b> 6:30 AM Breakfast (Oats, Whole Eggs, Egg Whites, Berries).</p>
-        <p style="font-size: 13px; color: #cbd5e1;"><b>Hydration:</b> Minimum 1 gallon daily with electrolyte supplementation.</p>
-    </div>
-    """, unsafe_allow_html=True)
+            <!-- ACTIVE WORKOUT CARD -->
+            <div id="workoutCardContainer" class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-2xl space-y-3">
+                <!-- Dynamically loaded card stack -->
+            </div>
 
-with tabs[2]:
-    st.markdown("### 🥗 Nutrition Targets & Master Grocery List")
-    st.markdown("""
-    <div class="workout-card">
-        <h4 style="color: #f59e0b; margin-top: 0;">Baseline Lift Day Macros (~2,800 kcal)</h4>
-        <ul style="font-size: 13px; color: #cbd5e1; padding-left: 20px; margin-bottom: 0;">
-            <li><b>Protein:</b> 200g</li>
-            <li><b>Carbohydrates:</b> 315g (Higher on Leg Days)</li>
-            <li><b>Fat:</b> 80g (Shifted higher on Rest Days)</li>
-        </ul>
-    </div>
-    <div class="workout-card">
-        <h4 style="color: #f59e0b; margin-top: 0;">🛒 Master Grocery List Summary</h4>
-        <ul style="font-size: 13px; color: #cbd5e1; padding-left: 20px; margin-bottom: 0;">
-            <li><b>Proteins:</b> 3 lbs Chicken Breast, 3.5-4 lbs Sirloin Steak, 18-count Whole Eggs, 3 Cartons Egg Whites, 2 lb Tub Whey.</li>
-            <li><b>Carbs:</b> Rolled Oats, Jasmine Rice, 4 lbs Sweet Potatoes, 5-6 Bananas, Mixed Berries.</li>
-            <li><b>Fats & Produce:</b> Non-Fat Greek Yogurt, Avocados, Almonds, Extra Virgin Olive Oil, Green Beans.</li>
-        </ul>
-    </div>
-    """, unsafe_allow_html=True)
+            <!-- SESSION REVIEW NOTES -->
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-xl space-y-2">
+                <div class="flex items-center space-x-2">
+                    <span class="text-amber-500 text-base">📝</span>
+                    <h2 class="font-bold text-slate-100 text-xs tracking-wide">Session Review Notes</h2>
+                </div>
+                <p class="text-[11px] text-slate-400">Log your joint feedback, pump quality, weight increments, or notes for your session review...</p>
+                <textarea id="sundayNotes" oninput="saveNotes()" rows="2" placeholder="Write your session review notes here..." class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-xs text-slate-200 focus:outline-none focus:border-amber-500"></textarea>
+            </div>
+        </div>
+
+        <!-- ================= PEPTIDES TAB ================= -->
+        <div id="tab-peptides" class="tab-content space-y-4">
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-xl">
+                <div class="flex items-center space-x-2 mb-1">
+                    <span class="text-amber-500 text-lg">🧪</span>
+                    <h2 class="font-extrabold text-slate-100 text-sm">Peptide Reconstitution & Dosing Calculator</h2>
+                </div>
+                <p class="text-[11px] text-slate-400">Calculate precise BAC water dilution ratios, concentrations, and syringe draw measurements.</p>
+            </div>
+
+            <!-- RETATRUTIDE -->
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-xl space-y-3">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-800 pb-2 gap-2">
+                    <div>
+                        <span class="text-[10px] bg-amber-500/10 text-amber-400 font-bold px-2 py-0.5 rounded-md border border-amber-500/20">Iron X Labs</span>
+                        <h3 class="font-extrabold text-xs text-slate-100 mt-1">1. Retatrutide (10 mg Vial)</h3>
+                    </div>
+                    <div class="text-[11px] text-slate-400 bg-slate-950 px-2.5 py-1 rounded-lg border border-slate-800">
+                        Target Dose: <strong class="text-amber-400">250 mcg (0.25 mg)</strong>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+                    <div class="bg-slate-950 p-3 rounded-xl border border-slate-800/80">
+                        <label class="block text-[11px] font-bold text-slate-400 mb-1">BAC Water Added (mL)</label>
+                        <input type="number" id="reta_bac" value="2.0" step="0.1" oninput="calcReta()" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1.5 font-bold text-amber-400 focus:outline-none focus:border-amber-500 text-xs">
+                    </div>
+                    <div class="bg-slate-950 p-3 rounded-xl border border-slate-800/80 flex flex-col justify-center">
+                        <span class="text-[11px] font-bold text-slate-400">Vial Concentration</span>
+                        <span id="reta_conc" class="text-sm font-extrabold text-slate-100 mt-0.5">5.00 mg/mL</span>
+                    </div>
+                    <div class="bg-slate-950 p-3 rounded-xl border border-slate-800/80 flex flex-col justify-center">
+                        <span class="text-[11px] font-bold text-slate-400">Insulin Syringe Draw (1mL / 100u)</span>
+                        <span id="reta_draw" class="text-sm font-extrabold text-amber-400 mt-0.5">5.0 units</span>
+                    </div>
+                </div>
+                <p class="text-[11px] text-slate-400 bg-slate-950/60 p-2.5 rounded-xl border border-slate-800/50">
+                    💡 <strong>Reference:</strong> 5.0 u = 250 mcg (0.25 mg) | 10.0 u = 500 mcg (0.5 mg) — <span class="text-slate-300">Schedule: Monday Mornings (1x / week)</span>
+                </p>
+            </div>
+
+            <!-- BPC-157 / TB-500 -->
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-xl space-y-3">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-800 pb-2 gap-2">
+                    <div>
+                        <span class="text-[10px] bg-amber-500/10 text-amber-400 font-bold px-2 py-0.5 rounded-md border border-amber-500/20">Kingdom Peptides</span>
+                        <h3 class="font-extrabold text-xs text-slate-100 mt-1">2. BPC-157 / TB-500 Blend (10 mg Total)</h3>
+                    </div>
+                    <div class="text-[11px] text-slate-400 bg-slate-950 px-2.5 py-1 rounded-lg border border-slate-800">
+                        Target Dose: <strong class="text-amber-400">500 mcg blend</strong>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+                    <div class="bg-slate-950 p-3 rounded-xl border border-slate-800/80">
+                        <label class="block text-[11px] font-bold text-slate-400 mb-1">BAC Water Added (mL)</label>
+                        <input type="number" id="bpc_bac" value="2.0" step="0.1" oninput="calcBpc()" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1.5 font-bold text-amber-400 focus:outline-none focus:border-amber-500 text-xs">
+                    </div>
+                    <div class="bg-slate-950 p-3 rounded-xl border border-slate-800/80 flex flex-col justify-center">
+                        <span class="text-[11px] font-bold text-slate-400">Total Blend Conc.</span>
+                        <span id="bpc_conc" class="text-sm font-extrabold text-slate-100 mt-0.5">5.00 mg/mL</span>
+                    </div>
+                    <div class="bg-slate-950 p-3 rounded-xl border border-slate-800/80 flex flex-col justify-center">
+                        <span class="text-[11px] font-bold text-slate-400">Insulin Syringe Draw (1mL / 100u)</span>
+                        <span id="bpc_draw" class="text-sm font-extrabold text-amber-400 mt-0.5">10.0 units</span>
+                    </div>
+                </div>
+                <p class="text-[11px] text-slate-400 bg-slate-950/60 p-2.5 rounded-xl border border-slate-800/50">
+                    💡 <strong>Reference:</strong> 1:1 Ratio (5mg BPC + 5mg TB). 10 units = 500 mcg total blend — <span class="text-slate-300">Schedule: Daily (7 days / week)</span>
+                </p>
+            </div>
+
+            <!-- CJC w/o DAC -->
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-xl space-y-3">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-800 pb-2 gap-2">
+                    <div>
+                        <span class="text-[10px] bg-amber-500/10 text-amber-400 font-bold px-2 py-0.5 rounded-md border border-amber-500/20">Iron X Labs</span>
+                        <h3 class="font-extrabold text-xs text-slate-100 mt-1">3. CJC w/o DAC (Mod GRF 1-29) (10 mg)</h3>
+                    </div>
+                    <div class="text-[11px] text-slate-400 bg-slate-950 px-2.5 py-1 rounded-lg border border-slate-800">
+                        Target Dose: <strong class="text-amber-400">100 mcg - 200 mcg</strong>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+                    <div class="bg-slate-950 p-3 rounded-xl border border-slate-800/80">
+                        <label class="block text-[11px] font-bold text-slate-400 mb-1">BAC Water Added (mL)</label>
+                        <input type="number" id="cjc_bac" value="2.0" step="0.1" oninput="calcCjc()" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1.5 font-bold text-amber-400 focus:outline-none focus:border-amber-500 text-xs">
+                    </div>
+                    <div class="bg-slate-950 p-3 rounded-xl border border-slate-800/80 flex flex-col justify-center">
+                        <span class="text-[11px] font-bold text-slate-400">Vial Concentration</span>
+                        <span id="cjc_conc" class="text-sm font-extrabold text-slate-100 mt-0.5">5.00 mg/mL</span>
+                    </div>
+                    <div class="bg-slate-950 p-3 rounded-xl border border-slate-800/80 flex flex-col justify-center">
+                        <span class="text-[11px] font-bold text-slate-400">Insulin Syringe Draw (1mL / 100u)</span>
+                        <span id="cjc_draw" class="text-sm font-extrabold text-amber-400 mt-0.5">2u (100mcg) / 4u (200mcg)</span>
+                    </div>
+                </div>
+                <p class="text-[11px] text-slate-400 bg-slate-950/60 p-2.5 rounded-xl border border-slate-800/50">
+                    💡 <strong>Reference:</strong> 2 units = 100 mcg | 4 units = 200 mcg (at 2 mL BAC) — <span class="text-slate-300">Schedule: Weeknights (Mon–Fri) before bed</span>
+                </p>
+            </div>
+
+            <!-- PEPTIDE MATRIX -->
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-xl space-y-3">
+                <div class="flex items-center space-x-2 border-b border-slate-800 pb-2">
+                    <span class="text-amber-500 text-lg">📅</span>
+                    <h2 class="font-extrabold text-slate-100 text-xs">Weekly Administration Master Matrix</h2>
+                </div>
+                <div class="overflow-x-auto no-scrollbar">
+                    <table class="w-full text-left text-[11px] text-slate-300">
+                        <thead class="bg-slate-950 text-slate-400 uppercase font-bold tracking-wider">
+                            <tr>
+                                <th class="p-2.5 rounded-l-xl">Day</th>
+                                <th class="p-2.5">Retatrutide (Weekly)</th>
+                                <th class="p-2.5">BPC-157 / TB-500 (Daily)</th>
+                                <th class="p-2.5 rounded-r-xl">CJC w/o DAC (Mon-Fri)</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-800/60" id="peptideMatrixBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= NUTRITION TAB ================= -->
+        <div id="tab-nutrition" class="tab-content space-y-4">
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-xl">
+                <div class="flex items-center space-x-2 mb-1">
+                    <span class="text-amber-500 text-lg">🥩</span>
+                    <h2 class="font-extrabold text-slate-100 text-sm">Nutrition & Macro Architecture</h2>
+                </div>
+                <p class="text-[11px] text-slate-400">Targeting ~2,800 Calories daily (200g Protein, 315g Carbohydrates, 80g Fat) optimized for heavy lifting and early morning fueling.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-xl space-y-1.5">
+                    <h3 class="font-extrabold text-amber-400 text-xs">1. Pre-Workout (4:15 AM)</h3>
+                    <p class="text-[11px] text-slate-300">10g Protein | 30g Carbs (~170 kcal)</p>
+                    <p class="text-[11px] text-slate-400">Banana (1 medium) + ½ scoop Whey Protein powder.</p>
+                </div>
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-xl space-y-1.5">
+                    <h3 class="font-extrabold text-amber-400 text-xs">2. Post-Workout Breakfast (6:30 AM)</h3>
+                    <p class="text-[11px] text-slate-300">40g Protein | 75g Carbs | 15g Fat (~600 kcal)</p>
+                    <p class="text-[11px] text-slate-400">2 whole eggs + ¾ cup egg whites, 1 cup dry rolled oats, ½ cup berries.</p>
+                </div>
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-xl space-y-1.5">
+                    <h3 class="font-extrabold text-amber-400 text-xs">3. Lunch (12:00 PM)</h3>
+                    <p class="text-[11px] text-slate-300">45g Protein | 75g Carbs | 20g Fat (~660 kcal)</p>
+                    <p class="text-[11px] text-slate-400">5.0 oz cooked chicken breast, 1.75 cups cooked Jasmine rice, ½ medium avocado.</p>
+                </div>
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-xl space-y-1.5">
+                    <h3 class="font-extrabold text-amber-400 text-xs">4. Afternoon Snack (3:30 PM)</h3>
+                    <p class="text-[11px] text-slate-300">35g Protein | 40g Carbs | 15g Fat (~435 kcal)</p>
+                    <p class="text-[11px] text-slate-400">1.25 cups Non-Fat Greek Yogurt, 18-20 almonds, 1.5 cups mixed berries.</p>
+                </div>
+            </div>
+
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-xl space-y-3">
+                <div class="flex items-center space-x-2 border-b border-slate-800 pb-2">
+                    <span class="text-amber-500 text-lg">🛒</span>
+                    <h2 class="font-extrabold text-slate-100 text-xs">Master Grocery List</h2>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-slate-300">
+                    <div class="bg-slate-950 p-3.5 rounded-xl border border-slate-800/80 space-y-1.5">
+                        <h4 class="font-bold text-amber-400 text-xs">🥩 Poultry, Meat & Eggs</h4>
+                        <ul class="space-y-1 text-slate-400 list-disc list-inside text-[11px]">
+                            <li><strong>Chicken Breast:</strong> 3 lbs raw</li>
+                            <li><strong>Top Sirloin / Steak:</strong> 3.5–4 lbs raw</li>
+                            <li><strong>Whole Eggs:</strong> 1 carton (18-count)</li>
+                            <li><strong>Liquid Egg Whites:</strong> 3 cartons (16 oz)</li>
+                            <li><strong>Whey Protein Powder:</strong> 1 tub (2 lb)</li>
+                        </ul>
+                    </div>
+                    <div class="bg-slate-950 p-3.5 rounded-xl border border-slate-800/80 space-y-1.5">
+                        <h4 class="font-bold text-amber-400 text-xs">🍌 Produce & Carbohydrates</h4>
+                        <ul class="space-y-1 text-slate-400 list-disc list-inside text-[11px]">
+                            <li><strong>Bananas:</strong> 1 bunch (5-6 bananas)</li>
+                            <li><strong>Rolled Oats:</strong> 1 container (18 oz+)</li>
+                            <li><strong>Jasmine Rice:</strong> 1 bag (2–5 lbs)</li>
+                            <li><strong>Sweet Potatoes:</strong> 4 lbs total</li>
+                            <li><strong>Fresh/Frozen Berries:</strong> 3-4 containers</li>
+                            <li><strong>Avocados:</strong> 4 medium</li>
+                            <li><strong>Green Beans:</strong> 3 bags</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        // Complete 12-Week Workout Data Architecture spanning all Phases (1, 2, and 3)
+        const workoutsData = {
+            1: { // Phase 1: Base Phase (Weeks 1-4)
+                1: { // Week 1
+                    days: [
+                        { name: "Day 1: Push", exercises: [
+                            { series: "A-Series", name: "Overhead Press", sets: 5, reps: "5", rest: "2-3 min", rpe: 8, wt: "90 lbs" },
+                            { series: "B1", name: "Flat DB Bench Press", sets: 3, reps: "8-10", rest: "-", rpe: 8, wt: "55 lbs" },
+                            { series: "B1", name: "Chest-Supported T-Bar Row", sets: 3, reps: "12-15", rest: "90 sec", rpe: 8, wt: "45 lbs" },
+                            { series: "B2", name: "Seated DB Arnold Press", sets: 3, reps: "8-10", rest: "-", rpe: 8, wt: "30 lbs" },
+                            { series: "B2", name: "Skull Crushers", sets: 3, reps: "6-8", rest: "90 sec", rpe: 8, wt: "80 lbs" },
+                            { series: "C-Series", name: "Cable Crossover", sets: 3, reps: "12-15", rest: "-", rpe: 8, wt: "30 lbs" },
+                            { series: "C-Series", name: "Tricep Extension", sets: 3, reps: "12-15", rest: "90 sec", rpe: 8, wt: "80 lbs" },
+                            { series: "D-Series", name: "DB Lateral Raise → Push-Up", sets: 2, reps: "15-20", rest: "60 sec", rpe: "-", wt: "15 lbs / BW" }
+                        ]},
+                        { name: "Day 2: Pull", exercises: [
+                            { series: "A-Series", name: "Pendlay Row", sets: 4, reps: "6-8", rest: "2-3 min", rpe: 8, wt: "135 lbs" },
+                            { series: "B1", name: "Chin-Up", sets: 3, reps: "AMRAP", rest: "-", rpe: 8, wt: "BW" },
+                            { series: "B1", name: "Face Pull", sets: 3, reps: "12-15", rest: "90 sec", rpe: 8, wt: "40 lbs" },
+                            { series: "B2", name: "Seated Cable Row", sets: 3, reps: "10-12", rest: "-", rpe: 8, wt: "100 lbs" },
+                            { series: "B2", name: "DB Hammer Curl", sets: 3, reps: "10-12", rest: "90 sec", rpe: 8, wt: "25 lbs" },
+                            { series: "C-Series", name: "Incline DB Y-Raise", sets: 3, reps: "12-15", rest: "-", rpe: 8, wt: "15 lbs" },
+                            { series: "C-Series", name: "EZ Bar Preacher Curl", sets: 3, reps: "12-15", rest: "90 sec", rpe: 8, wt: "40 lbs" },
+                            { series: "D-Series", name: "Lat Pulldown → DB Curl", sets: 2, reps: "15-20", rest: "60 sec", rpe: "-", wt: "100 lbs / 25 lbs" }
+                        ]},
+                        { name: "Day 3: Lower", exercises: [
+                            { series: "A-Series", name: "Front Squat", sets: 4, reps: "6-8", rest: "2-3 min", rpe: 8, wt: "135 lbs" },
+                            { series: "B1", name: "Romanian Deadlift", sets: 3, reps: "12-15", rest: "-", rpe: 8, wt: "135 lbs" },
+                            { series: "B1", name: "DB Walking Lunges", sets: 3, reps: "10-12", rest: "90 sec", rpe: 8, wt: "30 lbs" },
+                            { series: "B2", name: "Glute Ham Raise", sets: 3, reps: "10-12", rest: "-", rpe: 8, wt: "BW" },
+                            { series: "B2", name: "Seated Calf Raise", sets: 3, reps: "12-15", rest: "90 sec", rpe: 8, wt: "90 lbs" },
+                            { series: "C-Series", name: "Leg Extension", sets: 3, reps: "15-20", rest: "-", rpe: 8, wt: "50 lbs" },
+                            { series: "C-Series", name: "Split Squat ISO Hold", sets: 3, reps: "20-30s", rest: "90 sec", rpe: 8, wt: "BW" }
+                        ]},
+                        { name: "Day 4: Recovery / Mobility", exercises: [
+                            { series: "Warm-Up", name: "Easy Cardio & Diaphragmatic Breaths", sets: 1, reps: "3 min / 5 breaths", rest: "-", rpe: 3, wt: "BW" },
+                            { series: "Mobility", name: "Cat-Cow", sets: 2, reps: "10 reps", rest: "-", rpe: 3, wt: "BW" },
+                            { series: "Mobility", name: "Thoracic Rotations (Each Side)", sets: 2, reps: "10 reps", rest: "-", rpe: 3, wt: "BW" },
+                            { series: "Mobility", name: "Hip Airplanes (Each Side)", sets: 2, reps: "10 reps", rest: "-", rpe: 3, wt: "BW" },
+                            { series: "Mobility", name: "Ankle Dorsiflexion Rocks", sets: 2, reps: "10 reps", rest: "-", rpe: 3, wt: "BW" },
+                            { series: "Mobility", name: "Band Pull-Aparts & External Rotations", sets: 2, reps: "10 reps", rest: "-", rpe: 3, wt: "Light Band" }
+                        ]},
+                        { name: "Day 5: Upper Pump", exercises: [
+                            { series: "A-Series", name: "Incline DB Press", sets: 3, reps: "10-12", rest: "90 sec", rpe: 7, wt: "55 lbs" },
+                            { series: "B1", name: "Machine Chest Press", sets: 3, reps: "12-15", rest: "-", rpe: 7, wt: "110 lbs" },
+                            { series: "B1", name: "V-Grip Cable Row", sets: 3, reps: "12-15", rest: "90 sec", rpe: 7, wt: "110 lbs" },
+                            { series: "B2", name: "Cable Lateral Raise", sets: 3, reps: "15-20", rest: "-", rpe: 7, wt: "20 lbs" },
+                            { series: "B2", name: "Tricep Rope Pushdown", sets: 3, reps: "10-12", rest: "90 sec", rpe: 7, wt: "40 lbs" },
+                            { series: "C-Series", name: "Straight-Arm Pulldown", sets: 3, reps: "12-15", rest: "-", rpe: 7, wt: "60 lbs" },
+                            { series: "C-Series", name: "DB Spider Curl", sets: 3, reps: "12-15", rest: "90 sec", rpe: 7, wt: "25 lbs" }
+                        ]},
+                        { name: "Day 6: Arms / Calves / Abs", exercises: [
+                            { series: "Accessory", name: "Cable Curl", sets: 3, reps: "12-15", rest: "60 sec", rpe: 7, wt: "40 lbs" },
+                            { series: "Accessory", name: "Overhead Rope Extension", sets: 3, reps: "12-15", rest: "60 sec", rpe: 7, wt: "40 lbs" },
+                            { series: "Accessory", name: "Preacher Curl", sets: 3, reps: "10-12", rest: "60 sec", rpe: 7, wt: "40 lbs" },
+                            { series: "Accessory", name: "Bench Dips", sets: 3, reps: "15-20", rest: "60 sec", rpe: 7, wt: "BW" },
+                            { series: "Accessory", name: "Standing Calf Raise", sets: 4, reps: "12-15", rest: "60 sec", rpe: 7, wt: "135 lbs" },
+                            { series: "Accessory", name: "Hanging Knee Raise", sets: 3, reps: "10-12", rest: "60 sec", rpe: 7, wt: "BW" }
+                        ]},
+                        { name: "Day 7: Off / Recovery", exercises: [
+                            { series: "Recovery", name: "Outdoor Walk & Hydration", sets: 1, reps: "20-30 min", rest: "-", rpe: 2, wt: "BW" }
+                        ]}
+                    ]
+                },
+                2: { // Week 2
+                    days: [
+                        { name: "Day 1: Push", exercises: [
+                            { series: "A-Series", name: "Overhead Barbell Press", sets: 5, reps: "6", rest: "2-3 min", rpe: 8, wt: "95 lbs" },
+                            { series: "B1", name: "Close-Grip Press", sets: 4, reps: "8-10", rest: "-", rpe: 8, wt: "135 lbs" },
+                            { series: "B1", name: "High-Row", sets: 4, reps: "12-15", rest: "90 sec", rpe: 8, wt: "50 lbs" },
+                            { series: "B2", name: "Seated DB Arnold Press", sets: 4, reps: "8-10", rest: "-", rpe: 8, wt: "30 lbs" },
+                            { series: "B2", name: "Skull Crushers", sets: 4, reps: "6-8", rest: "90 sec", rpe: 8, wt: "40 lbs" },
+                            { series: "C-Series", name: "High-to-Low Fly", sets: 3, reps: "12-15", rest: "-", rpe: 8, wt: "30 lbs" },
+                            { series: "C-Series", name: "Rope Overhead", sets: 3, reps: "12-15", rest: "90 sec", rpe: 8, wt: "35 lbs" }
+                        ]},
+                        { name: "Day 2: Pull", exercises: [
+                            { series: "A-Series", name: "Pendlay Row", sets: 4, reps: "6-8", rest: "2-3 min", rpe: 8, wt: "135 lbs" },
+                            { series: "B1", name: "Chin-Up", sets: 4, reps: "AMRAP", rest: "-", rpe: 8, wt: "BW" },
+                            { series: "B1", name: "Face Pull", sets: 4, reps: "12-15", rest: "90 sec", rpe: 8, wt: "40 lbs" },
+                            { series: "B2", name: "Seated Cable Row", sets: 4, reps: "10-12", rest: "-", rpe: 8, wt: "100 lbs" },
+                            { series: "B2", name: "DB Hammer Curl", sets: 4, reps: "10-12", rest: "90 sec", rpe: 8, wt: "25 lbs" }
+                        ]},
+                        { name: "Day 3: Lower", exercises: [
+                            { series: "A-Series", name: "Front Squat", sets: 4, reps: "6-8", rest: "2-3 min", rpe: 8, wt: "135 lbs" },
+                            { series: "B1", name: "Romanian Deadlift", sets: 4, reps: "12-15", rest: "-", rpe: 8, wt: "135 lbs" },
+                            { series: "B1", name: "DB Walking Lunges", sets: 4, reps: "10-12", rest: "90 sec", rpe: 8, wt: "30 lbs" },
+                            { series: "B2", name: "Glute Ham Raise", sets: 4, reps: "10-12", rest: "-", rpe: 8, wt: "BW" }
+                        ]},
+                        { name: "Day 4: Recovery / Mobility", exercises: [
+                            { series: "Mobility", name: "Mobility Circuit & Diaphragmatic Breaths", sets: 2, reps: "10 reps each", rest: "-", rpe: 3, wt: "BW" }
+                        ]},
+                        { name: "Day 5: Upper Pump", exercises: [
+                            { series: "A-Series", name: "Incline DB Press", sets: 3, reps: "10-12", rest: "90 sec", rpe: 7, wt: "60 lbs" },
+                            { series: "B1", name: "Machine Chest Press", sets: 4, reps: "12-15", rest: "-", rpe: 7, wt: "110 lbs" },
+                            { series: "B1", name: "V-Grip Cable Row", sets: 4, reps: "12-15", rest: "90 sec", rpe: 7, wt: "110 lbs" }
+                        ]},
+                        { name: "Day 6: Arms / Calves / Abs", exercises: [
+                            { series: "Accessory", name: "Cable Curl", sets: 3, reps: "12-15", rest: "60 sec", rpe: 7, wt: "40 lbs" }
+                        ]},
+                        { name: "Day 7: Off / Recovery", exercises: [
+                            { series: "Recovery", name: "Outdoor Walk", sets: 1, reps: "20 min", rest: "-", rpe: 2, wt: "BW" }
+                        ]}
+                    ]
+                },
+                3: { // Week 3
+                    days: [
+                        { name: "Day 1: Push", exercises: [
+                            { series: "A-Series", name: "Overhead Barbell Press", sets: 6, reps: "4", rest: "2-3 min", rpe: 9, wt: "100 lbs" },
+                            { series: "B1", name: "Incline DB Press", sets: 4, reps: "8-10", rest: "-", rpe: 9, wt: "55 lbs" },
+                            { series: "B1", name: "Face Pull", sets: 4, reps: "12-15", rest: "90 sec", rpe: 9, wt: "45 lbs" },
+                            { series: "C-Series", name: "Cable Press-Out", sets: 4, reps: "15-20", rest: "90 sec", rpe: 9, wt: "30 lbs" }
+                        ]},
+                        { name: "Day 2: Pull", exercises: [
+                            { series: "A-Series", name: "Pendlay Row", sets: 6, reps: "4", rest: "2-3 min", rpe: 9, wt: "140 lbs" },
+                            { series: "B1", name: "Chin-Up", sets: 4, reps: "AMRAP", rest: "-", rpe: 9, wt: "BW" },
+                            { series: "C-Series", name: "Incline DB Y-Raise", sets: 4, reps: "15-20", rest: "90 sec", rpe: 9, wt: "15 lbs" }
+                        ]},
+                        { name: "Day 3: Lower", exercises: [
+                            { series: "A-Series", name: "Front Squat", sets: 6, reps: "4", rest: "2-3 min", rpe: 9, wt: "140 lbs" }
+                        ]},
+                        { name: "Day 4: Recovery / Mobility", exercises: [
+                            { series: "Mobility", name: "Mobility Circuit & Diaphragmatic Breaths", sets: 2, reps: "10 reps each", rest: "-", rpe: 3, wt: "BW" }
+                        ]},
+                        { name: "Day 5: Upper Pump", exercises: [
+                            { series: "A-Series", name: "Incline DB Press", sets: 4, reps: "8-10", rest: "90 sec", rpe: 8, wt: "60 lbs" }
+                        ]},
+                        { name: "Day 6: Arms / Calves / Abs", exercises: [
+                            { series: "Accessory", name: "Cable Curl", sets: 4, reps: "12-15", rest: "60 sec", rpe: 8, wt: "40 lbs" }
+                        ]},
+                        { name: "Day 7: Off / Recovery", exercises: [
+                            { series: "Recovery", name: "Walk", sets: 1, reps: "20 min", rest: "-", rpe: 2, wt: "BW" }
+                        ]}
+                    ]
+                },
+                4: { // Week 4
+                    days: [
+                        { name: "Day 1: Push", exercises: [
+                            { series: "A-Series", name: "Overhead Barbell Press", sets: 4, reps: "8", rest: "2-3 min", rpe: 7, wt: "85 lbs" },
+                            { series: "B1", name: "Machine Press", sets: 4, reps: "10-12", rest: "-", rpe: 8, wt: "110 lbs" },
+                            { series: "C-Series", name: "Pec Deck", sets: 4, reps: "15-20", rest: "90 sec", rpe: 8, wt: "100 lbs" }
+                        ]},
+                        { name: "Day 2: Pull", exercises: [
+                            { series: "A-Series", name: "Pendlay Row", sets: 4, reps: "8", rest: "2-3 min", rpe: 7, wt: "120 lbs" }
+                        ]},
+                        { name: "Day 3: Lower", exercises: [
+                            { series: "A-Series", name: "Front Squat", sets: 4, reps: "8", rest: "2-3 min", rpe: 7, wt: "120 lbs" }
+                        ]},
+                        { name: "Day 4: Recovery / Mobility", exercises: [
+                            { series: "Mobility", name: "Mobility Circuit & Diaphragmatic Breaths", sets: 2, reps: "10 reps each", rest: "-", rpe: 3, wt: "BW" }
+                        ]},
+                        { name: "Day 5: Upper Pump", exercises: [
+                            { series: "A-Series", name: "Incline DB Press", sets: 3, reps: "12", rest: "90 sec", rpe: 7, wt: "50 lbs" }
+                        ]},
+                        { name: "Day 6: Arms / Calves / Abs", exercises: [
+                            { series: "Accessory", name: "Cable Curl", sets: 4, reps: "15-20", rest: "60 sec", rpe: 7, wt: "35 lbs" }
+                        ]},
+                        { name: "Day 7: Off / Recovery", exercises: [
+                            { series: "Recovery", name: "Walk", sets: 1, reps: "20 min", rest: "-", rpe: 2, wt: "BW" }
+                        ]}
+                    ]
+                }
+            },
+            2: { // Phase 2: Structural Shift (Weeks 5-8)
+                5: { // Week 5
+                    days: [
+                        { name: "Day 1: Push", exercises: [
+                            { series: "A-Series", name: "Incline Barbell Bench Press", sets: 5, reps: "5", rest: "2-3 min", rpe: 8, wt: "135 lbs" },
+                            { series: "B1", name: "Flat Barbell Volume Press", sets: 3, reps: "10-12", rest: "-", rpe: 8, wt: "135 lbs" },
+                            { series: "B1", name: "Chest-Supported High Row", sets: 3, reps: "10-12", rest: "90 sec", rpe: 8, wt: "55 lbs" }
+                        ]},
+                        { name: "Day 2: Pull", exercises: [
+                            { series: "A-Series", name: "Weighted Pull-Up", sets: 4, reps: "6-8", rest: "2-3 min", rpe: 8, wt: "BW + 10 lbs" },
+                            { series: "B1", name: "Meadows Row / Landmine Row", sets: 3, reps: "10-12", rest: "-", rpe: 8, wt: "60 lbs" }
+                        ]},
+                        { name: "Day 3: Lower", exercises: [
+                            { series: "A-Series", name: "Hack Squat", sets: 4, reps: "6-8", rest: "2-3 min", rpe: 8, wt: "145 lbs" },
+                            { series: "B1", name: "Deficit Romanian Deadlift", sets: 3, reps: "10-12", rest: "-", rpe: 8, wt: "135 lbs" }
+                        ]},
+                        { name: "Day 4: Recovery / Mobility", exercises: [
+                            { series: "Mobility", name: "Mobility Circuit", sets: 2, reps: "10 reps each", rest: "-", rpe: 3, wt: "BW" }
+                        ]},
+                        { name: "Day 5: Upper Pump", exercises: [
+                            { series: "A-Series", name: "Flat DB Press", sets: 3, reps: "10-12", rest: "90 sec", rpe: 7, wt: "60 lbs" }
+                        ]},
+                        { name: "Day 6: Arms / Calves / Abs", exercises: [
+                            { series: "Accessory", name: "Dual-Cable Bicep Curl", sets: 3, reps: "12-15", rest: "60 sec", rpe: 7, wt: "35 lbs" }
+                        ]},
+                        { name: "Day 7: Off / Recovery", exercises: [
+                            { series: "Recovery", name: "Walk", sets: 1, reps: "20 min", rest: "-", rpe: 2, wt: "BW" }
+                        ]}
+                    ]
+                },
+                6: { // Week 6
+                    days: [
+                        { name: "Day 1: Push", exercises: [
+                            { series: "A-Series", name: "Incline Barbell Bench Press", sets: 4, reps: "8", rest: "2-3 min", rpe: 8, wt: "135 lbs" },
+                            { series: "B1", name: "Flat Barbell Volume Press", sets: 4, reps: "10-12", rest: "-", rpe: 8, wt: "135 lbs" }
+                        ]},
+                        { name: "Day 2: Pull", exercises: [
+                            { series: "A-Series", name: "Weighted Pull-Up", sets: 4, reps: "6", rest: "2-3 min", rpe: 8, wt: "BW + 10 lbs" }
+                        ]},
+                        { name: "Day 3: Lower", exercises: [
+                            { series: "A-Series", name: "Hack Squat", sets: 4, reps: "10", rest: "2-3 min", rpe: 8, wt: "145 lbs" }
+                        ]},
+                        { name: "Day 4: Recovery / Mobility", exercises: [
+                            { series: "Mobility", name: "Mobility Circuit", sets: 2, reps: "10 reps each", rest: "-", rpe: 3, wt: "BW" }
+                        ]},
+                        { name: "Day 5: Upper Pump", exercises: [
+                            { series: "A-Series", name: "Flat DB Press", sets: 4, reps: "10-12", rest: "90 sec", rpe: 7, wt: "60 lbs" }
+                        ]},
+                        { name: "Day 6: Arms / Calves / Abs", exercises: [
+                            { series: "Accessory", name: "Dual-Cable Bicep Curl", sets: 4, reps: "12-15", rest: "60 sec", rpe: 7, wt: "35 lbs" }
+                        ]},
+                        { name: "Day 7: Off / Recovery", exercises: [
+                            { series: "Recovery", name: "Walk", sets: 1, reps: "20 min", rest: "-", rpe: 2, wt: "BW" }
+                        ]}
+                    ]
+                },
+                7: { // Week 7
+                    days: [
+                        { name: "Day 1: Push", exercises: [
+                            { series: "A-Series", name: "Incline Barbell Bench Press", sets: 4, reps: "5", rest: "60-90s", rpe: 8, wt: "135 lbs" }
+                        ]},
+                        { name: "Day 2: Pull", exercises: [
+                            { series: "A-Series", name: "Weighted Pull-Up", sets: 4, reps: "6", rest: "60-90s", rpe: 8, wt: "BW + 10 lbs" }
+                        ]},
+                        { name: "Day 3: Lower", exercises: [
+                            { series: "A-Series", name: "Hack Squat", sets: 4, reps: "8", rest: "60-90s", rpe: 8, wt: "135 lbs" }
+                        ]},
+                        { name: "Day 4: Recovery / Mobility", exercises: [
+                            { series: "Mobility", name: "Mobility Circuit", sets: 2, reps: "10 reps each", rest: "-", rpe: 3, wt: "BW" }
+                        ]},
+                        { name: "Day 5: Upper Pump", exercises: [
+                            { series: "A-Series", name: "Flat DB Press", sets: 4, reps: "10-12", rest: "60s", rpe: 7, wt: "55 lbs" }
+                        ]},
+                        { name: "Day 6: Arms / Calves / Abs", exercises: [
+                            { series: "Accessory", name: "Dual-Cable Bicep Curl", sets: 4, reps: "15-20", rest: "45s", rpe: 7, wt: "30 lbs" }
+                        ]},
+                        { name: "Day 7: Off / Recovery", exercises: [
+                            { series: "Recovery", name: "Walk", sets: 1, reps: "20 min", rest: "-", rpe: 2, wt: "BW" }
+                        ]}
+                    ]
+                },
+                8: { // Week 8
+                    days: [
+                        { name: "Day 1: Push", exercises: [
+                            { series: "A-Series", name: "Incline Barbell Bench Press", sets: 3, reps: "10", rest: "2-3 min", rpe: 7, wt: "115 lbs" }
+                        ]},
+                        { name: "Day 2: Pull", exercises: [
+                            { series: "A-Series", name: "Weighted Pull-Up", sets: 3, reps: "6", rest: "2-3 min", rpe: 7, wt: "BW + 5 lbs" }
+                        ]},
+                        { name: "Day 3: Lower", exercises: [
+                            { series: "A-Series", name: "Hack Squat", sets: 3, reps: "12", rest: "2-3 min", rpe: 7, wt: "115 lbs" }
+                        ]},
+                        { name: "Day 4: Recovery / Mobility", exercises: [
+                            { series: "Mobility", name: "Mobility Circuit", sets: 2, reps: "10 reps each", rest: "-", rpe: 3, wt: "BW" }
+                        ]},
+                        { name: "Day 5: Upper Pump", exercises: [
+                            { series: "A-Series", name: "Flat DB Press", sets: 3, reps: "12", rest: "90 sec", rpe: 7, wt: "50 lbs" }
+                        ]},
+                        { name: "Day 6: Arms / Calves / Abs", exercises: [
+                            { series: "Accessory", name: "Dual-Cable Bicep Curl", sets: 4, reps: "20-30", rest: "60 sec", rpe: 7, wt: "25 lbs" }
+                        ]},
+                        { name: "Day 7: Off / Recovery", exercises: [
+                            { series: "Recovery", name: "Walk", sets: 1, reps: "20 min", rest: "-", rpe: 2, wt: "BW" }
+                        ]}
+                    ]
+                }
+            },
+            3: { // Phase 3: Peak Hypertrophy (Weeks 9-12)
+                9: { // Week 9
+                    days: [
+                        { name: "Day 1: Push", exercises: [
+                            { series: "A-Series", name: "Incline Dumbbell Press", sets: 4, reps: "10", rest: "2 min", rpe: 7, wt: "50 lbs" },
+                            { series: "B1", name: "Flat Barbell Press (Chest)", sets: 3, reps: "12-15", rest: "-", rpe: 7-8, wt: "115 lbs" },
+                            { series: "B2", name: "Chest-Supported High Row", sets: 3, reps: "12-15", rest: "60-75 sec", rpe: 7-8, wt: "50 lbs" }
+                        ]},
+                        { name: "Day 2: Pull", exercises: [
+                            { series: "A-Series", name: "Weighted Pull-Ups", sets: 3, reps: "6-8", rest: "2 min", rpe: 7, wt: "BW + 5 lbs" }
+                        ]},
+                        { name: "Day 3: Lower", exercises: [
+                            { series: "A-Series", name: "Hack Squat", sets: 4, reps: "12", rest: "2 min", rpe: 7, wt: "115 lbs" }
+                        ]},
+                        { name: "Day 4: Recovery / Mobility", exercises: [
+                            { series: "Mobility", name: "Mobility Circuit", sets: 2, reps: "10 reps each", rest: "-", rpe: 3, wt: "BW" }
+                        ]},
+                        { name: "Day 5: Upper Pump", exercises: [
+                            { series: "A-Series", name: "Flat DB Press", sets: 3, reps: "12", rest: "90 sec", rpe: 7, wt: "45 lbs" }
+                        ]},
+                        { name: "Day 6: Arms / Calves / Abs", exercises: [
+                            { series: "Accessory", name: "Dual-Cable Bicep Curl", sets: 3, reps: "15-20", rest: "60 sec", rpe: 7, wt: "25 lbs" }
+                        ]},
+                        { name: "Day 7: Off / Recovery", exercises: [
+                            { series: "Recovery", name: "Walk", sets: 1, reps: "20 min", rest: "-", rpe: 2, wt: "BW" }
+                        ]}
+                    ]
+                },
+                10: { // Week 10
+                    days: [
+                        { name: "Day 1: Push", exercises: [
+                            { series: "A-Series", name: "Incline Dumbbell Press", sets: 4, reps: "10", rest: "75-90s", rpe: 7, wt: "50 lbs" },
+                            { series: "B1", name: "Flat Barbell Press (Tri-Set)", sets: 3, reps: "12-15", rest: "-", rpe: 7-8, wt: "115 lbs" }
+                        ]},
+                        { name: "Day 2: Pull", exercises: [
+                            { series: "A-Series", name: "Weighted Pull-Ups", sets: 3, reps: "6-8", rest: "75-90s", rpe: 7, wt: "BW + 5 lbs" }
+                        ]},
+                        { name: "Day 3: Lower", exercises: [
+                            { series: "A-Series", name: "Hack Squat", sets: 4, reps: "12", rest: "75-90s", rpe: 7, wt: "115 lbs" }
+                        ]},
+                        { name: "Day 4: Recovery / Mobility", exercises: [
+                            { series: "Mobility", name: "Mobility Circuit", sets: 2, reps: "10 reps each", rest: "-", rpe: 3, wt: "BW" }
+                        ]},
+                        { name: "Day 5: Upper Pump", exercises: [
+                            { series: "A-Series", name: "Flat DB Press", sets: 3, reps: "12", rest: "75-90s", rpe: 7, wt: "45 lbs" }
+                        ]},
+                        { name: "Day 6: Arms / Calves / Abs", exercises: [
+                            { series: "Accessory", name: "Dual-Cable Bicep Curl", sets: 3, reps: "20-25", rest: "45s", rpe: 7, wt: "20 lbs" }
+                        ]},
+                        { name: "Day 7: Off / Recovery", exercises: [
+                            { series: "Recovery", name: "Walk", sets: 1, reps: "20 min", rest: "-", rpe: 2, wt: "BW" }
+                        ]}
+                    ]
+                },
+                11: { // Week 11
+                    days: [
+                        { name: "Day 1: Push", exercises: [
+                            { series: "A-Series", name: "Incline Dumbbell Press (4-sec eccentric)", sets: 4, reps: "12-15", rest: "90s", rpe: 6, wt: "40 lbs" },
+                            { series: "B1", name: "Flat Chest Press (Mechanical Drop)", sets: 3, reps: "12-15", rest: "-", rpe: 8, wt: "100 lbs" }
+                        ]},
+                        { name: "Day 2: Pull", exercises: [
+                            { series: "A-Series", name: "Weighted Pull-Ups (4-sec eccentric)", sets: 3, reps: "10-12", rest: "90s", rpe: 6, wt: "BW" }
+                        ]},
+                        { name: "Day 3: Lower", exercises: [
+                            { series: "A-Series", name: "Hack Squat (4-sec eccentric)", sets: 4, reps: "12-15", rest: "90s", rpe: 6, wt: "90 lbs" }
+                        ]},
+                        { name: "Day 4: Recovery / Mobility", exercises: [
+                            { series: "Mobility", name: "Mobility Circuit", sets: 2, reps: "10 reps each", rest: "-", rpe: 3, wt: "BW" }
+                        ]},
+                        { name: "Day 5: Upper Pump", exercises: [
+                            { series: "A-Series", name: "Flat DB Press (4-sec eccentric)", sets: 3, reps: "12-15", rest: "90s", rpe: 6, wt: "35 lbs" }
+                        ]},
+                        { name: "Day 6: Arms / Calves / Abs", exercises: [
+                            { series: "Accessory", name: "Dual-Cable Bicep Curl", sets: 3, reps: "25-30", rest: "30s", rpe: 8, wt: "20 lbs" }
+                        ]},
+                        { name: "Day 7: Off / Recovery", exercises: [
+                            { series: "Recovery", name: "Walk", sets: 1, reps: "20 min", rest: "-", rpe: 2, wt: "BW" }
+                        ]}
+                    ]
+                },
+                12: { // Week 12
+                    days: [
+                        { name: "Day 1: Push", exercises: [
+                            { series: "A-Series", name: "Incline DB Press (Light/Controlled)", sets: 3, reps: "10-12", rest: "90s", rpe: 6, wt: "30 lbs" },
+                            { series: "B1", name: "Flat Barbell Press", sets: 3, reps: "12-15", rest: "-", rpe: 6-7, wt: "85 lbs" }
+                        ]},
+                        { name: "Day 2: Pull", exercises: [
+                            { series: "A-Series", name: "Neutral Lat Pulldown (Light)", sets: 3, reps: "10-12", rest: "90s", rpe: 6, wt: "60 lbs" }
+                        ]},
+                        { name: "Day 3: Lower", exercises: [
+                            { series: "A-Series", name: "Hack Squat (Light)", sets: 3, reps: "10-12", rest: "90s", rpe: 6, wt: "70 lbs" }
+                        ]},
+                        { name: "Day 4: Recovery / Mobility", exercises: [
+                            { series: "Mobility", name: "Mobility Circuit", sets: 2, reps: "10 reps each", rest: "-", rpe: 3, wt: "BW" }
+                        ]},
+                        { name: "Day 5: Upper Pump", exercises: [
+                            { series: "A-Series", name: "Flat DB Press (Light)", sets: 3, reps: "10-12", rest: "90s", rpe: 6, wt: "30 lbs" }
+                        ]},
+                        { name: "Day 6: Arms / Calves / Abs", exercises: [
+                            { series: "Accessory", name: "Dual-Cable Bicep Curl", sets: 3, reps: "20-25", rest: "60s", rpe: 6, wt: "15 lbs" }
+                        ]},
+                        { name: "Day 7: Off / Recovery", exercises: [
+                            { series: "Recovery", name: "Walk & Reset", sets: 1, reps: "20-30 min", rest: "-", rpe: 2, wt: "BW" }
+                        ]}
+                    ]
+                }
+            }
+        };
+
+        let currentPhase = 1;
+        let currentWeek = 1;
+        let activeDayIndex = 0;
+
+        window.addEventListener('DOMContentLoaded', () => {
+            loadSavedState();
+            renderWorkouts();
+            renderPeptideMatrix();
+            calcReta();
+            calcBpc();
+            calcCjc();
+        });
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(el => {
+                el.classList.remove('bg-amber-500', 'text-slate-950', 'shadow-md');
+                el.classList.add('bg-slate-900', 'text-slate-400', 'border', 'border-slate-800');
+            });
+            document.getElementById('tab-' + tabId).classList.add('active');
+            const activeBtn = document.getElementById('btn-' + tabId);
+            activeBtn.classList.remove('bg-slate-900', 'text-slate-400', 'border', 'border-slate-800');
+            activeBtn.classList.add('bg-amber-500', 'text-slate-950', 'shadow-md');
+        }
+
+        function changePhase() {
+            currentPhase = parseInt(document.getElementById('phaseSelect').value);
+            const weekSelect = document.getElementById('weekSelect');
+            weekSelect.innerHTML = '';
+            let startWeek = (currentPhase - 1) * 4 + 1;
+            for (let w = startWeek; w < startWeek + 4; w++) {
+                let opt = document.createElement('option');
+                opt.value = w;
+                opt.textContent = `Week ${w}: ` + (w%4 === 1 ? 'Baseline/Shift' : w%4 === 2 ? 'Progression/Volume' : w%4 === 3 ? 'Complexity/Density' : 'Peak/Deload');
+                weekSelect.appendChild(opt);
+            }
+            currentWeek = startWeek;
+            activeDayIndex = 0;
+            renderWorkouts();
+            saveState();
+        }
+
+        function changeWeek() {
+            currentWeek = parseInt(document.getElementById('weekSelect').value);
+            activeDayIndex = 0;
+            renderWorkouts();
+            saveState();
+        }
+
+        function changeDay() {
+            activeDayIndex = parseInt(document.getElementById('daySelect').value);
+            renderWorkouts();
+        }
+
+        function renderWorkouts() {
+            const phaseObj = workoutsData[currentPhase] || workoutsData[1];
+            const weekObj = phaseObj[currentWeek] || phaseObj[Object.keys(phaseObj)[0]];
+            const days = weekObj.days;
+            if (activeDayIndex >= days.length) activeDayIndex = 0;
+
+            const daySelect = document.getElementById('daySelect');
+            daySelect.innerHTML = '';
+            days.forEach((day, idx) => {
+                let opt = document.createElement('option');
+                opt.value = idx;
+                opt.textContent = day.name;
+                if (idx === activeDayIndex) {
+                    opt.selected = true;
+                }
+                daySelect.appendChild(opt);
+            });
+
+            const activeDay = days[activeDayIndex];
+            const container = document.getElementById('workoutCardContainer');
+            
+            let html = `
+                <div class="flex items-center justify-between mb-2 border-b border-slate-800 pb-2">
+                    <div>
+                        <span class="text-[10px] text-amber-400 font-bold uppercase tracking-wider">Phase ${currentPhase} • Week ${currentWeek}</span>
+                        <h2 class="font-extrabold text-sm text-slate-100 mt-0.5">${activeDay.name}</h2>
+                    </div>
+                </div>
+                <div class="space-y-2.5">
+            `;
+
+            activeDay.exercises.forEach((ex, exIdx) => {
+                const totalSets = parseInt(ex.sets) || 1;
+                let checkboxesHtml = `<div class="flex items-center flex-wrap gap-1 mt-1">`;
+                for (let s = 1; s <= totalSets; s++) {
+                    const storageKey = `w_${currentWeek}_d_${activeDayIndex}_ex_${exIdx}_set_${s}`;
+                    const isChecked = localStorage.getItem(storageKey) === 'true';
+                    checkboxesHtml += `
+                        <label class="flex items-center space-x-1 bg-slate-950 px-2 py-1 rounded-lg border border-slate-800 cursor-pointer text-[10px] text-slate-300">
+                            <span class="font-bold text-amber-400">S${s}</span>
+                            <input type="checkbox" isChecked?'checked':''onchange="toggleSet('{storageKey}', this.checked)" class="w-4 h-4 rounded cursor-pointer">
+                        </label>
+                    `;
+                }
+                checkboxesHtml += `</div>`;
+
+                html += `
+                    <div class="bg-slate-950/80 border border-slate-800/80 rounded-xl p-3 space-y-1.5">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[10px] font-extrabold text-amber-400 uppercase bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20">${ex.series}</span>
+                            <span class="text-[11px] text-slate-400 font-semibold">Wt: <strong class="text-slate-200">${ex.wt}</strong></span>
+                        </div>
+                        <div class="font-bold text-slate-100 text-xs">${ex.name}</div>
+                        <div class="flex items-center justify-between text-[11px] text-slate-400 pt-0.5">
+                            <span>Sets: <strong>ex.sets</strong>|Reps:<strong>{ex.reps}</strong></span>
+                            <span>Rest: <strong>ex.rest</strong>|RPE:<strong>{ex.rpe}</strong></span>
+                        </div>
+                        <div class="pt-1 border-t border-slate-900">
+                            <div class="text-[10px] text-slate-500 font-bold uppercase tracking-wider mb-1">Set Tracking</div>
+                            ${checkboxesHtml}
+                        </div>
+                    </div>
+                `;
+            });
+
+            html += `</div>`;
+            container.innerHTML = html;
+        }
+
+        function toggleSet(key, val) {
+            localStorage.setItem(key, val);
+        }
+
+        function calcReta() {
+            const bac = parseFloat(document.getElementById('reta_bac').value) || 2.0;
+            const vialMg = 10.0;
+            const targetMcg = 250;
+            const mgPerMl = vialMg / bac;
+            const mcgPerUnit = (mgPerMl * 1000) / 100;
+            const units = targetMcg / mcgPerUnit;
+
+            document.getElementById('reta_conc').textContent = mgPerMl.toFixed(2) + ' mg/mL';
+            document.getElementById('reta_draw').textContent = units.toFixed(1) + ' units';
+        }
+
+        function calcBpc() {
+            const bac = parseFloat(document.getElementById('bpc_bac').value) || 2.0;
+            const vialMg = 10.0;
+            const targetMcg = 500;
+            const mgPerMl = vialMg / bac;
+            const mcgPerUnit = (mgPerMl * 1000) / 100;
+            const units = targetMcg / mcgPerUnit;
+
+            document.getElementById('bpc_conc').textContent = mgPerMl.toFixed(2) + ' mg/mL';
+            document.getElementById('bpc_draw').textContent = units.toFixed(1) + ' units';
+        }
+
+        function calcCjc() {
+            const bac = parseFloat(document.getElementById('cjc_bac').value) || 2.0;
+            const vialMg = 10.0;
+            const mgPerMl = vialMg / bac;
+            const mcgPerUnit = (mgPerMl * 1000) / 100;
+            const u100 = 100 / mcgPerUnit;
+            const u200 = 200 / mcgPerUnit;
+
+            document.getElementById('cjc_conc').textContent = mgPerMl.toFixed(2) + ' mg/mL';
+            document.getElementById('cjc_draw').textContent = `${u100.toFixed(1)}u (100mcg) / ${u200.toFixed(1)}u (200mcg)`;
+        }
+
+        function renderPeptideMatrix() {
+            const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+            const tbody = document.getElementById('peptideMatrixBody');
+            tbody.innerHTML = '';
+            daysOfWeek.forEach((day, idx) => {
+                let reta = idx === 0 ? '🟢 Retatrutide (250mcg / 5u)' : '-';
+                let bpc = '🟢 BPC-157 / TB-500 (500mcg / 10u)';
+                let cjc = idx < 5 ? '🟢 CJC w/o DAC (100-200mcg / 2-4u)' : '-';
+                
+                tbody.innerHTML += `
+                    <tr class="hover:bg-slate-950/40">
+                        <td class="p-2.5 font-bold text-slate-200">${day}</td>
+                        <td class="p-2.5 idx===0?'text-amber-400font-semibold':'text-slate-500'">{reta}</td>
+                        <td class="p-2.5 text-slate-300">${bpc}</td>
+                        <td class="p-2.5 idx<5?'text-amber-400font-semibold':'text-slate-500'">{cjc}</td>
+                    </tr>
+                `;
+            });
+        }
+
+        function saveNotes() {
+            const notes = document.getElementById('sundayNotes').value;
+            localStorage.setItem('tx_sunday_notes', notes);
+        }
+
+        function saveState() {
+            localStorage.setItem('tx_phase', currentPhase);
+            localStorage.setItem('tx_week', currentWeek);
+        }
+
+        function loadSavedState() {
+            const savedPhase = localStorage.getItem('tx_phase');
+            const savedWeek = localStorage.getItem('tx_week');
+            const savedNotes = localStorage.getItem('tx_sunday_notes');
+
+            if (savedPhase) {
+                currentPhase = parseInt(savedPhase);
+                document.getElementById('phaseSelect').value = currentPhase;
+                changePhase();
+            }
+            if (savedWeek) {
+                currentWeek = parseInt(savedWeek);
+                document.getElementById('weekSelect').value = currentWeek;
+            }
+            if (savedNotes) {
+                document.getElementById('sundayNotes').value = savedNotes;
+            }
+        }
+
+        function resetData() {
+            if (confirm('Are you sure you want to reset all workout set checkmarks and saved notes?')) {
+                localStorage.clear();
+                location.reload();
+            }
+        }
+    </script>
+</body>
+</html>
+
+```
+
+
+
