@@ -33,12 +33,13 @@
         <!-- NAVIGATION TABS -->
         <nav class="flex overflow-x-auto px-4 space-x-2 border-t border-slate-800/80 bg-slate-950/60 py-2 no-scrollbar max-w-3xl mx-auto items-center justify-between">
             <div class="flex space-x-2">
-                <button onclick="switchTab('workouts')" id="btn-workouts" class="tab-btn px-4 py-1.5 rounded-xl text-xs font-bold transition bg-amber-500 text-slate-950 shadow-md">Workout Logs</button>
+                <button onclick="switchTab('dashboard')" id="btn-dashboard" class="tab-btn px-4 py-1.5 rounded-xl text-xs font-bold transition bg-amber-500 text-slate-950 shadow-md">Dashboard</button>
+                <button onclick="switchTab('workouts')" id="btn-workouts" class="tab-btn px-4 py-1.5 rounded-xl text-xs font-bold transition bg-slate-900 text-slate-400 hover:text-white border border-slate-800">Workout Logs</button>
                 <button onclick="switchTab('peptides')" id="btn-peptides" class="tab-btn px-4 py-1.5 rounded-xl text-xs font-bold transition bg-slate-900 text-slate-400 hover:text-white border border-slate-800">Peptide Tracker</button>
-                <button onclick="switchTab('nutrition')" id="btn-nutrition" class="tab-btn px-4 py-1.5 rounded-xl text-xs font-bold transition bg-slate-900 text-slate-400 hover:text-white border border-slate-800">Nutrition & Grocery</button>
+                <button onclick="switchTab('nutrition')" id="btn-nutrition" class="tab-btn px-4 py-1.5 rounded-xl text-xs font-bold transition bg-slate-900 text-slate-400 hover:text-white border border-slate-800">Nutrition</button>
             </div>
             <!-- SHARE BADGE BUTTON -->
-            <button onclick="generateBadge()" class="px-3 py-1.5 rounded-xl text-xs font-extrabold bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 shadow-md hover:brightness-110 transition flex items-center gap-1">
+            <button onclick="generateBadge()" class="px-3 py-1.5 rounded-xl text-xs font-extrabold bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 shadow-md hover:brightness-110 transition flex items-center gap-1 whitespace-nowrap">
                 📸 Share Badge
             </button>
         </nav>
@@ -46,8 +47,101 @@
 
     <main class="max-w-3xl mx-auto px-4 py-4 space-y-4">
 
+        <!-- DASHBOARD TAB (HOME PAGE & FIRST TAB) -->
+        <div id="tab-dashboard" class="tab-content active space-y-4">
+            
+            <!-- HERO WELCOME & QUICK START CARD -->
+            <div class="bg-gradient-to-r from-slate-900 via-slate-900 to-slate-950 border border-slate-800 rounded-2xl p-4 shadow-xl space-y-3">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <span class="text-[9px] font-extrabold uppercase bg-amber-500/10 text-amber-400 px-2 py-0.5 rounded border border-amber-500/20">Athletic Command Center</span>
+                        <h2 class="font-extrabold text-base text-slate-100 mt-1">Welcome Back, TX Pierce</h2>
+                        <p class="text-[11px] text-slate-400">12-Week Metabolic Hypertrophy Blueprint</p>
+                    </div>
+                    <button onclick="switchTab('workouts')" class="bg-amber-500 hover:bg-amber-600 text-slate-950 px-3.5 py-2 rounded-xl font-extrabold text-xs shadow-md transition flex items-center gap-1">
+                        🏋️ Go to Lifts
+                    </button>
+                </div>
+            </div>
+
+            <!-- DASHBOARD METRICS SUMMARY GRID -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-3.5 shadow-lg text-center">
+                    <span class="block text-[10px] text-slate-400 font-bold uppercase tracking-wider mb-1">Today's Sets</span>
+                    <span id="dashTodaySets" class="text-xl font-black text-amber-400">0 / 0</span>
+                    <span id="dashTodayPct" class="block text-[10px] text-emerald-400 font-bold mt-0.5">0% Completed</span>
+                </div>
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-3.5 shadow-lg text-center">
+                    <span class="block text-[10px] text-slate-400 font-bold uppercase tracking-wider mb-1">Active Phase</span>
+                    <span id="dashActivePhase" class="text-xs font-extrabold text-slate-200 line-clamp-1">Phase 1</span>
+                    <span id="dashActiveWeek" class="block text-[10px] text-amber-400 font-bold mt-0.5">Week 1</span>
+                </div>
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-3.5 shadow-lg text-center">
+                    <span class="block text-[10px] text-slate-400 font-bold uppercase tracking-wider mb-1">Daily Macro Goal</span>
+                    <span class="text-base font-black text-slate-100">2,800 kcal</span>
+                    <span class="block text-[10px] text-slate-400 font-bold mt-0.5">200P / 315C / 80F</span>
+                </div>
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-3.5 shadow-lg text-center">
+                    <span class="block text-[10px] text-slate-400 font-bold uppercase tracking-wider mb-1">Peptide Target</span>
+                    <span class="text-xs font-extrabold text-amber-400">250 mcg Reta</span>
+                    <span class="block text-[10px] text-slate-400 font-bold mt-0.5">500 mcg BPC/TB</span>
+                </div>
+            </div>
+
+            <!-- QUICK ACTION SHORTCUTS -->
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-xl space-y-3">
+                <h3 class="font-bold text-xs text-slate-100 flex items-center gap-1.5 border-b border-slate-800 pb-2">
+                    <span class="text-amber-500">🚀</span> Quick Protocol Access
+                </h3>
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
+                    <button onclick="switchTab('workouts')" class="bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3 rounded-xl text-left space-y-1 transition">
+                        <span class="text-base">🏋️</span>
+                        <h4 class="font-bold text-slate-200">Log Workout</h4>
+                        <p class="text-[10px] text-slate-400">Track sets, reps & weights</p>
+                    </button>
+                    <button onclick="switchTab('peptides')" class="bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3 rounded-xl text-left space-y-1 transition">
+                        <span class="text-base">🧪</span>
+                        <h4 class="font-bold text-slate-200">Peptide Calc</h4>
+                        <p class="text-[10px] text-slate-400">BAC water & syringe draws</p>
+                    </button>
+                    <button onclick="switchTab('nutrition')" class="bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3 rounded-xl text-left space-y-1 transition">
+                        <span class="text-base">🥩</span>
+                        <h4 class="font-bold text-slate-200">Nutrition Plan</h4>
+                        <p class="text-[10px] text-slate-400">Meal timing & macros</p>
+                    </button>
+                    <button onclick="generateBadge()" class="bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3 rounded-xl text-left space-y-1 transition">
+                        <span class="text-base">📸</span>
+                        <h4 class="font-bold text-slate-200">Share Badge</h4>
+                        <p class="text-[10px] text-slate-400">Generate stats screenshot</p>
+                    </button>
+                </div>
+            </div>
+
+            <!-- PROGRAM OVERVIEW & PHASE ROADMAP -->
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-xl space-y-2">
+                <h3 class="font-bold text-xs text-slate-100 flex items-center gap-1.5">
+                    <span class="text-amber-500">🏆</span> 12-Week Architecture Roadmap
+                </h3>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-[11px] pt-1">
+                    <div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800/80">
+                        <span class="font-bold text-amber-400 block mb-0.5">Phase 1: Base Phase (W1-4)</span>
+                        <p class="text-slate-400 text-[10px]">Movement quality, 5x5 baseline to 6x4 overload & joint deload.</p>
+                    </div>
+                    <div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800/80">
+                        <span class="font-bold text-amber-400 block mb-0.5">Phase 2: Structural Shift (W5-8)</span>
+                        <p class="text-slate-400 text-[10px]">Incline/Hack angles, 3s eccentric tempos & non-competing tri-sets.</p>
+                    </div>
+                    <div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800/80">
+                        <span class="font-bold text-amber-400 block mb-0.5">Phase 3: Peak Hypertrophy (W9-12)</span>
+                        <p class="text-slate-400 text-[10px]">Peak density, mechanical drop sets, 30-45s rest & pump deload.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
         <!-- WORKOUTS TAB -->
-        <div id="tab-workouts" class="tab-content active space-y-4">
+        <div id="tab-workouts" class="tab-content space-y-4">
             <div class="bg-slate-900 border border-slate-800 rounded-2xl p-3.5 shadow-xl">
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
                     <div>
@@ -253,6 +347,10 @@
             const activeBtn = document.getElementById('btn-' + tabId);
             activeBtn.classList.remove('bg-slate-900', 'text-slate-400');
             activeBtn.classList.add('bg-amber-500', 'text-slate-950');
+
+            if (tabId === 'dashboard') {
+                updateDashboardMetrics();
+            }
         }
 
         function populatePhases() {
@@ -323,7 +421,7 @@
                     checksHtml += `
                         <div class="flex items-center space-x-1.5 bg-slate-950 px-2.5 py-1 rounded-lg border border-slate-800 text-[10px]">
                             <span class="font-bold text-amber-400">S${s}</span>
-                            <input type="checkbox" ${checked ? 'checked' : ''} onchange="localStorage.setItem('${checkKey}', this.checked)">
+                            <input type="checkbox" ${checked ? 'checked' : ''} onchange="localStorage.setItem('${checkKey}', this.checked); updateDashboardMetrics();">
                             <input type="number" placeholder="lbs" value="${savedWeight}" oninput="localStorage.setItem('${weightKey}', this.value)" class="w-12 bg-slate-900 border border-slate-700 rounded text-center text-amber-300 font-bold focus:outline-none focus:border-amber-500 py-0.5 text-[10px]">
                         </div>
                     `;
@@ -347,6 +445,38 @@
                     </div>
                 `;
             });
+
+            updateDashboardMetrics();
+        }
+
+        function updateDashboardMetrics() {
+            if (!PROGRAM_DATA || !currentPhase || !currentWeek || !currentDay) return;
+            const exercises = PROGRAM_DATA[currentPhase]?.[currentWeek]?.[currentDay] || [];
+            let totalSets = 0;
+            let checkedSets = 0;
+
+            exercises.forEach((ex, exIdx) => {
+                const sets = parseInt(ex.Sets) || 1;
+                totalSets += sets;
+                for (let s = 1; s <= sets; s++) {
+                    const checkKey = `${currentPhase}_${currentWeek}_${currentDay}_${exIdx}_s${s}`;
+                    if (localStorage.getItem(checkKey) === 'true') checkedSets++;
+                }
+            });
+
+            const pct = totalSets > 0 ? Math.round((checkedSets / totalSets) * 100) : 0;
+            
+            const dashTodaySets = document.getElementById('dashTodaySets');
+            if (dashTodaySets) dashTodaySets.textContent = `${checkedSets} / ${totalSets}`;
+            
+            const dashTodayPct = document.getElementById('dashTodayPct');
+            if (dashTodayPct) dashTodayPct.textContent = `${pct}% Completed`;
+            
+            const dashActivePhase = document.getElementById('dashActivePhase');
+            if (dashActivePhase) dashActivePhase.textContent = currentPhase.split(':')[0] || currentPhase;
+            
+            const dashActiveWeek = document.getElementById('dashActiveWeek');
+            if (dashActiveWeek) dashActiveWeek.textContent = currentWeek;
         }
 
         function generateBadge() {
@@ -383,7 +513,7 @@
             const pct = totalSets > 0 ? Math.round((checkedSets / totalSets) * 100) : 0;
 
             document.getElementById('badgeTitle').textContent = currentDay;
-            document.getElementById('badgeSub').textContent = `${currentPhase.split(':')[0]} • ${currentWeek.split(':')[0]}`;
+            document.getElementById('badgeSub').textContent = `${currentPhase.split(':')} • ${currentWeek.split(':')}`;
             document.getElementById('badgeSetsDone').textContent = `${checkedSets} / ${totalSets}`;
             document.getElementById('badgePercent').textContent = `${pct}%`;
             document.getElementById('badgeExerciseList').innerHTML = listHtml;
