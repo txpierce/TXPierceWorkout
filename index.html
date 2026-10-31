@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TX Pierce Workout & Protocol Hub</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="[suspicious link removed]"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
         body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #090d16; color: #f1f5f9; }
@@ -93,17 +92,15 @@
                 </div>
             </div>
 
-            <!-- INTERACTIVE WEEKLY COMPLETION CHART -->
+            <!-- INTERACTIVE WEEKLY COMPLETION CHART (NATIVE TAILWIND BARS) -->
             <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-xl space-y-3">
                 <div class="flex items-center justify-between border-b border-slate-800 pb-2">
                     <h3 class="font-bold text-xs text-slate-100 flex items-center gap-1.5">
                         <span class="text-amber-500">📊</span> Weekly Training Volume & Completion
                     </h3>
-                    <span class="text-[10px] text-slate-400 font-semibold">Sets Completed per Week</span>
+                    <span class="text-[10px] text-amber-400 font-bold">12-Week Matrix</span>
                 </div>
-                <div class="h-48 w-full relative">
-                    <canvas id="weeklyVolumeChart"></canvas>
-                </div>
+                <div id="weeklyVolumeChart" class="flex items-end justify-between h-40 gap-1.5 pt-4 px-1"></div>
             </div>
 
             <!-- QUICK ACTION SHORTCUTS -->
@@ -304,7 +301,7 @@
                 </div>
             </div>
 
-            <!-- EXERCISE & SET/REP BREAKDOWN LIST (Full Un-scrolled View) -->
+            <!-- EXERCISE & SET/REP BREAKDOWN LIST -->
             <div class="bg-slate-950 p-3 rounded-2xl border border-slate-800 space-y-1.5">
                 <div class="flex justify-between items-center border-b border-slate-800/80 pb-1.5">
                     <h4 class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Exercise Plan</h4>
@@ -326,7 +323,6 @@
     <script>
         let PROGRAM_DATA = {};
         let currentPhase, currentWeek, currentDay;
-        let volumeChart = null;
 
         window.addEventListener('DOMContentLoaded', async () => {
             startLiveClock();
@@ -349,7 +345,7 @@
 
             if (!loaded) {
                 document.getElementById('workoutContainer').innerHTML = 
-                    '<div class="p-4 bg-red-950 border border-red-800 rounded-xl text-xs text-red-200">Error loading JSON data. Ensure program_data-v3.json is uploaded to root.</div>';
+                    '<div class="p-4 bg-red-950 border border-red-800 rounded-xl text-xs text-red-200 font-bold">⚠️ Error loading JSON data. Ensure program_data-v3.json is uploaded to your GitHub repository root.</div>';
             }
 
             calcPeptides();
@@ -483,9 +479,11 @@
         }
 
         function updateDashboardMetrics() {
-            if (!PROGRAM_DATA || !currentPhase || !currentWeek || !currentDay) return;
+            if (!PROGRAM_DATA || Object.keys(PROGRAM_DATA).length === 0) return;
             
-            // Calculate Phase Completion Metrics
+            if (!currentPhase) currentPhase = Object.keys(PROGRAM_DATA)[0];
+            if (!currentWeek && PROGRAM_DATA[currentPhase]) currentWeek = Object.keys(PROGRAM_DATA[currentPhase])[0];
+
             let phaseTotalSets = 0;
             let phaseCheckedSets = 0;
 
@@ -523,18 +521,15 @@
         }
 
         function renderWeeklyVolumeChart() {
-            const ctx = document.getElementById('weeklyVolumeChart');
-            if (!ctx) return;
+            const container = document.getElementById('weeklyVolumeChart');
+            if (!container || !PROGRAM_DATA) return;
 
-            let labels = [];
-            let completedData = [];
-            let totalData = [];
+            let html = '';
+            let maxSetsInAnyWeek = 1;
+            let weekStats = [];
 
             for (let phaseKey in PROGRAM_DATA) {
                 for (let weekKey in PROGRAM_DATA[phaseKey]) {
-                    const shortLabel = weekKey.replace('Week ', 'W');
-                    labels.push(shortLabel);
-
                     let wTotal = 0;
                     let wDone = 0;
                     const days = PROGRAM_DATA[phaseKey][weekKey];
@@ -549,57 +544,31 @@
                             }
                         });
                     }
-                    totalData.push(wTotal);
-                    completedData.push(wDone);
+                    if (wTotal > maxSetsInAnyWeek) maxSetsInAnyWeek = wTotal;
+                    weekStats.push({
+                        weekLabel: weekKey.replace('Week ', 'W'),
+                        total: wTotal,
+                        done: wDone
+                    });
                 }
             }
 
-            if (volumeChart) {
-                volumeChart.data.labels = labels;
-                volumeChart.data.datasets[0].data = completedData;
-                volumeChart.data.datasets[1].data = totalData;
-                volumeChart.update();
-            } else {
-                volumeChart = new Chart(ctx, {
-                    type: 'bar',
-                    data: {
-                        labels: labels,
-                        datasets: [
-                            {
-                                label: 'Completed Sets',
-                                data: completedData,
-                                backgroundColor: '#f59e0b',
-                                borderRadius: 4
-                            },
-                            {
-                                label: 'Planned Target',
-                                data: totalData,
-                                backgroundColor: '#1e293b',
-                                borderRadius: 4
-                            }
-                        ]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: {
-                                labels: { color: '#94a3b8', font: { size: 10, weight: 'bold' } }
-                            }
-                        },
-                        scales: {
-                            x: {
-                                ticks: { color: '#94a3b8', font: { size: 9 } },
-                                grid: { display: false }
-                            },
-                            y: {
-                                ticks: { color: '#94a3b8', font: { size: 9 } },
-                                grid: { color: '#1e293b' }
-                            }
-                        }
-                    }
-                });
-            }
+            weekStats.forEach(stat => {
+                const fillPct = stat.total > 0 ? Math.min(100, Math.round((stat.done / stat.total) * 100)) : 0;
+                const barHeightPct = Math.max(15, Math.round((stat.total / maxSetsInAnyWeek) * 100));
+
+                html += `
+                    <div class="flex-1 flex flex-col items-center h-full justify-end group">
+                        <span class="text-[8px] font-bold text-amber-400 mb-1">${stat.done > 0 ? stat.done : ''}</span>
+                        <div class="w-full bg-slate-950 rounded-t border border-slate-800 flex flex-col justify-end overflow-hidden" style="height: ${barHeightPct}%;">
+                            <div class="w-full bg-amber-500 rounded-t transition-all duration-500" style="height: ${fillPct}%;"></div>
+                        </div>
+                        <span class="text-[9px] font-bold text-slate-400 mt-1.5">${stat.weekLabel}</span>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
         }
 
         function generateBadge() {
@@ -636,7 +605,7 @@
             const pct = totalSets > 0 ? Math.round((checkedSets / totalSets) * 100) : 0;
 
             document.getElementById('badgeTitle').textContent = currentDay;
-            document.getElementById('badgeSub').textContent = `${currentPhase.split(':')[0]} • ${currentWeek.split(':')[0]}`;
+            document.getElementById('badgeSub').textContent = `${currentPhase.split(':')[0]} • ${currentWeek}`;
             document.getElementById('badgeSetsDone').textContent = `${checkedSets} / ${totalSets}`;
             document.getElementById('badgePercent').textContent = `${pct}%`;
             document.getElementById('badgeExerciseList').innerHTML = listHtml;
