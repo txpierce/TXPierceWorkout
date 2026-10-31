@@ -1,0 +1,89 @@
+{
+    "1": {
+        "1": {
+            "days": [
+                {
+                    "name": "Day 1: Push",
+                    "exercises": [
+                        { "series": "A-Series", "name": "Overhead Press", "sets": 5, "reps": "5", "rest": "2-3 min", "rpe": 8, "wt": "90 lbs" },
+                        { "series": "B1", "name": "Flat DB Bench Press", "sets": 3, "reps": "8-10", "rest": "-", "rpe": 8, "wt": "55 lbs" },
+                        { "series": "B1", "name": "Chest-Supported T-Bar Row", "sets": 3, "reps": "12-15", "rest": "90 sec", "rpe": 8, "wt": "45 lbs" },
+                        { "series": "B2", "name": "Seated DB Arnold Press", "sets": 3, "reps": "8-10", "rest": "-", "rpe": 8, "wt": "30 lbs" },
+                        { "series": "B2", "name": "Skull Crushers", "sets": 3, "reps": "6-8", "rest": "90 sec", "rpe": 8, "wt": "80 lbs" },
+                        { "series": "C-Series", "name": "Cable Crossover", "sets": 3, "reps": "12-15", "rest": "-", "rpe": 8, "wt": "30 lbs" },
+                        { "series": "C-Series", "name": "Tricep Extension", "sets": 3, "reps": "12-15", "rest": "90 sec", "rpe": 8, "wt": "80 lbs" },
+                        { "series": "D-Series", "name": "DB Lateral Raise → Push-Up", "sets": 2, "reps": "15-20", "rest": "60 sec", "rpe": "-", "wt": "15 lbs / BW" }
+                    ]
+                },
+                {
+                    "name": "Day 2: Pull",
+                    "exercises": [
+                        { "series": "A-Series", "name": "Pendlay Row", "sets": 4, "reps": "6-8", "rest": "2-3 min", "rpe": 8, "wt": "135 lbs" },
+                        { "series": "B1", "name": "Chin-Up", "sets": 3, "reps": "AMRAP", "rest": "-", "rpe": 8, "wt": "BW" },
+                        { "series": "B1", "name": "Face Pull", "sets": 3, "reps": "12-15", "rest": "90 sec", "rpe": 8, "wt": "40 lbs" },
+                        { "series": "B2", "name": "Seated Cable Row", "sets": 3, "reps": "10-12", "rest": "-", "rpe": 8, "wt": "100 lbs" },
+                        { "series": "B2", "name": "DB Hammer Curl", "sets": 3, "reps": "10-12", "rest": "90 sec", "rpe": 8, "wt": "25 lbs" },
+                        { "series": "C-Series", "name": "Incline DB Y-Raise", "sets": 3, "reps": "12-15", "rest": "-", "rpe": 8, "wt": "15 lbs" },
+                        { "series": "C-Series", "name": "EZ Bar Preacher Curl", "sets": 3, "reps": "12-15", "rest": "90 sec", "rpe": 8, "wt": "40 lbs" },
+                        { "series": "D-Series", "name": "Lat Pulldown → DB Curl", "sets": 2, "reps": "15-20", "rest": "60 sec", "rpe": "-", "wt": "100 lbs / 25 lbs" }
+                    ]
+                },
+                {
+                    "name": "Day 3: Lower Hypertrophy",
+                    "exercises": [
+                        { "series": "A-Series", "name": "Front Squat", "sets": 4, "reps": "6-8", "rest": "2-3 min", "rpe": 8, "wt": "135 lbs" },
+                        { "series": "B1", "name": "Romanian Deadlift", "sets": 3, "reps": "12-15", "rest": "-", "rpe": 8, "wt": "135 lbs" },
+                        { "series": "B1", "name": "DB Walking Lunges", "sets": 3, "reps": "10-12", "rest": "90 sec", "rpe": 8, "wt": "30 lbs" },
+                        { "series": "B2", "name": "Glute Ham Raise", "sets": 3, "reps": "10-12", "rest": "-", "rpe": 8, "wt": "BW" },
+                        { "series": "B2", "name": "Seated Calf Raise", "sets": 3, "reps": "12-15", "rest": "90 sec", "rpe": 8, "wt": "90 lbs" },
+                        { "series": "C-Series", "name": "Leg Extension", "sets": 3, "reps": "15-20", "rest": "-", "rpe": 8, "wt": "50 lbs" },
+                        { "series": "C-Series", "name": "Split Squat ISO Hold", "sets": 3, "reps": "20-30s", "rest": "90 sec", "rpe": 8, "wt": "BW" }
+                    ]
+                },
+                {
+                    "name": "Day 4: Recovery / Mobility",
+                    "exercises": [
+                        { "series": "Warm-Up", "name": "Easy Cardio & Diaphragmatic Breaths", "sets": 1, "reps": "3 min / 5 breaths", "rest": "-", "rpe": 3, "wt": "BW" },
+                        { "series": "Mobility", "name": "Cat-Cow", "sets": 2, "reps": "10 reps", "rest": "-", "rpe": 3, "wt": "BW" },
+                        { "series": "Mobility", "name": "Thoracic Rotations (Each Side)", "sets": 2, "reps": "10 reps", "rest": "-", "rpe": 3, "wt": "BW" },
+                        { "series": "Mobility", "name": "Hip Airplanes (Each Side)", "sets": 2, "reps": "10 reps", "rest": "-", "rpe": 3, "wt": "BW" },
+                        { "series": "Mobility", "name": "Ankle Dorsiflexion Rocks", "sets": 2, "reps": "10 reps", "rest": "-", "rpe": 3, "wt": "BW" },
+                        { "series": "Mobility", "name": "Band Pull-Aparts & External Rotations", "sets": 2, "reps": "10 reps", "rest": "-", "rpe": 3, "wt": "Light Band" },
+                        { "series": "Quality", "name": "Bodyweight Squats (Slow) & Hinge Pattern", "sets": 2, "reps": "10 reps", "rest": "-", "rpe": 3, "wt": "BW" },
+                        { "series": "Quality", "name": "Step-Downs & Scap Push-Ups", "sets": 2, "reps": "10 reps", "rest": "-", "rpe": 3, "wt": "BW" },
+                        { "series": "Cardio", "name": "Easy Row or Incline Walk", "sets": 1, "reps": "10 min", "rest": "-", "rpe": 3, "wt": "Easy" }
+                    ]
+                },
+                {
+                    "name": "Day 5: Upper Pump",
+                    "exercises": [
+                        { "series": "A-Series", "name": "Incline DB Press", "sets": 3, "reps": "10-12", "rest": "90 sec", "rpe": 7, "wt": "55 lbs" },
+                        { "series": "B1", "name": "Machine Chest Press", "sets": 3, "reps": "12-15", "rest": "-", "rpe": 7, "wt": "110 lbs" },
+                        { "series": "B1", "name": "V-Grip Cable Row", "sets": 3, "reps": "12-15", "rest": "90 sec", "rpe": 7, "wt": "110 lbs" },
+                        { "series": "B2", "name": "Cable Lateral Raise", "sets": 3, "reps": "15-20", "rest": "-", "rpe": 7, "wt": "20 lbs" },
+                        { "series": "B2", "name": "Tricep Rope Pushdown", "sets": 3, "reps": "10-12", "rest": "90 sec", "rpe": 7, "wt": "40 lbs" },
+                        { "series": "C-Series", "name": "Straight-Arm Pulldown", "sets": 3, "reps": "12-15", "rest": "-", "rpe": 7, "wt": "60 lbs" },
+                        { "series": "C-Series", "name": "DB Spider Curl", "sets": 3, "reps": "12-15", "rest": "90 sec", "rpe": 7, "wt": "25 lbs" }
+                    ]
+                },
+                {
+                    "name": "Day 6: Arms / Calves / Abs",
+                    "exercises": [
+                        { "series": "Accessory", "name": "Cable Curl", "sets": 3, "reps": "12-15", "rest": "60 sec", "rpe": 7, "wt": "40 lbs" },
+                        { "series": "Accessory", "name": "Overhead Rope Extension", "sets": 3, "reps": "12-15", "rest": "60 sec", "rpe": 7, "wt": "40 lbs" },
+                        { "series": "Accessory", "name": "Preacher Curl", "sets": 3, "reps": "10-12", "rest": "60 sec", "rpe": 7, "wt": "40 lbs" },
+                        { "series": "Accessory", "name": "Bench Dips", "sets": 3, "reps": "15-20", "rest": "60 sec", "rpe": 7, "wt": "BW" },
+                        { "series": "Accessory", "name": "Standing Calf Raise", "sets": 4, "reps": "12-15", "rest": "60 sec", "rpe": 7, "wt": "135 lbs" },
+                        { "series": "Accessory", "name": "Hanging Knee Raise", "sets": 3, "reps": "10-12", "rest": "60 sec", "rpe": 7, "wt": "BW" }
+                    ]
+                },
+                {
+                    "name": "Day 7: Off / Recovery",
+                    "exercises": [
+                        { "series": "Recovery", "name": "Outdoor Walk & Hydration", "sets": 1, "reps": "20-30 min", "rest": "-", "rpe": 2, "wt": "BW" }
+                    ]
+                }
+            ]
+        }
+    }
+}
