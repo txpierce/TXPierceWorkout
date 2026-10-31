@@ -92,15 +92,18 @@
                 </div>
             </div>
 
-            <!-- INTERACTIVE WEEKLY COMPLETION CHART (NATIVE TAILWIND BARS) -->
+            <!-- INTERACTIVE WEEKLY COMPLETION CHART (HORIZONTALLY SCROLLABLE FOR MOBILE) -->
             <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-xl space-y-3">
                 <div class="flex items-center justify-between border-b border-slate-800 pb-2">
                     <h3 class="font-bold text-xs text-slate-100 flex items-center gap-1.5">
-                        <span class="text-amber-500">📊</span> Weekly Training Volume & Completion
+                        <span class="text-amber-500">📊</span> Weekly Volume & Completion Matrix
                     </h3>
-                    <span class="text-[10px] text-amber-400 font-bold">12-Week Matrix</span>
+                    <span class="text-[10px] text-amber-400 font-bold">Swipe 👉</span>
                 </div>
-                <div id="weeklyVolumeChart" class="flex items-end justify-between h-40 gap-1.5 pt-4 px-1"></div>
+                <!-- MOBILE HORIZONTAL SCROLL CONTAINER -->
+                <div class="overflow-x-auto no-scrollbar pb-1">
+                    <div id="weeklyVolumeChart" class="flex items-end justify-between h-44 gap-2 pt-6 px-1 min-w-[540px]"></div>
+                </div>
             </div>
 
             <!-- QUICK ACTION SHORTCUTS -->
@@ -345,7 +348,7 @@
 
             if (!loaded) {
                 document.getElementById('workoutContainer').innerHTML = 
-                    '<div class="p-4 bg-red-950 border border-red-800 rounded-xl text-xs text-red-200 font-bold">⚠️ Error loading JSON data. Ensure program_data-v3.json is uploaded to your GitHub repository root.</div>';
+                    '<div class="p-4 bg-red-950 border border-red-800 rounded-xl text-xs text-red-200 font-bold">⚠️ Error loading JSON data. Ensure program_data-v3.json is uploaded to root.</div>';
             }
 
             calcPeptides();
@@ -545,25 +548,31 @@
                         });
                     }
                     if (wTotal > maxSetsInAnyWeek) maxSetsInAnyWeek = wTotal;
+                    
+                    const isCurrent = (weekKey === currentWeek);
                     weekStats.push({
                         weekLabel: weekKey.replace('Week ', 'W'),
                         total: wTotal,
-                        done: wDone
+                        done: wDone,
+                        isCurrent: isCurrent
                     });
                 }
             }
 
             weekStats.forEach(stat => {
                 const fillPct = stat.total > 0 ? Math.min(100, Math.round((stat.done / stat.total) * 100)) : 0;
-                const barHeightPct = Math.max(15, Math.round((stat.total / maxSetsInAnyWeek) * 100));
+                const barHeightPct = Math.max(18, Math.round((stat.total / maxSetsInAnyWeek) * 100));
+                
+                const activeRing = stat.isCurrent ? 'ring-2 ring-amber-500 bg-amber-500/10' : 'bg-slate-950 border-slate-800';
+                const labelColor = stat.isCurrent ? 'text-amber-400 font-extrabold' : 'text-slate-400 font-bold';
 
                 html += `
-                    <div class="flex-1 flex flex-col items-center h-full justify-end group">
-                        <span class="text-[8px] font-bold text-amber-400 mb-1">${stat.done > 0 ? stat.done : ''}</span>
-                        <div class="w-full bg-slate-950 rounded-t border border-slate-800 flex flex-col justify-end overflow-hidden" style="height: ${barHeightPct}%;">
-                            <div class="w-full bg-amber-500 rounded-t transition-all duration-500" style="height: ${fillPct}%;"></div>
+                    <div class="flex-1 min-w-[36px] flex flex-col items-center h-full justify-end group">
+                        <span class="text-[9px] font-extrabold text-amber-400 mb-1">${stat.done > 0 ? stat.done : ''}</span>
+                        <div class="w-full rounded-t border flex flex-col justify-end overflow-hidden ${activeRing}" style="height: ${barHeightPct}%;">
+                            <div class="w-full bg-gradient-to-t from-amber-600 to-amber-400 rounded-t transition-all duration-500 shadow-sm" style="height: ${fillPct}%;"></div>
                         </div>
-                        <span class="text-[9px] font-bold text-slate-400 mt-1.5">${stat.weekLabel}</span>
+                        <span class="text-[10px] ${labelColor} mt-2">${stat.weekLabel}</span>
                     </div>
                 `;
             });
