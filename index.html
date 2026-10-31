@@ -132,9 +132,9 @@
                 </div>
             </div>
 
-            <!-- 4. 1-GALLON HYDRATION & 6. DAILY CHECK-IN GRID -->
+            <!-- 1-GALLON HYDRATION & DAILY CHECK-IN GRID -->
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <!-- 4. HYDRATION TRACKER -->
+                <!-- HYDRATION TRACKER -->
                 <div class="bg-slate-900 border border-slate-800 rounded-2xl p-3.5 shadow-lg space-y-2">
                     <div class="flex items-center justify-between">
                         <span class="text-[10px] text-slate-400 font-bold uppercase tracking-wider flex items-center gap-1">💧 Daily Hydration Target</span>
@@ -148,7 +148,7 @@
                     </div>
                 </div>
 
-                <!-- 6. DAILY RECOVERY & PUMP CHECK-IN -->
+                <!-- DAILY RECOVERY & PUMP CHECK-IN -->
                 <div class="bg-slate-900 border border-slate-800 rounded-2xl p-3.5 shadow-lg space-y-2">
                     <span class="text-[10px] text-slate-400 font-bold uppercase tracking-wider block">🦴 Daily Recovery Check-In</span>
                     <div class="grid grid-cols-3 gap-2 text-[10px]">
@@ -174,7 +174,7 @@
                 </div>
             </div>
 
-            <!-- 5. A-SERIES HEAVY STRENGTH PR TRACKER -->
+            <!-- A-SERIES HEAVY STRENGTH PR TRACKER -->
             <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-xl space-y-2.5">
                 <div class="flex items-center justify-between border-b border-slate-800 pb-2">
                     <h3 class="font-bold text-xs text-slate-100 flex items-center gap-1.5">
@@ -420,6 +420,7 @@
             startLiveClock();
             updateFuelingClock();
             updateTodayPeptideCard();
+            checkDailyReset();
             loadHydration();
             loadCheckinScores();
             
@@ -453,6 +454,19 @@
             checkResumeBanner();
             renderPRTracker();
         });
+
+        function checkDailyReset() {
+            const today = new Date().toLocaleDateString('en-CA');
+            const lastDate = localStorage.getItem('tx_last_active_date');
+
+            if (lastDate !== today) {
+                localStorage.setItem('tx_hydration', '0');
+                localStorage.setItem('tx_score_pump', '-');
+                localStorage.setItem('tx_score_joints', '-');
+                localStorage.setItem('tx_score_sleep', '-');
+                localStorage.setItem('tx_last_active_date', today);
+            }
+        }
 
         function startLiveClock() {
             function update() {
@@ -531,18 +545,17 @@
             if (bEl) bEl.textContent = dayName;
         }
 
-        // 4. HYDRATION TRACKER JS
         function setHydration(pct) {
             localStorage.setItem('tx_hydration', pct);
             loadHydration();
         }
 
         function loadHydration() {
-            const saved = localStorage.getItem('tx_hydration') || 0;
+            const saved = parseInt(localStorage.getItem('tx_hydration')) || 0;
             [25, 50, 75, 100].forEach(val => {
                 const btn = document.getElementById(`hyd-${val}`);
                 if (btn) {
-                    if (parseInt(saved) === val) {
+                    if (saved === val) {
                         btn.className = "bg-amber-500 text-slate-950 font-black py-1.5 rounded-xl border border-amber-400 shadow-md text-[10px] transition";
                     } else {
                         btn.className = "bg-slate-950 hover:bg-slate-800 border border-slate-800 text-[10px] font-bold py-1.5 rounded-xl text-slate-300 transition";
@@ -553,7 +566,6 @@
             if (status) status.textContent = `${saved}% (${(saved/100).toFixed(2)} / 1 Gal)`;
         }
 
-        // 6. DAILY CHECK-IN RECOVERY SCORES JS
         function saveCheckinScores() {
             const p = document.getElementById('scorePump').value;
             const j = document.getElementById('scoreJoints').value;
@@ -572,7 +584,6 @@
             if (document.getElementById('scoreSleep')) document.getElementById('scoreSleep').value = s;
         }
 
-        // 5. A-SERIES HEAVY STRENGTH PR TRACKER JS
         function renderPRTracker() {
             const container = document.getElementById('prTrackerContainer');
             if (!container || !PROGRAM_DATA || Object.keys(PROGRAM_DATA).length === 0) return;
@@ -770,16 +781,16 @@
             if (!PROGRAM_DATA || Object.keys(PROGRAM_DATA).length === 0) return null;
 
             let phases = Object.keys(PROGRAM_DATA);
-            let p = localStorage.getItem('tx_last_phase') || phases[0];
-            if (!PROGRAM_DATA[p]) p = phases[0];
+            let p = localStorage.getItem('tx_last_phase') || phases;
+            if (!PROGRAM_DATA[p]) p = phases;
 
             let weeks = Object.keys(PROGRAM_DATA[p] || {});
-            let w = localStorage.getItem('tx_last_week') || weeks[0];
-            if (!PROGRAM_DATA[p]?.[w]) w = weeks[0];
+            let w = localStorage.getItem('tx_last_week') || weeks;
+            if (!PROGRAM_DATA[p]?.[w]) w = weeks;
 
             let days = Object.keys(PROGRAM_DATA[p]?.[w] || {});
-            let d = localStorage.getItem('tx_last_day') || days[0];
-            if (!PROGRAM_DATA[p]?.[w]?.[d]) d = days[0];
+            let d = localStorage.getItem('tx_last_day') || days;
+            if (!PROGRAM_DATA[p]?.[w]?.[d]) d = days;
 
             const exercises = PROGRAM_DATA[p]?.[w]?.[d] || [];
             let totalSets = 0;
@@ -805,15 +816,15 @@
                     if (weekIdx >= 0 && weekIdx < weeks.length - 1) {
                         nextW = weeks[weekIdx + 1];
                         let nextDays = Object.keys(PROGRAM_DATA[p]?.[nextW] || {});
-                        nextD = nextDays[0] || d;
+                        nextD = nextDays || d;
                     } else {
                         let phaseIdx = phases.indexOf(p);
                         if (phaseIdx >= 0 && phaseIdx < phases.length - 1) {
                             nextP = phases[phaseIdx + 1];
                             let nextWeeks = Object.keys(PROGRAM_DATA[nextP] || {});
-                            nextW = nextWeeks[0] || w;
+                            nextW = nextWeeks || w;
                             let nextDays = Object.keys(PROGRAM_DATA[nextP]?.[nextW] || {});
-                            nextD = nextDays[0] || d;
+                            nextD = nextDays || d;
                         }
                     }
                 }
@@ -831,7 +842,7 @@
             const btn = document.getElementById('resumeBtn');
 
             if (activeObj && banner && text) {
-                const shortP = activeObj.phase.split(':')[0] || activeObj.phase;
+                const shortP = activeObj.phase.split(':') || activeObj.phase;
                 if (activeObj.isNext) {
                     if (tag) tag.textContent = "Next Workout Up";
                     text.textContent = `${shortP} • ${activeObj.week} • ${activeObj.day}`;
@@ -870,8 +881,8 @@
         function updateDashboardMetrics() {
             if (!PROGRAM_DATA || Object.keys(PROGRAM_DATA).length === 0) return;
             
-            if (!currentPhase) currentPhase = Object.keys(PROGRAM_DATA)[0];
-            if (!currentWeek && PROGRAM_DATA[currentPhase]) currentWeek = Object.keys(PROGRAM_DATA[currentPhase])[0];
+            if (!currentPhase) currentPhase = Object.keys(PROGRAM_DATA);
+            if (!currentWeek && PROGRAM_DATA[currentPhase]) currentWeek = Object.keys(PROGRAM_DATA[currentPhase]);
 
             const deloadShield = document.getElementById('deloadShield');
             if (deloadShield) {
@@ -910,7 +921,7 @@
             if (dashPhasePct) dashPhasePct.textContent = `${phasePct}% Completed`;
             
             const dashActivePhase = document.getElementById('dashActivePhase');
-            if (dashActivePhase) dashActivePhase.textContent = currentPhase.split(':')[0] || currentPhase;
+            if (dashActivePhase) dashActivePhase.textContent = currentPhase.split(':') || currentPhase;
             
             const dashActiveWeek = document.getElementById('dashActiveWeek');
             if (dashActiveWeek) dashActiveWeek.textContent = currentWeek;
@@ -947,7 +958,7 @@
                     if (wTotal > maxSetsInAnyWeek) maxSetsInAnyWeek = wTotal;
                     
                     const match = weekKey.match(/\d+/);
-                    const wNum = match ? match[0] : weekCounter;
+                    const wNum = match ? match : weekCounter;
                     const shortLabel = `W${wNum}`;
                     weekCounter++;
 
@@ -1016,7 +1027,7 @@
             const pct = totalSets > 0 ? Math.round((checkedSets / totalSets) * 100) : 0;
 
             document.getElementById('badgeTitle').textContent = currentDay;
-            document.getElementById('badgeSub').textContent = `${currentPhase.split(':')[0]} • ${currentWeek}`;
+            document.getElementById('badgeSub').textContent = `${currentPhase.split(':')} • ${currentWeek}`;
             document.getElementById('badgeSetsDone').textContent = `${checkedSets} / ${totalSets}`;
             document.getElementById('badgePercent').textContent = `${pct}%`;
             document.getElementById('badgeExerciseList').innerHTML = listHtml;
