@@ -37,7 +37,7 @@
                         { "series": "B2", "name": "Glute Ham Raise", "sets": 3, "reps": "10-12", "rest": "-", "rpe": 8, "wt": "BW" },
                         { "series": "B2", "name": "Seated Calf Raise", "sets": 3, "reps": "12-15", "rest": "90 sec", "rpe": 8, "wt": "90 lbs" },
                         { "series": "C-Series", "name": "Leg Extension", "sets": 3, "reps": "15-20", "rest": "-", "rpe": 8, "wt": "50 lbs" },
-                        { "series": "C-Series", "name": "Split Squat ISO Hold", "sets": 3, "reps": "20-30s", "rest": "90 sec", "rpe": 8, "wt": "BW" }
+                        { "series": "C-Series", "name": "Split Squat ISO Hold", "sets": 3, "reps": "20-30 sec", "rest": "90 sec", "rpe": 8, "wt": "BW" }
                     ]
                 },
                 {
@@ -60,7 +60,10 @@
                         { "series": "B2", "name": "Cable Lateral Raise", "sets": 3, "reps": "15-20", "rest": "-", "rpe": 7, "wt": "20 lbs" },
                         { "series": "B2", "name": "Tricep Rope Pushdown", "sets": 3, "reps": "10-12", "rest": "90 sec", "rpe": 7, "wt": "40 lbs" },
                         { "series": "C-Series", "name": "Straight-Arm Pulldown", "sets": 3, "reps": "12-15", "rest": "-", "rpe": 7, "wt": "60 lbs" },
-                        { "series": "C-Series", "name": "DB Spider Curl", "sets": 3, "reps": "12-15", "rest": "90 sec", "rpe": 7, "wt": "25 lbs" }
+                        { "series": "C-Series", "name": "DB Spider Curl", "sets": 3, "reps": "12-15", "rest": "90 sec", "rpe": 7, "wt": "25 lbs" },
+                        { "series": "D-Series", "name": "Low-to-High Cable Fly", "sets": 2, "reps": "15-20", "rest": "-", "rpe": "-", "wt": "25 lbs" },
+                        { "series": "D-Series", "name": "Overhead Rope Extension", "sets": 2, "reps": "15-20", "rest": "-", "rpe": "-", "wt": "35 lbs" },
+                        { "series": "D-Series", "name": "Face Pull", "sets": 2, "reps": "15-20", "rest": "60 sec", "rpe": "-", "wt": "40 lbs" }
                     ]
                 },
                 {
@@ -70,7 +73,10 @@
                         { "series": "Accessory", "name": "Overhead Rope Extension", "sets": 3, "reps": "12-15", "rest": "60 sec", "rpe": 7, "wt": "40 lbs" },
                         { "series": "Accessory", "name": "Preacher Curl", "sets": 3, "reps": "10-12", "rest": "60 sec", "rpe": 7, "wt": "40 lbs" },
                         { "series": "Accessory", "name": "Bench Dips", "sets": 3, "reps": "15-20", "rest": "60 sec", "rpe": 7, "wt": "BW" },
+                        { "series": "Accessory", "name": "Shoulder Complex", "sets": 3, "reps": "15-20", "rest": "60 sec", "rpe": 7, "wt": "15 lbs" },
                         { "series": "Accessory", "name": "Standing Calf Raise", "sets": 4, "reps": "12-15", "rest": "60 sec", "rpe": 7, "wt": "135 lbs" },
+                        { "series": "Accessory", "name": "Tibialis Raise", "sets": 3, "reps": "15-20", "rest": "60 sec", "rpe": 7, "wt": "BW" },
+                        { "series": "Accessory", "name": "Cable Crunch", "sets": 3, "reps": "12-15", "rest": "60 sec", "rpe": 7, "wt": "50 lbs" },
                         { "series": "Accessory", "name": "Hanging Knee Raise", "sets": 3, "reps": "10-12", "rest": "60 sec", "rpe": 7, "wt": "BW" }
                     ]
                 },
