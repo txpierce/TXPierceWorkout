@@ -1,142 +1,283 @@
-{
-    "1": {
-        "1": {
-            "days": [
-                {
-                    "name": "Day 1: Push",
-                    "exercises": [
-                        { "series": "A-Series", "name": "Overhead Barbell Press", "sets": 5, "reps": "5", "rest": "2-3 min", "rpe": 8, "wt": "90 lbs" },
-                        { "series": "B1", "name": "Flat DB Bench Press", "sets": 3, "reps": "8-10", "rest": "-", "rpe": 8, "wt": "55 lbs" },
-                        { "series": "B1", "name": "Chest-Supported T-Bar Row", "sets": 3, "reps": "12-15", "rest": "90 sec", "rpe": 8, "wt": "45 lbs" },
-                        { "series": "B2", "name": "Seated DB Arnold Press", "sets": 3, "reps": "8-10", "rest": "-", "rpe": 8, "wt": "30 lbs" },
-                        { "series": "B2", "name": "Skull Crushers", "sets": 3, "reps": "6-8", "rest": "90 sec", "rpe": 8, "wt": "80 lbs" },
-                        { "series": "C-Series", "name": "Cable Crossover", "sets": 3, "reps": "12-15", "rest": "-", "rpe": 8, "wt": "30 lbs" },
-                        { "series": "C-Series", "name": "Tricep Extension", "sets": 3, "reps": "12-15", "rest": "90 sec", "rpe": 8, "wt": "80 lbs" },
-                        { "series": "D-Series", "name": "DB Lateral Raise → Push-Up", "sets": 2, "reps": "15-20", "rest": "60 sec", "rpe": "-", "wt": "15 lbs / BW" }
-                    ]
-                },
-                {
-                    "name": "Day 2: Pull",
-                    "exercises": [
-                        { "series": "A-Series", "name": "Pendlay Row", "sets": 4, "reps": "6-8", "rest": "2-3 min", "rpe": 8, "wt": "135 lbs" },
-                        { "series": "B1", "name": "Chin-Up", "sets": 3, "reps": "AMRAP", "rest": "-", "rpe": 8, "wt": "BW" },
-                        { "series": "B1", "name": "Face Pull", "sets": 3, "reps": "12-15", "rest": "90 sec", "rpe": 8, "wt": "40 lbs" },
-                        { "series": "B2", "name": "Seated Cable Row", "sets": 3, "reps": "10-12", "rest": "-", "rpe": 8, "wt": "100 lbs" },
-                        { "series": "B2", "name": "DB Hammer Curl", "sets": 3, "reps": "10-12", "rest": "90 sec", "rpe": 8, "wt": "25 lbs" },
-                        { "series": "C-Series", "name": "Incline DB Y-Raise", "sets": 3, "reps": "12-15", "rest": "-", "rpe": 8, "wt": "15 lbs" },
-                        { "series": "C-Series", "name": "EZ Bar Preacher Curl", "sets": 3, "reps": "12-15", "rest": "90 sec", "rpe": 8, "wt": "40 lbs" },
-                        { "series": "D-Series", "name": "Lat Pulldown → DB Curl", "sets": 2, "reps": "15-20", "rest": "60 sec", "rpe": "-", "wt": "100 lbs / 25 lbs" }
-                    ]
-                },
-                {
-                    "name": "Day 3: Lower Hypertrophy",
-                    "exercises": [
-                        { "series": "A-Series", "name": "Front Squat", "sets": 4, "reps": "6-8", "rest": "2-3 min", "rpe": 8, "wt": "135 lbs" },
-                        { "series": "B1", "name": "Romanian Deadlift", "sets": 3, "reps": "12-15", "rest": "-", "rpe": 8, "wt": "135 lbs" },
-                        { "series": "B1", "name": "DB Walking Lunges", "sets": 3, "reps": "10-12", "rest": "90 sec", "rpe": 8, "wt": "30 lbs" },
-                        { "series": "B2", "name": "Glute Ham Raise", "sets": 3, "reps": "10-12", "rest": "-", "rpe": 8, "wt": "BW" },
-                        { "series": "B2", "name": "Seated Calf Raise", "sets": 3, "reps": "12-15", "rest": "90 sec", "rpe": 8, "wt": "90 lbs" },
-                        { "series": "C-Series", "name": "Leg Extension", "sets": 3, "reps": "15-20", "rest": "-", "rpe": 8, "wt": "50 lbs" },
-                        { "series": "C-Series", "name": "Split Squat ISO Hold", "sets": 3, "reps": "20-30 sec", "rest": "90 sec", "rpe": 8, "wt": "BW" }
-                    ]
-                },
-                {
-                    "name": "Day 4: Recovery / Mobility",
-                    "exercises": [
-                        { "series": "Mobility", "name": "Mobility Circuit & Diaphragmatic Breaths", "sets": 2, "reps": "10 reps each", "rest": "-", "rpe": 3, "wt": "BW" }
-                    ]
-                },
-                {
-                    "name": "Day 5: Upper Pump",
-                    "exercises": [
-                        { "series": "A-Series", "name": "Incline DB Press", "sets": 3, "reps": "10-12", "rest": "90 sec", "rpe": 7, "wt": "60 lbs" },
-                        { "series": "B1", "name": "Machine Chest Press", "sets": 4, "reps": "12-15", "rest": "-", "rpe": 7, "wt": "110 lbs" },
-                        { "series": "B1", "name": "V-Grip Cable Row", "sets": 4, "reps": "12-15", "rest": "90 sec", "rpe": 7, "wt": "110 lbs" }
-                    ]
-                },
-                {
-                    "name": "Day 6: Arms / Calves / Abs",
-                    "exercises": [
-                        { "series": "Accessory", "name": "Cable Curl", "sets": 3, "reps": "12-15", "rest": "60 sec", "rpe": 7, "wt": "40 lbs" },
-                        { "series": "Accessory", "name": "Overhead Rope Extension", "sets": 3, "reps": "12-15", "rest": "60 sec", "rpe": 7, "wt": "40 lbs" },
-                        { "series": "Accessory", "name": "Preacher Curl", "sets": 3, "reps": "10-12", "rest": "60 sec", "rpe": 7, "wt": "40 lbs" },
-                        { "series": "Accessory", "name": "Bench Dips", "sets": 3, "reps": "15-20", "rest": "60 sec", "rpe": 7, "wt": "BW" },
-                        { "series": "Accessory", "name": "Standing Calf Raise", "sets": 4, "reps": "12-15", "rest": "60 sec", "rpe": 7, "wt": "135 lbs" },
-                        { "series": "Accessory", "name": "Shoulder Complex", "sets": 3, "reps": "15-20", "rest": "60 sec", "rpe": 7, "wt": "BW" },
-                        { "series": "Accessory", "name": "Cable Crunch", "sets": 3, "reps": "12-15", "rest": "60 sec", "rpe": 7, "wt": "50 lbs" },
-                        { "series": "Accessory", "name": "Hanging Knee Raise", "sets": 3, "reps": "10-12", "rest": "60 sec", "rpe": 7, "wt": "BW" }
-                    ]
-                },
-                {
-                    "name": "Day 7: Off / Recovery",
-                    "exercises": [
-                        { "series": "Recovery", "name": "Outdoor Walk & Hydration", "sets": 1, "reps": "20-30 min", "rest": "-", "rpe": 2, "wt": "BW" }
-                    ]
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TX Pierce Workout & Research Tracker</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        input[type="checkbox"] { accent-color: #f59e0b; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen pb-12">
+
+    <!-- HEADER -->
+    <header class="bg-slate-900 border-b border-slate-800 sticky top-0 z-50 shadow-lg">
+        <div class="max-w-4xl mx-auto px-4 py-2.5 flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+                <span class="text-xl">🦁</span>
+                <div>
+                    <h1 class="font-extrabold text-base text-amber-500 tracking-tight leading-none">TX PIERCE APP</h1>
+                    <p class="text-[10px] text-slate-400">12-Week Architecture & Peptide Protocol</p>
+                </div>
+            </div>
+            <button onclick="resetData()" class="text-[11px] bg-slate-800 hover:bg-red-950 text-slate-300 hover:text-red-300 px-2.5 py-1 rounded-lg border border-slate-700 transition">Reset Data</button>
+        </div>
+
+        <!-- NAVIGATION TABS -->
+        <nav class="flex overflow-x-auto px-4 space-x-2 border-t border-slate-800/80 bg-slate-950/50 py-1.5 no-scrollbar">
+            <button onclick="switchTab('workouts')" id="btn-workouts" class="tab-btn px-3.5 py-1.5 rounded-xl text-xs font-bold transition whitespace-nowrap bg-amber-500 text-slate-950 shadow-md">Workout Logs</button>
+            <button onclick="switchTab('peptides')" id="btn-peptides" class="tab-btn px-3.5 py-1.5 rounded-xl text-xs font-bold transition whitespace-nowrap bg-slate-900 text-slate-400 hover:text-white border border-slate-800">Peptide Tracker</button>
+            <button onclick="switchTab('nutrition')" id="btn-nutrition" class="tab-btn px-3.5 py-1.5 rounded-xl text-xs font-bold transition whitespace-nowrap bg-slate-900 text-slate-400 hover:text-white border border-slate-800">Nutrition & Grocery</button>
+        </nav>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 py-4 space-y-4">
+
+        <!-- ================= WORKOUTS TAB ================= -->
+        <div id="tab-workouts" class="tab-content active space-y-4">
+            
+            <!-- PHASE, WEEK & DAY SELECTOR -->
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-3 shadow-xl">
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    <div>
+                        <label class="block text-[11px] font-bold text-amber-400 uppercase tracking-wider mb-1">Select Phase</label>
+                        <select id="phaseSelect" onchange="changePhase()" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-1.5 text-xs font-semibold text-slate-200 focus:outline-none focus:border-amber-500">
+                            <option value="1">Phase 1: Base Phase (Weeks 1-4)</option>
+                            <option value="2">Phase 2: Structural Shift (Weeks 5-8)</option>
+                            <option value="3">Phase 3: Peak Hypertrophy (Weeks 9-12)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-bold text-amber-400 uppercase tracking-wider mb-1">Select Week</label>
+                        <select id="weekSelect" onchange="changeWeek()" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-1.5 text-xs font-semibold text-slate-200 focus:outline-none focus:border-amber-500">
+                            <!-- Dynamically populated -->
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-bold text-amber-400 uppercase tracking-wider mb-1">Select Day</label>
+                        <select id="daySelect" onchange="changeDay()" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-1.5 text-xs font-semibold text-slate-200 focus:outline-none focus:border-amber-500">
+                            <!-- Dynamically populated -->
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ACTIVE WORKOUT CARD -->
+            <div id="workoutCardContainer" class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-2xl space-y-3">
+                <p class="text-xs text-slate-400 text-center py-4">Loading workout architecture...</p>
+            </div>
+
+            <!-- SESSION REVIEW NOTES -->
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-xl space-y-2">
+                <div class="flex items-center space-x-2">
+                    <span class="text-amber-500 text-base">📝</span>
+                    <h2 class="font-bold text-slate-100 text-xs tracking-wide">Session Review Notes</h2>
+                </div>
+                <p class="text-[11px] text-slate-400">Log your joint feedback, pump quality, weight increments, or notes for your session review...</p>
+                <textarea id="sundayNotes" oninput="saveNotes()" rows="2" placeholder="Write your session review notes here..." class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-xs text-slate-200 focus:outline-none focus:border-amber-500"></textarea>
+            </div>
+        </div>
+
+        <!-- ================= PEPTIDES TAB ================= -->
+        <div id="tab-peptides" class="tab-content space-y-4">
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-xl">
+                <div class="flex items-center space-x-2 mb-1">
+                    <span class="text-amber-500 text-lg">🧪</span>
+                    <h2 class="font-extrabold text-slate-100 text-sm">Peptide Reconstitution & Dosing Calculator</h2>
+                </div>
+                <p class="text-[11px] text-slate-400">Calculate precise BAC water dilution ratios, concentrations, and syringe draw measurements.</p>
+            </div>
+        </div>
+
+        <!-- ================= NUTRITION TAB ================= -->
+        <div id="tab-nutrition" class="tab-content space-y-4">
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-xl">
+                <div class="flex items-center space-x-2 mb-1">
+                    <span class="text-amber-500 text-lg">🥩</span>
+                    <h2 class="font-extrabold text-slate-100 text-sm">Nutrition & Macro Architecture</h2>
+                </div>
+                <p class="text-[11px] text-slate-400">Targeting ~2,800 Calories daily (200g Protein, 315g Carbohydrates, 80g Fat).</p>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        let workoutsData = {};
+        let currentPhase = 1;
+        let currentWeek = 1;
+        let activeDayIndex = 0;
+
+        // Fetch external workouts.json file on page load
+        async function loadWorkoutData() {
+            try {
+                const response = await fetch('workouts.json');
+                if (!response.ok) throw new Error("Failed to load workouts.json");
+                workoutsData = await response.json();
+                loadSavedState();
+                changePhase();
+            } catch (error) {
+                console.error("Error:", error);
+                document.getElementById('workoutCardContainer').innerHTML = `<p class="text-red-400 text-xs text-center py-4">Error loading workouts.json. Make sure it is in your repository root.</p>`;
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            loadWorkoutData();
+        });
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(el => {
+                el.classList.remove('bg-amber-500', 'text-slate-950', 'shadow-md');
+                el.classList.add('bg-slate-900', 'text-slate-400', 'border', 'border-slate-800');
+            });
+            document.getElementById('tab-' + tabId).classList.add('active');
+            const activeBtn = document.getElementById('btn-' + tabId);
+            activeBtn.classList.remove('bg-slate-900', 'text-slate-400', 'border', 'border-slate-800');
+            activeBtn.classList.add('bg-amber-500', 'text-slate-950', 'shadow-md');
+        }
+
+        function changePhase() {
+            currentPhase = parseInt(document.getElementById('phaseSelect').value);
+            const weekSelect = document.getElementById('weekSelect');
+            weekSelect.innerHTML = '';
+            let startWeek = (currentPhase - 1) * 4 + 1;
+            for (let w = startWeek; w < startWeek + 4; w++) {
+                let opt = document.createElement('option');
+                opt.value = w;
+                opt.textContent = `Week ${w}: ` + (w%4 === 1 ? 'Baseline/Shift' : w%4 === 2 ? 'Progression/Volume' : w%4 === 3 ? 'Complexity/Density' : 'Peak/Deload');
+                weekSelect.appendChild(opt);
+            }
+            currentWeek = startWeek;
+            activeDayIndex = 0;
+            renderWorkouts();
+            saveState();
+        }
+
+        function changeWeek() {
+            currentWeek = parseInt(document.getElementById('weekSelect').value);
+            activeDayIndex = 0;
+            renderWorkouts();
+            saveState();
+        }
+
+        function changeDay() {
+            activeDayIndex = parseInt(document.getElementById('daySelect').value);
+            renderWorkouts();
+        }
+
+        function renderWorkouts() {
+            if (!workoutsData[currentPhase] || !workoutsData[currentPhase][currentWeek]) return;
+            
+            const weekObj = workoutsData[currentPhase][currentWeek];
+            const days = weekObj.days;
+            if (activeDayIndex >= days.length) activeDayIndex = 0;
+
+            const daySelect = document.getElementById('daySelect');
+            daySelect.innerHTML = '';
+            days.forEach((day, idx) => {
+                let opt = document.createElement('option');
+                opt.value = idx;
+                opt.textContent = day.name;
+                if (idx === activeDayIndex) opt.selected = true;
+                daySelect.appendChild(opt);
+            });
+
+            const activeDay = days[activeDayIndex];
+            const container = document.getElementById('workoutCardContainer');
+            
+            let html = `
+                <div class="flex items-center justify-between mb-2 border-b border-slate-800 pb-2">
+                    <div>
+                        <span class="text-[10px] text-amber-400 font-bold uppercase tracking-wider">Phase ${currentPhase} • Week ${currentWeek}</span>
+                        <h2 class="font-extrabold text-sm text-slate-100 mt-0.5">${activeDay.name}</h2>
+                    </div>
+                </div>
+                <div class="space-y-2.5">
+            `;
+
+            activeDay.exercises.forEach((ex, exIdx) => {
+                const totalSets = parseInt(ex.sets) || 1;
+                let checkboxesHtml = `<div class="flex items-center flex-wrap gap-1 mt-1">`;
+                for (let s = 1; s <= totalSets; s++) {
+                    const storageKey = `w_${currentWeek}_d_${activeDayIndex}_ex_${exIdx}_set_${s}`;
+                    const isChecked = localStorage.getItem(storageKey) === 'true';
+                    checkboxesHtml += `
+                        <label class="flex items-center space-x-1 bg-slate-950 px-2 py-1 rounded-lg border border-slate-800 cursor-pointer text-[10px] text-slate-300">
+                            <span class="font-bold text-amber-400">S${s}</span>
+                            <input type="checkbox" ${isChecked ? 'checked' : ''} onchange="toggleSet('${storageKey}', this.checked)" class="w-4 h-4 rounded cursor-pointer">
+                        </label>
+                    `;
                 }
-            ]
-        },
-        "2": {
-            "days": [
-                {
-                    "name": "Day 1: Push",
-                    "exercises": [
-                        { "series": "A-Series", "name": "Overhead Barbell Press", "sets": 5, "reps": "6", "rest": "2-3 min", "rpe": 8, "wt": "95 lbs" },
-                        { "series": "B1", "name": "Close-Grip Press", "sets": 4, "reps": "8-10", "rest": "-", "rpe": 8, "wt": "135 lbs" },
-                        { "series": "B1", "name": "High-Row", "sets": 4, "reps": "12-15", "rest": "90 sec", "rpe": 8, "wt": "50 lbs" },
-                        { "series": "B2", "name": "Seated DB Arnold Press", "sets": 4, "reps": "8-10", "rest": "-", "rpe": 8, "wt": "30 lbs" },
-                        { "series": "B2", "name": "Skull Crushers", "sets": 4, "reps": "6-8", "rest": "90 sec", "rpe": 8, "wt": "40 lbs" },
-                        { "series": "C-Series", "name": "High-to-Low Fly", "sets": 3, "reps": "12-15", "rest": "-", "rpe": 8, "wt": "30 lbs" },
-                        { "series": "C-Series", "name": "Rope Overhead", "sets": 3, "reps": "12-15", "rest": "90 sec", "rpe": 8, "wt": "35 lbs" }
-                    ]
-                },
-                {
-                    "name": "Day 2: Pull",
-                    "exercises": [
-                        { "series": "A-Series", "name": "Pendlay Row", "sets": 4, "reps": "6-8", "rest": "2-3 min", "rpe": 8, "wt": "135 lbs" },
-                        { "series": "B1", "name": "Chin-Up", "sets": 4, "reps": "AMRAP", "rest": "-", "rpe": 8, "wt": "BW" },
-                        { "series": "B1", "name": "Face Pull", "sets": 4, "reps": "12-15", "rest": "90 sec", "rpe": 8, "wt": "40 lbs" },
-                        { "series": "B2", "name": "Seated Cable Row", "sets": 4, "reps": "10-12", "rest": "-", "rpe": 8, "wt": "100 lbs" },
-                        { "series": "B2", "name": "DB Hammer Curl", "sets": 4, "reps": "10-12", "rest": "90 sec", "rpe": 8, "wt": "25 lbs" }
-                    ]
-                },
-                {
-                    "name": "Day 3: Lower",
-                    "exercises": [
-                        { "series": "A-Series", "name": "Front Squat", "sets": 4, "reps": "6-8", "rest": "2-3 min", "rpe": 8, "wt": "135 lbs" },
-                        { "series": "B1", "name": "Romanian Deadlift", "sets": 4, "reps": "12-15", "rest": "-", "rpe": 8, "wt": "135 lbs" },
-                        { "series": "B1", "name": "DB Walking Lunges", "sets": 4, "reps": "10-12", "rest": "90 sec", "rpe": 8, "wt": "30 lbs" },
-                        { "series": "B2", "name": "Glute Ham Raise", "sets": 4, "reps": "10-12", "rest": "-", "rpe": 8, "wt": "BW" }
-                    ]
-                },
-                {
-                    "name": "Day 4: Recovery / Mobility",
-                    "exercises": [
-                        { "series": "Mobility", "name": "Mobility Circuit & Diaphragmatic Breaths", "sets": 2, "reps": "10 reps each", "rest": "-", "rpe": 3, "wt": "BW" }
-                    ]
-                },
-                {
-                    "name": "Day 5: Upper Pump",
-                    "exercises": [
-                        { "series": "A-Series", "Name": "Incline DB Press", "sets": 3, "reps": "10-12", "rest": "90 sec", "rpe": 7, "wt": "60 lbs" },
-                        { "series": "B1", "name": "Machine Chest Press", "sets": 4, "reps": "12-15", "rest": "-", "rpe": 7, "wt": "110 lbs" },
-                        { "series": "B1", "name": "V-Grip Cable Row", "sets": 4, "reps": "12-15", "rest": "90 sec", "rpe": 7, "wt": "110 lbs" }
-                    ]
-                },
-                {
-                    "name": "Day 6: Arms / Calves / Abs",
-                    "exercises": [
-                        { "series": "Accessory", "name": "Cable Curl", "sets": 3, "reps": "12-15", "rest": "60 sec", "rpe": 7, "wt": "40 lbs" }
-                    ]
-                },
-                {
-                    "name": "Day 7: Off / Recovery",
-                    "exercises": [
-                        { "series": "Recovery", "name": "Outdoor Walk", "sets": 1, "reps": "20 min", "rest": "-", "rpe": 2, "wt": "BW" }
-                    ]
-                }
-            ]
-        },
-        "3": { "days": [] },
-        "4": { "days": [] }
-    }
-}
+                checkboxesHtml += `</div>`;
+
+                html += `
+                    <div class="bg-slate-950/80 border border-slate-800/80 rounded-xl p-3 space-y-1.5">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[10px] font-extrabold text-amber-400 uppercase bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20">${ex.series}</span>
+                            <span class="text-[11px] text-slate-400 font-semibold">Wt: <strong class="text-slate-200">${ex.wt}</strong></span>
+                        </div>
+                        <div class="font-bold text-slate-100 text-xs">${ex.name}</div>
+                        <div class="flex items-center justify-between text-[11px] text-slate-400 pt-0.5">
+                            <span>Sets: <strong>${ex.sets}</strong> | Reps: <strong>${ex.reps}</strong></span>
+                            <span>Rest: <strong>${ex.rest}</strong> | RPE: <strong>${ex.rpe}</strong></span>
+                        </div>
+                        <div class="pt-1 border-t border-slate-900">
+                            <div class="text-[10px] text-slate-500 font-bold uppercase tracking-wider mb-1">Set Tracking</div>
+                            ${checkboxesHtml}
+                        </div>
+                    </div>
+                `;
+            });
+
+            html += `</div>`;
+            container.innerHTML = html;
+        }
+
+        function toggleSet(key, val) {
+            localStorage.setItem(key, val);
+        }
+
+        function saveNotes() {
+            localStorage.setItem('tx_sunday_notes', document.getElementById('sundayNotes').value);
+        }
+
+        function saveState() {
+            localStorage.setItem('tx_phase', currentPhase);
+            localStorage.setItem('tx_week', currentWeek);
+        }
+
+        function loadSavedState() {
+            const savedPhase = localStorage.getItem('tx_phase');
+            const savedWeek = localStorage.getItem('tx_week');
+            const savedNotes = localStorage.getItem('tx_sunday_notes');
+
+            if (savedPhase) {
+                currentPhase = parseInt(savedPhase);
+                document.getElementById('phaseSelect').value = currentPhase;
+            }
+            if (savedWeek) {
+                currentWeek = parseInt(savedWeek);
+            }
+            if (savedNotes) {
+                document.getElementById('sundayNotes').value = savedNotes;
+            }
+        }
+
+        function resetData() {
+            if (confirm('Are you sure you want to reset all workout set checkmarks and saved notes?')) {
+                localStorage.clear();
+                location.reload();
+            }
+        }
+    </script>
+</body>
+</html>
