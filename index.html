@@ -59,18 +59,18 @@
                 <span class="text-[9px] font-extrabold uppercase text-amber-500 bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20">LIVE PROTOCOL</span>
             </div>
 
-            <!-- 1. RESUME LAST WORKOUT QUICK-LAUNCH BANNER -->
+            <!-- RESUME / NEXT WORKOUT QUICK-LAUNCH BANNER -->
             <div id="resumeBanner" class="hidden bg-slate-950 border border-amber-500/40 rounded-2xl p-3.5 shadow-xl flex items-center justify-between">
                 <div>
-                    <span class="text-[9px] font-extrabold uppercase bg-amber-500/10 text-amber-400 px-2 py-0.5 rounded border border-amber-500/20">Quick Launch</span>
+                    <span id="resumeStatusTag" class="text-[9px] font-extrabold uppercase bg-amber-500/10 text-amber-400 px-2 py-0.5 rounded border border-amber-500/20">Quick Launch</span>
                     <h4 id="resumeText" class="font-bold text-xs text-slate-100 mt-1">Phase 1 • Week 1 • Day 1</h4>
                 </div>
-                <button onclick="jumpToLastWorkout()" class="bg-amber-500 hover:bg-amber-600 text-slate-950 px-3.5 py-2 rounded-xl font-extrabold text-xs shadow-md transition flex items-center gap-1">
+                <button id="resumeBtn" onclick="jumpToLastWorkout()" class="bg-amber-500 hover:bg-amber-600 text-slate-950 px-3.5 py-2 rounded-xl font-extrabold text-xs shadow-md transition flex items-center gap-1">
                     ⚡ Resume Lift
                 </button>
             </div>
 
-            <!-- 4. DELOAD & JOINT PROTECTION SHIELD (ACTIVE ON WEEKS 4, 8, 12) -->
+            <!-- DELOAD & JOINT PROTECTION SHIELD (ACTIVE ON WEEKS 4, 8, 12) -->
             <div id="deloadShield" class="hidden bg-gradient-to-r from-amber-950/80 via-slate-900 to-slate-950 border border-amber-500/60 rounded-2xl p-3.5 shadow-xl flex items-center gap-3">
                 <span class="text-2xl">🛡️</span>
                 <div>
@@ -79,7 +79,7 @@
                 </div>
             </div>
 
-            <!-- HERO WELCOME CARD -->
+            <!-- HERO WELCOME CARD (GO TO LIFTS BUTTON REMOVED) -->
             <div class="bg-gradient-to-r from-slate-900 via-slate-900 to-slate-950 border border-slate-800 rounded-2xl p-4 shadow-xl space-y-3">
                 <div class="flex items-center justify-between">
                     <div>
@@ -87,9 +87,6 @@
                         <h2 class="font-extrabold text-base text-slate-100 mt-1">Welcome Back, TX Pierce</h2>
                         <p class="text-[11px] text-slate-400">12-Week Metabolic Hypertrophy Blueprint</p>
                     </div>
-                    <button onclick="switchTab('workouts')" class="bg-amber-500 hover:bg-amber-600 text-slate-950 px-3.5 py-2 rounded-xl font-extrabold text-xs shadow-md transition flex items-center gap-1">
-                        🏋️ Go to Lifts
-                    </button>
                 </div>
             </div>
 
@@ -112,7 +109,7 @@
                 </div>
             </div>
 
-            <!-- LIVE PROTOCOL CARDS: 2. FUELING CLOCK & 3. TODAY'S PEPTIDE DOSE -->
+            <!-- LIVE PROTOCOL CARDS: FUELING CLOCK & TODAY'S PEPTIDE DOSE -->
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <!-- DYNAMIC PERI-WORKOUT FUELING CLOCK -->
                 <div class="bg-slate-900 border border-slate-800 rounded-2xl p-3.5 shadow-lg flex items-center justify-between">
@@ -135,7 +132,7 @@
                 </div>
             </div>
 
-            <!-- SQUEEZED 12-WEEK VOLUME MATRIX (ALL 12 WEEKS FIT ON MOBILE SCREEN) -->
+            <!-- 12-WEEK VOLUME MATRIX -->
             <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-xl space-y-3">
                 <div class="flex items-center justify-between border-b border-slate-800 pb-2">
                     <h3 class="font-bold text-xs text-slate-100 flex items-center gap-1.5">
@@ -369,7 +366,7 @@
             updateFuelingClock();
             updateTodayPeptideCard();
             
-            setInterval(updateFuelingClock, 60000); // Check fueling clock every minute
+            setInterval(updateFuelingClock, 60000);
 
             const filesToTry = ['program_data-v3.json', 'program_data-v2.json', 'program_data.json'];
             let loaded = false;
@@ -418,23 +415,23 @@
             let detail = "50g Protein | 70g Carbs | 25g Fat";
             let time = "7:00 PM";
 
-            if (mins < 255) { // Before 4:15 AM
+            if (mins < 255) {
                 name = "Pre-Workout Fuel";
                 detail = "10g Protein | 30g Carbs (Banana + Whey)";
                 time = "4:15 AM";
-            } else if (mins < 390) { // Before 6:30 AM
+            } else if (mins < 390) {
                 name = "Anabolic Breakfast";
                 detail = "40g Protein | 75g Carbs | 15g Fat";
                 time = "6:30 AM";
-            } else if (mins < 720) { // Before 12:00 PM
+            } else if (mins < 720) {
                 name = "High-Protein Lunch";
                 detail = "45g Protein | 75g Carbs | 20g Fat";
                 time = "12:00 PM";
-            } else if (mins < 930) { // Before 3:30 PM
+            } else if (mins < 930) {
                 name = "Mid-Day Fuel / Snack";
                 detail = "25g Protein | 40g Carbs";
                 time = "3:30 PM";
-            } else if (mins < 1140) { // Before 7:00 PM
+            } else if (mins < 1140) {
                 name = "Anabolic Dinner";
                 detail = "50g Protein | 70g Carbs | 25g Fat";
                 time = "7:00 PM";
@@ -587,7 +584,7 @@
                     checksHtml += `
                         <div class="flex items-center space-x-1.5 bg-slate-950 px-2.5 py-1 rounded-lg border border-slate-800 text-[10px]">
                             <span class="font-bold text-amber-400">S${s}</span>
-                            <input type="checkbox" ${checked ? 'checked' : ''} onchange="localStorage.setItem('${checkKey}', this.checked); updateDashboardMetrics();">
+                            <input type="checkbox" ${checked ? 'checked' : ''} onchange="localStorage.setItem('${checkKey}', this.checked); updateDashboardMetrics(); checkResumeBanner();">
                             <input type="number" placeholder="lbs" value="${savedWeight}" oninput="localStorage.setItem('${weightKey}', this.value)" class="w-12 bg-slate-900 border border-slate-700 rounded text-center text-amber-300 font-bold focus:outline-none focus:border-amber-500 py-0.5 text-[10px]">
                         </div>
                     `;
@@ -615,32 +612,116 @@
             updateDashboardMetrics();
         }
 
+        // SMART QUICK LAUNCH ADVANCEMENT LOGIC
+        function getActiveOrNextWorkout() {
+            if (!PROGRAM_DATA || Object.keys(PROGRAM_DATA).length === 0) return null;
+
+            let phases = Object.keys(PROGRAM_DATA);
+            let p = localStorage.getItem('tx_last_phase') || phases[0];
+            if (!PROGRAM_DATA[p]) p = phases[0];
+
+            let weeks = Object.keys(PROGRAM_DATA[p] || {});
+            let w = localStorage.getItem('tx_last_week') || weeks[0];
+            if (!PROGRAM_DATA[p]?.[w]) w = weeks[0];
+
+            let days = Object.keys(PROGRAM_DATA[p]?.[w] || {});
+            let d = localStorage.getItem('tx_last_day') || days[0];
+            if (!PROGRAM_DATA[p]?.[w]?.[d]) d = days[0];
+
+            // Calculate if current day is 100% completed
+            const exercises = PROGRAM_DATA[p]?.[w]?.[d] || [];
+            let totalSets = 0;
+            let checkedSets = 0;
+
+            exercises.forEach((ex, exIdx) => {
+                const sets = parseInt(ex.Sets) || 1;
+                totalSets += sets;
+                for (let s = 1; s <= sets; s++) {
+                    const checkKey = `${p}_${w}_${d}_${exIdx}_s${s}`;
+                    if (localStorage.getItem(checkKey) === 'true') checkedSets++;
+                }
+            });
+
+            // If ALL sets completed, automatically calculate the NEXT workout day
+            if (totalSets > 0 && checkedSets === totalSets) {
+                let nextP = p, nextW = w, nextD = d;
+                let dayIdx = days.indexOf(d);
+
+                if (dayIdx >= 0 && dayIdx < days.length - 1) {
+                    nextD = days[dayIdx + 1];
+                } else {
+                    let weekIdx = weeks.indexOf(w);
+                    if (weekIdx >= 0 && weekIdx < weeks.length - 1) {
+                        nextW = weeks[weekIdx + 1];
+                        let nextDays = Object.keys(PROGRAM_DATA[p]?.[nextW] || {});
+                        nextD = nextDays[0] || d;
+                    } else {
+                        let phaseIdx = phases.indexOf(p);
+                        if (phaseIdx >= 0 && phaseIdx < phases.length - 1) {
+                            nextP = phases[phaseIdx + 1];
+                            let nextWeeks = Object.keys(PROGRAM_DATA[nextP] || {});
+                            nextW = nextWeeks[0] || w;
+                            let nextDays = Object.keys(PROGRAM_DATA[nextP]?.[nextW] || {});
+                            nextD = nextDays[0] || d;
+                        }
+                    }
+                }
+                return { phase: nextP, week: nextW, day: nextD, isNext: true };
+            }
+
+            return { phase: p, week: w, day: d, isNext: false };
+        }
+
         function checkResumeBanner() {
-            const p = localStorage.getItem('tx_last_phase');
-            const w = localStorage.getItem('tx_last_week');
-            const d = localStorage.getItem('tx_last_day');
-
+            const activeObj = getActiveOrNextWorkout();
             const banner = document.getElementById('resumeBanner');
+            const tag = document.getElementById('resumeStatusTag');
             const text = document.getElementById('resumeText');
+            const btn = document.getElementById('resumeBtn');
 
-            if (p && w && d && banner && text) {
-                const shortP = p.split(':')[0] || p;
-                text.textContent = `${shortP} • ${w} • ${d}`;
+            if (activeObj && banner && text) {
+                const shortP = activeObj.phase.split(':') || activeObj.phase;
+                if (activeObj.isNext) {
+                    if (tag) tag.textContent = "Next Workout Up";
+                    text.textContent = `${shortP} • ${activeObj.week} • ${activeObj.day}`;
+                    if (btn) btn.innerHTML = '⚡ Start Next Lift';
+                } else {
+                    if (tag) tag.textContent = "In Progress";
+                    text.textContent = `${shortP} • ${activeObj.week} • ${activeObj.day}`;
+                    if (btn) btn.innerHTML = '⚡ Resume Lift';
+                }
                 banner.classList.remove('hidden');
             }
         }
 
         function jumpToLastWorkout() {
+            const activeObj = getActiveOrNextWorkout();
+            if (activeObj) {
+                const pSel = document.getElementById('phaseSelect');
+                if (pSel && PROGRAM_DATA[activeObj.phase]) {
+                    pSel.value = activeObj.phase;
+                    onPhaseChange();
+                }
+                const wSel = document.getElementById('weekSelect');
+                if (wSel && PROGRAM_DATA[activeObj.phase]?.[activeObj.week]) {
+                    wSel.value = activeObj.week;
+                    onWeekChange();
+                }
+                const dSel = document.getElementById('daySelect');
+                if (dSel && PROGRAM_DATA[activeObj.phase]?.[activeObj.week]?.[activeObj.day]) {
+                    dSel.value = activeObj.day;
+                    renderWorkout();
+                }
+            }
             switchTab('workouts');
         }
 
         function updateDashboardMetrics() {
             if (!PROGRAM_DATA || Object.keys(PROGRAM_DATA).length === 0) return;
             
-            if (!currentPhase) currentPhase = Object.keys(PROGRAM_DATA)[0];
-            if (!currentWeek && PROGRAM_DATA[currentPhase]) currentWeek = Object.keys(PROGRAM_DATA[currentPhase])[0];
+            if (!currentPhase) currentPhase = Object.keys(PROGRAM_DATA);
+            if (!currentWeek && PROGRAM_DATA[currentPhase]) currentWeek = Object.keys(PROGRAM_DATA[currentPhase]);
 
-            // 4. Check for Deload Week (Weeks 4, 8, 12)
             const deloadShield = document.getElementById('deloadShield');
             if (deloadShield) {
                 if (currentWeek.includes('Week 4') || currentWeek.includes('Week 8') || currentWeek.includes('Week 12')) {
@@ -678,12 +759,13 @@
             if (dashPhasePct) dashPhasePct.textContent = `${phasePct}% Completed`;
             
             const dashActivePhase = document.getElementById('dashActivePhase');
-            if (dashActivePhase) dashActivePhase.textContent = currentPhase.split(':')[0] || currentPhase;
+            if (dashActivePhase) dashActivePhase.textContent = currentPhase.split(':') || currentPhase;
             
             const dashActiveWeek = document.getElementById('dashActiveWeek');
             if (dashActiveWeek) dashActiveWeek.textContent = currentWeek;
 
             renderWeeklyVolumeChart();
+            checkResumeBanner();
         }
 
         function renderWeeklyVolumeChart() {
@@ -714,7 +796,7 @@
                     if (wTotal > maxSetsInAnyWeek) maxSetsInAnyWeek = wTotal;
                     
                     const match = weekKey.match(/\d+/);
-                    const wNum = match ? match[0] : weekCounter;
+                    const wNum = match ? match : weekCounter;
                     const shortLabel = `W${wNum}`;
                     weekCounter++;
 
@@ -783,7 +865,7 @@
             const pct = totalSets > 0 ? Math.round((checkedSets / totalSets) * 100) : 0;
 
             document.getElementById('badgeTitle').textContent = currentDay;
-            document.getElementById('badgeSub').textContent = `${currentPhase.split(':')[0]} • ${currentWeek}`;
+            document.getElementById('badgeSub').textContent = `${currentPhase.split(':')} • ${currentWeek}`;
             document.getElementById('badgeSetsDone').textContent = `${checkedSets} / ${totalSets}`;
             document.getElementById('badgePercent').textContent = `${pct}%`;
             document.getElementById('badgeExerciseList').innerHTML = listHtml;
