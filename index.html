@@ -71,7 +71,7 @@
 
             <!-- ACTIVE WORKOUT CARD -->
             <div id="workoutCardContainer" class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-2xl space-y-3">
-                <div class="text-center py-6 text-xs text-slate-400">Loading workouts.json...</div>
+                <!-- Dynamically loaded card stack -->
             </div>
 
             <!-- SESSION REVIEW NOTES -->
@@ -120,6 +120,9 @@
                         <span id="reta_draw" class="text-sm font-extrabold text-amber-400 mt-0.5">5.0 units</span>
                     </div>
                 </div>
+                <p class="text-[11px] text-slate-400 bg-slate-950/60 p-2.5 rounded-xl border border-slate-800/50">
+                    💡 <strong>Reference:</strong> 5.0 u = 250 mcg (0.25 mg) | 10.0 u = 500 mcg (0.5 mg) — <span class="text-slate-300">Schedule: Monday Mornings (1x / week)</span>
+                </p>
             </div>
 
             <!-- BPC-157 / TB-500 -->
@@ -147,6 +150,9 @@
                         <span id="bpc_draw" class="text-sm font-extrabold text-amber-400 mt-0.5">10.0 units</span>
                     </div>
                 </div>
+                <p class="text-[11px] text-slate-400 bg-slate-950/60 p-2.5 rounded-xl border border-slate-800/50">
+                    💡 <strong>Reference:</strong> 1:1 Ratio (5mg BPC + 5mg TB). 10 units = 500 mcg total blend — <span class="text-slate-300">Schedule: Daily (7 days / week)</span>
+                </p>
             </div>
 
             <!-- CJC w/o DAC -->
@@ -174,6 +180,9 @@
                         <span id="cjc_draw" class="text-sm font-extrabold text-amber-400 mt-0.5">2u (100mcg) / 4u (200mcg)</span>
                     </div>
                 </div>
+                <p class="text-[11px] text-slate-400 bg-slate-950/60 p-2.5 rounded-xl border border-slate-800/50">
+                    💡 <strong>Reference:</strong> 2 units = 100 mcg | 4 units = 200 mcg (at 2 mL BAC) — <span class="text-slate-300">Schedule: Weeknights (Mon–Fri) before bed</span>
+                </p>
             </div>
 
             <!-- PEPTIDE MATRIX -->
@@ -207,31 +216,80 @@
                 </div>
                 <p class="text-[11px] text-slate-400">Targeting ~2,800 Calories daily (200g Protein, 315g Carbohydrates, 80g Fat) optimized for heavy lifting and early morning fueling.</p>
             </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-xl space-y-1.5">
+                    <h3 class="font-extrabold text-amber-400 text-xs">1. Pre-Workout (4:15 AM)</h3>
+                    <p class="text-[11px] text-slate-300">10g Protein | 30g Carbs (~170 kcal)</p>
+                    <p class="text-[11px] text-slate-400">Banana (1 medium) + ½ scoop Whey Protein powder.</p>
+                </div>
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-xl space-y-1.5">
+                    <h3 class="font-extrabold text-amber-400 text-xs">2. Post-Workout Breakfast (6:30 AM)</h3>
+                    <p class="text-[11px] text-slate-300">40g Protein | 75g Carbs | 15g Fat (~600 kcal)</p>
+                    <p class="text-[11px] text-slate-400">2 whole eggs + ¾ cup egg whites, 1 cup dry rolled oats, ½ cup berries.</p>
+                </div>
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-xl space-y-1.5">
+                    <h3 class="font-extrabold text-amber-400 text-xs">3. Lunch (12:00 PM)</h3>
+                    <p class="text-[11px] text-slate-300">45g Protein | 75g Carbs | 20g Fat (~660 kcal)</p>
+                    <p class="text-[11px] text-slate-400">5.0 oz cooked chicken breast, 1.75 cups cooked Jasmine rice, ½ medium avocado.</p>
+                </div>
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-xl space-y-1.5">
+                    <h3 class="font-extrabold text-amber-400 text-xs">4. Afternoon Snack (3:30 PM)</h3>
+                    <p class="text-[11px] text-slate-300">35g Protein | 40g Carbs | 15g Fat (~435 kcal)</p>
+                    <p class="text-[11px] text-slate-400">1.25 cups Non-Fat Greek Yogurt, 18-20 almonds, 1.5 cups mixed berries.</p>
+                </div>
+            </div>
+
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-xl space-y-3">
+                <div class="flex items-center space-x-2 border-b border-slate-800 pb-2">
+                    <span class="text-amber-500 text-lg">🛒</span>
+                    <h2 class="font-extrabold text-slate-100 text-xs">Master Grocery List</h2>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-slate-300">
+                    <div class="bg-slate-950 p-3.5 rounded-xl border border-slate-800/80 space-y-1.5">
+                        <h4 class="font-bold text-amber-400 text-xs">🥩 Poultry, Meat & Eggs</h4>
+                        <ul class="space-y-1 text-slate-400 list-disc list-inside text-[11px]">
+                            <li><strong>Chicken Breast:</strong> 3 lbs raw</li>
+                            <li><strong>Top Sirloin / Steak:</strong> 3.5–4 lbs raw</li>
+                            <li><strong>Whole Eggs:</strong> 1 carton (18-count)</li>
+                            <li><strong>Liquid Egg Whites:</strong> 3 cartons (16 oz)</li>
+                            <li><strong>Whey Protein Powder:</strong> 1 tub (2 lb)</li>
+                        </ul>
+                    </div>
+                    <div class="bg-slate-950 p-3.5 rounded-xl border border-slate-800/80 space-y-1.5">
+                        <h4 class="font-bold text-amber-400 text-xs">🍌 Produce & Carbohydrates</h4>
+                        <ul class="space-y-1 text-slate-400 list-disc list-inside text-[11px]">
+                            <li><strong>Bananas:</strong> 1 bunch (5-6 bananas)</li>
+                            <li><strong>Rolled Oats:</strong> 1 container (18 oz+)</li>
+                            <li><strong>Jasmine Rice:</strong> 1 bag (2–5 lbs)</li>
+                            <li><strong>Sweet Potatoes:</strong> 4 lbs total</li>
+                            <li><strong>Fresh/Frozen Berries:</strong> 3-4 containers</li>
+                            <li><strong>Avocados:</strong> 4 medium</li>
+                            <li><strong>Green Beans:</strong> 3 bags</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
 
     </main>
 
     <script>
         let workoutsData = {};
-        let currentPhase = 1;
-        let currentWeek = 1;
-        let activeDayIndex = 0;
 
-        window.addEventListener('DOMContentLoaded', async () => {
+        async function loadWorkouts() {
             try {
                 const response = await fetch('workouts.json');
                 workoutsData = await response.json();
-            } catch (err) {
-                console.error("Could not load workouts.json", err);
-                document.getElementById('workoutCardContainer').innerHTML = `
-                    <div class="text-center py-6 text-red-400 text-xs">
-                        ⚠️ Ensure workouts.json is uploaded in the same directory!
-                    </div>
-                `;
+                renderWorkouts();
+            } catch (error) {
+                document.getElementById('workoutCardContainer').innerHTML = `<p class="text-red-500 text-xs p-4">Error loading workouts.json. Make sure workouts.json is in the repository root.</p>`;
             }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            loadWorkouts();
             loadSavedState();
-            changePhase();
-            renderWorkouts();
             renderPeptideMatrix();
             calcReta();
             calcBpc();
@@ -279,15 +337,20 @@
             renderWorkouts();
         }
 
+        let currentPhase = 1;
+        let currentWeek = 1;
+        let activeDayIndex = 0;
+
         function renderWorkouts() {
-            const phaseObj = workoutsData[currentPhase] || {};
-            const weekObj = phaseObj[currentWeek] || {};
+            if (!workoutsData || Object.keys(workoutsData).length === 0) return;
+
+            const phaseObj = workoutsData[currentPhase] || workoutsData[1];
+            const weekObj = phaseObj[currentWeek] || phaseObj[Object.keys(phaseObj)[0]];
             const days = weekObj.days || [];
             if (activeDayIndex >= days.length) activeDayIndex = 0;
 
             const daySelect = document.getElementById('daySelect');
             daySelect.innerHTML = '';
-            
             if (days.length === 0) {
                 let opt = document.createElement('option');
                 opt.value = 0;
@@ -306,17 +369,13 @@
             }
 
             const container = document.getElementById('workoutCardContainer');
-            
-            if (days.length === 0 || !days[activeDayIndex]) {
-                container.innerHTML = `
-                    <div class="text-center py-6 space-y-2">
-                        <p class="text-xs text-slate-400">Workout structure loading or pending for Phase ${currentPhase}, Week ${currentWeek}.</p>
-                    </div>
-                `;
+            if (days.length === 0) {
+                container.innerHTML = `<p class="text-slate-400 text-xs">No workout data found for this selection.</p>`;
                 return;
             }
 
             const activeDay = days[activeDayIndex];
+            
             let html = `
                 <div class="flex items-center justify-between mb-2 border-b border-slate-800 pb-2">
                     <div>
@@ -328,7 +387,7 @@
             `;
 
             activeDay.exercises.forEach((ex, exIdx) => {
-                const totalSets = parseInt(ex.sets || ex.Sets) || 1;
+                const totalSets = parseInt(ex.sets) || 1;
                 let checkboxesHtml = `<div class="flex items-center flex-wrap gap-1 mt-1">`;
                 for (let s = 1; s <= totalSets; s++) {
                     const storageKey = `w_${currentWeek}_d_${activeDayIndex}_ex_${exIdx}_set_${s}`;
@@ -345,13 +404,13 @@
                 html += `
                     <div class="bg-slate-950/80 border border-slate-800/80 rounded-xl p-3 space-y-1.5">
                         <div class="flex items-center justify-between">
-                            <span class="text-[10px] font-extrabold text-amber-400 uppercase bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20">${ex.series || ex.Series}</span>
-                            <span class="text-[11px] text-slate-400 font-semibold">Wt: <strong class="text-slate-200">${ex.wt || ex.Wt}</strong></span>
+                            <span class="text-[10px] font-extrabold text-amber-400 uppercase bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20">${ex.series}</span>
+                            <span class="text-[11px] text-slate-400 font-semibold">Wt: <strong class="text-slate-200">${ex.wt}</strong></span>
                         </div>
-                        <div class="font-bold text-slate-100 text-xs">${ex.name || ex.Exercise}</div>
+                        <div class="font-bold text-slate-100 text-xs">${ex.name}</div>
                         <div class="flex items-center justify-between text-[11px] text-slate-400 pt-0.5">
-                            <span>Sets: <strong>${ex.sets || ex.Sets}</strong> | Reps: <strong>${ex.reps || ex.Reps}</strong></span>
-                            <span>Rest: <strong>${ex.rest || ex.Rest}</strong> | RPE: <strong>${ex.rpe || ex.RPE}</strong></span>
+                            <span>Sets: <strong>${ex.sets}</strong> | Reps: <strong>${ex.reps}</strong></span>
+                            <span>Rest: <strong>${ex.rest}</strong> | RPE: <strong>${ex.rpe}</strong></span>
                         </div>
                         <div class="pt-1 border-t border-slate-900">
                             <div class="text-[10px] text-slate-500 font-bold uppercase tracking-wider mb-1">Set Tracking</div>
@@ -371,49 +430,34 @@
 
         function calcReta() {
             const bac = parseFloat(document.getElementById('reta_bac').value) || 2.0;
-            const vialMg = 10.0;
-            const targetMcg = 250;
-            const mgPerMl = vialMg / bac;
-            const mcgPerUnit = (mgPerMl * 1000) / 100;
-            const units = targetMcg / mcgPerUnit;
-
-            document.getElementById('reta_conc').textContent = mgPerMl.toFixed(2) + ' mg/mL';
+            const units = 250 / ((10.0 / bac) * 10);
             document.getElementById('reta_draw').textContent = units.toFixed(1) + ' units';
         }
 
         function calcBpc() {
             const bac = parseFloat(document.getElementById('bpc_bac').value) || 2.0;
-            const vialMg = 10.0;
-            const targetMcg = 500;
-            const mgPerMl = vialMg / bac;
-            const mcgPerUnit = (mgPerMl * 1000) / 100;
-            const units = targetMcg / mcgPerUnit;
-
-            document.getElementById('bpc_conc').textContent = mgPerMl.toFixed(2) + ' mg/mL';
+            const units = 500 / ((10.0 / bac) * 10);
             document.getElementById('bpc_draw').textContent = units.toFixed(1) + ' units';
         }
 
         function calcCjc() {
             const bac = parseFloat(document.getElementById('cjc_bac').value) || 2.0;
-            const vialMg = 10.0;
-            const mgPerMl = vialMg / bac;
+            const mgPerMl = 10.0 / bac;
             const mcgPerUnit = (mgPerMl * 1000) / 100;
             const u100 = 100 / mcgPerUnit;
             const u200 = 200 / mcgPerUnit;
-
-            document.getElementById('cjc_conc').textContent = mgPerMl.toFixed(2) + ' mg/mL';
             document.getElementById('cjc_draw').textContent = `${u100.toFixed(1)}u (100mcg) / ${u200.toFixed(1)}u (200mcg)`;
         }
 
         function renderPeptideMatrix() {
             const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
             const tbody = document.getElementById('peptideMatrixBody');
+            if (!tbody) return;
             tbody.innerHTML = '';
             daysOfWeek.forEach((day, idx) => {
                 let reta = idx === 0 ? '🟢 Retatrutide (250mcg / 5u)' : '-';
                 let bpc = '🟢 BPC-157 / TB-500 (500mcg / 10u)';
                 let cjc = idx < 5 ? '🟢 CJC w/o DAC (100-200mcg / 2-4u)' : '-';
-                
                 tbody.innerHTML += `
                     <tr class="hover:bg-slate-950/40">
                         <td class="p-2.5 font-bold text-slate-200">${day}</td>
@@ -443,9 +487,11 @@
             if (savedPhase) {
                 currentPhase = parseInt(savedPhase);
                 document.getElementById('phaseSelect').value = currentPhase;
+                changePhase();
             }
             if (savedWeek) {
                 currentWeek = parseInt(savedWeek);
+                document.getElementById('weekSelect').value = currentWeek;
             }
             if (savedNotes) {
                 document.getElementById('sundayNotes').value = savedNotes;
