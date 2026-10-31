@@ -11,7 +11,6 @@
         .tab-content { display: none; }
         .tab-content.active { display: block; }
         input[type="checkbox"] { accent-color: #f59e0b; }
-        /* Hide scrollbars completely while keeping smooth horizontal scrolling */
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
@@ -44,9 +43,9 @@
         <!-- ================= WORKOUTS TAB ================= -->
         <div id="tab-workouts" class="tab-content active space-y-4">
             
-            <!-- PHASE & WEEK SELECTOR -->
+            <!-- PHASE, WEEK & DAY SELECTOR -->
             <div class="bg-slate-900 border border-slate-800 rounded-2xl p-3 shadow-xl">
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
                     <div>
                         <label class="block text-[11px] font-bold text-amber-400 uppercase tracking-wider mb-1">Select Phase</label>
                         <select id="phaseSelect" onchange="changePhase()" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-1.5 text-xs font-semibold text-slate-200 focus:outline-none focus:border-amber-500">
@@ -64,17 +63,18 @@
                             <option value="4">Week 4: Peak Base</option>
                         </select>
                     </div>
+                    <div>
+                        <label class="block text-[11px] font-bold text-amber-400 uppercase tracking-wider mb-1">Select Day</label>
+                        <select id="daySelect" onchange="changeDay()" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-1.5 text-xs font-semibold text-slate-200 focus:outline-none focus:border-amber-500">
+                            <!-- Dynamically populated -->
+                        </select>
+                    </div>
                 </div>
             </div>
 
-            <!-- DAY SELECTOR BUTTONS (NO SCROLLBAR) -->
-            <div class="flex overflow-x-auto space-x-2 py-1 no-scrollbar" id="dayButtonsContainer">
-                <!-- Dynamically populated -->
-            </div>
-
             <!-- ACTIVE WORKOUT CARD -->
-            <div id="workoutCardContainer" class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-2xl">
-                <!-- Dynamically loaded workout table & details -->
+            <div id="workoutCardContainer" class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-2xl space-y-3">
+                <!-- Dynamically loaded card stack -->
             </div>
 
             <!-- SESSION REVIEW NOTES -->
@@ -98,7 +98,7 @@
                 <p class="text-[11px] text-slate-400">Calculate precise BAC water dilution ratios, concentrations, and syringe draw measurements.</p>
             </div>
 
-            <!-- PEPTIDE 1: RETATRUTIDE -->
+            <!-- RETATRUTIDE -->
             <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-xl space-y-3">
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-800 pb-2 gap-2">
                     <div>
@@ -116,4 +116,411 @@
                     </div>
                     <div class="bg-slate-950 p-3 rounded-xl border border-slate-800/80 flex flex-col justify-center">
                         <span class="text-[11px] font-bold text-slate-400">Vial Concentration</span>
-                        <span id="reta_
+                        <span id="reta_conc" class="text-sm font-extrabold text-slate-100 mt-0.5">5.00 mg/mL</span>
+                    </div>
+                    <div class="bg-slate-950 p-3 rounded-xl border border-slate-800/80 flex flex-col justify-center">
+                        <span class="text-[11px] font-bold text-slate-400">Insulin Syringe Draw (1mL / 100u)</span>
+                        <span id="reta_draw" class="text-sm font-extrabold text-amber-400 mt-0.5">5.0 units</span>
+                    </div>
+                </div>
+                <p class="text-[11px] text-slate-400 bg-slate-950/60 p-2.5 rounded-xl border border-slate-800/50">
+                    💡 <strong>Reference:</strong> 5.0 u = 250 mcg (0.25 mg) | 10.0 u = 500 mcg (0.5 mg) — <span class="text-slate-300">Schedule: Monday Mornings (1x / week)</span>
+                </p>
+            </div>
+
+            <!-- BPC-157 / TB-500 -->
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-xl space-y-3">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-800 pb-2 gap-2">
+                    <div>
+                        <span class="text-[10px] bg-amber-500/10 text-amber-400 font-bold px-2 py-0.5 rounded-md border border-amber-500/20">Kingdom Peptides</span>
+                        <h3 class="font-extrabold text-xs text-slate-100 mt-1">2. BPC-157 / TB-500 Blend (10 mg Total)</h3>
+                    </div>
+                    <div class="text-[11px] text-slate-400 bg-slate-950 px-2.5 py-1 rounded-lg border border-slate-800">
+                        Target Dose: <strong class="text-amber-400">500 mcg blend</strong>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+                    <div class="bg-slate-950 p-3 rounded-xl border border-slate-800/80">
+                        <label class="block text-[11px] font-bold text-slate-400 mb-1">BAC Water Added (mL)</label>
+                        <input type="number" id="bpc_bac" value="2.0" step="0.1" oninput="calcBpc()" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1.5 font-bold text-amber-400 focus:outline-none focus:border-amber-500 text-xs">
+                    </div>
+                    <div class="bg-slate-950 p-3 rounded-xl border border-slate-800/80 flex flex-col justify-center">
+                        <span class="text-[11px] font-bold text-slate-400">Total Blend Conc.</span>
+                        <span id="bpc_conc" class="text-sm font-extrabold text-slate-100 mt-0.5">5.00 mg/mL</span>
+                    </div>
+                    <div class="bg-slate-950 p-3 rounded-xl border border-slate-800/80 flex flex-col justify-center">
+                        <span class="text-[11px] font-bold text-slate-400">Insulin Syringe Draw (1mL / 100u)</span>
+                        <span id="bpc_draw" class="text-sm font-extrabold text-amber-400 mt-0.5">10.0 units</span>
+                    </div>
+                </div>
+                <p class="text-[11px] text-slate-400 bg-slate-950/60 p-2.5 rounded-xl border border-slate-800/50">
+                    💡 <strong>Reference:</strong> 1:1 Ratio (5mg BPC + 5mg TB). 10 units = 500 mcg total blend — <span class="text-slate-300">Schedule: Daily (7 days / week)</span>
+                </p>
+            </div>
+
+            <!-- CJC w/o DAC -->
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-xl space-y-3">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-800 pb-2 gap-2">
+                    <div>
+                        <span class="text-[10px] bg-amber-500/10 text-amber-400 font-bold px-2 py-0.5 rounded-md border border-amber-500/20">Iron X Labs</span>
+                        <h3 class="font-extrabold text-xs text-slate-100 mt-1">3. CJC w/o DAC (Mod GRF 1-29) (10 mg)</h3>
+                    </div>
+                    <div class="text-[11px] text-slate-400 bg-slate-950 px-2.5 py-1 rounded-lg border border-slate-800">
+                        Target Dose: <strong class="text-amber-400">100 mcg - 200 mcg</strong>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+                    <div class="bg-slate-950 p-3 rounded-xl border border-slate-800/80">
+                        <label class="block text-[11px] font-bold text-slate-400 mb-1">BAC Water Added (mL)</label>
+                        <input type="number" id="cjc_bac" value="2.0" step="0.1" oninput="calcCjc()" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1.5 font-bold text-amber-400 focus:outline-none focus:border-amber-500 text-xs">
+                    </div>
+                    <div class="bg-slate-950 p-3 rounded-xl border border-slate-800/80 flex flex-col justify-center">
+                        <span class="text-[11px] font-bold text-slate-400">Vial Concentration</span>
+                        <span id="cjc_conc" class="text-sm font-extrabold text-slate-100 mt-0.5">5.00 mg/mL</span>
+                    </div>
+                    <div class="bg-slate-950 p-3 rounded-xl border border-slate-800/80 flex flex-col justify-center">
+                        <span class="text-[11px] font-bold text-slate-400">Insulin Syringe Draw (1mL / 100u)</span>
+                        <span id="cjc_draw" class="text-sm font-extrabold text-amber-400 mt-0.5">2u (100mcg) / 4u (200mcg)</span>
+                    </div>
+                </div>
+                <p class="text-[11px] text-slate-400 bg-slate-950/60 p-2.5 rounded-xl border border-slate-800/50">
+                    💡 <strong>Reference:</strong> 2 units = 100 mcg | 4 units = 200 mcg (at 2 mL BAC) — <span class="text-slate-300">Schedule: Weeknights (Mon–Fri) before bed</span>
+                </p>
+            </div>
+
+            <!-- PEPTIDE MATRIX -->
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-xl space-y-3">
+                <div class="flex items-center space-x-2 border-b border-slate-800 pb-2">
+                    <span class="text-amber-500 text-lg">📅</span>
+                    <h2 class="font-extrabold text-slate-100 text-xs">Weekly Administration Master Matrix</h2>
+                </div>
+                <div class="overflow-x-auto no-scrollbar">
+                    <table class="w-full text-left text-[11px] text-slate-300">
+                        <thead class="bg-slate-950 text-slate-400 uppercase font-bold tracking-wider">
+                            <tr>
+                                <th class="p-2.5 rounded-l-xl">Day</th>
+                                <th class="p-2.5">Retatrutide (Weekly)</th>
+                                <th class="p-2.5">BPC-157 / TB-500 (Daily)</th>
+                                <th class="p-2.5 rounded-r-xl">CJC w/o DAC (Mon-Fri)</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-800/60" id="peptideMatrixBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= NUTRITION TAB ================= -->
+        <div id="tab-nutrition" class="tab-content space-y-4">
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-xl">
+                <div class="flex items-center space-x-2 mb-1">
+                    <span class="text-amber-500 text-lg">🥩</span>
+                    <h2 class="font-extrabold text-slate-100 text-sm">Nutrition & Macro Architecture</h2>
+                </div>
+                <p class="text-[11px] text-slate-400">Targeting ~2,800 Calories daily (200g Protein, 315g Carbohydrates, 80g Fat) optimized for heavy lifting and early morning fueling.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-xl space-y-1.5">
+                    <h3 class="font-extrabold text-amber-400 text-xs">1. Pre-Workout (4:15 AM)</h3>
+                    <p class="text-[11px] text-slate-300">10g Protein | 30g Carbs (~170 kcal)</p>
+                    <p class="text-[11px] text-slate-400">Banana (1 medium) + ½ scoop Whey Protein powder.</p>
+                </div>
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-xl space-y-1.5">
+                    <h3 class="font-extrabold text-amber-400 text-xs">2. Post-Workout Breakfast (6:30 AM)</h3>
+                    <p class="text-[11px] text-slate-300">40g Protein | 75g Carbs | 15g Fat (~600 kcal)</p>
+                    <p class="text-[11px] text-slate-400">2 whole eggs + ¾ cup egg whites, 1 cup dry rolled oats, ½ cup berries.</p>
+                </div>
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-xl space-y-1.5">
+                    <h3 class="font-extrabold text-amber-400 text-xs">3. Lunch (12:00 PM)</h3>
+                    <p class="text-[11px] text-slate-300">45g Protein | 75g Carbs | 20g Fat (~660 kcal)</p>
+                    <p class="text-[11px] text-slate-400">5.0 oz cooked chicken breast, 1.75 cups cooked Jasmine rice, ½ medium avocado.</p>
+                </div>
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-xl space-y-1.5">
+                    <h3 class="font-extrabold text-amber-400 text-xs">4. Afternoon Snack (3:30 PM)</h3>
+                    <p class="text-[11px] text-slate-300">35g Protein | 40g Carbs | 15g Fat (~435 kcal)</p>
+                    <p class="text-[11px] text-slate-400">1.25 cups Non-Fat Greek Yogurt, 18-20 almonds, 1.5 cups mixed berries.</p>
+                </div>
+            </div>
+
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-xl space-y-3">
+                <div class="flex items-center space-x-2 border-b border-slate-800 pb-2">
+                    <span class="text-amber-500 text-lg">🛒</span>
+                    <h2 class="font-extrabold text-slate-100 text-xs">Master Grocery List</h2>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-slate-300">
+                    <div class="bg-slate-950 p-3.5 rounded-xl border border-slate-800/80 space-y-1.5">
+                        <h4 class="font-bold text-amber-400 text-xs">🥩 Poultry, Meat & Eggs</h4>
+                        <ul class="space-y-1 text-slate-400 list-disc list-inside text-[11px]">
+                            <li><strong>Chicken Breast:</strong> 3 lbs raw</li>
+                            <li><strong>Top Sirloin / Steak:</strong> 3.5–4 lbs raw</li>
+                            <li><strong>Whole Eggs:</strong> 1 carton (18-count)</li>
+                            <li><strong>Liquid Egg Whites:</strong> 3 cartons (16 oz)</li>
+                            <li><strong>Whey Protein Powder:</strong> 1 tub (2 lb)</li>
+                        </ul>
+                    </div>
+                    <div class="bg-slate-950 p-3.5 rounded-xl border border-slate-800/80 space-y-1.5">
+                        <h4 class="font-bold text-amber-400 text-xs">🍌 Produce & Carbohydrates</h4>
+                        <ul class="space-y-1 text-slate-400 list-disc list-inside text-[11px]">
+                            <li><strong>Bananas:</strong> 1 bunch (5-6 bananas)</li>
+                            <li><strong>Rolled Oats:</strong> 1 container (18 oz+)</li>
+                            <li><strong>Jasmine Rice:</strong> 1 bag (2–5 lbs)</li>
+                            <li><strong>Sweet Potatoes:</strong> 4 lbs total</li>
+                            <li><strong>Fresh/Frozen Berries:</strong> 3-4 containers</li>
+                            <li><strong>Avocados:</strong> 4 medium</li>
+                            <li><strong>Green Beans:</strong> 3 bags</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        // Cleaned workout data object ready for new inputs
+        const workoutsData = {
+            1: { 1: { days: [] }, 2: { days: [] }, 3: { days: [] }, 4: { days: [] } },
+            2: { 5: { days: [] }, 6: { days: [] }, 7: { days: [] }, 8: { days: [] } },
+            3: { 9: { days: [] }, 10: { days: [] }, 11: { days: [] }, 12: { days: [] } }
+        };
+
+        let currentPhase = 1;
+        let currentWeek = 1;
+        let activeDayIndex = 0;
+
+        window.addEventListener('DOMContentLoaded', () => {
+            loadSavedState();
+            renderWorkouts();
+            renderPeptideMatrix();
+            calcReta();
+            calcBpc();
+            calcCjc();
+        });
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(el => {
+                el.classList.remove('bg-amber-500', 'text-slate-950', 'shadow-md');
+                el.classList.add('bg-slate-900', 'text-slate-400', 'border', 'border-slate-800');
+            });
+            document.getElementById('tab-' + tabId).classList.add('active');
+            const activeBtn = document.getElementById('btn-' + tabId);
+            activeBtn.classList.remove('bg-slate-900', 'text-slate-400', 'border', 'border-slate-800');
+            activeBtn.classList.add('bg-amber-500', 'text-slate-950', 'shadow-md');
+        }
+
+        function changePhase() {
+            currentPhase = parseInt(document.getElementById('phaseSelect').value);
+            const weekSelect = document.getElementById('weekSelect');
+            weekSelect.innerHTML = '';
+            let startWeek = (currentPhase - 1) * 4 + 1;
+            for (let w = startWeek; w < startWeek + 4; w++) {
+                let opt = document.createElement('option');
+                opt.value = w;
+                opt.textContent = `Week ${w}: ` + (w%4 === 1 ? 'Baseline/Shift' : w%4 === 2 ? 'Progression/Volume' : w%4 === 3 ? 'Complexity/Density' : 'Peak/Deload');
+                weekSelect.appendChild(opt);
+            }
+            currentWeek = startWeek;
+            activeDayIndex = 0;
+            renderWorkouts();
+            saveState();
+        }
+
+        function changeWeek() {
+            currentWeek = parseInt(document.getElementById('weekSelect').value);
+            activeDayIndex = 0;
+            renderWorkouts();
+            saveState();
+        }
+
+        function changeDay() {
+            activeDayIndex = parseInt(document.getElementById('daySelect').value);
+            renderWorkouts();
+        }
+
+        function renderWorkouts() {
+            const phaseObj = workoutsData[currentPhase] || workoutsData[1];
+            const weekObj = phaseObj[currentWeek] || phaseObj[Object.keys(phaseObj)[0]];
+            const days = weekObj.days || [];
+            if (activeDayIndex >= days.length) activeDayIndex = 0;
+
+            const daySelect = document.getElementById('daySelect');
+            daySelect.innerHTML = '';
+            
+            if (days.length === 0) {
+                let opt = document.createElement('option');
+                opt.value = 0;
+                opt.textContent = "No workouts loaded yet";
+                daySelect.appendChild(opt);
+            } else {
+                days.forEach((day, idx) => {
+                    let opt = document.createElement('option');
+                    opt.value = idx;
+                    opt.textContent = day.name;
+                    if (idx === activeDayIndex) {
+                        opt.selected = true;
+                    }
+                    daySelect.appendChild(opt);
+                });
+            }
+
+            const container = document.getElementById('workoutCardContainer');
+            
+            if (days.length === 0 || !days[activeDayIndex]) {
+                container.innerHTML = `
+                    <div class="text-center py-6 space-y-2">
+                        <p class="text-xs text-slate-400">Workout structure cleared for Phase ${currentPhase}, Week ${currentWeek}.</p>
+                        <p class="text-[11px] text-amber-500 font-semibold">Ready for your next piece!</p>
+                    </div>
+                `;
+                return;
+            }
+
+            const activeDay = days[activeDayIndex];
+            let html = `
+                <div class="flex items-center justify-between mb-2 border-b border-slate-800 pb-2">
+                    <div>
+                        <span class="text-[10px] text-amber-400 font-bold uppercase tracking-wider">Phase ${currentPhase} • Week ${currentWeek}</span>
+                        <h2 class="font-extrabold text-sm text-slate-100 mt-0.5">${activeDay.name}</h2>
+                    </div>
+                </div>
+                <div class="space-y-2.5">
+            `;
+
+            activeDay.exercises.forEach((ex, exIdx) => {
+                const totalSets = parseInt(ex.sets) || 1;
+                let checkboxesHtml = `<div class="flex items-center flex-wrap gap-1 mt-1">`;
+                for (let s = 1; s <= totalSets; s++) {
+                    const storageKey = `w_${currentWeek}_d_${activeDayIndex}_ex_${exIdx}_set_${s}`;
+                    const isChecked = localStorage.getItem(storageKey) === 'true';
+                    checkboxesHtml += `
+                        <label class="flex items-center space-x-1 bg-slate-950 px-2 py-1 rounded-lg border border-slate-800 cursor-pointer text-[10px] text-slate-300">
+                            <span class="font-bold text-amber-400">S${s}</span>
+                            <input type="checkbox" ${isChecked ? 'checked' : ''} onchange="toggleSet('${storageKey}', this.checked)" class="w-4 h-4 rounded cursor-pointer">
+                        </label>
+                    `;
+                }
+                checkboxesHtml += `</div>`;
+
+                html += `
+                    <div class="bg-slate-950/80 border border-slate-800/80 rounded-xl p-3 space-y-1.5">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[10px] font-extrabold text-amber-400 uppercase bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20">${ex.series}</span>
+                            <span class="text-[11px] text-slate-400 font-semibold">Wt: <strong class="text-slate-200">${ex.wt}</strong></span>
+                        </div>
+                        <div class="font-bold text-slate-100 text-xs">${ex.name}</div>
+                        <div class="flex items-center justify-between text-[11px] text-slate-400 pt-0.5">
+                            <span>Sets: <strong>${ex.sets}</strong> | Reps: <strong>${ex.reps}</strong></span>
+                            <span>Rest: <strong>${ex.rest}</strong> | RPE: <strong>${ex.rpe}</strong></span>
+                        </div>
+                        <div class="pt-1 border-t border-slate-900">
+                            <div class="text-[10px] text-slate-500 font-bold uppercase tracking-wider mb-1">Set Tracking</div>
+                            ${checkboxesHtml}
+                        </div>
+                    </div>
+                `;
+            });
+
+            html += `</div>`;
+            container.innerHTML = html;
+        }
+
+        function toggleSet(key, val) {
+            localStorage.setItem(key, val);
+        }
+
+        function calcReta() {
+            const bac = parseFloat(document.getElementById('reta_bac').value) || 2.0;
+            const vialMg = 10.0;
+            const targetMcg = 250;
+            const mgPerMl = vialMg / bac;
+            const mcgPerUnit = (mgPerMl * 1000) / 100;
+            const units = targetMcg / mcgPerUnit;
+
+            document.getElementById('reta_conc').textContent = mgPerMl.toFixed(2) + ' mg/mL';
+            document.getElementById('reta_draw').textContent = units.toFixed(1) + ' units';
+        }
+
+        function calcBpc() {
+            const bac = parseFloat(document.getElementById('bpc_bac').value) || 2.0;
+            const vialMg = 10.0;
+            const targetMcg = 500;
+            const mgPerMl = vialMg / bac;
+            const mcgPerUnit = (mgPerMl * 1000) / 100;
+            const units = targetMcg / mcgPerUnit;
+
+            document.getElementById('bpc_conc').textContent = mgPerMl.toFixed(2) + ' mg/mL';
+            document.getElementById('bpc_draw').textContent = units.toFixed(1) + ' units';
+        }
+
+        function calcCjc() {
+            const bac = parseFloat(document.getElementById('cjc_bac').value) || 2.0;
+            const vialMg = 10.0;
+            const mgPerMl = vialMg / bac;
+            const mcgPerUnit = (mgPerMl * 1000) / 100;
+            const u100 = 100 / mcgPerUnit;
+            const u200 = 200 / mcgPerUnit;
+
+            document.getElementById('cjc_conc').textContent = mgPerMl.toFixed(2) + ' mg/mL';
+            document.getElementById('cjc_draw').textContent = `${u100.toFixed(1)}u (100mcg) / ${u200.toFixed(1)}u (200mcg)`;
+        }
+
+        function renderPeptideMatrix() {
+            const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+            const tbody = document.getElementById('peptideMatrixBody');
+            tbody.innerHTML = '';
+            daysOfWeek.forEach((day, idx) => {
+                let reta = idx === 0 ? '🟢 Retatrutide (250mcg / 5u)' : '-';
+                let bpc = '🟢 BPC-157 / TB-500 (500mcg / 10u)';
+                let cjc = idx < 5 ? '🟢 CJC w/o DAC (100-200mcg / 2-4u)' : '-';
+                
+                tbody.innerHTML += `
+                    <tr class="hover:bg-slate-950/40">
+                        <td class="p-2.5 font-bold text-slate-200">${day}</td>
+                        <td class="p-2.5 ${idx === 0 ? 'text-amber-400 font-semibold' : 'text-slate-500'}">${reta}</td>
+                        <td class="p-2.5 text-slate-300">${bpc}</td>
+                        <td class="p-2.5 ${idx < 5 ? 'text-amber-400 font-semibold' : 'text-slate-500'}">${cjc}</td>
+                    </tr>
+                `;
+            });
+        }
+
+        function saveNotes() {
+            const notes = document.getElementById('sundayNotes').value;
+            localStorage.setItem('tx_sunday_notes', notes);
+        }
+
+        function saveState() {
+            localStorage.setItem('tx_phase', currentPhase);
+            localStorage.setItem('tx_week', currentWeek);
+        }
+
+        function loadSavedState() {
+            const savedPhase = localStorage.getItem('tx_phase');
+            const savedWeek = localStorage.getItem('tx_week');
+            const savedNotes = localStorage.getItem('tx_sunday_notes');
+
+            if (savedPhase) {
+                currentPhase = parseInt(savedPhase);
+                document.getElementById('phaseSelect').value = currentPhase;
+                changePhase();
+            }
+            if (savedWeek) {
+                currentWeek = parseInt(savedWeek);
+                document.getElementById('weekSelect').value = currentWeek;
+            }
+            if (savedNotes) {
+                document.getElementById('sundayNotes').value = savedNotes;
+            }
+        }
+
+        function resetData() {
+            if (confirm('Are you sure you want to reset all workout set checkmarks and saved notes?')) {
+                localStorage.clear();
+                location.reload();
+            }
+        }
+    </script>
+</body>
+</html>
