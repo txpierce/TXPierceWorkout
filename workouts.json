@@ -6,73 +6,81 @@
           "Series": "A-Series",
           "Exercise": "Overhead Barbell Press",
           "Sets": 5,
-          "Reps": "5",
-          "Rest": "2-3 min",
-          "RPE": "8",
-          "Wt": "90 lbs"
+          "Reps": "8-10",
+          "Rest": "90 sec",
+          "RPE": "8.5",
+          "Wt": "90 lbs",
+          "Tempo": "3-0-1 (3s eccentric)"
         },
         {
           "Series": "B1",
           "Exercise": "Flat DB Bench Press",
           "Sets": 3,
-          "Reps": "8-10",
-          "Rest": "90 sec",
-          "RPE": "8",
-          "Wt": "55 lbs"
+          "Reps": "10-12",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "55 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B1",
           "Exercise": "Chest-Supported T-Bar Row",
           "Sets": 3,
           "Reps": "12-15",
-          "Rest": "90 sec",
-          "RPE": "8",
-          "Wt": "45 lbs"
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "45 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
           "Exercise": "Seated DB Arnold Press",
           "Sets": 3,
-          "Reps": "8-10",
-          "Rest": "90 sec",
-          "RPE": "8",
-          "Wt": "30 lbs"
+          "Reps": "10-12",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "30 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
           "Exercise": "Skull Crushers",
           "Sets": 3,
-          "Reps": "6-8",
-          "Rest": "90 sec",
-          "RPE": "8",
-          "Wt": "80 lbs"
+          "Reps": "10-12",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "80 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "C-Series",
           "Exercise": "Low-to-High Cable Fly",
           "Sets": 3,
-          "Reps": "12-15",
-          "Rest": "60 sec",
-          "RPE": "8",
-          "Wt": "30 lbs"
+          "Reps": "15-20",
+          "Rest": "45 sec",
+          "RPE": "9",
+          "Wt": "30 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "C-Series",
           "Exercise": "Rope Tricep Extension",
           "Sets": 3,
-          "Reps": "12-15",
-          "Rest": "60 sec",
-          "RPE": "8",
-          "Wt": "80 lbs"
+          "Reps": "15-20",
+          "Rest": "45 sec",
+          "RPE": "9",
+          "Wt": "80 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "D-Series",
           "Exercise": "DB Lateral Raise \u2192 Push-Up Burnout",
           "Sets": 2,
-          "Reps": "15-20 / AMRAP",
-          "Rest": "60 sec",
-          "RPE": "9",
-          "Wt": "15 lbs / BW"
+          "Reps": "15-20 (to failure)",
+          "Rest": "30-45 sec",
+          "RPE": "9.5-10",
+          "Wt": "15 lbs / BW",
+          "Tempo": "Pump / AMRAP"
         }
       ],
       "Day 2: Pull": [
@@ -80,73 +88,81 @@
           "Series": "A-Series",
           "Exercise": "Pendlay Barbell Row",
           "Sets": 4,
-          "Reps": "6-8",
-          "Rest": "2-3 min",
-          "RPE": "8",
-          "Wt": "135 lbs"
+          "Reps": "8-10",
+          "Rest": "90 sec",
+          "RPE": "8.5",
+          "Wt": "135 lbs",
+          "Tempo": "3-0-1 (3s eccentric)"
         },
         {
           "Series": "B1",
           "Exercise": "Neutral Grip Chin-Up",
           "Sets": 3,
-          "Reps": "8-10 / AMRAP",
-          "Rest": "90 sec",
-          "RPE": "8",
-          "Wt": "BW"
+          "Reps": "10-12",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "BW",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B1",
           "Exercise": "Rope Face Pull",
           "Sets": 3,
           "Reps": "12-15",
-          "Rest": "90 sec",
-          "RPE": "8",
-          "Wt": "40 lbs"
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "40 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
           "Exercise": "Seated Cable Row (Close Grip)",
           "Sets": 3,
-          "Reps": "10-12",
-          "Rest": "90 sec",
-          "RPE": "8",
-          "Wt": "100 lbs"
+          "Reps": "12-15",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "100 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
           "Exercise": "Standing DB Hammer Curl",
           "Sets": 3,
-          "Reps": "10-12",
-          "Rest": "90 sec",
-          "RPE": "8",
-          "Wt": "25 lbs"
+          "Reps": "12-15",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "25 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "C-Series",
           "Exercise": "Incline DB Y-Raise",
           "Sets": 3,
-          "Reps": "12-15",
-          "Rest": "60 sec",
-          "RPE": "8",
-          "Wt": "15 lbs"
+          "Reps": "15-20",
+          "Rest": "45 sec",
+          "RPE": "9",
+          "Wt": "15 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "C-Series",
           "Exercise": "EZ Bar Preacher Curl",
           "Sets": 3,
-          "Reps": "12-15",
-          "Rest": "60 sec",
-          "RPE": "8",
-          "Wt": "40 lbs"
+          "Reps": "15-20",
+          "Rest": "45 sec",
+          "RPE": "9",
+          "Wt": "40 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "D-Series",
           "Exercise": "Wide Lat Pulldown \u2192 Standing DB Curl",
           "Sets": 2,
-          "Reps": "15-20",
-          "Rest": "60 sec",
-          "RPE": "9",
-          "Wt": "100 lbs / 25 lbs"
+          "Reps": "15-20 (to failure)",
+          "Rest": "30-45 sec",
+          "RPE": "9.5-10",
+          "Wt": "100 lbs / 25 lbs",
+          "Tempo": "Pump / AMRAP"
         }
       ],
       "Day 3: Lower Hypertrophy": [
@@ -154,37 +170,41 @@
           "Series": "A-Series",
           "Exercise": "Barbell Front Squat",
           "Sets": 4,
-          "Reps": "6-8",
-          "Rest": "2-3 min",
-          "RPE": "8",
-          "Wt": "135 lbs"
+          "Reps": "8-10",
+          "Rest": "90 sec",
+          "RPE": "8.5",
+          "Wt": "135 lbs",
+          "Tempo": "3-0-1 (3s eccentric)"
         },
         {
           "Series": "B1",
           "Exercise": "Romanian Deadlift (RDL)",
           "Sets": 3,
           "Reps": "12-15",
-          "Rest": "90 sec",
-          "RPE": "8",
-          "Wt": "135 lbs"
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "135 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B1",
           "Exercise": "DB Walking Lunges",
           "Sets": 3,
-          "Reps": "10-12 / leg",
-          "Rest": "90 sec",
-          "RPE": "8",
-          "Wt": "30 lbs"
+          "Reps": "12-15",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "30 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
           "Exercise": "Glute Ham Raise / Hamstring Curl",
           "Sets": 3,
-          "Reps": "10-12",
-          "Rest": "90 sec",
-          "RPE": "8",
-          "Wt": "BW / 70 lbs"
+          "Reps": "12-15",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "BW / 70 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
@@ -192,26 +212,29 @@
           "Sets": 3,
           "Reps": "12-15",
           "Rest": "60 sec",
-          "RPE": "8",
-          "Wt": "90 lbs"
+          "RPE": "9",
+          "Wt": "90 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "C-Series",
           "Exercise": "Leg Extension (3s Squeeze)",
           "Sets": 3,
           "Reps": "15-20",
-          "Rest": "60 sec",
-          "RPE": "8",
-          "Wt": "50 lbs"
+          "Rest": "45 sec",
+          "RPE": "9",
+          "Wt": "50 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "C-Series",
           "Exercise": "Bulgarian Split Squat ISO Hold",
           "Sets": 3,
           "Reps": "30 sec hold / leg",
-          "Rest": "60 sec",
-          "RPE": "8",
-          "Wt": "BW"
+          "Rest": "45 sec",
+          "RPE": "9",
+          "Wt": "BW",
+          "Tempo": "2-0-2 (constant tension)"
         }
       ],
       "Day 4: Recovery / Mobility": [
@@ -238,9 +261,10 @@
           "Exercise": "Zone 2 Steady State Cardio (Incline Walk)",
           "Sets": 1,
           "Reps": "30 mins",
-          "Rest": "-",
-          "RPE": "4",
-          "Wt": "Bodyweight"
+          "Rest": "45 sec",
+          "RPE": "9",
+          "Wt": "Bodyweight",
+          "Tempo": "2-0-2 (constant tension)"
         }
       ],
       "Day 5: Upper Pump": [
@@ -250,17 +274,19 @@
           "Sets": 4,
           "Reps": "10-12",
           "Rest": "90 sec",
-          "RPE": "8",
-          "Wt": "60 lbs"
+          "RPE": "8.5",
+          "Wt": "60 lbs",
+          "Tempo": "3-0-1 (3s eccentric)"
         },
         {
           "Series": "B1",
           "Exercise": "Neutral Grip Lat Pulldown",
           "Sets": 3,
-          "Reps": "10-12",
+          "Reps": "12-15",
           "Rest": "60 sec",
-          "RPE": "8",
-          "Wt": "110 lbs"
+          "RPE": "9",
+          "Wt": "110 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B1",
@@ -268,71 +294,79 @@
           "Sets": 3,
           "Reps": "12-15",
           "Rest": "60 sec",
-          "RPE": "8",
-          "Wt": "15 lbs"
+          "RPE": "9",
+          "Wt": "15 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
           "Exercise": "Weighted Dips / Machine Dips",
           "Sets": 3,
-          "Reps": "8-12",
+          "Reps": "12-15",
           "Rest": "60 sec",
-          "RPE": "8",
-          "Wt": "BW / +15 lbs"
+          "RPE": "9",
+          "Wt": "BW / +15 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
           "Exercise": "Incline DB Bicep Curl",
           "Sets": 3,
-          "Reps": "10-12",
+          "Reps": "12-15",
           "Rest": "60 sec",
-          "RPE": "8",
-          "Wt": "20 lbs"
+          "RPE": "9",
+          "Wt": "20 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "C1",
           "Exercise": "Pec Deck Fly (Peak Contraction)",
           "Sets": 3,
-          "Reps": "12-15",
+          "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "80 lbs"
+          "RPE": "9",
+          "Wt": "80 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "C2",
           "Exercise": "Standing Cable Bicep Curl",
           "Sets": 3,
-          "Reps": "12-15",
+          "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "50 lbs"
+          "RPE": "9",
+          "Wt": "50 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "C3",
           "Exercise": "Overhead Rope Tricep Extension",
           "Sets": 3,
-          "Reps": "12-15",
+          "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "60 lbs"
+          "RPE": "9",
+          "Wt": "60 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "D-Series",
           "Exercise": "Rear Delt Reverse Flyes",
           "Sets": 3,
-          "Reps": "15-20",
-          "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "15 lbs"
+          "Reps": "15-20 (to failure)",
+          "Rest": "30-45 sec",
+          "RPE": "9.5-10",
+          "Wt": "15 lbs",
+          "Tempo": "Pump / AMRAP"
         },
         {
           "Series": "D-Series",
           "Exercise": "Heavy DB Shrugs",
           "Sets": 3,
-          "Reps": "12-15",
-          "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "65 lbs"
+          "Reps": "15-20 (to failure)",
+          "Rest": "30-45 sec",
+          "RPE": "9.5-10",
+          "Wt": "65 lbs",
+          "Tempo": "Pump / AMRAP"
         }
       ],
       "Day 6: Arms / Calves / Abs": [
@@ -341,54 +375,60 @@
           "Exercise": "Standing Heavy Barbell Curl",
           "Sets": 4,
           "Reps": "8-10",
-          "Rest": "60 sec",
-          "RPE": "8",
-          "Wt": "65 lbs"
+          "Rest": "90 sec",
+          "RPE": "8.5",
+          "Wt": "65 lbs",
+          "Tempo": "3-0-1 (3s eccentric)"
         },
         {
           "Series": "A2",
           "Exercise": "Close Grip Barbell Bench Press",
           "Sets": 4,
           "Reps": "8-10",
-          "Rest": "60 sec",
-          "RPE": "8",
-          "Wt": "115 lbs"
+          "Rest": "90 sec",
+          "RPE": "8.5",
+          "Wt": "115 lbs",
+          "Tempo": "3-0-1 (3s eccentric)"
         },
         {
           "Series": "B1",
           "Exercise": "Incline DB Hammer Curl",
           "Sets": 3,
-          "Reps": "10-12",
-          "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "25 lbs"
+          "Reps": "12-15",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "25 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
           "Exercise": "Tricep Overhead DB Extension",
           "Sets": 3,
-          "Reps": "10-12",
-          "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "45 lbs"
+          "Reps": "12-15",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "45 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "C1",
           "Exercise": "EZ Bar Preacher Curl (Strict)",
           "Sets": 3,
-          "Reps": "12-15",
+          "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "45 lbs"
+          "RPE": "9",
+          "Wt": "45 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "C2",
           "Exercise": "Cable V-Bar Tricep Pushdown",
           "Sets": 3,
-          "Reps": "12-15",
+          "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "70 lbs"
+          "RPE": "9",
+          "Wt": "70 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "Calves",
@@ -396,25 +436,27 @@
           "Sets": 4,
           "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "120 lbs"
+          "RPE": "9",
+          "Wt": "120 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "Calves",
           "Exercise": "Tibialis Wall Raises",
           "Sets": 3,
           "Reps": "20 reps",
-          "Rest": "30 sec",
-          "RPE": "8",
-          "Wt": "BW"
+          "Rest": "45 sec",
+          "RPE": "9",
+          "Wt": "BW",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "Abs",
           "Exercise": "Hanging Knee / Leg Raises",
           "Sets": 4,
           "Reps": "15-20",
-          "Rest": "45 sec",
-          "RPE": "8",
+          "Rest": "45-60 sec",
+          "RPE": "8.5-9",
           "Wt": "BW"
         }
       ],
@@ -424,8 +466,8 @@
           "Exercise": "Full Rest & Recovery / Sauna & Hydration",
           "Sets": 1,
           "Reps": "All Day",
-          "Rest": "-",
-          "RPE": "1",
+          "Rest": "45-60 sec",
+          "RPE": "8.5-9",
           "Wt": "-"
         }
       ]
@@ -436,73 +478,81 @@
           "Series": "A-Series",
           "Exercise": "Overhead Barbell Press",
           "Sets": 5,
-          "Reps": "5",
-          "Rest": "2-3 min",
-          "RPE": "8",
-          "Wt": "90 lbs"
+          "Reps": "8-10",
+          "Rest": "90 sec",
+          "RPE": "8.5",
+          "Wt": "90 lbs",
+          "Tempo": "3-0-1 (3s eccentric)"
         },
         {
           "Series": "B1",
           "Exercise": "Flat DB Bench Press",
           "Sets": 3,
-          "Reps": "8-10",
-          "Rest": "90 sec",
-          "RPE": "8",
-          "Wt": "55 lbs"
+          "Reps": "10-12",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "55 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B1",
           "Exercise": "Chest-Supported T-Bar Row",
           "Sets": 3,
           "Reps": "12-15",
-          "Rest": "90 sec",
-          "RPE": "8",
-          "Wt": "45 lbs"
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "45 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
           "Exercise": "Seated DB Arnold Press",
           "Sets": 3,
-          "Reps": "8-10",
-          "Rest": "90 sec",
-          "RPE": "8",
-          "Wt": "30 lbs"
+          "Reps": "10-12",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "30 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
           "Exercise": "Skull Crushers",
           "Sets": 3,
-          "Reps": "6-8",
-          "Rest": "90 sec",
-          "RPE": "8",
-          "Wt": "80 lbs"
+          "Reps": "10-12",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "80 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "C-Series",
           "Exercise": "Low-to-High Cable Fly",
           "Sets": 3,
-          "Reps": "12-15",
-          "Rest": "60 sec",
-          "RPE": "8",
-          "Wt": "30 lbs"
+          "Reps": "15-20",
+          "Rest": "45 sec",
+          "RPE": "9",
+          "Wt": "30 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "C-Series",
           "Exercise": "Rope Tricep Extension",
           "Sets": 3,
-          "Reps": "12-15",
-          "Rest": "60 sec",
-          "RPE": "8",
-          "Wt": "80 lbs"
+          "Reps": "15-20",
+          "Rest": "45 sec",
+          "RPE": "9",
+          "Wt": "80 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "D-Series",
           "Exercise": "DB Lateral Raise \u2192 Push-Up Burnout",
           "Sets": 2,
-          "Reps": "15-20 / AMRAP",
-          "Rest": "60 sec",
-          "RPE": "9",
-          "Wt": "15 lbs / BW"
+          "Reps": "15-20 (to failure)",
+          "Rest": "30-45 sec",
+          "RPE": "9.5-10",
+          "Wt": "15 lbs / BW",
+          "Tempo": "Pump / AMRAP"
         }
       ],
       "Day 2: Pull": [
@@ -510,73 +560,81 @@
           "Series": "A-Series",
           "Exercise": "Pendlay Barbell Row",
           "Sets": 4,
-          "Reps": "6-8",
-          "Rest": "2-3 min",
-          "RPE": "8",
-          "Wt": "135 lbs"
+          "Reps": "8-10",
+          "Rest": "90 sec",
+          "RPE": "8.5",
+          "Wt": "135 lbs",
+          "Tempo": "3-0-1 (3s eccentric)"
         },
         {
           "Series": "B1",
           "Exercise": "Neutral Grip Chin-Up",
           "Sets": 3,
-          "Reps": "8-10 / AMRAP",
-          "Rest": "90 sec",
-          "RPE": "8",
-          "Wt": "BW"
+          "Reps": "10-12",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "BW",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B1",
           "Exercise": "Rope Face Pull",
           "Sets": 3,
           "Reps": "12-15",
-          "Rest": "90 sec",
-          "RPE": "8",
-          "Wt": "40 lbs"
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "40 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
           "Exercise": "Seated Cable Row (Close Grip)",
           "Sets": 3,
-          "Reps": "10-12",
-          "Rest": "90 sec",
-          "RPE": "8",
-          "Wt": "100 lbs"
+          "Reps": "12-15",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "100 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
           "Exercise": "Standing DB Hammer Curl",
           "Sets": 3,
-          "Reps": "10-12",
-          "Rest": "90 sec",
-          "RPE": "8",
-          "Wt": "25 lbs"
+          "Reps": "12-15",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "25 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "C-Series",
           "Exercise": "Incline DB Y-Raise",
           "Sets": 3,
-          "Reps": "12-15",
-          "Rest": "60 sec",
-          "RPE": "8",
-          "Wt": "15 lbs"
+          "Reps": "15-20",
+          "Rest": "45 sec",
+          "RPE": "9",
+          "Wt": "15 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "C-Series",
           "Exercise": "EZ Bar Preacher Curl",
           "Sets": 3,
-          "Reps": "12-15",
-          "Rest": "60 sec",
-          "RPE": "8",
-          "Wt": "40 lbs"
+          "Reps": "15-20",
+          "Rest": "45 sec",
+          "RPE": "9",
+          "Wt": "40 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "D-Series",
           "Exercise": "Wide Lat Pulldown \u2192 Standing DB Curl",
           "Sets": 2,
-          "Reps": "15-20",
-          "Rest": "60 sec",
-          "RPE": "9",
-          "Wt": "100 lbs / 25 lbs"
+          "Reps": "15-20 (to failure)",
+          "Rest": "30-45 sec",
+          "RPE": "9.5-10",
+          "Wt": "100 lbs / 25 lbs",
+          "Tempo": "Pump / AMRAP"
         }
       ],
       "Day 3: Lower Hypertrophy": [
@@ -584,37 +642,41 @@
           "Series": "A-Series",
           "Exercise": "Barbell Front Squat",
           "Sets": 4,
-          "Reps": "6-8",
-          "Rest": "2-3 min",
-          "RPE": "8",
-          "Wt": "135 lbs"
+          "Reps": "8-10",
+          "Rest": "90 sec",
+          "RPE": "8.5",
+          "Wt": "135 lbs",
+          "Tempo": "3-0-1 (3s eccentric)"
         },
         {
           "Series": "B1",
           "Exercise": "Romanian Deadlift (RDL)",
           "Sets": 3,
           "Reps": "12-15",
-          "Rest": "90 sec",
-          "RPE": "8",
-          "Wt": "135 lbs"
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "135 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B1",
           "Exercise": "DB Walking Lunges",
           "Sets": 3,
-          "Reps": "10-12 / leg",
-          "Rest": "90 sec",
-          "RPE": "8",
-          "Wt": "30 lbs"
+          "Reps": "12-15",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "30 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
           "Exercise": "Glute Ham Raise / Hamstring Curl",
           "Sets": 3,
-          "Reps": "10-12",
-          "Rest": "90 sec",
-          "RPE": "8",
-          "Wt": "BW / 70 lbs"
+          "Reps": "12-15",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "BW / 70 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
@@ -622,26 +684,29 @@
           "Sets": 3,
           "Reps": "12-15",
           "Rest": "60 sec",
-          "RPE": "8",
-          "Wt": "90 lbs"
+          "RPE": "9",
+          "Wt": "90 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "C-Series",
           "Exercise": "Leg Extension (3s Squeeze)",
           "Sets": 3,
           "Reps": "15-20",
-          "Rest": "60 sec",
-          "RPE": "8",
-          "Wt": "50 lbs"
+          "Rest": "45 sec",
+          "RPE": "9",
+          "Wt": "50 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "C-Series",
           "Exercise": "Bulgarian Split Squat ISO Hold",
           "Sets": 3,
           "Reps": "30 sec hold / leg",
-          "Rest": "60 sec",
-          "RPE": "8",
-          "Wt": "BW"
+          "Rest": "45 sec",
+          "RPE": "9",
+          "Wt": "BW",
+          "Tempo": "2-0-2 (constant tension)"
         }
       ],
       "Day 4: Recovery / Mobility": [
@@ -668,9 +733,10 @@
           "Exercise": "Zone 2 Steady State Cardio (Incline Walk)",
           "Sets": 1,
           "Reps": "30 mins",
-          "Rest": "-",
-          "RPE": "4",
-          "Wt": "Bodyweight"
+          "Rest": "45 sec",
+          "RPE": "9",
+          "Wt": "Bodyweight",
+          "Tempo": "2-0-2 (constant tension)"
         }
       ],
       "Day 5: Upper Pump": [
@@ -680,17 +746,19 @@
           "Sets": 4,
           "Reps": "10-12",
           "Rest": "90 sec",
-          "RPE": "8",
-          "Wt": "60 lbs"
+          "RPE": "8.5",
+          "Wt": "60 lbs",
+          "Tempo": "3-0-1 (3s eccentric)"
         },
         {
           "Series": "B1",
           "Exercise": "Neutral Grip Lat Pulldown",
           "Sets": 3,
-          "Reps": "10-12",
+          "Reps": "12-15",
           "Rest": "60 sec",
-          "RPE": "8",
-          "Wt": "110 lbs"
+          "RPE": "9",
+          "Wt": "110 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B1",
@@ -698,71 +766,79 @@
           "Sets": 3,
           "Reps": "12-15",
           "Rest": "60 sec",
-          "RPE": "8",
-          "Wt": "15 lbs"
+          "RPE": "9",
+          "Wt": "15 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
           "Exercise": "Weighted Dips / Machine Dips",
           "Sets": 3,
-          "Reps": "8-12",
+          "Reps": "12-15",
           "Rest": "60 sec",
-          "RPE": "8",
-          "Wt": "BW / +15 lbs"
+          "RPE": "9",
+          "Wt": "BW / +15 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
           "Exercise": "Incline DB Bicep Curl",
           "Sets": 3,
-          "Reps": "10-12",
+          "Reps": "12-15",
           "Rest": "60 sec",
-          "RPE": "8",
-          "Wt": "20 lbs"
+          "RPE": "9",
+          "Wt": "20 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "C1",
           "Exercise": "Pec Deck Fly (Peak Contraction)",
           "Sets": 3,
-          "Reps": "12-15",
+          "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "80 lbs"
+          "RPE": "9",
+          "Wt": "80 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "C2",
           "Exercise": "Standing Cable Bicep Curl",
           "Sets": 3,
-          "Reps": "12-15",
+          "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "50 lbs"
+          "RPE": "9",
+          "Wt": "50 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "C3",
           "Exercise": "Overhead Rope Tricep Extension",
           "Sets": 3,
-          "Reps": "12-15",
+          "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "60 lbs"
+          "RPE": "9",
+          "Wt": "60 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "D-Series",
           "Exercise": "Rear Delt Reverse Flyes",
           "Sets": 3,
-          "Reps": "15-20",
-          "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "15 lbs"
+          "Reps": "15-20 (to failure)",
+          "Rest": "30-45 sec",
+          "RPE": "9.5-10",
+          "Wt": "15 lbs",
+          "Tempo": "Pump / AMRAP"
         },
         {
           "Series": "D-Series",
           "Exercise": "Heavy DB Shrugs",
           "Sets": 3,
-          "Reps": "12-15",
-          "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "65 lbs"
+          "Reps": "15-20 (to failure)",
+          "Rest": "30-45 sec",
+          "RPE": "9.5-10",
+          "Wt": "65 lbs",
+          "Tempo": "Pump / AMRAP"
         }
       ],
       "Day 6: Arms / Calves / Abs": [
@@ -771,54 +847,60 @@
           "Exercise": "Standing Heavy Barbell Curl",
           "Sets": 4,
           "Reps": "8-10",
-          "Rest": "60 sec",
-          "RPE": "8",
-          "Wt": "65 lbs"
+          "Rest": "90 sec",
+          "RPE": "8.5",
+          "Wt": "65 lbs",
+          "Tempo": "3-0-1 (3s eccentric)"
         },
         {
           "Series": "A2",
           "Exercise": "Close Grip Barbell Bench Press",
           "Sets": 4,
           "Reps": "8-10",
-          "Rest": "60 sec",
-          "RPE": "8",
-          "Wt": "115 lbs"
+          "Rest": "90 sec",
+          "RPE": "8.5",
+          "Wt": "115 lbs",
+          "Tempo": "3-0-1 (3s eccentric)"
         },
         {
           "Series": "B1",
           "Exercise": "Incline DB Hammer Curl",
           "Sets": 3,
-          "Reps": "10-12",
-          "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "25 lbs"
+          "Reps": "12-15",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "25 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
           "Exercise": "Tricep Overhead DB Extension",
           "Sets": 3,
-          "Reps": "10-12",
-          "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "45 lbs"
+          "Reps": "12-15",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "45 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "C1",
           "Exercise": "EZ Bar Preacher Curl (Strict)",
           "Sets": 3,
-          "Reps": "12-15",
+          "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "45 lbs"
+          "RPE": "9",
+          "Wt": "45 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "C2",
           "Exercise": "Cable V-Bar Tricep Pushdown",
           "Sets": 3,
-          "Reps": "12-15",
+          "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "70 lbs"
+          "RPE": "9",
+          "Wt": "70 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "Calves",
@@ -826,25 +908,27 @@
           "Sets": 4,
           "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "120 lbs"
+          "RPE": "9",
+          "Wt": "120 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "Calves",
           "Exercise": "Tibialis Wall Raises",
           "Sets": 3,
           "Reps": "20 reps",
-          "Rest": "30 sec",
-          "RPE": "8",
-          "Wt": "BW"
+          "Rest": "45 sec",
+          "RPE": "9",
+          "Wt": "BW",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "Abs",
           "Exercise": "Hanging Knee / Leg Raises",
           "Sets": 4,
           "Reps": "15-20",
-          "Rest": "45 sec",
-          "RPE": "8",
+          "Rest": "45-60 sec",
+          "RPE": "8.5-9",
           "Wt": "BW"
         }
       ],
@@ -854,8 +938,8 @@
           "Exercise": "Full Rest & Recovery / Sauna & Hydration",
           "Sets": 1,
           "Reps": "All Day",
-          "Rest": "-",
-          "RPE": "1",
+          "Rest": "45-60 sec",
+          "RPE": "8.5-9",
           "Wt": "-"
         }
       ]
@@ -866,73 +950,81 @@
           "Series": "A-Series",
           "Exercise": "Overhead Barbell Press",
           "Sets": 5,
-          "Reps": "5",
-          "Rest": "2-3 min",
-          "RPE": "8",
-          "Wt": "90 lbs"
+          "Reps": "8-10",
+          "Rest": "90 sec",
+          "RPE": "8.5",
+          "Wt": "90 lbs",
+          "Tempo": "3-0-1 (3s eccentric)"
         },
         {
           "Series": "B1",
           "Exercise": "Flat DB Bench Press",
           "Sets": 3,
-          "Reps": "8-10",
-          "Rest": "90 sec",
-          "RPE": "8",
-          "Wt": "55 lbs"
+          "Reps": "10-12",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "55 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B1",
           "Exercise": "Chest-Supported T-Bar Row",
           "Sets": 3,
           "Reps": "12-15",
-          "Rest": "90 sec",
-          "RPE": "8",
-          "Wt": "45 lbs"
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "45 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
           "Exercise": "Seated DB Arnold Press",
           "Sets": 3,
-          "Reps": "8-10",
-          "Rest": "90 sec",
-          "RPE": "8",
-          "Wt": "30 lbs"
+          "Reps": "10-12",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "30 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
           "Exercise": "Skull Crushers",
           "Sets": 3,
-          "Reps": "6-8",
-          "Rest": "90 sec",
-          "RPE": "8",
-          "Wt": "80 lbs"
+          "Reps": "10-12",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "80 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "C-Series",
           "Exercise": "Low-to-High Cable Fly",
           "Sets": 3,
-          "Reps": "12-15",
-          "Rest": "60 sec",
-          "RPE": "8",
-          "Wt": "30 lbs"
+          "Reps": "15-20",
+          "Rest": "45 sec",
+          "RPE": "9",
+          "Wt": "30 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "C-Series",
           "Exercise": "Rope Tricep Extension",
           "Sets": 3,
-          "Reps": "12-15",
-          "Rest": "60 sec",
-          "RPE": "8",
-          "Wt": "80 lbs"
+          "Reps": "15-20",
+          "Rest": "45 sec",
+          "RPE": "9",
+          "Wt": "80 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "D-Series",
           "Exercise": "DB Lateral Raise \u2192 Push-Up Burnout",
           "Sets": 2,
-          "Reps": "15-20 / AMRAP",
-          "Rest": "60 sec",
-          "RPE": "9",
-          "Wt": "15 lbs / BW"
+          "Reps": "15-20 (to failure)",
+          "Rest": "30-45 sec",
+          "RPE": "9.5-10",
+          "Wt": "15 lbs / BW",
+          "Tempo": "Pump / AMRAP"
         }
       ],
       "Day 2: Pull": [
@@ -940,73 +1032,81 @@
           "Series": "A-Series",
           "Exercise": "Pendlay Barbell Row",
           "Sets": 4,
-          "Reps": "6-8",
-          "Rest": "2-3 min",
-          "RPE": "8",
-          "Wt": "135 lbs"
+          "Reps": "8-10",
+          "Rest": "90 sec",
+          "RPE": "8.5",
+          "Wt": "135 lbs",
+          "Tempo": "3-0-1 (3s eccentric)"
         },
         {
           "Series": "B1",
           "Exercise": "Neutral Grip Chin-Up",
           "Sets": 3,
-          "Reps": "8-10 / AMRAP",
-          "Rest": "90 sec",
-          "RPE": "8",
-          "Wt": "BW"
+          "Reps": "10-12",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "BW",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B1",
           "Exercise": "Rope Face Pull",
           "Sets": 3,
           "Reps": "12-15",
-          "Rest": "90 sec",
-          "RPE": "8",
-          "Wt": "40 lbs"
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "40 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
           "Exercise": "Seated Cable Row (Close Grip)",
           "Sets": 3,
-          "Reps": "10-12",
-          "Rest": "90 sec",
-          "RPE": "8",
-          "Wt": "100 lbs"
+          "Reps": "12-15",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "100 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
           "Exercise": "Standing DB Hammer Curl",
           "Sets": 3,
-          "Reps": "10-12",
-          "Rest": "90 sec",
-          "RPE": "8",
-          "Wt": "25 lbs"
+          "Reps": "12-15",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "25 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "C-Series",
           "Exercise": "Incline DB Y-Raise",
           "Sets": 3,
-          "Reps": "12-15",
-          "Rest": "60 sec",
-          "RPE": "8",
-          "Wt": "15 lbs"
+          "Reps": "15-20",
+          "Rest": "45 sec",
+          "RPE": "9",
+          "Wt": "15 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "C-Series",
           "Exercise": "EZ Bar Preacher Curl",
           "Sets": 3,
-          "Reps": "12-15",
-          "Rest": "60 sec",
-          "RPE": "8",
-          "Wt": "40 lbs"
+          "Reps": "15-20",
+          "Rest": "45 sec",
+          "RPE": "9",
+          "Wt": "40 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "D-Series",
           "Exercise": "Wide Lat Pulldown \u2192 Standing DB Curl",
           "Sets": 2,
-          "Reps": "15-20",
-          "Rest": "60 sec",
-          "RPE": "9",
-          "Wt": "100 lbs / 25 lbs"
+          "Reps": "15-20 (to failure)",
+          "Rest": "30-45 sec",
+          "RPE": "9.5-10",
+          "Wt": "100 lbs / 25 lbs",
+          "Tempo": "Pump / AMRAP"
         }
       ],
       "Day 3: Lower Hypertrophy": [
@@ -1014,37 +1114,41 @@
           "Series": "A-Series",
           "Exercise": "Barbell Front Squat",
           "Sets": 4,
-          "Reps": "6-8",
-          "Rest": "2-3 min",
-          "RPE": "8",
-          "Wt": "135 lbs"
+          "Reps": "8-10",
+          "Rest": "90 sec",
+          "RPE": "8.5",
+          "Wt": "135 lbs",
+          "Tempo": "3-0-1 (3s eccentric)"
         },
         {
           "Series": "B1",
           "Exercise": "Romanian Deadlift (RDL)",
           "Sets": 3,
           "Reps": "12-15",
-          "Rest": "90 sec",
-          "RPE": "8",
-          "Wt": "135 lbs"
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "135 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B1",
           "Exercise": "DB Walking Lunges",
           "Sets": 3,
-          "Reps": "10-12 / leg",
-          "Rest": "90 sec",
-          "RPE": "8",
-          "Wt": "30 lbs"
+          "Reps": "12-15",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "30 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
           "Exercise": "Glute Ham Raise / Hamstring Curl",
           "Sets": 3,
-          "Reps": "10-12",
-          "Rest": "90 sec",
-          "RPE": "8",
-          "Wt": "BW / 70 lbs"
+          "Reps": "12-15",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "BW / 70 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
@@ -1052,26 +1156,29 @@
           "Sets": 3,
           "Reps": "12-15",
           "Rest": "60 sec",
-          "RPE": "8",
-          "Wt": "90 lbs"
+          "RPE": "9",
+          "Wt": "90 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "C-Series",
           "Exercise": "Leg Extension (3s Squeeze)",
           "Sets": 3,
           "Reps": "15-20",
-          "Rest": "60 sec",
-          "RPE": "8",
-          "Wt": "50 lbs"
+          "Rest": "45 sec",
+          "RPE": "9",
+          "Wt": "50 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "C-Series",
           "Exercise": "Bulgarian Split Squat ISO Hold",
           "Sets": 3,
           "Reps": "30 sec hold / leg",
-          "Rest": "60 sec",
-          "RPE": "8",
-          "Wt": "BW"
+          "Rest": "45 sec",
+          "RPE": "9",
+          "Wt": "BW",
+          "Tempo": "2-0-2 (constant tension)"
         }
       ],
       "Day 4: Recovery / Mobility": [
@@ -1098,9 +1205,10 @@
           "Exercise": "Zone 2 Steady State Cardio (Incline Walk)",
           "Sets": 1,
           "Reps": "30 mins",
-          "Rest": "-",
-          "RPE": "4",
-          "Wt": "Bodyweight"
+          "Rest": "45 sec",
+          "RPE": "9",
+          "Wt": "Bodyweight",
+          "Tempo": "2-0-2 (constant tension)"
         }
       ],
       "Day 5: Upper Pump": [
@@ -1110,17 +1218,19 @@
           "Sets": 4,
           "Reps": "10-12",
           "Rest": "90 sec",
-          "RPE": "8",
-          "Wt": "60 lbs"
+          "RPE": "8.5",
+          "Wt": "60 lbs",
+          "Tempo": "3-0-1 (3s eccentric)"
         },
         {
           "Series": "B1",
           "Exercise": "Neutral Grip Lat Pulldown",
           "Sets": 3,
-          "Reps": "10-12",
+          "Reps": "12-15",
           "Rest": "60 sec",
-          "RPE": "8",
-          "Wt": "110 lbs"
+          "RPE": "9",
+          "Wt": "110 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B1",
@@ -1128,71 +1238,79 @@
           "Sets": 3,
           "Reps": "12-15",
           "Rest": "60 sec",
-          "RPE": "8",
-          "Wt": "15 lbs"
+          "RPE": "9",
+          "Wt": "15 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
           "Exercise": "Weighted Dips / Machine Dips",
           "Sets": 3,
-          "Reps": "8-12",
+          "Reps": "12-15",
           "Rest": "60 sec",
-          "RPE": "8",
-          "Wt": "BW / +15 lbs"
+          "RPE": "9",
+          "Wt": "BW / +15 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
           "Exercise": "Incline DB Bicep Curl",
           "Sets": 3,
-          "Reps": "10-12",
+          "Reps": "12-15",
           "Rest": "60 sec",
-          "RPE": "8",
-          "Wt": "20 lbs"
+          "RPE": "9",
+          "Wt": "20 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "C1",
           "Exercise": "Pec Deck Fly (Peak Contraction)",
           "Sets": 3,
-          "Reps": "12-15",
+          "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "80 lbs"
+          "RPE": "9",
+          "Wt": "80 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "C2",
           "Exercise": "Standing Cable Bicep Curl",
           "Sets": 3,
-          "Reps": "12-15",
+          "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "50 lbs"
+          "RPE": "9",
+          "Wt": "50 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "C3",
           "Exercise": "Overhead Rope Tricep Extension",
           "Sets": 3,
-          "Reps": "12-15",
+          "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "60 lbs"
+          "RPE": "9",
+          "Wt": "60 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "D-Series",
           "Exercise": "Rear Delt Reverse Flyes",
           "Sets": 3,
-          "Reps": "15-20",
-          "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "15 lbs"
+          "Reps": "15-20 (to failure)",
+          "Rest": "30-45 sec",
+          "RPE": "9.5-10",
+          "Wt": "15 lbs",
+          "Tempo": "Pump / AMRAP"
         },
         {
           "Series": "D-Series",
           "Exercise": "Heavy DB Shrugs",
           "Sets": 3,
-          "Reps": "12-15",
-          "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "65 lbs"
+          "Reps": "15-20 (to failure)",
+          "Rest": "30-45 sec",
+          "RPE": "9.5-10",
+          "Wt": "65 lbs",
+          "Tempo": "Pump / AMRAP"
         }
       ],
       "Day 6: Arms / Calves / Abs": [
@@ -1201,54 +1319,60 @@
           "Exercise": "Standing Heavy Barbell Curl",
           "Sets": 4,
           "Reps": "8-10",
-          "Rest": "60 sec",
-          "RPE": "8",
-          "Wt": "65 lbs"
+          "Rest": "90 sec",
+          "RPE": "8.5",
+          "Wt": "65 lbs",
+          "Tempo": "3-0-1 (3s eccentric)"
         },
         {
           "Series": "A2",
           "Exercise": "Close Grip Barbell Bench Press",
           "Sets": 4,
           "Reps": "8-10",
-          "Rest": "60 sec",
-          "RPE": "8",
-          "Wt": "115 lbs"
+          "Rest": "90 sec",
+          "RPE": "8.5",
+          "Wt": "115 lbs",
+          "Tempo": "3-0-1 (3s eccentric)"
         },
         {
           "Series": "B1",
           "Exercise": "Incline DB Hammer Curl",
           "Sets": 3,
-          "Reps": "10-12",
-          "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "25 lbs"
+          "Reps": "12-15",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "25 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
           "Exercise": "Tricep Overhead DB Extension",
           "Sets": 3,
-          "Reps": "10-12",
-          "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "45 lbs"
+          "Reps": "12-15",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "45 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "C1",
           "Exercise": "EZ Bar Preacher Curl (Strict)",
           "Sets": 3,
-          "Reps": "12-15",
+          "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "45 lbs"
+          "RPE": "9",
+          "Wt": "45 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "C2",
           "Exercise": "Cable V-Bar Tricep Pushdown",
           "Sets": 3,
-          "Reps": "12-15",
+          "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "70 lbs"
+          "RPE": "9",
+          "Wt": "70 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "Calves",
@@ -1256,25 +1380,27 @@
           "Sets": 4,
           "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "120 lbs"
+          "RPE": "9",
+          "Wt": "120 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "Calves",
           "Exercise": "Tibialis Wall Raises",
           "Sets": 3,
           "Reps": "20 reps",
-          "Rest": "30 sec",
-          "RPE": "8",
-          "Wt": "BW"
+          "Rest": "45 sec",
+          "RPE": "9",
+          "Wt": "BW",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "Abs",
           "Exercise": "Hanging Knee / Leg Raises",
           "Sets": 4,
           "Reps": "15-20",
-          "Rest": "45 sec",
-          "RPE": "8",
+          "Rest": "45-60 sec",
+          "RPE": "8.5-9",
           "Wt": "BW"
         }
       ],
@@ -1284,8 +1410,8 @@
           "Exercise": "Full Rest & Recovery / Sauna & Hydration",
           "Sets": 1,
           "Reps": "All Day",
-          "Rest": "-",
-          "RPE": "1",
+          "Rest": "45-60 sec",
+          "RPE": "8.5-9",
           "Wt": "-"
         }
       ]
@@ -1296,73 +1422,81 @@
           "Series": "A-Series",
           "Exercise": "Overhead Barbell Press",
           "Sets": 3,
-          "Reps": "5",
-          "Rest": "2-3 min",
-          "RPE": "6",
-          "Wt": "90 lbs"
+          "Reps": "8-10",
+          "Rest": "90 sec",
+          "RPE": "8.5",
+          "Wt": "90 lbs",
+          "Tempo": "3-0-1 (3s eccentric)"
         },
         {
           "Series": "B1",
           "Exercise": "Flat DB Bench Press",
           "Sets": 2,
-          "Reps": "8-10",
-          "Rest": "90 sec",
-          "RPE": "8",
-          "Wt": "55 lbs"
+          "Reps": "10-12",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "55 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B1",
           "Exercise": "Chest-Supported T-Bar Row",
           "Sets": 2,
           "Reps": "12-15",
-          "Rest": "90 sec",
-          "RPE": "8",
-          "Wt": "45 lbs"
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "45 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
           "Exercise": "Seated DB Arnold Press",
           "Sets": 2,
-          "Reps": "8-10",
-          "Rest": "90 sec",
-          "RPE": "8",
-          "Wt": "30 lbs"
+          "Reps": "10-12",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "30 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
           "Exercise": "Skull Crushers",
           "Sets": 2,
-          "Reps": "6-8",
-          "Rest": "90 sec",
-          "RPE": "8",
-          "Wt": "80 lbs"
+          "Reps": "10-12",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "80 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "C-Series",
           "Exercise": "Low-to-High Cable Fly",
           "Sets": 2,
-          "Reps": "12-15",
-          "Rest": "60 sec",
-          "RPE": "8",
-          "Wt": "30 lbs"
+          "Reps": "15-20",
+          "Rest": "45 sec",
+          "RPE": "9",
+          "Wt": "30 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "C-Series",
           "Exercise": "Rope Tricep Extension",
           "Sets": 2,
-          "Reps": "12-15",
-          "Rest": "60 sec",
-          "RPE": "8",
-          "Wt": "80 lbs"
+          "Reps": "15-20",
+          "Rest": "45 sec",
+          "RPE": "9",
+          "Wt": "80 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "D-Series",
           "Exercise": "DB Lateral Raise \u2192 Push-Up Burnout",
           "Sets": 2,
-          "Reps": "15-20 / AMRAP",
-          "Rest": "60 sec",
-          "RPE": "9",
-          "Wt": "15 lbs / BW"
+          "Reps": "15-20 (to failure)",
+          "Rest": "30-45 sec",
+          "RPE": "9.5-10",
+          "Wt": "15 lbs / BW",
+          "Tempo": "Pump / AMRAP"
         }
       ],
       "Day 2: Pull": [
@@ -1370,73 +1504,81 @@
           "Series": "A-Series",
           "Exercise": "Pendlay Barbell Row",
           "Sets": 2,
-          "Reps": "6-8",
-          "Rest": "2-3 min",
-          "RPE": "8",
-          "Wt": "135 lbs"
+          "Reps": "8-10",
+          "Rest": "90 sec",
+          "RPE": "8.5",
+          "Wt": "135 lbs",
+          "Tempo": "3-0-1 (3s eccentric)"
         },
         {
           "Series": "B1",
           "Exercise": "Neutral Grip Chin-Up",
           "Sets": 2,
-          "Reps": "8-10 / AMRAP",
-          "Rest": "90 sec",
-          "RPE": "8",
-          "Wt": "BW"
+          "Reps": "10-12",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "BW",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B1",
           "Exercise": "Rope Face Pull",
           "Sets": 2,
           "Reps": "12-15",
-          "Rest": "90 sec",
-          "RPE": "8",
-          "Wt": "40 lbs"
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "40 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
           "Exercise": "Seated Cable Row (Close Grip)",
           "Sets": 2,
-          "Reps": "10-12",
-          "Rest": "90 sec",
-          "RPE": "8",
-          "Wt": "100 lbs"
+          "Reps": "12-15",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "100 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
           "Exercise": "Standing DB Hammer Curl",
           "Sets": 2,
-          "Reps": "10-12",
-          "Rest": "90 sec",
-          "RPE": "8",
-          "Wt": "25 lbs"
+          "Reps": "12-15",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "25 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "C-Series",
           "Exercise": "Incline DB Y-Raise",
           "Sets": 2,
-          "Reps": "12-15",
-          "Rest": "60 sec",
-          "RPE": "8",
-          "Wt": "15 lbs"
+          "Reps": "15-20",
+          "Rest": "45 sec",
+          "RPE": "9",
+          "Wt": "15 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "C-Series",
           "Exercise": "EZ Bar Preacher Curl",
           "Sets": 2,
-          "Reps": "12-15",
-          "Rest": "60 sec",
-          "RPE": "8",
-          "Wt": "40 lbs"
+          "Reps": "15-20",
+          "Rest": "45 sec",
+          "RPE": "9",
+          "Wt": "40 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "D-Series",
           "Exercise": "Wide Lat Pulldown \u2192 Standing DB Curl",
           "Sets": 2,
-          "Reps": "15-20",
-          "Rest": "60 sec",
-          "RPE": "9",
-          "Wt": "100 lbs / 25 lbs"
+          "Reps": "15-20 (to failure)",
+          "Rest": "30-45 sec",
+          "RPE": "9.5-10",
+          "Wt": "100 lbs / 25 lbs",
+          "Tempo": "Pump / AMRAP"
         }
       ],
       "Day 3: Lower Hypertrophy": [
@@ -1444,37 +1586,41 @@
           "Series": "A-Series",
           "Exercise": "Barbell Front Squat",
           "Sets": 2,
-          "Reps": "6-8",
-          "Rest": "2-3 min",
-          "RPE": "8",
-          "Wt": "135 lbs"
+          "Reps": "8-10",
+          "Rest": "90 sec",
+          "RPE": "8.5",
+          "Wt": "135 lbs",
+          "Tempo": "3-0-1 (3s eccentric)"
         },
         {
           "Series": "B1",
           "Exercise": "Romanian Deadlift (RDL)",
           "Sets": 2,
           "Reps": "12-15",
-          "Rest": "90 sec",
-          "RPE": "8",
-          "Wt": "135 lbs"
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "135 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B1",
           "Exercise": "DB Walking Lunges",
           "Sets": 2,
-          "Reps": "10-12 / leg",
-          "Rest": "90 sec",
-          "RPE": "8",
-          "Wt": "30 lbs"
+          "Reps": "12-15",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "30 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
           "Exercise": "Glute Ham Raise / Hamstring Curl",
           "Sets": 2,
-          "Reps": "10-12",
-          "Rest": "90 sec",
-          "RPE": "8",
-          "Wt": "BW / 70 lbs"
+          "Reps": "12-15",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "BW / 70 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
@@ -1482,26 +1628,29 @@
           "Sets": 2,
           "Reps": "12-15",
           "Rest": "60 sec",
-          "RPE": "8",
-          "Wt": "90 lbs"
+          "RPE": "9",
+          "Wt": "90 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "C-Series",
           "Exercise": "Leg Extension (3s Squeeze)",
           "Sets": 2,
           "Reps": "15-20",
-          "Rest": "60 sec",
-          "RPE": "8",
-          "Wt": "50 lbs"
+          "Rest": "45 sec",
+          "RPE": "9",
+          "Wt": "50 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "C-Series",
           "Exercise": "Bulgarian Split Squat ISO Hold",
           "Sets": 2,
           "Reps": "30 sec hold / leg",
-          "Rest": "60 sec",
-          "RPE": "8",
-          "Wt": "BW"
+          "Rest": "45 sec",
+          "RPE": "9",
+          "Wt": "BW",
+          "Tempo": "2-0-2 (constant tension)"
         }
       ],
       "Day 4: Recovery / Mobility": [
@@ -1528,9 +1677,10 @@
           "Exercise": "Zone 2 Steady State Cardio (Incline Walk)",
           "Sets": 1,
           "Reps": "30 mins",
-          "Rest": "-",
-          "RPE": "4",
-          "Wt": "Bodyweight"
+          "Rest": "45 sec",
+          "RPE": "9",
+          "Wt": "Bodyweight",
+          "Tempo": "2-0-2 (constant tension)"
         }
       ],
       "Day 5: Upper Pump": [
@@ -1540,17 +1690,19 @@
           "Sets": 2,
           "Reps": "10-12",
           "Rest": "90 sec",
-          "RPE": "8",
-          "Wt": "60 lbs"
+          "RPE": "8.5",
+          "Wt": "60 lbs",
+          "Tempo": "3-0-1 (3s eccentric)"
         },
         {
           "Series": "B1",
           "Exercise": "Neutral Grip Lat Pulldown",
           "Sets": 2,
-          "Reps": "10-12",
+          "Reps": "12-15",
           "Rest": "60 sec",
-          "RPE": "8",
-          "Wt": "110 lbs"
+          "RPE": "9",
+          "Wt": "110 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B1",
@@ -1558,71 +1710,79 @@
           "Sets": 2,
           "Reps": "12-15",
           "Rest": "60 sec",
-          "RPE": "8",
-          "Wt": "15 lbs"
+          "RPE": "9",
+          "Wt": "15 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
           "Exercise": "Weighted Dips / Machine Dips",
           "Sets": 2,
-          "Reps": "8-12",
+          "Reps": "12-15",
           "Rest": "60 sec",
-          "RPE": "8",
-          "Wt": "BW / +15 lbs"
+          "RPE": "9",
+          "Wt": "BW / +15 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
           "Exercise": "Incline DB Bicep Curl",
           "Sets": 2,
-          "Reps": "10-12",
+          "Reps": "12-15",
           "Rest": "60 sec",
-          "RPE": "8",
-          "Wt": "20 lbs"
+          "RPE": "9",
+          "Wt": "20 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "C1",
           "Exercise": "Pec Deck Fly (Peak Contraction)",
           "Sets": 2,
-          "Reps": "12-15",
+          "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "80 lbs"
+          "RPE": "9",
+          "Wt": "80 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "C2",
           "Exercise": "Standing Cable Bicep Curl",
           "Sets": 2,
-          "Reps": "12-15",
+          "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "50 lbs"
+          "RPE": "9",
+          "Wt": "50 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "C3",
           "Exercise": "Overhead Rope Tricep Extension",
           "Sets": 2,
-          "Reps": "12-15",
+          "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "60 lbs"
+          "RPE": "9",
+          "Wt": "60 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "D-Series",
           "Exercise": "Rear Delt Reverse Flyes",
           "Sets": 2,
-          "Reps": "15-20",
-          "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "15 lbs"
+          "Reps": "15-20 (to failure)",
+          "Rest": "30-45 sec",
+          "RPE": "9.5-10",
+          "Wt": "15 lbs",
+          "Tempo": "Pump / AMRAP"
         },
         {
           "Series": "D-Series",
           "Exercise": "Heavy DB Shrugs",
           "Sets": 2,
-          "Reps": "12-15",
-          "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "65 lbs"
+          "Reps": "15-20 (to failure)",
+          "Rest": "30-45 sec",
+          "RPE": "9.5-10",
+          "Wt": "65 lbs",
+          "Tempo": "Pump / AMRAP"
         }
       ],
       "Day 6: Arms / Calves / Abs": [
@@ -1631,54 +1791,60 @@
           "Exercise": "Standing Heavy Barbell Curl",
           "Sets": 2,
           "Reps": "8-10",
-          "Rest": "60 sec",
-          "RPE": "8",
-          "Wt": "65 lbs"
+          "Rest": "90 sec",
+          "RPE": "8.5",
+          "Wt": "65 lbs",
+          "Tempo": "3-0-1 (3s eccentric)"
         },
         {
           "Series": "A2",
           "Exercise": "Close Grip Barbell Bench Press",
           "Sets": 2,
           "Reps": "8-10",
-          "Rest": "60 sec",
-          "RPE": "8",
-          "Wt": "115 lbs"
+          "Rest": "90 sec",
+          "RPE": "8.5",
+          "Wt": "115 lbs",
+          "Tempo": "3-0-1 (3s eccentric)"
         },
         {
           "Series": "B1",
           "Exercise": "Incline DB Hammer Curl",
           "Sets": 2,
-          "Reps": "10-12",
-          "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "25 lbs"
+          "Reps": "12-15",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "25 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
           "Exercise": "Tricep Overhead DB Extension",
           "Sets": 2,
-          "Reps": "10-12",
-          "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "45 lbs"
+          "Reps": "12-15",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "45 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "C1",
           "Exercise": "EZ Bar Preacher Curl (Strict)",
           "Sets": 2,
-          "Reps": "12-15",
+          "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "45 lbs"
+          "RPE": "9",
+          "Wt": "45 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "C2",
           "Exercise": "Cable V-Bar Tricep Pushdown",
           "Sets": 2,
-          "Reps": "12-15",
+          "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "70 lbs"
+          "RPE": "9",
+          "Wt": "70 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "Calves",
@@ -1686,25 +1852,27 @@
           "Sets": 2,
           "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "120 lbs"
+          "RPE": "9",
+          "Wt": "120 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "Calves",
           "Exercise": "Tibialis Wall Raises",
           "Sets": 2,
           "Reps": "20 reps",
-          "Rest": "30 sec",
-          "RPE": "8",
-          "Wt": "BW"
+          "Rest": "45 sec",
+          "RPE": "9",
+          "Wt": "BW",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "Abs",
           "Exercise": "Hanging Knee / Leg Raises",
           "Sets": 2,
           "Reps": "15-20",
-          "Rest": "45 sec",
-          "RPE": "8",
+          "Rest": "45-60 sec",
+          "RPE": "8.5-9",
           "Wt": "BW"
         }
       ],
@@ -1714,8 +1882,8 @@
           "Exercise": "Full Rest & Recovery / Sauna & Hydration",
           "Sets": 1,
           "Reps": "All Day",
-          "Rest": "-",
-          "RPE": "1",
+          "Rest": "45-60 sec",
+          "RPE": "8.5-9",
           "Wt": "-"
         }
       ]
@@ -1728,73 +1896,81 @@
           "Series": "A-Series",
           "Exercise": "Incline Barbell Bench Press (30 Deg)",
           "Sets": 4,
-          "Reps": "6-8",
-          "Rest": "2-3 min",
+          "Reps": "8-10",
+          "Rest": "90 sec",
           "RPE": "8.5",
-          "Wt": "115 lbs"
+          "Wt": "115 lbs",
+          "Tempo": "3-0-1 (3s eccentric)"
         },
         {
           "Series": "B1",
           "Exercise": "Flat DB Bench Press (3s Eccentric)",
           "Sets": 3,
-          "Reps": "8-10",
-          "Rest": "75 sec",
-          "RPE": "8.5",
-          "Wt": "60 lbs"
+          "Reps": "10-12",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "60 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B1",
           "Exercise": "Chest-Supported Row (Wide Grip)",
           "Sets": 3,
-          "Reps": "10-12",
-          "Rest": "75 sec",
-          "RPE": "8.5",
-          "Wt": "55 lbs"
+          "Reps": "12-15",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "55 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
           "Exercise": "Standing DB Overhead Press",
           "Sets": 3,
-          "Reps": "8-10",
-          "Rest": "75 sec",
-          "RPE": "8.5",
-          "Wt": "35 lbs"
+          "Reps": "10-12",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "35 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
           "Exercise": "Close Grip Barbell Bench Press",
           "Sets": 3,
-          "Reps": "8-10",
-          "Rest": "75 sec",
-          "RPE": "8.5",
-          "Wt": "105 lbs"
+          "Reps": "10-12",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "105 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "C1",
           "Exercise": "Cable Crossover Flyes",
           "Sets": 3,
-          "Reps": "12-15",
+          "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "35 lbs"
+          "RPE": "9",
+          "Wt": "35 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "C2",
           "Exercise": "Overhead Cable Rope Tricep Ext",
           "Sets": 3,
-          "Reps": "12-15",
+          "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "65 lbs"
+          "RPE": "9",
+          "Wt": "65 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "D-Series",
           "Exercise": "Mechanical Drop Set Push-Ups",
           "Sets": 3,
-          "Reps": "AMRAP",
-          "Rest": "60 sec",
-          "RPE": "10",
-          "Wt": "BW"
+          "Reps": "15-20 (to failure)",
+          "Rest": "30-45 sec",
+          "RPE": "9.5-10",
+          "Wt": "BW",
+          "Tempo": "Pump / AMRAP"
         }
       ],
       "Day 2: Pull": [
@@ -1803,72 +1979,80 @@
           "Exercise": "Weighted Pull-Up / Lat Pulldown",
           "Sets": 4,
           "Reps": "5-7",
-          "Rest": "2-3 min",
+          "Rest": "90 sec",
           "RPE": "8.5",
-          "Wt": "BW +15 lbs / 130 lbs"
+          "Wt": "BW +15 lbs / 130 lbs",
+          "Tempo": "3-0-1 (3s eccentric)"
         },
         {
           "Series": "B1",
           "Exercise": "Single-Arm Meadows Row",
           "Sets": 3,
-          "Reps": "8-10 / side",
-          "Rest": "75 sec",
-          "RPE": "8.5",
-          "Wt": "50 lbs"
+          "Reps": "10-12",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "50 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B1",
           "Exercise": "Reverse Pec Deck Rear Delt Fly",
           "Sets": 3,
           "Reps": "12-15",
-          "Rest": "75 sec",
-          "RPE": "8.5",
-          "Wt": "60 lbs"
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "60 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
           "Exercise": "Heavy Single-Arm DB Row",
           "Sets": 3,
-          "Reps": "8-10",
-          "Rest": "75 sec",
-          "RPE": "8.5",
-          "Wt": "55 lbs"
+          "Reps": "10-12",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "55 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
           "Exercise": "Incline DB Bicep Curl",
           "Sets": 3,
-          "Reps": "10-12",
-          "Rest": "75 sec",
-          "RPE": "8.5",
-          "Wt": "25 lbs"
+          "Reps": "12-15",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "25 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "C1",
           "Exercise": "Straight Arm Cable Pulldown",
           "Sets": 3,
-          "Reps": "12-15",
+          "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "45 lbs"
+          "RPE": "9",
+          "Wt": "45 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "C2",
           "Exercise": "Spider Curls (Chest Supported)",
           "Sets": 3,
-          "Reps": "12-15",
+          "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "20 lbs"
+          "RPE": "9",
+          "Wt": "20 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "D-Series",
           "Exercise": "High Cable Bicep Flex Burnout",
           "Sets": 2,
-          "Reps": "20 reps",
-          "Rest": "45 sec",
-          "RPE": "9",
-          "Wt": "25 lbs"
+          "Reps": "15-20 (to failure)",
+          "Rest": "30-45 sec",
+          "RPE": "9.5-10",
+          "Wt": "25 lbs",
+          "Tempo": "Pump / AMRAP"
         }
       ],
       "Day 3: Lower Hypertrophy": [
@@ -1876,37 +2060,41 @@
           "Series": "A-Series",
           "Exercise": "Barbell Hack Squat / Safety Bar Squat",
           "Sets": 4,
-          "Reps": "6-8",
-          "Rest": "2-3 min",
+          "Reps": "8-10",
+          "Rest": "90 sec",
           "RPE": "8.5",
-          "Wt": "155 lbs"
+          "Wt": "155 lbs",
+          "Tempo": "3-0-1 (3s eccentric)"
         },
         {
           "Series": "B1",
           "Exercise": "Deficit Romanian Deadlift (2 in block)",
           "Sets": 3,
-          "Reps": "8-10",
-          "Rest": "75 sec",
-          "RPE": "8.5",
-          "Wt": "145 lbs"
+          "Reps": "10-12",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "145 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B1",
           "Exercise": "Bulgarian Split Squat (DBs at side)",
           "Sets": 3,
-          "Reps": "10-12 / leg",
-          "Rest": "75 sec",
-          "RPE": "8.5",
-          "Wt": "30 lbs"
+          "Reps": "12-15",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "30 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
           "Exercise": "Lying Hamstring Curl",
           "Sets": 3,
-          "Reps": "10-12",
-          "Rest": "75 sec",
-          "RPE": "8.5",
-          "Wt": "80 lbs"
+          "Reps": "12-15",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "80 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
@@ -1914,17 +2102,19 @@
           "Sets": 3,
           "Reps": "15-20",
           "Rest": "60 sec",
-          "RPE": "8.5",
-          "Wt": "120 lbs"
+          "RPE": "9",
+          "Wt": "120 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "C1",
           "Exercise": "Leg Extension (Slow 4s Eccentric)",
           "Sets": 3,
-          "Reps": "12-15",
+          "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "60 lbs"
+          "RPE": "9",
+          "Wt": "60 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "C2",
@@ -1932,8 +2122,9 @@
           "Sets": 3,
           "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "140 lbs"
+          "RPE": "9",
+          "Wt": "140 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         }
       ],
       "Day 4: Recovery / Mobility": [
@@ -1951,9 +2142,10 @@
           "Exercise": "Rucking / Incline Treadmill Walk",
           "Sets": 1,
           "Reps": "35 mins",
-          "Rest": "-",
-          "RPE": "4",
-          "Wt": "20 lb vest"
+          "Rest": "45 sec",
+          "RPE": "9",
+          "Wt": "20 lb vest",
+          "Tempo": "2-0-2 (constant tension)"
         }
       ],
       "Day 5: Upper Pump": [
@@ -1962,72 +2154,80 @@
           "Exercise": "Flat DB Bench Press (Squeeze Press)",
           "Sets": 4,
           "Reps": "10-12",
-          "Rest": "60 sec",
+          "Rest": "90 sec",
           "RPE": "8.5",
-          "Wt": "60 lbs"
+          "Wt": "60 lbs",
+          "Tempo": "3-0-1 (3s eccentric)"
         },
         {
           "Series": "A2",
           "Exercise": "Seated Cable Row (Wide Grip)",
           "Sets": 4,
           "Reps": "10-12",
-          "Rest": "60 sec",
+          "Rest": "90 sec",
           "RPE": "8.5",
-          "Wt": "110 lbs"
+          "Wt": "110 lbs",
+          "Tempo": "3-0-1 (3s eccentric)"
         },
         {
           "Series": "B1",
           "Exercise": "Seated DB Shoulder Press",
           "Sets": 3,
-          "Reps": "10-12",
-          "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "35 lbs"
+          "Reps": "12-15",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "35 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
           "Exercise": "DB Hammer Curl (Alternating)",
           "Sets": 3,
-          "Reps": "10-12",
-          "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "30 lbs"
+          "Reps": "12-15",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "30 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B3",
           "Exercise": "Tricep Overhead Rope Extension",
           "Sets": 3,
           "Reps": "12-15",
-          "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "55 lbs"
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "55 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "C1",
           "Exercise": "Lean-Away Cable Lateral Raise",
           "Sets": 3,
-          "Reps": "12-15",
-          "Rest": "30 sec",
-          "RPE": "8",
-          "Wt": "15 lbs"
+          "Reps": "15-20",
+          "Rest": "45 sec",
+          "RPE": "9",
+          "Wt": "15 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "C2",
           "Exercise": "Incline Chest Fly Machine",
           "Sets": 3,
-          "Reps": "12-15",
-          "Rest": "30 sec",
-          "RPE": "8",
-          "Wt": "75 lbs"
+          "Reps": "15-20",
+          "Rest": "45 sec",
+          "RPE": "9",
+          "Wt": "75 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "C3",
           "Exercise": "Face Pull to External Rotation",
           "Sets": 3,
           "Reps": "15-20",
-          "Rest": "30 sec",
-          "RPE": "8",
-          "Wt": "35 lbs"
+          "Rest": "45 sec",
+          "RPE": "9",
+          "Wt": "35 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         }
       ],
       "Day 6: Arms / Calves / Abs": [
@@ -2036,36 +2236,40 @@
           "Exercise": "EZ Bar Preacher Curl (Strict Drop Set)",
           "Sets": 4,
           "Reps": "10-12",
-          "Rest": "45 sec",
+          "Rest": "90 sec",
           "RPE": "8.5",
-          "Wt": "50 lbs"
+          "Wt": "50 lbs",
+          "Tempo": "3-0-1 (3s eccentric)"
         },
         {
           "Series": "A2",
           "Exercise": "Skull Crushers to Close Grip Press",
           "Sets": 4,
           "Reps": "10-12",
-          "Rest": "45 sec",
+          "Rest": "90 sec",
           "RPE": "8.5",
-          "Wt": "70 lbs"
+          "Wt": "70 lbs",
+          "Tempo": "3-0-1 (3s eccentric)"
         },
         {
           "Series": "B1",
           "Exercise": "Reverse Grip Barbell Curl",
           "Sets": 3,
           "Reps": "12-15",
-          "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "45 lbs"
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "45 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
           "Exercise": "Cable Tricep Kickbacks",
           "Sets": 3,
           "Reps": "12-15",
-          "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "20 lbs"
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "20 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "Calves",
@@ -2073,16 +2277,17 @@
           "Sets": 4,
           "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8.5",
-          "Wt": "100 lbs"
+          "RPE": "9",
+          "Wt": "100 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "Abs",
           "Exercise": "Decline Bench Weighted Sit-Ups",
           "Sets": 4,
           "Reps": "12-15",
-          "Rest": "45 sec",
-          "RPE": "8.5",
+          "Rest": "45-60 sec",
+          "RPE": "8.5-9",
           "Wt": "25 lbs plate"
         },
         {
@@ -2090,8 +2295,8 @@
           "Exercise": "Ab Wheel Rollouts",
           "Sets": 3,
           "Reps": "12-15",
-          "Rest": "45 sec",
-          "RPE": "8.5",
+          "Rest": "45-60 sec",
+          "RPE": "8.5-9",
           "Wt": "BW"
         }
       ],
@@ -2101,8 +2306,8 @@
           "Exercise": "Full Rest & Recovery / Cryo & Stretch",
           "Sets": 1,
           "Reps": "All Day",
-          "Rest": "-",
-          "RPE": "1",
+          "Rest": "45-60 sec",
+          "RPE": "8.5-9",
           "Wt": "-"
         }
       ]
@@ -2113,73 +2318,81 @@
           "Series": "A-Series",
           "Exercise": "Incline Barbell Bench Press (30 Deg)",
           "Sets": 4,
-          "Reps": "6-8",
-          "Rest": "2-3 min",
+          "Reps": "8-10",
+          "Rest": "90 sec",
           "RPE": "8.5",
-          "Wt": "115 lbs"
+          "Wt": "115 lbs",
+          "Tempo": "3-0-1 (3s eccentric)"
         },
         {
           "Series": "B1",
           "Exercise": "Flat DB Bench Press (3s Eccentric)",
           "Sets": 4,
-          "Reps": "8-10",
-          "Rest": "75 sec",
-          "RPE": "8.5",
-          "Wt": "60 lbs"
+          "Reps": "10-12",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "60 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B1",
           "Exercise": "Chest-Supported Row (Wide Grip)",
           "Sets": 4,
-          "Reps": "10-12",
-          "Rest": "75 sec",
-          "RPE": "8.5",
-          "Wt": "55 lbs"
+          "Reps": "12-15",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "55 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
           "Exercise": "Standing DB Overhead Press",
           "Sets": 4,
-          "Reps": "8-10",
-          "Rest": "75 sec",
-          "RPE": "8.5",
-          "Wt": "35 lbs"
+          "Reps": "10-12",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "35 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
           "Exercise": "Close Grip Barbell Bench Press",
           "Sets": 4,
-          "Reps": "8-10",
-          "Rest": "75 sec",
-          "RPE": "8.5",
-          "Wt": "105 lbs"
+          "Reps": "10-12",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "105 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "C1",
           "Exercise": "Cable Crossover Flyes",
           "Sets": 3,
-          "Reps": "12-15",
+          "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "35 lbs"
+          "RPE": "9",
+          "Wt": "35 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "C2",
           "Exercise": "Overhead Cable Rope Tricep Ext",
           "Sets": 3,
-          "Reps": "12-15",
+          "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "65 lbs"
+          "RPE": "9",
+          "Wt": "65 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "D-Series",
           "Exercise": "Mechanical Drop Set Push-Ups",
           "Sets": 3,
-          "Reps": "AMRAP",
-          "Rest": "60 sec",
-          "RPE": "10",
-          "Wt": "BW"
+          "Reps": "15-20 (to failure)",
+          "Rest": "30-45 sec",
+          "RPE": "9.5-10",
+          "Wt": "BW",
+          "Tempo": "Pump / AMRAP"
         }
       ],
       "Day 2: Pull": [
@@ -2188,72 +2401,80 @@
           "Exercise": "Weighted Pull-Up / Lat Pulldown",
           "Sets": 4,
           "Reps": "5-7",
-          "Rest": "2-3 min",
+          "Rest": "90 sec",
           "RPE": "8.5",
-          "Wt": "BW +15 lbs / 130 lbs"
+          "Wt": "BW +15 lbs / 130 lbs",
+          "Tempo": "3-0-1 (3s eccentric)"
         },
         {
           "Series": "B1",
           "Exercise": "Single-Arm Meadows Row",
           "Sets": 4,
-          "Reps": "8-10 / side",
-          "Rest": "75 sec",
-          "RPE": "8.5",
-          "Wt": "50 lbs"
+          "Reps": "10-12",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "50 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B1",
           "Exercise": "Reverse Pec Deck Rear Delt Fly",
           "Sets": 4,
           "Reps": "12-15",
-          "Rest": "75 sec",
-          "RPE": "8.5",
-          "Wt": "60 lbs"
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "60 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
           "Exercise": "Heavy Single-Arm DB Row",
           "Sets": 4,
-          "Reps": "8-10",
-          "Rest": "75 sec",
-          "RPE": "8.5",
-          "Wt": "55 lbs"
+          "Reps": "10-12",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "55 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
           "Exercise": "Incline DB Bicep Curl",
           "Sets": 4,
-          "Reps": "10-12",
-          "Rest": "75 sec",
-          "RPE": "8.5",
-          "Wt": "25 lbs"
+          "Reps": "12-15",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "25 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "C1",
           "Exercise": "Straight Arm Cable Pulldown",
           "Sets": 3,
-          "Reps": "12-15",
+          "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "45 lbs"
+          "RPE": "9",
+          "Wt": "45 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "C2",
           "Exercise": "Spider Curls (Chest Supported)",
           "Sets": 3,
-          "Reps": "12-15",
+          "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "20 lbs"
+          "RPE": "9",
+          "Wt": "20 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "D-Series",
           "Exercise": "High Cable Bicep Flex Burnout",
           "Sets": 2,
-          "Reps": "20 reps",
-          "Rest": "45 sec",
-          "RPE": "9",
-          "Wt": "25 lbs"
+          "Reps": "15-20 (to failure)",
+          "Rest": "30-45 sec",
+          "RPE": "9.5-10",
+          "Wt": "25 lbs",
+          "Tempo": "Pump / AMRAP"
         }
       ],
       "Day 3: Lower Hypertrophy": [
@@ -2261,37 +2482,41 @@
           "Series": "A-Series",
           "Exercise": "Barbell Hack Squat / Safety Bar Squat",
           "Sets": 4,
-          "Reps": "6-8",
-          "Rest": "2-3 min",
+          "Reps": "8-10",
+          "Rest": "90 sec",
           "RPE": "8.5",
-          "Wt": "155 lbs"
+          "Wt": "155 lbs",
+          "Tempo": "3-0-1 (3s eccentric)"
         },
         {
           "Series": "B1",
           "Exercise": "Deficit Romanian Deadlift (2 in block)",
           "Sets": 4,
-          "Reps": "8-10",
-          "Rest": "75 sec",
-          "RPE": "8.5",
-          "Wt": "145 lbs"
+          "Reps": "10-12",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "145 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B1",
           "Exercise": "Bulgarian Split Squat (DBs at side)",
           "Sets": 4,
-          "Reps": "10-12 / leg",
-          "Rest": "75 sec",
-          "RPE": "8.5",
-          "Wt": "30 lbs"
+          "Reps": "12-15",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "30 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
           "Exercise": "Lying Hamstring Curl",
           "Sets": 4,
-          "Reps": "10-12",
-          "Rest": "75 sec",
-          "RPE": "8.5",
-          "Wt": "80 lbs"
+          "Reps": "12-15",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "80 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
@@ -2299,17 +2524,19 @@
           "Sets": 4,
           "Reps": "15-20",
           "Rest": "60 sec",
-          "RPE": "8.5",
-          "Wt": "120 lbs"
+          "RPE": "9",
+          "Wt": "120 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "C1",
           "Exercise": "Leg Extension (Slow 4s Eccentric)",
           "Sets": 3,
-          "Reps": "12-15",
+          "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "60 lbs"
+          "RPE": "9",
+          "Wt": "60 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "C2",
@@ -2317,8 +2544,9 @@
           "Sets": 3,
           "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "140 lbs"
+          "RPE": "9",
+          "Wt": "140 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         }
       ],
       "Day 4: Recovery / Mobility": [
@@ -2336,9 +2564,10 @@
           "Exercise": "Rucking / Incline Treadmill Walk",
           "Sets": 1,
           "Reps": "35 mins",
-          "Rest": "-",
-          "RPE": "4",
-          "Wt": "20 lb vest"
+          "Rest": "45 sec",
+          "RPE": "9",
+          "Wt": "20 lb vest",
+          "Tempo": "2-0-2 (constant tension)"
         }
       ],
       "Day 5: Upper Pump": [
@@ -2347,72 +2576,80 @@
           "Exercise": "Flat DB Bench Press (Squeeze Press)",
           "Sets": 4,
           "Reps": "10-12",
-          "Rest": "60 sec",
+          "Rest": "90 sec",
           "RPE": "8.5",
-          "Wt": "60 lbs"
+          "Wt": "60 lbs",
+          "Tempo": "3-0-1 (3s eccentric)"
         },
         {
           "Series": "A2",
           "Exercise": "Seated Cable Row (Wide Grip)",
           "Sets": 4,
           "Reps": "10-12",
-          "Rest": "60 sec",
+          "Rest": "90 sec",
           "RPE": "8.5",
-          "Wt": "110 lbs"
+          "Wt": "110 lbs",
+          "Tempo": "3-0-1 (3s eccentric)"
         },
         {
           "Series": "B1",
           "Exercise": "Seated DB Shoulder Press",
           "Sets": 3,
-          "Reps": "10-12",
-          "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "35 lbs"
+          "Reps": "12-15",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "35 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
           "Exercise": "DB Hammer Curl (Alternating)",
           "Sets": 3,
-          "Reps": "10-12",
-          "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "30 lbs"
+          "Reps": "12-15",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "30 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B3",
           "Exercise": "Tricep Overhead Rope Extension",
           "Sets": 3,
           "Reps": "12-15",
-          "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "55 lbs"
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "55 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "C1",
           "Exercise": "Lean-Away Cable Lateral Raise",
           "Sets": 3,
-          "Reps": "12-15",
-          "Rest": "30 sec",
-          "RPE": "8",
-          "Wt": "15 lbs"
+          "Reps": "15-20",
+          "Rest": "45 sec",
+          "RPE": "9",
+          "Wt": "15 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "C2",
           "Exercise": "Incline Chest Fly Machine",
           "Sets": 3,
-          "Reps": "12-15",
-          "Rest": "30 sec",
-          "RPE": "8",
-          "Wt": "75 lbs"
+          "Reps": "15-20",
+          "Rest": "45 sec",
+          "RPE": "9",
+          "Wt": "75 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "C3",
           "Exercise": "Face Pull to External Rotation",
           "Sets": 3,
           "Reps": "15-20",
-          "Rest": "30 sec",
-          "RPE": "8",
-          "Wt": "35 lbs"
+          "Rest": "45 sec",
+          "RPE": "9",
+          "Wt": "35 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         }
       ],
       "Day 6: Arms / Calves / Abs": [
@@ -2421,36 +2658,40 @@
           "Exercise": "EZ Bar Preacher Curl (Strict Drop Set)",
           "Sets": 4,
           "Reps": "10-12",
-          "Rest": "45 sec",
+          "Rest": "90 sec",
           "RPE": "8.5",
-          "Wt": "50 lbs"
+          "Wt": "50 lbs",
+          "Tempo": "3-0-1 (3s eccentric)"
         },
         {
           "Series": "A2",
           "Exercise": "Skull Crushers to Close Grip Press",
           "Sets": 4,
           "Reps": "10-12",
-          "Rest": "45 sec",
+          "Rest": "90 sec",
           "RPE": "8.5",
-          "Wt": "70 lbs"
+          "Wt": "70 lbs",
+          "Tempo": "3-0-1 (3s eccentric)"
         },
         {
           "Series": "B1",
           "Exercise": "Reverse Grip Barbell Curl",
           "Sets": 3,
           "Reps": "12-15",
-          "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "45 lbs"
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "45 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
           "Exercise": "Cable Tricep Kickbacks",
           "Sets": 3,
           "Reps": "12-15",
-          "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "20 lbs"
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "20 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "Calves",
@@ -2458,16 +2699,17 @@
           "Sets": 4,
           "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8.5",
-          "Wt": "100 lbs"
+          "RPE": "9",
+          "Wt": "100 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "Abs",
           "Exercise": "Decline Bench Weighted Sit-Ups",
           "Sets": 4,
           "Reps": "12-15",
-          "Rest": "45 sec",
-          "RPE": "8.5",
+          "Rest": "45-60 sec",
+          "RPE": "8.5-9",
           "Wt": "25 lbs plate"
         },
         {
@@ -2475,8 +2717,8 @@
           "Exercise": "Ab Wheel Rollouts",
           "Sets": 3,
           "Reps": "12-15",
-          "Rest": "45 sec",
-          "RPE": "8.5",
+          "Rest": "45-60 sec",
+          "RPE": "8.5-9",
           "Wt": "BW"
         }
       ],
@@ -2486,8 +2728,8 @@
           "Exercise": "Full Rest & Recovery / Cryo & Stretch",
           "Sets": 1,
           "Reps": "All Day",
-          "Rest": "-",
-          "RPE": "1",
+          "Rest": "45-60 sec",
+          "RPE": "8.5-9",
           "Wt": "-"
         }
       ]
@@ -2498,73 +2740,81 @@
           "Series": "A-Series",
           "Exercise": "Incline Barbell Bench Press (30 Deg)",
           "Sets": 4,
-          "Reps": "6-8",
-          "Rest": "2-3 min",
+          "Reps": "8-10",
+          "Rest": "90 sec",
           "RPE": "8.5",
-          "Wt": "115 lbs"
+          "Wt": "115 lbs",
+          "Tempo": "3-0-1 (3s eccentric)"
         },
         {
           "Series": "B1",
           "Exercise": "Flat DB Bench Press (3s Eccentric)",
           "Sets": 4,
-          "Reps": "8-10",
-          "Rest": "75 sec",
-          "RPE": "8.5",
-          "Wt": "60 lbs"
+          "Reps": "10-12",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "60 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B1",
           "Exercise": "Chest-Supported Row (Wide Grip)",
           "Sets": 4,
-          "Reps": "10-12",
-          "Rest": "75 sec",
-          "RPE": "8.5",
-          "Wt": "55 lbs"
+          "Reps": "12-15",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "55 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
           "Exercise": "Standing DB Overhead Press",
           "Sets": 4,
-          "Reps": "8-10",
-          "Rest": "75 sec",
-          "RPE": "8.5",
-          "Wt": "35 lbs"
+          "Reps": "10-12",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "35 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
           "Exercise": "Close Grip Barbell Bench Press",
           "Sets": 4,
-          "Reps": "8-10",
-          "Rest": "75 sec",
-          "RPE": "8.5",
-          "Wt": "105 lbs"
+          "Reps": "10-12",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "105 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "C1",
           "Exercise": "Cable Crossover Flyes",
           "Sets": 3,
-          "Reps": "12-15",
+          "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "35 lbs"
+          "RPE": "9",
+          "Wt": "35 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "C2",
           "Exercise": "Overhead Cable Rope Tricep Ext",
           "Sets": 3,
-          "Reps": "12-15",
+          "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "65 lbs"
+          "RPE": "9",
+          "Wt": "65 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "D-Series",
           "Exercise": "Mechanical Drop Set Push-Ups",
           "Sets": 3,
-          "Reps": "AMRAP",
-          "Rest": "60 sec",
-          "RPE": "10",
-          "Wt": "BW"
+          "Reps": "15-20 (to failure)",
+          "Rest": "30-45 sec",
+          "RPE": "9.5-10",
+          "Wt": "BW",
+          "Tempo": "Pump / AMRAP"
         }
       ],
       "Day 2: Pull": [
@@ -2573,72 +2823,80 @@
           "Exercise": "Weighted Pull-Up / Lat Pulldown",
           "Sets": 4,
           "Reps": "5-7",
-          "Rest": "2-3 min",
+          "Rest": "90 sec",
           "RPE": "8.5",
-          "Wt": "BW +15 lbs / 130 lbs"
+          "Wt": "BW +15 lbs / 130 lbs",
+          "Tempo": "3-0-1 (3s eccentric)"
         },
         {
           "Series": "B1",
           "Exercise": "Single-Arm Meadows Row",
           "Sets": 4,
-          "Reps": "8-10 / side",
-          "Rest": "75 sec",
-          "RPE": "8.5",
-          "Wt": "50 lbs"
+          "Reps": "10-12",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "50 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B1",
           "Exercise": "Reverse Pec Deck Rear Delt Fly",
           "Sets": 4,
           "Reps": "12-15",
-          "Rest": "75 sec",
-          "RPE": "8.5",
-          "Wt": "60 lbs"
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "60 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
           "Exercise": "Heavy Single-Arm DB Row",
           "Sets": 4,
-          "Reps": "8-10",
-          "Rest": "75 sec",
-          "RPE": "8.5",
-          "Wt": "55 lbs"
+          "Reps": "10-12",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "55 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
           "Exercise": "Incline DB Bicep Curl",
           "Sets": 4,
-          "Reps": "10-12",
-          "Rest": "75 sec",
-          "RPE": "8.5",
-          "Wt": "25 lbs"
+          "Reps": "12-15",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "25 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "C1",
           "Exercise": "Straight Arm Cable Pulldown",
           "Sets": 3,
-          "Reps": "12-15",
+          "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "45 lbs"
+          "RPE": "9",
+          "Wt": "45 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "C2",
           "Exercise": "Spider Curls (Chest Supported)",
           "Sets": 3,
-          "Reps": "12-15",
+          "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "20 lbs"
+          "RPE": "9",
+          "Wt": "20 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "D-Series",
           "Exercise": "High Cable Bicep Flex Burnout",
           "Sets": 2,
-          "Reps": "20 reps",
-          "Rest": "45 sec",
-          "RPE": "9",
-          "Wt": "25 lbs"
+          "Reps": "15-20 (to failure)",
+          "Rest": "30-45 sec",
+          "RPE": "9.5-10",
+          "Wt": "25 lbs",
+          "Tempo": "Pump / AMRAP"
         }
       ],
       "Day 3: Lower Hypertrophy": [
@@ -2646,37 +2904,41 @@
           "Series": "A-Series",
           "Exercise": "Barbell Hack Squat / Safety Bar Squat",
           "Sets": 4,
-          "Reps": "6-8",
-          "Rest": "2-3 min",
+          "Reps": "8-10",
+          "Rest": "90 sec",
           "RPE": "8.5",
-          "Wt": "155 lbs"
+          "Wt": "155 lbs",
+          "Tempo": "3-0-1 (3s eccentric)"
         },
         {
           "Series": "B1",
           "Exercise": "Deficit Romanian Deadlift (2 in block)",
           "Sets": 4,
-          "Reps": "8-10",
-          "Rest": "75 sec",
-          "RPE": "8.5",
-          "Wt": "145 lbs"
+          "Reps": "10-12",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "145 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B1",
           "Exercise": "Bulgarian Split Squat (DBs at side)",
           "Sets": 4,
-          "Reps": "10-12 / leg",
-          "Rest": "75 sec",
-          "RPE": "8.5",
-          "Wt": "30 lbs"
+          "Reps": "12-15",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "30 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
           "Exercise": "Lying Hamstring Curl",
           "Sets": 4,
-          "Reps": "10-12",
-          "Rest": "75 sec",
-          "RPE": "8.5",
-          "Wt": "80 lbs"
+          "Reps": "12-15",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "80 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
@@ -2684,17 +2946,19 @@
           "Sets": 4,
           "Reps": "15-20",
           "Rest": "60 sec",
-          "RPE": "8.5",
-          "Wt": "120 lbs"
+          "RPE": "9",
+          "Wt": "120 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "C1",
           "Exercise": "Leg Extension (Slow 4s Eccentric)",
           "Sets": 3,
-          "Reps": "12-15",
+          "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "60 lbs"
+          "RPE": "9",
+          "Wt": "60 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "C2",
@@ -2702,8 +2966,9 @@
           "Sets": 3,
           "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "140 lbs"
+          "RPE": "9",
+          "Wt": "140 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         }
       ],
       "Day 4: Recovery / Mobility": [
@@ -2721,9 +2986,10 @@
           "Exercise": "Rucking / Incline Treadmill Walk",
           "Sets": 1,
           "Reps": "35 mins",
-          "Rest": "-",
-          "RPE": "4",
-          "Wt": "20 lb vest"
+          "Rest": "45 sec",
+          "RPE": "9",
+          "Wt": "20 lb vest",
+          "Tempo": "2-0-2 (constant tension)"
         }
       ],
       "Day 5: Upper Pump": [
@@ -2732,72 +2998,80 @@
           "Exercise": "Flat DB Bench Press (Squeeze Press)",
           "Sets": 4,
           "Reps": "10-12",
-          "Rest": "60 sec",
+          "Rest": "90 sec",
           "RPE": "8.5",
-          "Wt": "60 lbs"
+          "Wt": "60 lbs",
+          "Tempo": "3-0-1 (3s eccentric)"
         },
         {
           "Series": "A2",
           "Exercise": "Seated Cable Row (Wide Grip)",
           "Sets": 4,
           "Reps": "10-12",
-          "Rest": "60 sec",
+          "Rest": "90 sec",
           "RPE": "8.5",
-          "Wt": "110 lbs"
+          "Wt": "110 lbs",
+          "Tempo": "3-0-1 (3s eccentric)"
         },
         {
           "Series": "B1",
           "Exercise": "Seated DB Shoulder Press",
           "Sets": 3,
-          "Reps": "10-12",
-          "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "35 lbs"
+          "Reps": "12-15",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "35 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
           "Exercise": "DB Hammer Curl (Alternating)",
           "Sets": 3,
-          "Reps": "10-12",
-          "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "30 lbs"
+          "Reps": "12-15",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "30 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B3",
           "Exercise": "Tricep Overhead Rope Extension",
           "Sets": 3,
           "Reps": "12-15",
-          "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "55 lbs"
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "55 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "C1",
           "Exercise": "Lean-Away Cable Lateral Raise",
           "Sets": 3,
-          "Reps": "12-15",
-          "Rest": "30 sec",
-          "RPE": "8",
-          "Wt": "15 lbs"
+          "Reps": "15-20",
+          "Rest": "45 sec",
+          "RPE": "9",
+          "Wt": "15 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "C2",
           "Exercise": "Incline Chest Fly Machine",
           "Sets": 3,
-          "Reps": "12-15",
-          "Rest": "30 sec",
-          "RPE": "8",
-          "Wt": "75 lbs"
+          "Reps": "15-20",
+          "Rest": "45 sec",
+          "RPE": "9",
+          "Wt": "75 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "C3",
           "Exercise": "Face Pull to External Rotation",
           "Sets": 3,
           "Reps": "15-20",
-          "Rest": "30 sec",
-          "RPE": "8",
-          "Wt": "35 lbs"
+          "Rest": "45 sec",
+          "RPE": "9",
+          "Wt": "35 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         }
       ],
       "Day 6: Arms / Calves / Abs": [
@@ -2806,36 +3080,40 @@
           "Exercise": "EZ Bar Preacher Curl (Strict Drop Set)",
           "Sets": 4,
           "Reps": "10-12",
-          "Rest": "45 sec",
+          "Rest": "90 sec",
           "RPE": "8.5",
-          "Wt": "50 lbs"
+          "Wt": "50 lbs",
+          "Tempo": "3-0-1 (3s eccentric)"
         },
         {
           "Series": "A2",
           "Exercise": "Skull Crushers to Close Grip Press",
           "Sets": 4,
           "Reps": "10-12",
-          "Rest": "45 sec",
+          "Rest": "90 sec",
           "RPE": "8.5",
-          "Wt": "70 lbs"
+          "Wt": "70 lbs",
+          "Tempo": "3-0-1 (3s eccentric)"
         },
         {
           "Series": "B1",
           "Exercise": "Reverse Grip Barbell Curl",
           "Sets": 3,
           "Reps": "12-15",
-          "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "45 lbs"
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "45 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
           "Exercise": "Cable Tricep Kickbacks",
           "Sets": 3,
           "Reps": "12-15",
-          "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "20 lbs"
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "20 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "Calves",
@@ -2843,16 +3121,17 @@
           "Sets": 4,
           "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8.5",
-          "Wt": "100 lbs"
+          "RPE": "9",
+          "Wt": "100 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "Abs",
           "Exercise": "Decline Bench Weighted Sit-Ups",
           "Sets": 4,
           "Reps": "12-15",
-          "Rest": "45 sec",
-          "RPE": "8.5",
+          "Rest": "45-60 sec",
+          "RPE": "8.5-9",
           "Wt": "25 lbs plate"
         },
         {
@@ -2860,8 +3139,8 @@
           "Exercise": "Ab Wheel Rollouts",
           "Sets": 3,
           "Reps": "12-15",
-          "Rest": "45 sec",
-          "RPE": "8.5",
+          "Rest": "45-60 sec",
+          "RPE": "8.5-9",
           "Wt": "BW"
         }
       ],
@@ -2871,8 +3150,8 @@
           "Exercise": "Full Rest & Recovery / Cryo & Stretch",
           "Sets": 1,
           "Reps": "All Day",
-          "Rest": "-",
-          "RPE": "1",
+          "Rest": "45-60 sec",
+          "RPE": "8.5-9",
           "Wt": "-"
         }
       ]
@@ -2883,73 +3162,81 @@
           "Series": "A-Series",
           "Exercise": "Incline Barbell Bench Press (30 Deg)",
           "Sets": 4,
-          "Reps": "6-8",
-          "Rest": "2-3 min",
+          "Reps": "8-10",
+          "Rest": "90 sec",
           "RPE": "8.5",
-          "Wt": "115 lbs"
+          "Wt": "115 lbs",
+          "Tempo": "3-0-1 (3s eccentric)"
         },
         {
           "Series": "B1",
           "Exercise": "Flat DB Bench Press (3s Eccentric)",
           "Sets": 4,
-          "Reps": "8-10",
-          "Rest": "75 sec",
-          "RPE": "8.5",
-          "Wt": "60 lbs"
+          "Reps": "10-12",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "60 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B1",
           "Exercise": "Chest-Supported Row (Wide Grip)",
           "Sets": 4,
-          "Reps": "10-12",
-          "Rest": "75 sec",
-          "RPE": "8.5",
-          "Wt": "55 lbs"
+          "Reps": "12-15",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "55 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
           "Exercise": "Standing DB Overhead Press",
           "Sets": 4,
-          "Reps": "8-10",
-          "Rest": "75 sec",
-          "RPE": "8.5",
-          "Wt": "35 lbs"
+          "Reps": "10-12",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "35 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
           "Exercise": "Close Grip Barbell Bench Press",
           "Sets": 4,
-          "Reps": "8-10",
-          "Rest": "75 sec",
-          "RPE": "8.5",
-          "Wt": "105 lbs"
+          "Reps": "10-12",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "105 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "C1",
           "Exercise": "Cable Crossover Flyes",
           "Sets": 3,
-          "Reps": "12-15",
+          "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "35 lbs"
+          "RPE": "9",
+          "Wt": "35 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "C2",
           "Exercise": "Overhead Cable Rope Tricep Ext",
           "Sets": 3,
-          "Reps": "12-15",
+          "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "65 lbs"
+          "RPE": "9",
+          "Wt": "65 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "D-Series",
           "Exercise": "Mechanical Drop Set Push-Ups",
           "Sets": 3,
-          "Reps": "AMRAP",
-          "Rest": "60 sec",
-          "RPE": "10",
-          "Wt": "BW"
+          "Reps": "15-20 (to failure)",
+          "Rest": "30-45 sec",
+          "RPE": "9.5-10",
+          "Wt": "BW",
+          "Tempo": "Pump / AMRAP"
         }
       ],
       "Day 2: Pull": [
@@ -2958,72 +3245,80 @@
           "Exercise": "Weighted Pull-Up / Lat Pulldown",
           "Sets": 4,
           "Reps": "5-7",
-          "Rest": "2-3 min",
+          "Rest": "90 sec",
           "RPE": "8.5",
-          "Wt": "BW +15 lbs / 130 lbs"
+          "Wt": "BW +15 lbs / 130 lbs",
+          "Tempo": "3-0-1 (3s eccentric)"
         },
         {
           "Series": "B1",
           "Exercise": "Single-Arm Meadows Row",
           "Sets": 4,
-          "Reps": "8-10 / side",
-          "Rest": "75 sec",
-          "RPE": "8.5",
-          "Wt": "50 lbs"
+          "Reps": "10-12",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "50 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B1",
           "Exercise": "Reverse Pec Deck Rear Delt Fly",
           "Sets": 4,
           "Reps": "12-15",
-          "Rest": "75 sec",
-          "RPE": "8.5",
-          "Wt": "60 lbs"
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "60 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
           "Exercise": "Heavy Single-Arm DB Row",
           "Sets": 4,
-          "Reps": "8-10",
-          "Rest": "75 sec",
-          "RPE": "8.5",
-          "Wt": "55 lbs"
+          "Reps": "10-12",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "55 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
           "Exercise": "Incline DB Bicep Curl",
           "Sets": 4,
-          "Reps": "10-12",
-          "Rest": "75 sec",
-          "RPE": "8.5",
-          "Wt": "25 lbs"
+          "Reps": "12-15",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "25 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "C1",
           "Exercise": "Straight Arm Cable Pulldown",
           "Sets": 3,
-          "Reps": "12-15",
+          "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "45 lbs"
+          "RPE": "9",
+          "Wt": "45 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "C2",
           "Exercise": "Spider Curls (Chest Supported)",
           "Sets": 3,
-          "Reps": "12-15",
+          "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "20 lbs"
+          "RPE": "9",
+          "Wt": "20 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "D-Series",
           "Exercise": "High Cable Bicep Flex Burnout",
           "Sets": 2,
-          "Reps": "20 reps",
-          "Rest": "45 sec",
-          "RPE": "9",
-          "Wt": "25 lbs"
+          "Reps": "15-20 (to failure)",
+          "Rest": "30-45 sec",
+          "RPE": "9.5-10",
+          "Wt": "25 lbs",
+          "Tempo": "Pump / AMRAP"
         }
       ],
       "Day 3: Lower Hypertrophy": [
@@ -3031,37 +3326,41 @@
           "Series": "A-Series",
           "Exercise": "Barbell Hack Squat / Safety Bar Squat",
           "Sets": 4,
-          "Reps": "6-8",
-          "Rest": "2-3 min",
+          "Reps": "8-10",
+          "Rest": "90 sec",
           "RPE": "8.5",
-          "Wt": "155 lbs"
+          "Wt": "155 lbs",
+          "Tempo": "3-0-1 (3s eccentric)"
         },
         {
           "Series": "B1",
           "Exercise": "Deficit Romanian Deadlift (2 in block)",
           "Sets": 4,
-          "Reps": "8-10",
-          "Rest": "75 sec",
-          "RPE": "8.5",
-          "Wt": "145 lbs"
+          "Reps": "10-12",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "145 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B1",
           "Exercise": "Bulgarian Split Squat (DBs at side)",
           "Sets": 4,
-          "Reps": "10-12 / leg",
-          "Rest": "75 sec",
-          "RPE": "8.5",
-          "Wt": "30 lbs"
+          "Reps": "12-15",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "30 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
           "Exercise": "Lying Hamstring Curl",
           "Sets": 4,
-          "Reps": "10-12",
-          "Rest": "75 sec",
-          "RPE": "8.5",
-          "Wt": "80 lbs"
+          "Reps": "12-15",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "80 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
@@ -3069,17 +3368,19 @@
           "Sets": 4,
           "Reps": "15-20",
           "Rest": "60 sec",
-          "RPE": "8.5",
-          "Wt": "120 lbs"
+          "RPE": "9",
+          "Wt": "120 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "C1",
           "Exercise": "Leg Extension (Slow 4s Eccentric)",
           "Sets": 3,
-          "Reps": "12-15",
+          "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "60 lbs"
+          "RPE": "9",
+          "Wt": "60 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "C2",
@@ -3087,8 +3388,9 @@
           "Sets": 3,
           "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "140 lbs"
+          "RPE": "9",
+          "Wt": "140 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         }
       ],
       "Day 4: Recovery / Mobility": [
@@ -3106,9 +3408,10 @@
           "Exercise": "Rucking / Incline Treadmill Walk",
           "Sets": 1,
           "Reps": "35 mins",
-          "Rest": "-",
-          "RPE": "4",
-          "Wt": "20 lb vest"
+          "Rest": "45 sec",
+          "RPE": "9",
+          "Wt": "20 lb vest",
+          "Tempo": "2-0-2 (constant tension)"
         }
       ],
       "Day 5: Upper Pump": [
@@ -3117,72 +3420,80 @@
           "Exercise": "Flat DB Bench Press (Squeeze Press)",
           "Sets": 4,
           "Reps": "10-12",
-          "Rest": "60 sec",
+          "Rest": "90 sec",
           "RPE": "8.5",
-          "Wt": "60 lbs"
+          "Wt": "60 lbs",
+          "Tempo": "3-0-1 (3s eccentric)"
         },
         {
           "Series": "A2",
           "Exercise": "Seated Cable Row (Wide Grip)",
           "Sets": 4,
           "Reps": "10-12",
-          "Rest": "60 sec",
+          "Rest": "90 sec",
           "RPE": "8.5",
-          "Wt": "110 lbs"
+          "Wt": "110 lbs",
+          "Tempo": "3-0-1 (3s eccentric)"
         },
         {
           "Series": "B1",
           "Exercise": "Seated DB Shoulder Press",
           "Sets": 3,
-          "Reps": "10-12",
-          "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "35 lbs"
+          "Reps": "12-15",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "35 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
           "Exercise": "DB Hammer Curl (Alternating)",
           "Sets": 3,
-          "Reps": "10-12",
-          "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "30 lbs"
+          "Reps": "12-15",
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "30 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B3",
           "Exercise": "Tricep Overhead Rope Extension",
           "Sets": 3,
           "Reps": "12-15",
-          "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "55 lbs"
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "55 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "C1",
           "Exercise": "Lean-Away Cable Lateral Raise",
           "Sets": 3,
-          "Reps": "12-15",
-          "Rest": "30 sec",
-          "RPE": "8",
-          "Wt": "15 lbs"
+          "Reps": "15-20",
+          "Rest": "45 sec",
+          "RPE": "9",
+          "Wt": "15 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "C2",
           "Exercise": "Incline Chest Fly Machine",
           "Sets": 3,
-          "Reps": "12-15",
-          "Rest": "30 sec",
-          "RPE": "8",
-          "Wt": "75 lbs"
+          "Reps": "15-20",
+          "Rest": "45 sec",
+          "RPE": "9",
+          "Wt": "75 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "C3",
           "Exercise": "Face Pull to External Rotation",
           "Sets": 3,
           "Reps": "15-20",
-          "Rest": "30 sec",
-          "RPE": "8",
-          "Wt": "35 lbs"
+          "Rest": "45 sec",
+          "RPE": "9",
+          "Wt": "35 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         }
       ],
       "Day 6: Arms / Calves / Abs": [
@@ -3191,36 +3502,40 @@
           "Exercise": "EZ Bar Preacher Curl (Strict Drop Set)",
           "Sets": 4,
           "Reps": "10-12",
-          "Rest": "45 sec",
+          "Rest": "90 sec",
           "RPE": "8.5",
-          "Wt": "50 lbs"
+          "Wt": "50 lbs",
+          "Tempo": "3-0-1 (3s eccentric)"
         },
         {
           "Series": "A2",
           "Exercise": "Skull Crushers to Close Grip Press",
           "Sets": 4,
           "Reps": "10-12",
-          "Rest": "45 sec",
+          "Rest": "90 sec",
           "RPE": "8.5",
-          "Wt": "70 lbs"
+          "Wt": "70 lbs",
+          "Tempo": "3-0-1 (3s eccentric)"
         },
         {
           "Series": "B1",
           "Exercise": "Reverse Grip Barbell Curl",
           "Sets": 3,
           "Reps": "12-15",
-          "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "45 lbs"
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "45 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
           "Exercise": "Cable Tricep Kickbacks",
           "Sets": 3,
           "Reps": "12-15",
-          "Rest": "45 sec",
-          "RPE": "8",
-          "Wt": "20 lbs"
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "20 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "Calves",
@@ -3228,16 +3543,17 @@
           "Sets": 4,
           "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8.5",
-          "Wt": "100 lbs"
+          "RPE": "9",
+          "Wt": "100 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "Abs",
           "Exercise": "Decline Bench Weighted Sit-Ups",
           "Sets": 4,
           "Reps": "12-15",
-          "Rest": "45 sec",
-          "RPE": "8.5",
+          "Rest": "45-60 sec",
+          "RPE": "8.5-9",
           "Wt": "25 lbs plate"
         },
         {
@@ -3245,8 +3561,8 @@
           "Exercise": "Ab Wheel Rollouts",
           "Sets": 3,
           "Reps": "12-15",
-          "Rest": "45 sec",
-          "RPE": "8.5",
+          "Rest": "45-60 sec",
+          "RPE": "8.5-9",
           "Wt": "BW"
         }
       ],
@@ -3256,8 +3572,8 @@
           "Exercise": "Full Rest & Recovery / Cryo & Stretch",
           "Sets": 1,
           "Reps": "All Day",
-          "Rest": "-",
-          "RPE": "1",
+          "Rest": "45-60 sec",
+          "RPE": "8.5-9",
           "Wt": "-"
         }
       ]
@@ -3270,55 +3586,61 @@
           "Series": "A-Series",
           "Exercise": "Heavy Barbell Bench Press",
           "Sets": 5,
-          "Reps": "4-6",
-          "Rest": "3 min",
-          "RPE": "9",
-          "Wt": "185 lbs"
+          "Reps": "8-10",
+          "Rest": "90 sec",
+          "RPE": "8.5",
+          "Wt": "185 lbs",
+          "Tempo": "3-0-1 (3s eccentric)"
         },
         {
           "Series": "B1",
           "Exercise": "Incline DB Press (Mechanical Drop Set)",
           "Sets": 4,
-          "Reps": "8-10",
+          "Reps": "10-12",
           "Rest": "60 sec",
           "RPE": "9",
-          "Wt": "65 lbs"
+          "Wt": "65 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
           "Exercise": "Seated Arnold Shoulder Press",
           "Sets": 4,
-          "Reps": "8-10",
+          "Reps": "10-12",
           "Rest": "60 sec",
           "RPE": "9",
-          "Wt": "40 lbs"
+          "Wt": "40 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B3",
           "Exercise": "Weighted Dips",
           "Sets": 4,
-          "Reps": "8-10",
+          "Reps": "10-12",
           "Rest": "60 sec",
           "RPE": "9",
-          "Wt": "BW +25 lbs"
+          "Wt": "BW +25 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "C1",
           "Exercise": "Low-to-High Cable Crossovers",
           "Sets": 3,
-          "Reps": "12-15",
+          "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8.5",
-          "Wt": "35 lbs"
+          "RPE": "9",
+          "Wt": "35 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "C2",
           "Exercise": "EZ Bar French Press",
           "Sets": 3,
-          "Reps": "12-15",
+          "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8.5",
-          "Wt": "75 lbs"
+          "RPE": "9",
+          "Wt": "75 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "C3",
@@ -3327,16 +3649,18 @@
           "Reps": "15 + 5 + 5",
           "Rest": "45 sec",
           "RPE": "9",
-          "Wt": "20 lbs"
+          "Wt": "20 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "D-Series",
           "Exercise": "Deficit Push-Up Burnout",
           "Sets": 2,
-          "Reps": "AMRAP",
-          "Rest": "45 sec",
-          "RPE": "10",
-          "Wt": "BW"
+          "Reps": "15-20 (to failure)",
+          "Rest": "30-45 sec",
+          "RPE": "9.5-10",
+          "Wt": "BW",
+          "Tempo": "Pump / AMRAP"
         }
       ],
       "Day 2: Pull": [
@@ -3344,37 +3668,41 @@
           "Series": "A-Series",
           "Exercise": "Conventional Deadlift / Heavy Rack Pull",
           "Sets": 4,
-          "Reps": "4-6",
-          "Rest": "3 min",
-          "RPE": "9",
-          "Wt": "225 lbs"
+          "Reps": "8-10",
+          "Rest": "90 sec",
+          "RPE": "8.5",
+          "Wt": "225 lbs",
+          "Tempo": "3-0-1 (3s eccentric)"
         },
         {
           "Series": "B1",
           "Exercise": "Wide Grip Neutral Lat Pulldown",
           "Sets": 4,
-          "Reps": "8-10",
+          "Reps": "10-12",
           "Rest": "60 sec",
           "RPE": "9",
-          "Wt": "140 lbs"
+          "Wt": "140 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
           "Exercise": "Chest Supported T-Bar Row",
           "Sets": 4,
-          "Reps": "8-10",
+          "Reps": "10-12",
           "Rest": "60 sec",
           "RPE": "9",
-          "Wt": "70 lbs"
+          "Wt": "70 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B3",
           "Exercise": "Seated DB Incline Bicep Curl",
           "Sets": 4,
-          "Reps": "10-12",
+          "Reps": "12-15",
           "Rest": "60 sec",
           "RPE": "9",
-          "Wt": "30 lbs"
+          "Wt": "30 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "C1",
@@ -3382,35 +3710,39 @@
           "Sets": 3,
           "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8.5",
-          "Wt": "50 lbs"
+          "RPE": "9",
+          "Wt": "50 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "C2",
           "Exercise": "DB Hammer Curls (Cross Body)",
           "Sets": 3,
-          "Reps": "12-15",
+          "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8.5",
-          "Wt": "30 lbs"
+          "RPE": "9",
+          "Wt": "30 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "C3",
           "Exercise": "Weighted Hyperextensions",
           "Sets": 3,
-          "Reps": "12-15",
+          "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8.5",
-          "Wt": "35 lbs plate"
+          "RPE": "9",
+          "Wt": "35 lbs plate",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "D-Series",
           "Exercise": "Cable Shrug Burnout",
           "Sets": 2,
-          "Reps": "20-25",
-          "Rest": "45 sec",
-          "RPE": "9",
-          "Wt": "100 lbs"
+          "Reps": "15-20 (to failure)",
+          "Rest": "30-45 sec",
+          "RPE": "9.5-10",
+          "Wt": "100 lbs",
+          "Tempo": "Pump / AMRAP"
         }
       ],
       "Day 3: Lower Hypertrophy": [
@@ -3418,19 +3750,21 @@
           "Series": "A-Series",
           "Exercise": "Barbell Back Squat (Deep Depth)",
           "Sets": 5,
-          "Reps": "5",
-          "Rest": "3 min",
-          "RPE": "9",
-          "Wt": "185 lbs"
+          "Reps": "8-10",
+          "Rest": "90 sec",
+          "RPE": "8.5",
+          "Wt": "185 lbs",
+          "Tempo": "3-0-1 (3s eccentric)"
         },
         {
           "Series": "B1",
           "Exercise": "Barbell Hip Thrust (2s Pause)",
           "Sets": 4,
-          "Reps": "8-10",
+          "Reps": "10-12",
           "Rest": "60 sec",
           "RPE": "9",
-          "Wt": "185 lbs"
+          "Wt": "185 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
@@ -3439,25 +3773,28 @@
           "Reps": "10 / leg",
           "Rest": "60 sec",
           "RPE": "9",
-          "Wt": "40 lbs"
+          "Wt": "40 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B3",
           "Exercise": "Lying Hamstring Curl (Drop Set)",
           "Sets": 4,
-          "Reps": "10-12",
+          "Reps": "12-15",
           "Rest": "60 sec",
           "RPE": "9",
-          "Wt": "90 lbs"
+          "Wt": "90 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "C1",
           "Exercise": "Single-Leg Leg Extension",
           "Sets": 3,
-          "Reps": "12-15 / leg",
+          "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8.5",
-          "Wt": "35 lbs"
+          "RPE": "9",
+          "Wt": "35 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "C2",
@@ -3465,8 +3802,9 @@
           "Sets": 4,
           "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8.5",
-          "Wt": "110 lbs"
+          "RPE": "9",
+          "Wt": "110 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "C3",
@@ -3474,17 +3812,19 @@
           "Sets": 4,
           "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8.5",
-          "Wt": "130 lbs"
+          "RPE": "9",
+          "Wt": "130 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "D-Series",
           "Exercise": "Goblet Squat Burnout",
           "Sets": 2,
-          "Reps": "25 reps",
-          "Rest": "45 sec",
-          "RPE": "10",
-          "Wt": "45 lbs"
+          "Reps": "15-20 (to failure)",
+          "Rest": "30-45 sec",
+          "RPE": "9.5-10",
+          "Wt": "45 lbs",
+          "Tempo": "Pump / AMRAP"
         }
       ],
       "Day 4: Recovery / Mobility": [
@@ -3502,9 +3842,10 @@
           "Exercise": "Low Impact Incline Walk / Light Cycling",
           "Sets": 1,
           "Reps": "30 mins",
-          "Rest": "-",
-          "RPE": "3",
-          "Wt": "BW"
+          "Rest": "45 sec",
+          "RPE": "9",
+          "Wt": "BW",
+          "Tempo": "2-0-2 (constant tension)"
         }
       ],
       "Day 5: Upper Pump": [
@@ -3513,26 +3854,28 @@
           "Exercise": "Incline DB Chest Fly",
           "Sets": 4,
           "Reps": "10-12",
-          "Rest": "45 sec",
+          "Rest": "90 sec",
           "RPE": "8.5",
-          "Wt": "40 lbs"
+          "Wt": "40 lbs",
+          "Tempo": "3-0-1 (3s eccentric)"
         },
         {
           "Series": "A2",
           "Exercise": "Close-Grip Lat Pulldown",
           "Sets": 4,
           "Reps": "10-12",
-          "Rest": "45 sec",
+          "Rest": "90 sec",
           "RPE": "8.5",
-          "Wt": "120 lbs"
+          "Wt": "120 lbs",
+          "Tempo": "3-0-1 (3s eccentric)"
         },
         {
           "Series": "A3",
           "Exercise": "Seated Arnold Press",
           "Sets": 4,
           "Reps": "10-12",
-          "Rest": "45 sec",
-          "RPE": "8.5",
+          "Rest": "45-60 sec",
+          "RPE": "8.5-9",
           "Wt": "30 lbs"
         },
         {
@@ -3540,27 +3883,30 @@
           "Exercise": "Standing EZ Bar Bicep Curl",
           "Sets": 3,
           "Reps": "12-15",
-          "Rest": "30 sec",
-          "RPE": "8.5",
-          "Wt": "55 lbs"
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "55 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
           "Exercise": "Cable Rope Tricep Pushdown",
           "Sets": 3,
           "Reps": "12-15",
-          "Rest": "30 sec",
-          "RPE": "8.5",
-          "Wt": "70 lbs"
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "70 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B3",
           "Exercise": "Cable Lateral Raise",
           "Sets": 3,
           "Reps": "15-20",
-          "Rest": "30 sec",
-          "RPE": "8.5",
-          "Wt": "15 lbs"
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "15 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "C1",
@@ -3569,7 +3915,8 @@
           "Reps": "AMRAP",
           "Rest": "45 sec",
           "RPE": "9",
-          "Wt": "BW"
+          "Wt": "BW",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "C2",
@@ -3577,8 +3924,9 @@
           "Sets": 3,
           "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8.5",
-          "Wt": "20 lbs"
+          "RPE": "9",
+          "Wt": "20 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         }
       ],
       "Day 6: Arms / Calves / Abs": [
@@ -3587,8 +3935,8 @@
           "Exercise": "Barbell Bicep Curl",
           "Sets": 4,
           "Reps": "10-12",
-          "Rest": "30 sec",
-          "RPE": "9",
+          "Rest": "45-60 sec",
+          "RPE": "8.5-9",
           "Wt": "60 lbs"
         },
         {
@@ -3596,8 +3944,8 @@
           "Exercise": "Barbell Skull Crusher",
           "Sets": 4,
           "Reps": "10-12",
-          "Rest": "30 sec",
-          "RPE": "9",
+          "Rest": "45-60 sec",
+          "RPE": "8.5-9",
           "Wt": "75 lbs"
         },
         {
@@ -3605,8 +3953,8 @@
           "Exercise": "DB Hammer Curl",
           "Sets": 4,
           "Reps": "10-12",
-          "Rest": "30 sec",
-          "RPE": "9",
+          "Rest": "45-60 sec",
+          "RPE": "8.5-9",
           "Wt": "30 lbs"
         },
         {
@@ -3614,8 +3962,8 @@
           "Exercise": "Overhead Tricep Rope Extension",
           "Sets": 4,
           "Reps": "12-15",
-          "Rest": "60 sec",
-          "RPE": "9",
+          "Rest": "45-60 sec",
+          "RPE": "8.5-9",
           "Wt": "60 lbs"
         },
         {
@@ -3625,24 +3973,26 @@
           "Reps": "20 reps",
           "Rest": "45 sec",
           "RPE": "9",
-          "Wt": "140 lbs"
+          "Wt": "140 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "Calves",
           "Exercise": "Tibialis Wall Raise",
           "Sets": 3,
           "Reps": "25 reps",
-          "Rest": "30 sec",
-          "RPE": "8",
-          "Wt": "BW"
+          "Rest": "45 sec",
+          "RPE": "9",
+          "Wt": "BW",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "Abs",
           "Exercise": "Weighted Cable Crunch",
           "Sets": 4,
           "Reps": "15-20",
-          "Rest": "45 sec",
-          "RPE": "9",
+          "Rest": "45-60 sec",
+          "RPE": "8.5-9",
           "Wt": "80 lbs"
         },
         {
@@ -3650,8 +4000,8 @@
           "Exercise": "Hanging Leg Raises (Straight Leg)",
           "Sets": 4,
           "Reps": "15-20",
-          "Rest": "45 sec",
-          "RPE": "9",
+          "Rest": "45-60 sec",
+          "RPE": "8.5-9",
           "Wt": "BW"
         }
       ],
@@ -3661,8 +4011,8 @@
           "Exercise": "Full Rest & Recovery / Sauna & Electrolytes",
           "Sets": 1,
           "Reps": "All Day",
-          "Rest": "-",
-          "RPE": "1",
+          "Rest": "45-60 sec",
+          "RPE": "8.5-9",
           "Wt": "-"
         }
       ]
@@ -3673,55 +4023,61 @@
           "Series": "A-Series",
           "Exercise": "Heavy Barbell Bench Press",
           "Sets": 5,
-          "Reps": "4-6",
-          "Rest": "3 min",
-          "RPE": "9",
-          "Wt": "185 lbs"
+          "Reps": "8-10",
+          "Rest": "90 sec",
+          "RPE": "8.5",
+          "Wt": "185 lbs",
+          "Tempo": "3-0-1 (3s eccentric)"
         },
         {
           "Series": "B1",
           "Exercise": "Incline DB Press (Mechanical Drop Set)",
           "Sets": 4,
-          "Reps": "8-10",
+          "Reps": "10-12",
           "Rest": "60 sec",
           "RPE": "9",
-          "Wt": "65 lbs"
+          "Wt": "65 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
           "Exercise": "Seated Arnold Shoulder Press",
           "Sets": 4,
-          "Reps": "8-10",
+          "Reps": "10-12",
           "Rest": "60 sec",
           "RPE": "9",
-          "Wt": "40 lbs"
+          "Wt": "40 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B3",
           "Exercise": "Weighted Dips",
           "Sets": 4,
-          "Reps": "8-10",
+          "Reps": "10-12",
           "Rest": "60 sec",
           "RPE": "9",
-          "Wt": "BW +25 lbs"
+          "Wt": "BW +25 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "C1",
           "Exercise": "Low-to-High Cable Crossovers",
           "Sets": 3,
-          "Reps": "12-15",
+          "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8.5",
-          "Wt": "35 lbs"
+          "RPE": "9",
+          "Wt": "35 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "C2",
           "Exercise": "EZ Bar French Press",
           "Sets": 3,
-          "Reps": "12-15",
+          "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8.5",
-          "Wt": "75 lbs"
+          "RPE": "9",
+          "Wt": "75 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "C3",
@@ -3730,16 +4086,18 @@
           "Reps": "15 + 5 + 5",
           "Rest": "45 sec",
           "RPE": "9",
-          "Wt": "20 lbs"
+          "Wt": "20 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "D-Series",
           "Exercise": "Deficit Push-Up Burnout",
           "Sets": 2,
-          "Reps": "AMRAP",
-          "Rest": "45 sec",
-          "RPE": "10",
-          "Wt": "BW"
+          "Reps": "15-20 (to failure)",
+          "Rest": "30-45 sec",
+          "RPE": "9.5-10",
+          "Wt": "BW",
+          "Tempo": "Pump / AMRAP"
         }
       ],
       "Day 2: Pull": [
@@ -3747,37 +4105,41 @@
           "Series": "A-Series",
           "Exercise": "Conventional Deadlift / Heavy Rack Pull",
           "Sets": 4,
-          "Reps": "4-6",
-          "Rest": "3 min",
-          "RPE": "9",
-          "Wt": "225 lbs"
+          "Reps": "8-10",
+          "Rest": "90 sec",
+          "RPE": "8.5",
+          "Wt": "225 lbs",
+          "Tempo": "3-0-1 (3s eccentric)"
         },
         {
           "Series": "B1",
           "Exercise": "Wide Grip Neutral Lat Pulldown",
           "Sets": 4,
-          "Reps": "8-10",
+          "Reps": "10-12",
           "Rest": "60 sec",
           "RPE": "9",
-          "Wt": "140 lbs"
+          "Wt": "140 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
           "Exercise": "Chest Supported T-Bar Row",
           "Sets": 4,
-          "Reps": "8-10",
+          "Reps": "10-12",
           "Rest": "60 sec",
           "RPE": "9",
-          "Wt": "70 lbs"
+          "Wt": "70 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B3",
           "Exercise": "Seated DB Incline Bicep Curl",
           "Sets": 4,
-          "Reps": "10-12",
+          "Reps": "12-15",
           "Rest": "60 sec",
           "RPE": "9",
-          "Wt": "30 lbs"
+          "Wt": "30 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "C1",
@@ -3785,35 +4147,39 @@
           "Sets": 3,
           "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8.5",
-          "Wt": "50 lbs"
+          "RPE": "9",
+          "Wt": "50 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "C2",
           "Exercise": "DB Hammer Curls (Cross Body)",
           "Sets": 3,
-          "Reps": "12-15",
+          "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8.5",
-          "Wt": "30 lbs"
+          "RPE": "9",
+          "Wt": "30 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "C3",
           "Exercise": "Weighted Hyperextensions",
           "Sets": 3,
-          "Reps": "12-15",
+          "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8.5",
-          "Wt": "35 lbs plate"
+          "RPE": "9",
+          "Wt": "35 lbs plate",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "D-Series",
           "Exercise": "Cable Shrug Burnout",
           "Sets": 2,
-          "Reps": "20-25",
-          "Rest": "45 sec",
-          "RPE": "9",
-          "Wt": "100 lbs"
+          "Reps": "15-20 (to failure)",
+          "Rest": "30-45 sec",
+          "RPE": "9.5-10",
+          "Wt": "100 lbs",
+          "Tempo": "Pump / AMRAP"
         }
       ],
       "Day 3: Lower Hypertrophy": [
@@ -3821,19 +4187,21 @@
           "Series": "A-Series",
           "Exercise": "Barbell Back Squat (Deep Depth)",
           "Sets": 5,
-          "Reps": "5",
-          "Rest": "3 min",
-          "RPE": "9",
-          "Wt": "185 lbs"
+          "Reps": "8-10",
+          "Rest": "90 sec",
+          "RPE": "8.5",
+          "Wt": "185 lbs",
+          "Tempo": "3-0-1 (3s eccentric)"
         },
         {
           "Series": "B1",
           "Exercise": "Barbell Hip Thrust (2s Pause)",
           "Sets": 4,
-          "Reps": "8-10",
+          "Reps": "10-12",
           "Rest": "60 sec",
           "RPE": "9",
-          "Wt": "185 lbs"
+          "Wt": "185 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
@@ -3842,25 +4210,28 @@
           "Reps": "10 / leg",
           "Rest": "60 sec",
           "RPE": "9",
-          "Wt": "40 lbs"
+          "Wt": "40 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B3",
           "Exercise": "Lying Hamstring Curl (Drop Set)",
           "Sets": 4,
-          "Reps": "10-12",
+          "Reps": "12-15",
           "Rest": "60 sec",
           "RPE": "9",
-          "Wt": "90 lbs"
+          "Wt": "90 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "C1",
           "Exercise": "Single-Leg Leg Extension",
           "Sets": 3,
-          "Reps": "12-15 / leg",
+          "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8.5",
-          "Wt": "35 lbs"
+          "RPE": "9",
+          "Wt": "35 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "C2",
@@ -3868,8 +4239,9 @@
           "Sets": 4,
           "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8.5",
-          "Wt": "110 lbs"
+          "RPE": "9",
+          "Wt": "110 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "C3",
@@ -3877,17 +4249,19 @@
           "Sets": 4,
           "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8.5",
-          "Wt": "130 lbs"
+          "RPE": "9",
+          "Wt": "130 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "D-Series",
           "Exercise": "Goblet Squat Burnout",
           "Sets": 2,
-          "Reps": "25 reps",
-          "Rest": "45 sec",
-          "RPE": "10",
-          "Wt": "45 lbs"
+          "Reps": "15-20 (to failure)",
+          "Rest": "30-45 sec",
+          "RPE": "9.5-10",
+          "Wt": "45 lbs",
+          "Tempo": "Pump / AMRAP"
         }
       ],
       "Day 4: Recovery / Mobility": [
@@ -3905,9 +4279,10 @@
           "Exercise": "Low Impact Incline Walk / Light Cycling",
           "Sets": 1,
           "Reps": "30 mins",
-          "Rest": "-",
-          "RPE": "3",
-          "Wt": "BW"
+          "Rest": "45 sec",
+          "RPE": "9",
+          "Wt": "BW",
+          "Tempo": "2-0-2 (constant tension)"
         }
       ],
       "Day 5: Upper Pump": [
@@ -3916,26 +4291,28 @@
           "Exercise": "Incline DB Chest Fly",
           "Sets": 4,
           "Reps": "10-12",
-          "Rest": "45 sec",
+          "Rest": "90 sec",
           "RPE": "8.5",
-          "Wt": "40 lbs"
+          "Wt": "40 lbs",
+          "Tempo": "3-0-1 (3s eccentric)"
         },
         {
           "Series": "A2",
           "Exercise": "Close-Grip Lat Pulldown",
           "Sets": 4,
           "Reps": "10-12",
-          "Rest": "45 sec",
+          "Rest": "90 sec",
           "RPE": "8.5",
-          "Wt": "120 lbs"
+          "Wt": "120 lbs",
+          "Tempo": "3-0-1 (3s eccentric)"
         },
         {
           "Series": "A3",
           "Exercise": "Seated Arnold Press",
           "Sets": 4,
           "Reps": "10-12",
-          "Rest": "45 sec",
-          "RPE": "8.5",
+          "Rest": "45-60 sec",
+          "RPE": "8.5-9",
           "Wt": "30 lbs"
         },
         {
@@ -3943,27 +4320,30 @@
           "Exercise": "Standing EZ Bar Bicep Curl",
           "Sets": 3,
           "Reps": "12-15",
-          "Rest": "30 sec",
-          "RPE": "8.5",
-          "Wt": "55 lbs"
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "55 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
           "Exercise": "Cable Rope Tricep Pushdown",
           "Sets": 3,
           "Reps": "12-15",
-          "Rest": "30 sec",
-          "RPE": "8.5",
-          "Wt": "70 lbs"
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "70 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B3",
           "Exercise": "Cable Lateral Raise",
           "Sets": 3,
           "Reps": "15-20",
-          "Rest": "30 sec",
-          "RPE": "8.5",
-          "Wt": "15 lbs"
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "15 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "C1",
@@ -3972,7 +4352,8 @@
           "Reps": "AMRAP",
           "Rest": "45 sec",
           "RPE": "9",
-          "Wt": "BW"
+          "Wt": "BW",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "C2",
@@ -3980,8 +4361,9 @@
           "Sets": 3,
           "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8.5",
-          "Wt": "20 lbs"
+          "RPE": "9",
+          "Wt": "20 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         }
       ],
       "Day 6: Arms / Calves / Abs": [
@@ -3990,8 +4372,8 @@
           "Exercise": "Barbell Bicep Curl",
           "Sets": 4,
           "Reps": "10-12",
-          "Rest": "30 sec",
-          "RPE": "9",
+          "Rest": "45-60 sec",
+          "RPE": "8.5-9",
           "Wt": "60 lbs"
         },
         {
@@ -3999,8 +4381,8 @@
           "Exercise": "Barbell Skull Crusher",
           "Sets": 4,
           "Reps": "10-12",
-          "Rest": "30 sec",
-          "RPE": "9",
+          "Rest": "45-60 sec",
+          "RPE": "8.5-9",
           "Wt": "75 lbs"
         },
         {
@@ -4008,8 +4390,8 @@
           "Exercise": "DB Hammer Curl",
           "Sets": 4,
           "Reps": "10-12",
-          "Rest": "30 sec",
-          "RPE": "9",
+          "Rest": "45-60 sec",
+          "RPE": "8.5-9",
           "Wt": "30 lbs"
         },
         {
@@ -4017,8 +4399,8 @@
           "Exercise": "Overhead Tricep Rope Extension",
           "Sets": 4,
           "Reps": "12-15",
-          "Rest": "60 sec",
-          "RPE": "9",
+          "Rest": "45-60 sec",
+          "RPE": "8.5-9",
           "Wt": "60 lbs"
         },
         {
@@ -4028,24 +4410,26 @@
           "Reps": "20 reps",
           "Rest": "45 sec",
           "RPE": "9",
-          "Wt": "140 lbs"
+          "Wt": "140 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "Calves",
           "Exercise": "Tibialis Wall Raise",
           "Sets": 3,
           "Reps": "25 reps",
-          "Rest": "30 sec",
-          "RPE": "8",
-          "Wt": "BW"
+          "Rest": "45 sec",
+          "RPE": "9",
+          "Wt": "BW",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "Abs",
           "Exercise": "Weighted Cable Crunch",
           "Sets": 4,
           "Reps": "15-20",
-          "Rest": "45 sec",
-          "RPE": "9",
+          "Rest": "45-60 sec",
+          "RPE": "8.5-9",
           "Wt": "80 lbs"
         },
         {
@@ -4053,8 +4437,8 @@
           "Exercise": "Hanging Leg Raises (Straight Leg)",
           "Sets": 4,
           "Reps": "15-20",
-          "Rest": "45 sec",
-          "RPE": "9",
+          "Rest": "45-60 sec",
+          "RPE": "8.5-9",
           "Wt": "BW"
         }
       ],
@@ -4064,8 +4448,8 @@
           "Exercise": "Full Rest & Recovery / Sauna & Electrolytes",
           "Sets": 1,
           "Reps": "All Day",
-          "Rest": "-",
-          "RPE": "1",
+          "Rest": "45-60 sec",
+          "RPE": "8.5-9",
           "Wt": "-"
         }
       ]
@@ -4076,55 +4460,61 @@
           "Series": "A-Series",
           "Exercise": "Heavy Barbell Bench Press",
           "Sets": 5,
-          "Reps": "4-6",
-          "Rest": "3 min",
-          "RPE": "9.5",
-          "Wt": "185 lbs"
+          "Reps": "8-10",
+          "Rest": "90 sec",
+          "RPE": "8.5",
+          "Wt": "185 lbs",
+          "Tempo": "3-0-1 (3s eccentric)"
         },
         {
           "Series": "B1",
           "Exercise": "Incline DB Press (Mechanical Drop Set)",
           "Sets": 4,
-          "Reps": "8-10",
+          "Reps": "10-12",
           "Rest": "60 sec",
-          "RPE": "9.5",
-          "Wt": "65 lbs"
+          "RPE": "9",
+          "Wt": "65 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
           "Exercise": "Seated Arnold Shoulder Press",
           "Sets": 4,
-          "Reps": "8-10",
+          "Reps": "10-12",
           "Rest": "60 sec",
-          "RPE": "9.5",
-          "Wt": "40 lbs"
+          "RPE": "9",
+          "Wt": "40 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B3",
           "Exercise": "Weighted Dips",
           "Sets": 4,
-          "Reps": "8-10",
+          "Reps": "10-12",
           "Rest": "60 sec",
-          "RPE": "9.5",
-          "Wt": "BW +25 lbs"
+          "RPE": "9",
+          "Wt": "BW +25 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "C1",
           "Exercise": "Low-to-High Cable Crossovers",
           "Sets": 3,
-          "Reps": "12-15",
+          "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8.5",
-          "Wt": "35 lbs"
+          "RPE": "9",
+          "Wt": "35 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "C2",
           "Exercise": "EZ Bar French Press",
           "Sets": 3,
-          "Reps": "12-15",
+          "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8.5",
-          "Wt": "75 lbs"
+          "RPE": "9",
+          "Wt": "75 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "C3",
@@ -4133,16 +4523,18 @@
           "Reps": "15 + 5 + 5",
           "Rest": "45 sec",
           "RPE": "9",
-          "Wt": "20 lbs"
+          "Wt": "20 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "D-Series",
           "Exercise": "Deficit Push-Up Burnout",
           "Sets": 2,
-          "Reps": "AMRAP",
-          "Rest": "45 sec",
-          "RPE": "10",
-          "Wt": "BW"
+          "Reps": "15-20 (to failure)",
+          "Rest": "30-45 sec",
+          "RPE": "9.5-10",
+          "Wt": "BW",
+          "Tempo": "Pump / AMRAP"
         }
       ],
       "Day 2: Pull": [
@@ -4150,37 +4542,41 @@
           "Series": "A-Series",
           "Exercise": "Conventional Deadlift / Heavy Rack Pull",
           "Sets": 4,
-          "Reps": "4-6",
-          "Rest": "3 min",
-          "RPE": "9.5",
-          "Wt": "225 lbs"
+          "Reps": "8-10",
+          "Rest": "90 sec",
+          "RPE": "8.5",
+          "Wt": "225 lbs",
+          "Tempo": "3-0-1 (3s eccentric)"
         },
         {
           "Series": "B1",
           "Exercise": "Wide Grip Neutral Lat Pulldown",
           "Sets": 4,
-          "Reps": "8-10",
+          "Reps": "10-12",
           "Rest": "60 sec",
-          "RPE": "9.5",
-          "Wt": "140 lbs"
+          "RPE": "9",
+          "Wt": "140 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
           "Exercise": "Chest Supported T-Bar Row",
           "Sets": 4,
-          "Reps": "8-10",
+          "Reps": "10-12",
           "Rest": "60 sec",
-          "RPE": "9.5",
-          "Wt": "70 lbs"
+          "RPE": "9",
+          "Wt": "70 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B3",
           "Exercise": "Seated DB Incline Bicep Curl",
           "Sets": 4,
-          "Reps": "10-12",
+          "Reps": "12-15",
           "Rest": "60 sec",
-          "RPE": "9.5",
-          "Wt": "30 lbs"
+          "RPE": "9",
+          "Wt": "30 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "C1",
@@ -4188,35 +4584,39 @@
           "Sets": 3,
           "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8.5",
-          "Wt": "50 lbs"
+          "RPE": "9",
+          "Wt": "50 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "C2",
           "Exercise": "DB Hammer Curls (Cross Body)",
           "Sets": 3,
-          "Reps": "12-15",
+          "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8.5",
-          "Wt": "30 lbs"
+          "RPE": "9",
+          "Wt": "30 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "C3",
           "Exercise": "Weighted Hyperextensions",
           "Sets": 3,
-          "Reps": "12-15",
+          "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8.5",
-          "Wt": "35 lbs plate"
+          "RPE": "9",
+          "Wt": "35 lbs plate",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "D-Series",
           "Exercise": "Cable Shrug Burnout",
           "Sets": 2,
-          "Reps": "20-25",
-          "Rest": "45 sec",
-          "RPE": "9",
-          "Wt": "100 lbs"
+          "Reps": "15-20 (to failure)",
+          "Rest": "30-45 sec",
+          "RPE": "9.5-10",
+          "Wt": "100 lbs",
+          "Tempo": "Pump / AMRAP"
         }
       ],
       "Day 3: Lower Hypertrophy": [
@@ -4224,19 +4624,21 @@
           "Series": "A-Series",
           "Exercise": "Barbell Back Squat (Deep Depth)",
           "Sets": 5,
-          "Reps": "5",
-          "Rest": "3 min",
-          "RPE": "9.5",
-          "Wt": "185 lbs"
+          "Reps": "8-10",
+          "Rest": "90 sec",
+          "RPE": "8.5",
+          "Wt": "185 lbs",
+          "Tempo": "3-0-1 (3s eccentric)"
         },
         {
           "Series": "B1",
           "Exercise": "Barbell Hip Thrust (2s Pause)",
           "Sets": 4,
-          "Reps": "8-10",
+          "Reps": "10-12",
           "Rest": "60 sec",
-          "RPE": "9.5",
-          "Wt": "185 lbs"
+          "RPE": "9",
+          "Wt": "185 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
@@ -4244,26 +4646,29 @@
           "Sets": 4,
           "Reps": "10 / leg",
           "Rest": "60 sec",
-          "RPE": "9.5",
-          "Wt": "40 lbs"
+          "RPE": "9",
+          "Wt": "40 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B3",
           "Exercise": "Lying Hamstring Curl (Drop Set)",
           "Sets": 4,
-          "Reps": "10-12",
+          "Reps": "12-15",
           "Rest": "60 sec",
-          "RPE": "9.5",
-          "Wt": "90 lbs"
+          "RPE": "9",
+          "Wt": "90 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "C1",
           "Exercise": "Single-Leg Leg Extension",
           "Sets": 3,
-          "Reps": "12-15 / leg",
+          "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8.5",
-          "Wt": "35 lbs"
+          "RPE": "9",
+          "Wt": "35 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "C2",
@@ -4271,8 +4676,9 @@
           "Sets": 4,
           "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8.5",
-          "Wt": "110 lbs"
+          "RPE": "9",
+          "Wt": "110 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "C3",
@@ -4280,17 +4686,19 @@
           "Sets": 4,
           "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8.5",
-          "Wt": "130 lbs"
+          "RPE": "9",
+          "Wt": "130 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "D-Series",
           "Exercise": "Goblet Squat Burnout",
           "Sets": 2,
-          "Reps": "25 reps",
-          "Rest": "45 sec",
-          "RPE": "10",
-          "Wt": "45 lbs"
+          "Reps": "15-20 (to failure)",
+          "Rest": "30-45 sec",
+          "RPE": "9.5-10",
+          "Wt": "45 lbs",
+          "Tempo": "Pump / AMRAP"
         }
       ],
       "Day 4: Recovery / Mobility": [
@@ -4308,9 +4716,10 @@
           "Exercise": "Low Impact Incline Walk / Light Cycling",
           "Sets": 1,
           "Reps": "30 mins",
-          "Rest": "-",
-          "RPE": "3",
-          "Wt": "BW"
+          "Rest": "45 sec",
+          "RPE": "9",
+          "Wt": "BW",
+          "Tempo": "2-0-2 (constant tension)"
         }
       ],
       "Day 5: Upper Pump": [
@@ -4319,26 +4728,28 @@
           "Exercise": "Incline DB Chest Fly",
           "Sets": 4,
           "Reps": "10-12",
-          "Rest": "45 sec",
+          "Rest": "90 sec",
           "RPE": "8.5",
-          "Wt": "40 lbs"
+          "Wt": "40 lbs",
+          "Tempo": "3-0-1 (3s eccentric)"
         },
         {
           "Series": "A2",
           "Exercise": "Close-Grip Lat Pulldown",
           "Sets": 4,
           "Reps": "10-12",
-          "Rest": "45 sec",
+          "Rest": "90 sec",
           "RPE": "8.5",
-          "Wt": "120 lbs"
+          "Wt": "120 lbs",
+          "Tempo": "3-0-1 (3s eccentric)"
         },
         {
           "Series": "A3",
           "Exercise": "Seated Arnold Press",
           "Sets": 4,
           "Reps": "10-12",
-          "Rest": "45 sec",
-          "RPE": "8.5",
+          "Rest": "45-60 sec",
+          "RPE": "8.5-9",
           "Wt": "30 lbs"
         },
         {
@@ -4346,27 +4757,30 @@
           "Exercise": "Standing EZ Bar Bicep Curl",
           "Sets": 3,
           "Reps": "12-15",
-          "Rest": "30 sec",
-          "RPE": "8.5",
-          "Wt": "55 lbs"
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "55 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
           "Exercise": "Cable Rope Tricep Pushdown",
           "Sets": 3,
           "Reps": "12-15",
-          "Rest": "30 sec",
-          "RPE": "8.5",
-          "Wt": "70 lbs"
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "70 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B3",
           "Exercise": "Cable Lateral Raise",
           "Sets": 3,
           "Reps": "15-20",
-          "Rest": "30 sec",
-          "RPE": "8.5",
-          "Wt": "15 lbs"
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "15 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "C1",
@@ -4375,7 +4789,8 @@
           "Reps": "AMRAP",
           "Rest": "45 sec",
           "RPE": "9",
-          "Wt": "BW"
+          "Wt": "BW",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "C2",
@@ -4383,8 +4798,9 @@
           "Sets": 3,
           "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8.5",
-          "Wt": "20 lbs"
+          "RPE": "9",
+          "Wt": "20 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         }
       ],
       "Day 6: Arms / Calves / Abs": [
@@ -4393,8 +4809,8 @@
           "Exercise": "Barbell Bicep Curl",
           "Sets": 4,
           "Reps": "10-12",
-          "Rest": "30 sec",
-          "RPE": "9",
+          "Rest": "45-60 sec",
+          "RPE": "8.5-9",
           "Wt": "60 lbs"
         },
         {
@@ -4402,8 +4818,8 @@
           "Exercise": "Barbell Skull Crusher",
           "Sets": 4,
           "Reps": "10-12",
-          "Rest": "30 sec",
-          "RPE": "9",
+          "Rest": "45-60 sec",
+          "RPE": "8.5-9",
           "Wt": "75 lbs"
         },
         {
@@ -4411,8 +4827,8 @@
           "Exercise": "DB Hammer Curl",
           "Sets": 4,
           "Reps": "10-12",
-          "Rest": "30 sec",
-          "RPE": "9",
+          "Rest": "45-60 sec",
+          "RPE": "8.5-9",
           "Wt": "30 lbs"
         },
         {
@@ -4420,8 +4836,8 @@
           "Exercise": "Overhead Tricep Rope Extension",
           "Sets": 4,
           "Reps": "12-15",
-          "Rest": "60 sec",
-          "RPE": "9",
+          "Rest": "45-60 sec",
+          "RPE": "8.5-9",
           "Wt": "60 lbs"
         },
         {
@@ -4431,24 +4847,26 @@
           "Reps": "20 reps",
           "Rest": "45 sec",
           "RPE": "9",
-          "Wt": "140 lbs"
+          "Wt": "140 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "Calves",
           "Exercise": "Tibialis Wall Raise",
           "Sets": 3,
           "Reps": "25 reps",
-          "Rest": "30 sec",
-          "RPE": "8",
-          "Wt": "BW"
+          "Rest": "45 sec",
+          "RPE": "9",
+          "Wt": "BW",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "Abs",
           "Exercise": "Weighted Cable Crunch",
           "Sets": 4,
           "Reps": "15-20",
-          "Rest": "45 sec",
-          "RPE": "9",
+          "Rest": "45-60 sec",
+          "RPE": "8.5-9",
           "Wt": "80 lbs"
         },
         {
@@ -4456,8 +4874,8 @@
           "Exercise": "Hanging Leg Raises (Straight Leg)",
           "Sets": 4,
           "Reps": "15-20",
-          "Rest": "45 sec",
-          "RPE": "9",
+          "Rest": "45-60 sec",
+          "RPE": "8.5-9",
           "Wt": "BW"
         }
       ],
@@ -4467,8 +4885,8 @@
           "Exercise": "Full Rest & Recovery / Sauna & Electrolytes",
           "Sets": 1,
           "Reps": "All Day",
-          "Rest": "-",
-          "RPE": "1",
+          "Rest": "45-60 sec",
+          "RPE": "8.5-9",
           "Wt": "-"
         }
       ]
@@ -4480,54 +4898,60 @@
           "Exercise": "Heavy Barbell Bench Press",
           "Sets": 3,
           "Reps": "10",
-          "Rest": "3 min",
-          "RPE": "6",
-          "Wt": "185 lbs"
+          "Rest": "90 sec",
+          "RPE": "8.5",
+          "Wt": "185 lbs",
+          "Tempo": "3-0-1 (3s eccentric)"
         },
         {
           "Series": "B1",
           "Exercise": "Incline DB Press (Mechanical Drop Set)",
           "Sets": 4,
-          "Reps": "8-10",
+          "Reps": "10-12",
           "Rest": "60 sec",
-          "RPE": "6",
-          "Wt": "65 lbs"
+          "RPE": "9",
+          "Wt": "65 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
           "Exercise": "Seated Arnold Shoulder Press",
           "Sets": 4,
-          "Reps": "8-10",
+          "Reps": "10-12",
           "Rest": "60 sec",
-          "RPE": "6",
-          "Wt": "40 lbs"
+          "RPE": "9",
+          "Wt": "40 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B3",
           "Exercise": "Weighted Dips",
           "Sets": 4,
-          "Reps": "8-10",
+          "Reps": "10-12",
           "Rest": "60 sec",
-          "RPE": "6",
-          "Wt": "BW +25 lbs"
+          "RPE": "9",
+          "Wt": "BW +25 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "C1",
           "Exercise": "Low-to-High Cable Crossovers",
           "Sets": 3,
-          "Reps": "12-15",
+          "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8.5",
-          "Wt": "35 lbs"
+          "RPE": "9",
+          "Wt": "35 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "C2",
           "Exercise": "EZ Bar French Press",
           "Sets": 3,
-          "Reps": "12-15",
+          "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8.5",
-          "Wt": "75 lbs"
+          "RPE": "9",
+          "Wt": "75 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "C3",
@@ -4536,16 +4960,18 @@
           "Reps": "15 + 5 + 5",
           "Rest": "45 sec",
           "RPE": "9",
-          "Wt": "20 lbs"
+          "Wt": "20 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "D-Series",
           "Exercise": "Deficit Push-Up Burnout",
           "Sets": 2,
-          "Reps": "AMRAP",
-          "Rest": "45 sec",
-          "RPE": "10",
-          "Wt": "BW"
+          "Reps": "15-20 (to failure)",
+          "Rest": "30-45 sec",
+          "RPE": "9.5-10",
+          "Wt": "BW",
+          "Tempo": "Pump / AMRAP"
         }
       ],
       "Day 2: Pull": [
@@ -4553,37 +4979,41 @@
           "Series": "A-Series",
           "Exercise": "Conventional Deadlift / Heavy Rack Pull",
           "Sets": 2,
-          "Reps": "4-6",
-          "Rest": "3 min",
-          "RPE": "6",
-          "Wt": "225 lbs"
+          "Reps": "8-10",
+          "Rest": "90 sec",
+          "RPE": "8.5",
+          "Wt": "225 lbs",
+          "Tempo": "3-0-1 (3s eccentric)"
         },
         {
           "Series": "B1",
           "Exercise": "Wide Grip Neutral Lat Pulldown",
           "Sets": 4,
-          "Reps": "8-10",
+          "Reps": "10-12",
           "Rest": "60 sec",
-          "RPE": "6",
-          "Wt": "140 lbs"
+          "RPE": "9",
+          "Wt": "140 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
           "Exercise": "Chest Supported T-Bar Row",
           "Sets": 4,
-          "Reps": "8-10",
+          "Reps": "10-12",
           "Rest": "60 sec",
-          "RPE": "6",
-          "Wt": "70 lbs"
+          "RPE": "9",
+          "Wt": "70 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B3",
           "Exercise": "Seated DB Incline Bicep Curl",
           "Sets": 4,
-          "Reps": "10-12",
+          "Reps": "12-15",
           "Rest": "60 sec",
-          "RPE": "6",
-          "Wt": "30 lbs"
+          "RPE": "9",
+          "Wt": "30 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "C1",
@@ -4591,35 +5021,39 @@
           "Sets": 3,
           "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8.5",
-          "Wt": "50 lbs"
+          "RPE": "9",
+          "Wt": "50 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "C2",
           "Exercise": "DB Hammer Curls (Cross Body)",
           "Sets": 3,
-          "Reps": "12-15",
+          "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8.5",
-          "Wt": "30 lbs"
+          "RPE": "9",
+          "Wt": "30 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "C3",
           "Exercise": "Weighted Hyperextensions",
           "Sets": 3,
-          "Reps": "12-15",
+          "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8.5",
-          "Wt": "35 lbs plate"
+          "RPE": "9",
+          "Wt": "35 lbs plate",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "D-Series",
           "Exercise": "Cable Shrug Burnout",
           "Sets": 2,
-          "Reps": "20-25",
-          "Rest": "45 sec",
-          "RPE": "9",
-          "Wt": "100 lbs"
+          "Reps": "15-20 (to failure)",
+          "Rest": "30-45 sec",
+          "RPE": "9.5-10",
+          "Wt": "100 lbs",
+          "Tempo": "Pump / AMRAP"
         }
       ],
       "Day 3: Lower Hypertrophy": [
@@ -4627,19 +5061,21 @@
           "Series": "A-Series",
           "Exercise": "Barbell Back Squat (Deep Depth)",
           "Sets": 3,
-          "Reps": "5",
-          "Rest": "3 min",
-          "RPE": "6",
-          "Wt": "185 lbs"
+          "Reps": "8-10",
+          "Rest": "90 sec",
+          "RPE": "8.5",
+          "Wt": "185 lbs",
+          "Tempo": "3-0-1 (3s eccentric)"
         },
         {
           "Series": "B1",
           "Exercise": "Barbell Hip Thrust (2s Pause)",
           "Sets": 4,
-          "Reps": "8-10",
+          "Reps": "10-12",
           "Rest": "60 sec",
-          "RPE": "6",
-          "Wt": "185 lbs"
+          "RPE": "9",
+          "Wt": "185 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
@@ -4647,26 +5083,29 @@
           "Sets": 4,
           "Reps": "10 / leg",
           "Rest": "60 sec",
-          "RPE": "6",
-          "Wt": "40 lbs"
+          "RPE": "9",
+          "Wt": "40 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B3",
           "Exercise": "Lying Hamstring Curl (Drop Set)",
           "Sets": 4,
-          "Reps": "10-12",
+          "Reps": "12-15",
           "Rest": "60 sec",
-          "RPE": "6",
-          "Wt": "90 lbs"
+          "RPE": "9",
+          "Wt": "90 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "C1",
           "Exercise": "Single-Leg Leg Extension",
           "Sets": 3,
-          "Reps": "12-15 / leg",
+          "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8.5",
-          "Wt": "35 lbs"
+          "RPE": "9",
+          "Wt": "35 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "C2",
@@ -4674,8 +5113,9 @@
           "Sets": 4,
           "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8.5",
-          "Wt": "110 lbs"
+          "RPE": "9",
+          "Wt": "110 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "C3",
@@ -4683,17 +5123,19 @@
           "Sets": 4,
           "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8.5",
-          "Wt": "130 lbs"
+          "RPE": "9",
+          "Wt": "130 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "D-Series",
           "Exercise": "Goblet Squat Burnout",
           "Sets": 2,
-          "Reps": "25 reps",
-          "Rest": "45 sec",
-          "RPE": "10",
-          "Wt": "45 lbs"
+          "Reps": "15-20 (to failure)",
+          "Rest": "30-45 sec",
+          "RPE": "9.5-10",
+          "Wt": "45 lbs",
+          "Tempo": "Pump / AMRAP"
         }
       ],
       "Day 4: Recovery / Mobility": [
@@ -4711,9 +5153,10 @@
           "Exercise": "Low Impact Incline Walk / Light Cycling",
           "Sets": 1,
           "Reps": "30 mins",
-          "Rest": "-",
-          "RPE": "3",
-          "Wt": "BW"
+          "Rest": "45 sec",
+          "RPE": "9",
+          "Wt": "BW",
+          "Tempo": "2-0-2 (constant tension)"
         }
       ],
       "Day 5: Upper Pump": [
@@ -4722,26 +5165,28 @@
           "Exercise": "Incline DB Chest Fly",
           "Sets": 4,
           "Reps": "10-12",
-          "Rest": "45 sec",
+          "Rest": "90 sec",
           "RPE": "8.5",
-          "Wt": "40 lbs"
+          "Wt": "40 lbs",
+          "Tempo": "3-0-1 (3s eccentric)"
         },
         {
           "Series": "A2",
           "Exercise": "Close-Grip Lat Pulldown",
           "Sets": 4,
           "Reps": "10-12",
-          "Rest": "45 sec",
+          "Rest": "90 sec",
           "RPE": "8.5",
-          "Wt": "120 lbs"
+          "Wt": "120 lbs",
+          "Tempo": "3-0-1 (3s eccentric)"
         },
         {
           "Series": "A3",
           "Exercise": "Seated Arnold Press",
           "Sets": 4,
           "Reps": "10-12",
-          "Rest": "45 sec",
-          "RPE": "8.5",
+          "Rest": "45-60 sec",
+          "RPE": "8.5-9",
           "Wt": "30 lbs"
         },
         {
@@ -4749,27 +5194,30 @@
           "Exercise": "Standing EZ Bar Bicep Curl",
           "Sets": 3,
           "Reps": "12-15",
-          "Rest": "30 sec",
-          "RPE": "8.5",
-          "Wt": "55 lbs"
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "55 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B2",
           "Exercise": "Cable Rope Tricep Pushdown",
           "Sets": 3,
           "Reps": "12-15",
-          "Rest": "30 sec",
-          "RPE": "8.5",
-          "Wt": "70 lbs"
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "70 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "B3",
           "Exercise": "Cable Lateral Raise",
           "Sets": 3,
           "Reps": "15-20",
-          "Rest": "30 sec",
-          "RPE": "8.5",
-          "Wt": "15 lbs"
+          "Rest": "60 sec",
+          "RPE": "9",
+          "Wt": "15 lbs",
+          "Tempo": "2-1-1 (1s peak squeeze)"
         },
         {
           "Series": "C1",
@@ -4778,7 +5226,8 @@
           "Reps": "AMRAP",
           "Rest": "45 sec",
           "RPE": "9",
-          "Wt": "BW"
+          "Wt": "BW",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "C2",
@@ -4786,8 +5235,9 @@
           "Sets": 3,
           "Reps": "15-20",
           "Rest": "45 sec",
-          "RPE": "8.5",
-          "Wt": "20 lbs"
+          "RPE": "9",
+          "Wt": "20 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         }
       ],
       "Day 6: Arms / Calves / Abs": [
@@ -4796,8 +5246,8 @@
           "Exercise": "Barbell Bicep Curl",
           "Sets": 4,
           "Reps": "10-12",
-          "Rest": "30 sec",
-          "RPE": "9",
+          "Rest": "45-60 sec",
+          "RPE": "8.5-9",
           "Wt": "60 lbs"
         },
         {
@@ -4805,8 +5255,8 @@
           "Exercise": "Barbell Skull Crusher",
           "Sets": 4,
           "Reps": "10-12",
-          "Rest": "30 sec",
-          "RPE": "9",
+          "Rest": "45-60 sec",
+          "RPE": "8.5-9",
           "Wt": "75 lbs"
         },
         {
@@ -4814,8 +5264,8 @@
           "Exercise": "DB Hammer Curl",
           "Sets": 4,
           "Reps": "10-12",
-          "Rest": "30 sec",
-          "RPE": "9",
+          "Rest": "45-60 sec",
+          "RPE": "8.5-9",
           "Wt": "30 lbs"
         },
         {
@@ -4823,8 +5273,8 @@
           "Exercise": "Overhead Tricep Rope Extension",
           "Sets": 4,
           "Reps": "12-15",
-          "Rest": "60 sec",
-          "RPE": "9",
+          "Rest": "45-60 sec",
+          "RPE": "8.5-9",
           "Wt": "60 lbs"
         },
         {
@@ -4834,24 +5284,26 @@
           "Reps": "20 reps",
           "Rest": "45 sec",
           "RPE": "9",
-          "Wt": "140 lbs"
+          "Wt": "140 lbs",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "Calves",
           "Exercise": "Tibialis Wall Raise",
           "Sets": 3,
           "Reps": "25 reps",
-          "Rest": "30 sec",
-          "RPE": "8",
-          "Wt": "BW"
+          "Rest": "45 sec",
+          "RPE": "9",
+          "Wt": "BW",
+          "Tempo": "2-0-2 (constant tension)"
         },
         {
           "Series": "Abs",
           "Exercise": "Weighted Cable Crunch",
           "Sets": 4,
           "Reps": "15-20",
-          "Rest": "45 sec",
-          "RPE": "9",
+          "Rest": "45-60 sec",
+          "RPE": "8.5-9",
           "Wt": "80 lbs"
         },
         {
@@ -4859,8 +5311,8 @@
           "Exercise": "Hanging Leg Raises (Straight Leg)",
           "Sets": 4,
           "Reps": "15-20",
-          "Rest": "45 sec",
-          "RPE": "9",
+          "Rest": "45-60 sec",
+          "RPE": "8.5-9",
           "Wt": "BW"
         }
       ],
@@ -4870,8 +5322,8 @@
           "Exercise": "Full Rest & Recovery / Sauna & Electrolytes",
           "Sets": 1,
           "Reps": "All Day",
-          "Rest": "-",
-          "RPE": "1",
+          "Rest": "45-60 sec",
+          "RPE": "8.5-9",
           "Wt": "-"
         }
       ]
