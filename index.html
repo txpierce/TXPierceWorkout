@@ -21,46 +21,7 @@
     <header class="bg-slate-900 border-b border-slate-800 sticky top-0 z-50 shadow-lg">
         <div class="max-w-3xl mx-auto px-4 py-3 flex items-center justify-between">
             <div class="flex items-center space-x-2.5">
-                <!-- CUSTOM TXP LOGO EMBLEM -->
-                <img src="data:image/webp;base64,UklGRmYKAABXRUJQVlA4IFoKAADQPACdASqoAKAAUJB8J4BDyv/AAo/V29gA/vvj68x125s1/3q/wN6R/L/8L+xPy7/J39V+8nyz/o+S74P/mftd7gH+d9QD+/+yP+T/4f4//kP/y++X+5+A/6l/yP/h9gH/1/1nsAf//2AP/t7gH+l69P2D/q/9310v/X/yfYt/4/9V6731y/2T/of3v9qf1v+R/6n9d8pD17+s/379l/9V/bf2D/pvwE/nn88/4H+E9z/mn8u+y/95+6/94+2h4p82PzX/Z/v3/o/2p9l/2L+NfzL/c/2v/sf+Z+6X66fvv9x+4n+Efy39l/9H/t/lZ+43yV/pP+J/c/+V+f/wL/o/9J+0H9k/9P/M+5D71v/L/dvw4/sP2A/3j/t/ud+8H/2f2jw/f972Fv3x/+f834A//H2l/2j/6/4f3K/v5///+l7E//H91/+n/m/AD/3/ab/+f7/4yP3n//f/t70n/b/vF71X/6///7lP35/2f/5/7/pOf///l///v0m//4w/h2T8Oyfh2T8Oyfh2T8Oyfh2T8Oyfh2T8Oyfh2T8Oyfh2T8Oyfh2T8Oyfh2T8Oyfh2T8Oyfh2T8Oyfh2T8Oyfh2T8Oyfh2T8Oyfh2T8Oyfh2T8Oyfh2T8Oyfh2T8Oyfh2T8Oyfh2T8Oyfh2T8Oyfh2T8Oyfh2T8Oyfh2T8Oyfh2T8Oyfh2T8Oyfh2T8Oyfh2T8Oyfh2T8Oyfh2T8Oyfh2T8Oyfh2T8Oyfh2T8Oyfh2T8Oyfh2T8Oyfh2T8Oyfh2T8Oyfh2T8Oyfh2T8Oyfh2T8Oyfh2T8Oyfh2T8Oyfh2T8OyHere is the updated **`index.html`** code cleanly referencing your custom TXP logo (`logo.png` / `Screenshot_2026-01-22_130513.png`) in the header avatar spot!
-
----
-
-### **Step 1: Upload Your Logo Image to GitHub**
-1. In your GitHub repository (`github.com/txpierce/txpierce_workout`), click **Add file** \\(\rightarrow\\) **Upload files**.
-2. Upload your screenshot image (`Screenshot_2026-01-22_130513.png`) and rename it to **`logo.png`** (or keep the original filename).
-3. Click **Commit changes**.
-
----
-
-### **Step 2: Copy & Paste this into `index.html` on GitHub:**
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TX Pierce Workout & Protocol Hub</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #090d16; color: #f1f5f9; }
-        .tab-content { display: none; }
-        .tab-content.active { display: block; }
-        input[type="checkbox"] { accent-color: #f59e0b; }
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-    </style>
-</head>
-<body class="min-h-screen pb-12">
-
-    <!-- HEADER -->
-    <header class="bg-slate-900 border-b border-slate-800 sticky top-0 z-50 shadow-lg">
-        <div class="max-w-3xl mx-auto px-4 py-3 flex items-center justify-between">
-            <div class="flex items-center space-x-2.5">
-                <!-- CUSTOM TXP LOGO EMBLEM -->
-                <img src="logo.png" onerror="this.onerror=null; this.src='Screenshot_2026-01-22_130513.png';" alt="TXP Logo" class="h-9 w-9 rounded-full border border-amber-500/40 object-cover shadow-md">
+                <span class="text-2xl">🦁</span>
                 <div>
                     <h1 class="font-extrabold text-base text-amber-500 tracking-tight leading-none">TX PIERCE APP</h1>
                     <p class="text-[10px] text-slate-400">12-Week Architecture & Progression Hub</p>
@@ -314,8 +275,8 @@
                     checksHtml += `
                         <div class="flex items-center space-x-1.5 bg-slate-950 px-2.5 py-1 rounded-lg border border-slate-800 text-[10px]">
                             <span class="font-bold text-amber-400">S${s}</span>
-                            <input type="checkbox" ${checked ? 'checked' : ''} onchange="localStorage.setItem('${checkKey}', this.checked)">
-                            <input type="number" placeholder="lbs" value="${savedWeight}" oninput="localStorage.setItem('${weightKey}', this.value)" class="w-12 bg-slate-900 border border-slate-700 rounded text-center text-amber-300 font-bold focus:outline-none focus:border-amber-500 py-0.5 text-[10px]">
+                            <input type="checkbox" checked?'checked':''onchange="localStorage.setItem('{checkKey}', this.checked)">
+                            <input type="number" placeholder="lbs" value="savedWeight"oninput="localStorage.setItem('{weightKey}', this.value)" class="w-12 bg-slate-900 border border-slate-700 rounded text-center text-amber-300 font-bold focus:outline-none focus:border-amber-500 py-0.5 text-[10px]">
                         </div>
                     `;
                 }
@@ -331,8 +292,8 @@
                         </div>
                         <h4 class="font-bold text-slate-100 text-xs flex items-center">${ex.Exercise || 'Exercise'} ${tempoBadge}</h4>
                         <div class="flex justify-between text-[11px] text-slate-400">
-                            <span>Sets: <strong>${ex.Sets || '-'}</strong> | Reps: <strong>${ex.Reps || '-'}</strong></span>
-                            <span>Rest: <strong>${ex.Rest || '-'}</strong> | RPE: <strong>${ex.RPE || '-'}</strong></span>
+                            <span>Sets: <strong>ex.Sets||'-'</strong>|Reps:<strong>{ex.Reps || '-'}</strong></span>
+                            <span>Rest: <strong>ex.Rest||'-'</strong>|RPE:<strong>{ex.RPE || '-'}</strong></span>
                         </div>
                         ${checksHtml}
                     </div>
@@ -417,9 +378,9 @@
                 tbody.innerHTML += `
                     <tr class="hover:bg-slate-950/40">
                         <td class="p-2 font-bold text-slate-200">${d}</td>
-                        <td class="p-2 ${idx === 0 ? 'text-amber-400 font-bold' : 'text-slate-500'}">${idx === 0 ? '250mcg (5u)' : '-'}</td>
+                        <td class="p-2 idx===0?'text-amber-400font-bold':'text-slate-500'">{idx === 0 ? '250mcg (5u)' : '-'}</td>
                         <td class="p-2 text-slate-300">500mcg (10u)</td>
-                        <td class="p-2 ${idx < 5 ? 'text-amber-400 font-bold' : 'text-slate-500'}">${idx < 5 ? '100-200mcg' : '-'}</td>
+                        <td class="p-2 idx<5?'text-amber-400font-bold':'text-slate-500'">{idx < 5 ? '100-200mcg' : '-'}</td>
                     </tr>
                 `;
             });
@@ -443,3 +404,6 @@
     </script>
 </body>
 </html>
+
+
+
