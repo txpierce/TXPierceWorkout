@@ -27,7 +27,10 @@
                     <p class="text-[10px] text-slate-400">12-Week Architecture & Progression Hub</p>
                 </div>
             </div>
-            <button onclick="resetData()" class="text-[11px] bg-slate-800 hover:bg-red-950 text-slate-300 px-3 py-1.5 rounded-lg border border-slate-700 transition font-bold">Reset Logs</button>
+            <div class="flex items-center space-x-2">
+                <button onclick="exportCSV()" class="text-[11px] bg-amber-500 hover:bg-amber-600 text-slate-950 px-2.5 py-1.5 rounded-lg font-extrabold transition shadow">📥 Export CSV</button>
+                <button onclick="resetData()" class="text-[11px] bg-slate-800 hover:bg-red-950 text-slate-300 px-2.5 py-1.5 rounded-lg border border-slate-700 transition font-bold">Reset Logs</button>
+            </div>
         </div>
 
         <!-- NAVIGATION TABS -->
@@ -296,6 +299,64 @@
                     </div>
                 `;
             });
+        }
+
+        function exportCSV() {
+            if (!PROGRAM_DATA || Object.keys(PROGRAM_DATA).length === 0) {
+                alert("Program data not loaded yet.");
+                return;
+            }
+
+            let rows = [
+                ["Phase", "Week", "Day", "Series", "Exercise", "Set", "Completed", "Weight Lifted (lbs)"]
+            ];
+
+            for (let phase in PROGRAM_DATA) {
+                for (let week in PROGRAM_DATA[phase]) {
+                    for (let day in PROGRAM_DATA[phase][week]) {
+                        const exercises = PROGRAM_DATA[phase][week][day];
+                        exercises.forEach((ex, exIdx) => {
+                            const sets = parseInt(ex.Sets) || 1;
+                            for (let s = 1; s <= sets; s++) {
+                                const checkKey = `${phase}_${week}_${day}_${exIdx}_s${s}`;
+                                const weightKey = `${phase}_${week}_${day}_${exIdx}_wt_s${s}`;
+                                
+                                const checked = localStorage.getItem(checkKey) === 'true' ? 'YES' : 'NO';
+                                const weight = localStorage.getItem(weightKey) || '';
+
+                                rows.push([
+                                    phase,
+                                    week,
+                                    day,
+                                    ex.Series || '',
+                                    ex.Exercise || '',
+                                    `Set ${s}`,
+                                    checked,
+                                    weight
+                                ]);
+                            }
+                        });
+                    }
+                }
+            }
+
+            const notes = localStorage.getItem('tx_notes');
+            if (notes) {
+                rows.push([]);
+                rows.push(["Session Review Notes", notes]);
+            }
+
+            let csvContent = rows.map(e => e.map(val => `"${String(val).replace(/"/g, '""')}"`).join(",")).join("\n");
+
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement("a");
+            const url = URL.createObjectURL(blob);
+            link.setAttribute("href", url);
+            link.setAttribute("download", `tx_pierce_workout_history.csv`);
+            link.style.visibility = 'hidden';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
         }
 
         function calcPeptides() {
