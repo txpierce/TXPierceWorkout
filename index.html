@@ -47,7 +47,7 @@
 
     <main class="max-w-3xl mx-auto px-4 py-4 space-y-4">
 
-        <!-- DASHBOARD TAB -->
+        <!-- DASHBOARD TAB (HOME PAGE & FIRST TAB) -->
         <div id="tab-dashboard" class="tab-content active space-y-4">
             
             <!-- LIVE DATE & TIME BANNER -->
@@ -70,7 +70,7 @@
                 </button>
             </div>
 
-            <!-- DELOAD & JOINT PROTECTION SHIELD -->
+            <!-- DELOAD & JOINT PROTECTION SHIELD (ACTIVE ON WEEKS 4, 8, 12) -->
             <div id="deloadShield" class="hidden bg-gradient-to-r from-amber-950/80 via-slate-900 to-slate-950 border border-amber-500/60 rounded-2xl p-3.5 shadow-xl flex items-center gap-3">
                 <span class="text-2xl">🛡️</span>
                 <div>
@@ -109,8 +109,9 @@
                 </div>
             </div>
 
-            <!-- LIVE PROTOCOL CARDS -->
+            <!-- LIVE PROTOCOL CARDS: FUELING CLOCK & TODAY'S PEPTIDE DOSE -->
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <!-- DYNAMIC PERI-WORKOUT FUELING CLOCK -->
                 <div class="bg-slate-900 border border-slate-800 rounded-2xl p-3.5 shadow-lg flex items-center justify-between">
                     <div class="space-y-0.5">
                         <span class="block text-[10px] text-slate-400 font-bold uppercase tracking-wider">Next Fueling Window</span>
@@ -120,6 +121,7 @@
                     <span id="fuelWindowTime" class="text-xs font-black bg-slate-950 text-slate-200 px-2.5 py-1 rounded-xl border border-slate-800">4:15 AM</span>
                 </div>
 
+                <!-- TODAY'S LIVE PEPTIDE DOSE -->
                 <div class="bg-slate-900 border border-slate-800 rounded-2xl p-3.5 shadow-lg flex items-center justify-between">
                     <div class="space-y-0.5">
                         <span class="block text-[10px] text-slate-400 font-bold uppercase tracking-wider">Today's Peptide Dose</span>
@@ -130,8 +132,9 @@
                 </div>
             </div>
 
-            <!-- HYDRATION & RECOVERY CHECK-IN -->
+            <!-- 1-GALLON HYDRATION & DAILY CHECK-IN GRID -->
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <!-- HYDRATION TRACKER -->
                 <div class="bg-slate-900 border border-slate-800 rounded-2xl p-3.5 shadow-lg space-y-2">
                     <div class="flex items-center justify-between">
                         <span class="text-[10px] text-slate-400 font-bold uppercase tracking-wider flex items-center gap-1">💧 Daily Hydration Target</span>
@@ -145,6 +148,7 @@
                     </div>
                 </div>
 
+                <!-- DAILY RECOVERY & PUMP CHECK-IN -->
                 <div class="bg-slate-900 border border-slate-800 rounded-2xl p-3.5 shadow-lg space-y-2">
                     <span class="text-[10px] text-slate-400 font-bold uppercase tracking-wider block">🦴 Daily Recovery Check-In</span>
                     <div class="grid grid-cols-3 gap-2 text-[10px]">
@@ -178,7 +182,9 @@
                     </h3>
                     <span class="text-[10px] text-slate-400">Live Working Loads</span>
                 </div>
-                <div id="prTrackerContainer" class="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs"></div>
+                <div id="prTrackerContainer" class="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs">
+                    <!-- Populated dynamically via JS -->
+                </div>
             </div>
 
             <!-- 12-WEEK VOLUME MATRIX -->
@@ -193,6 +199,57 @@
                     <div id="weeklyVolumeChart" class="flex items-end justify-between h-40 gap-0.5 sm:gap-1 pt-6 px-0.5 w-full"></div>
                 </div>
             </div>
+
+            <!-- QUICK ACTION SHORTCUTS -->
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-xl space-y-3">
+                <h3 class="font-bold text-xs text-slate-100 flex items-center gap-1.5 border-b border-slate-800 pb-2">
+                    <span class="text-amber-500">🚀</span> Quick Protocol Access
+                </h3>
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
+                    <button onclick="switchTab('workouts')" class="bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3 rounded-xl text-left space-y-1 transition">
+                        <span class="text-base">🏋️</span>
+                        <h4 class="font-bold text-slate-200">Log Workout</h4>
+                        <p class="text-[10px] text-slate-400">Track sets, reps & weights</p>
+                    </button>
+                    <button onclick="switchTab('peptides')" class="bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3 rounded-xl text-left space-y-1 transition">
+                        <span class="text-base">🧪</span>
+                        <h4 class="font-bold text-slate-200">Peptide Calc</h4>
+                        <p class="text-[10px] text-slate-400">BAC water & syringe draws</p>
+                    </button>
+                    <button onclick="switchTab('nutrition')" class="bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3 rounded-xl text-left space-y-1 transition">
+                        <span class="text-base">🥩</span>
+                        <h4 class="font-bold text-slate-200">Nutrition Plan</h4>
+                        <p class="text-[10px] text-slate-400">Meal timing & macros</p>
+                    </button>
+                    <button onclick="generateBadge()" class="bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3 rounded-xl text-left space-y-1 transition">
+                        <span class="text-base">📸</span>
+                        <h4 class="font-bold text-slate-200">Share Badge</h4>
+                        <p class="text-[10px] text-slate-400">Generate stats screenshot</p>
+                    </button>
+                </div>
+            </div>
+
+            <!-- PROGRAM OVERVIEW & PHASE ROADMAP -->
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-xl space-y-2">
+                <h3 class="font-bold text-xs text-slate-100 flex items-center gap-1.5">
+                    <span class="text-amber-500">🏆</span> 12-Week Architecture Roadmap
+                </h3>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-[11px] pt-1">
+                    <div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800/80">
+                        <span class="font-bold text-amber-400 block mb-0.5">Phase 1: Base Phase (W1-4)</span>
+                        <p class="text-slate-400 text-[10px]">Movement quality, 5x5 baseline to 6x4 overload & joint deload.</p>
+                    </div>
+                    <div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800/80">
+                        <span class="font-bold text-amber-400 block mb-0.5">Phase 2: Structural Shift (W5-8)</span>
+                        <p class="text-slate-400 text-[10px]">Incline/Hack angles, 3s eccentric tempos & non-competing tri-sets.</p>
+                    </div>
+                    <div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800/80">
+                        <span class="font-bold text-amber-400 block mb-0.5">Phase 3: Peak Hypertrophy (W9-12)</span>
+                        <p class="text-slate-400 text-[10px]">Peak density, mechanical drop sets, 30-45s rest & pump deload.</p>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
         <!-- WORKOUTS TAB -->
@@ -214,8 +271,10 @@
                 </div>
             </div>
 
+            <!-- WORKOUT EXERCISES CARD STACK -->
             <div id="workoutContainer" class="space-y-3"></div>
 
+            <!-- SESSION NOTES -->
             <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-xl space-y-2">
                 <h3 class="font-bold text-slate-100 text-xs tracking-wide flex items-center gap-2"><span class="text-amber-500">📝</span> Session Review Notes</h3>
                 <textarea id="sessionNotes" oninput="saveNotes()" rows="2" placeholder="Log joint feedback, pump quality, fatigue, progression notes..." class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-xs text-slate-200 focus:outline-none focus:border-amber-500"></textarea>
@@ -271,6 +330,7 @@
                 </div>
             </div>
 
+            <!-- PEPTIDE MATRIX -->
             <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-xl space-y-3">
                 <h3 class="font-bold text-xs text-slate-100 border-b border-slate-800 pb-2">📅 Weekly Administration Schedule</h3>
                 <div class="overflow-x-auto no-scrollbar">
@@ -312,11 +372,14 @@
 
     </main>
 
-    <!-- FLOATING REST TIMER WIDGET -->
+    <!-- FLOATING REST TIMER WIDGET (STAYS PINNED ACROSS ALL TABS) -->
     <div id="floatingTimerWidget" class="fixed bottom-0 left-0 right-0 z-50 p-2 bg-slate-950/95 backdrop-blur-md border-t border-slate-800/80 shadow-2xl">
         <div class="max-w-3xl mx-auto flex items-center justify-between px-2 gap-2">
+            <!-- IDLE STATE: 1-TAP PRESETS -->
             <div id="timerIdleView" class="flex items-center justify-between w-full">
-                <span class="text-[10px] font-extrabold text-slate-400 uppercase tracking-wider flex items-center gap-1">⏱️ Rest Timer</span>
+                <span class="text-[10px] font-extrabold text-slate-400 uppercase tracking-wider flex items-center gap-1">
+                    ⏱️ Rest Timer
+                </span>
                 <div class="flex items-center space-x-1.5">
                     <button onclick="startRestTimer(30)" class="bg-slate-900 hover:bg-amber-500 hover:text-slate-950 text-slate-200 border border-slate-700 font-extrabold text-[10px] px-2.5 py-1 rounded-lg transition">30s</button>
                     <button onclick="startRestTimer(60)" class="bg-slate-900 hover:bg-amber-500 hover:text-slate-950 text-slate-200 border border-slate-700 font-extrabold text-[10px] px-2.5 py-1 rounded-lg transition">60s</button>
@@ -324,6 +387,8 @@
                     <button onclick="startRestTimer(120)" class="bg-slate-900 hover:bg-amber-500 hover:text-slate-950 text-slate-200 border border-slate-700 font-extrabold text-[10px] px-2.5 py-1 rounded-lg transition">2m</button>
                 </div>
             </div>
+
+            <!-- ACTIVE STATE: LIVE GLOWING COUNTDOWN -->
             <div id="timerActiveView" class="hidden flex items-center justify-between w-full">
                 <div class="flex items-center space-x-2">
                     <span class="w-2.5 h-2.5 rounded-full bg-amber-500 animate-ping"></span>
@@ -337,7 +402,7 @@
         </div>
     </div>
 
-    <!-- SHAREABLE STATS BADGE MODAL -->
+    <!-- EXPANDED SCREENSHOT STATS BADGE MODAL -->
     <div id="badgeModal" class="fixed inset-0 bg-slate-950/85 backdrop-blur-md z-50 hidden flex items-center justify-center p-3 sm:p-4 overflow-y-auto">
         <div class="bg-slate-900 border-2 border-amber-500/80 rounded-3xl p-4 sm:p-5 max-w-lg w-full shadow-2xl space-y-3.5 text-slate-100 my-auto">
             <div class="flex items-center justify-between border-b border-slate-800 pb-2.5">
@@ -348,6 +413,7 @@
                 </div>
                 <button onclick="closeBadge()" class="text-slate-400 hover:text-white text-lg font-bold px-2 py-1">✕</button>
             </div>
+
             <div class="grid grid-cols-2 gap-2 text-center">
                 <div class="bg-slate-950 p-2 rounded-xl border border-slate-800">
                     <span class="block text-[9px] text-slate-400 uppercase font-bold">Sets Completed</span>
@@ -358,6 +424,7 @@
                     <span id="badgePercent" class="text-base font-black text-emerald-400">0%</span>
                 </div>
             </div>
+
             <div class="bg-slate-950 p-3 rounded-2xl border border-slate-800 space-y-1.5">
                 <div class="flex justify-between items-center border-b border-slate-800/80 pb-1.5">
                     <h4 class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Exercise Plan</h4>
@@ -365,10 +432,12 @@
                 </div>
                 <div id="badgeExerciseList" class="space-y-1"></div>
             </div>
+
             <div class="flex items-center justify-between text-[10px] text-slate-400 border-t border-slate-800 pt-2 font-bold">
                 <span id="badgeDate"></span>
                 <span class="text-amber-500">📸 SCREENSHOT TO SHARE</span>
             </div>
+
             <button onclick="closeBadge()" class="w-full bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold py-2 rounded-xl border border-slate-700">Close Badge</button>
         </div>
     </div>
@@ -376,6 +445,8 @@
     <script>
         let PROGRAM_DATA = {};
         let currentPhase, currentWeek, currentDay;
+
+        // REST TIMER STATE VARIABLES
         let timerInterval = null;
         let timerSecondsRemaining = 0;
 
@@ -389,7 +460,6 @@
             
             setInterval(updateFuelingClock, 60000);
 
-            // Fallback JSON check
             const filesToTry = ['program_data-v3.json', 'program_data-v2.json', 'program_data.json'];
             let loaded = false;
 
@@ -409,7 +479,7 @@
 
             if (!loaded) {
                 document.getElementById('workoutContainer').innerHTML = 
-                    '<div class="p-4 bg-slate-900 border border-slate-800 rounded-xl text-xs text-slate-300 font-semibold">⚠️ Note: Ensure your program JSON file is linked or structured properly. Core tools active.</div>';
+                    '<div class="p-4 bg-red-950 border border-red-800 rounded-xl text-xs text-red-200 font-bold">⚠️ Error loading JSON data. Ensure program_data-v3.json is uploaded to root.</div>';
             }
 
             calcPeptides();
@@ -422,6 +492,7 @@
         function checkDailyReset() {
             const today = new Date().toLocaleDateString('en-CA');
             const lastDate = localStorage.getItem('tx_last_active_date');
+
             if (lastDate !== today) {
                 localStorage.setItem('tx_hydration', '0');
                 localStorage.setItem('tx_score_pump', '-');
@@ -445,35 +516,77 @@
         function updateFuelingClock() {
             const now = new Date();
             const mins = now.getHours() * 60 + now.getMinutes();
-            let name = "Anabolic Dinner", detail = "50g Protein | 70g Carbs | 25g Fat", time = "7:00 PM";
 
-            if (mins < 255) { name = "Pre-Workout Fuel"; detail = "10g Protein | 30g Carbs"; time = "4:15 AM"; }
-            else if (mins < 390) { name = "Anabolic Breakfast"; detail = "40g Protein | 75g Carbs | 15g Fat"; time = "6:30 AM"; }
-            else if (mins < 720) { name = "High-Protein Lunch"; detail = "45g Protein | 75g Carbs | 20g Fat"; time = "12:00 PM"; }
-            else if (mins < 930) { name = "Mid-Day Fuel / Snack"; detail = "25g Protein | 40g Carbs"; time = "3:30 PM"; }
-            else if (mins < 1140) { name = "Anabolic Dinner"; detail = "50g Protein | 70g Carbs | 25g Fat"; time = "7:00 PM"; }
+            let name = "Anabolic Dinner";
+            let detail = "50g Protein | 70g Carbs | 25g Fat";
+            let time = "7:00 PM";
 
-            if (document.getElementById('fuelWindowName')) document.getElementById('fuelWindowName').textContent = name;
-            if (document.getElementById('fuelWindowDetail')) document.getElementById('fuelWindowDetail').textContent = detail;
-            if (document.getElementById('fuelWindowTime')) document.getElementById('fuelWindowTime').textContent = time;
+            if (mins < 255) {
+                name = "Pre-Workout Fuel";
+                detail = "10g Protein | 30g Carbs (Banana + Whey)";
+                time = "4:15 AM";
+            } else if (mins < 390) {
+                name = "Anabolic Breakfast";
+                detail = "40g Protein | 75g Carbs | 15g Fat";
+                time = "6:30 AM";
+            } else if (mins < 720) {
+                name = "High-Protein Lunch";
+                detail = "45g Protein | 75g Carbs | 20g Fat";
+                time = "12:00 PM";
+            } else if (mins < 930) {
+                name = "Mid-Day Fuel / Snack";
+                detail = "25g Protein | 40g Carbs";
+                time = "3:30 PM";
+            } else if (mins < 1140) {
+                name = "Anabolic Dinner";
+                detail = "50g Protein | 70g Carbs | 25g Fat";
+                time = "7:00 PM";
+            } else {
+                name = "Night Recovery";
+                detail = "Hydration & Casein / Muscle Repair";
+                time = "Bedtime";
+            }
+
+            const nEl = document.getElementById('fuelWindowName');
+            const dEl = document.getElementById('fuelWindowDetail');
+            const tEl = document.getElementById('fuelWindowTime');
+            if (nEl) nEl.textContent = name;
+            if (dEl) dEl.textContent = detail;
+            if (tEl) tEl.textContent = time;
         }
 
         function updateTodayPeptideCard() {
             const days = ['SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY'];
-            const dayName = days[new Date().getDay()];
-            let dose = "BPC-157 / TB-500 Blend (10.0u)", sub = "Daily Morning Recovery Draw (500 mcg)";
-            if (dayName === 'MONDAY') { dose = "Retatrutide (5.0u) + BPC/TB (10.0u)"; sub = "250 mcg Reta Dose + 500 mcg BPC/TB Blend"; }
-            
-            if (document.getElementById('todayPeptideDose')) document.getElementById('todayPeptideDose').textContent = dose;
-            if (document.getElementById('todayPeptideSub')) document.getElementById('todayPeptideSub').textContent = sub;
-            if (document.getElementById('todayDayBadge')) document.getElementById('todayDayBadge').textContent = dayName;
+            const now = new Date();
+            const dayName = days[now.getDay()];
+
+            let dose = "BPC-157 / TB-500 Blend (10.0u)";
+            let sub = "Daily Morning Recovery Draw (500 mcg)";
+
+            if (dayName === 'MONDAY') {
+                dose = "Retatrutide (5.0u) + BPC/TB (10.0u)";
+                sub = "250 mcg Reta Dose + 500 mcg BPC/TB Blend";
+            } else if (dayName !== 'SATURDAY' && dayName !== 'SUNDAY') {
+                dose = "BPC/TB Blend (10.0u) + CJC-1295";
+                sub = "500 mcg BPC/TB + Morning CJC Protocol";
+            }
+
+            const dEl = document.getElementById('todayPeptideDose');
+            const sEl = document.getElementById('todayPeptideSub');
+            const bEl = document.getElementById('todayDayBadge');
+            if (dEl) dEl.textContent = dose;
+            if (sEl) sEl.textContent = sub;
+            if (bEl) bEl.textContent = dayName;
         }
 
+        // REST TIMER FUNCTIONS
         function startRestTimer(seconds) {
             stopRestTimer();
             timerSecondsRemaining = seconds;
+
             document.getElementById('timerIdleView').classList.add('hidden');
             document.getElementById('timerActiveView').classList.remove('hidden');
+
             updateTimerDisplay();
 
             timerInterval = setInterval(() => {
@@ -490,17 +603,20 @@
         function updateTimerDisplay() {
             const mins = Math.floor(timerSecondsRemaining / 60);
             const secs = timerSecondsRemaining % 60;
-            if (document.getElementById('timerCountdownText')) {
-                document.getElementById('timerCountdownText').textContent = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
-            }
+            const str = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+            const el = document.getElementById('timerCountdownText');
+            if (el) el.textContent = str;
         }
 
         function stopRestTimer() {
             if (timerInterval) clearInterval(timerInterval);
             timerInterval = null;
             timerSecondsRemaining = 0;
-            if (document.getElementById('timerIdleView')) document.getElementById('timerIdleView').classList.remove('hidden');
-            if (document.getElementById('timerActiveView')) document.getElementById('timerActiveView').classList.add('hidden');
+
+            const idleView = document.getElementById('timerIdleView');
+            const activeView = document.getElementById('timerActiveView');
+            if (idleView) idleView.classList.remove('hidden');
+            if (activeView) activeView.classList.add('hidden');
         }
 
         function playTimerBeep() {
@@ -515,7 +631,7 @@
                 gain.connect(ctx.destination);
                 osc.start();
                 osc.stop(ctx.currentTime + 0.6);
-                if (navigator.vibrate) navigator.vibrate([200, 100, 200]);
+                if (navigator.vibrate) navigator.vibrate([200, 100, 200, 100, 300]);
             } catch(e) {}
         }
 
@@ -529,31 +645,86 @@
             [25, 50, 75, 100].forEach(val => {
                 const btn = document.getElementById(`hyd-${val}`);
                 if (btn) {
-                    btn.className = saved === val ? "bg-amber-500 text-slate-950 font-black py-1.5 rounded-xl border border-amber-400 shadow-md text-[10px] transition" : "bg-slate-950 hover:bg-slate-800 border border-slate-800 text-[10px] font-bold py-1.5 rounded-xl text-slate-300 transition";
+                    if (saved === val) {
+                        btn.className = "bg-amber-500 text-slate-950 font-black py-1.5 rounded-xl border border-amber-400 shadow-md text-[10px] transition";
+                    } else {
+                        btn.className = "bg-slate-950 hover:bg-slate-800 border border-slate-800 text-[10px] font-bold py-1.5 rounded-xl text-slate-300 transition";
+                    }
                 }
             });
-            if (document.getElementById('hydrationStatus')) {
-                document.getElementById('hydrationStatus').textContent = `${saved}% (${(saved/100).toFixed(2)} / 1 Gal)`;
-            }
+            const status = document.getElementById('hydrationStatus');
+            if (status) status.textContent = `${saved}% (${(saved/100).toFixed(2)} / 1 Gal)`;
         }
 
         function saveCheckinScores() {
-            localStorage.setItem('tx_score_pump', document.getElementById('scorePump').value);
-            localStorage.setItem('tx_score_joints', document.getElementById('scoreJoints').value);
-            localStorage.setItem('tx_score_sleep', document.getElementById('scoreSleep').value);
+            const p = document.getElementById('scorePump').value;
+            const j = document.getElementById('scoreJoints').value;
+            const s = document.getElementById('scoreSleep').value;
+            localStorage.setItem('tx_score_pump', p);
+            localStorage.setItem('tx_score_joints', j);
+            localStorage.setItem('tx_score_sleep', s);
         }
 
         function loadCheckinScores() {
-            if (document.getElementById('scorePump')) document.getElementById('scorePump').value = localStorage.getItem('tx_score_pump') || '-';
-            if (document.getElementById('scoreJoints')) document.getElementById('scoreJoints').value = localStorage.getItem('tx_score_joints') || '-';
-            if (document.getElementById('scoreSleep')) document.getElementById('scoreSleep').value = localStorage.getItem('tx_score_sleep') || '-';
+            const p = localStorage.getItem('tx_score_pump') || '-';
+            const j = localStorage.getItem('tx_score_joints') || '-';
+            const s = localStorage.getItem('tx_score_sleep') || '-';
+            if (document.getElementById('scorePump')) document.getElementById('scorePump').value = p;
+            if (document.getElementById('scoreJoints')) document.getElementById('scoreJoints').value = j;
+            if (document.getElementById('scoreSleep')) document.getElementById('scoreSleep').value = s;
         }
 
         function renderPRTracker() {
             const container = document.getElementById('prTrackerContainer');
             if (!container || !PROGRAM_DATA || Object.keys(PROGRAM_DATA).length === 0) return;
-            // Populates PRs dynamically from logged weights
-            container.innerHTML = `<div class="col-span-full bg-slate-950 border border-slate-800 p-2.5 rounded-xl text-center text-[10px] text-slate-400">Log working weights in Workout Logs to track A-Series PRs.</div>`;
+
+            const aSeriesMap = {};
+
+            for (let phase in PROGRAM_DATA) {
+                for (let week in PROGRAM_DATA[phase]) {
+                    for (let day in PROGRAM_DATA[phase][week]) {
+                        const exercises = PROGRAM_DATA[phase][week][day];
+                        exercises.forEach((ex, exIdx) => {
+                            if (ex.Series && ex.Series.startsWith('A')) {
+                                const name = ex.Exercise;
+                                const sets = parseInt(ex.Sets) || 1;
+                                for (let s = 1; s <= sets; s++) {
+                                    const weightKey = `${phase}_${week}_${day}_${exIdx}_wt_s${s}`;
+                                    const loggedVal = parseFloat(localStorage.getItem(weightKey));
+                                    if (!isNaN(loggedVal) && loggedVal > 0) {
+                                        if (!aSeriesMap[name] || loggedVal > aSeriesMap[name]) {
+                                            aSeriesMap[name] = loggedVal;
+                                        }
+                                    }
+                                }
+                            }
+                        });
+                    }
+                }
+            }
+
+            let html = '';
+            const keys = Object.keys(aSeriesMap);
+
+            if (keys.length === 0) {
+                container.innerHTML = `
+                    <div class="col-span-full bg-slate-950 border border-slate-800 p-2.5 rounded-xl text-center text-[10px] text-slate-400">
+                        No A-Series weights logged yet. Start entering set weights in Workout Logs!
+                    </div>
+                `;
+                return;
+            }
+
+            keys.forEach(exName => {
+                html += `
+                    <div class="bg-slate-950 border border-slate-800 p-2.5 rounded-xl flex flex-col justify-between">
+                        <span class="text-[10px] font-bold text-slate-300 line-clamp-1">${exName}</span>
+                        <span class="text-sm font-black text-amber-400 mt-1">${aSeriesMap[exName]} <span class="text-[9px] font-normal text-slate-400">lbs</span></span>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
         }
 
         function switchTab(tabId) {
@@ -568,24 +739,34 @@
                 activeBtn.classList.remove('bg-slate-900', 'text-slate-400');
                 activeBtn.classList.add('bg-amber-500', 'text-slate-950');
             }
+
+            if (tabId === 'dashboard') {
+                updateDashboardMetrics();
+                renderPRTracker();
+            }
         }
 
         function populatePhases() {
             const sel = document.getElementById('phaseSelect');
-            if(!sel) return;
             sel.innerHTML = '';
             Object.keys(PROGRAM_DATA).forEach(p => {
                 let opt = document.createElement('option');
                 opt.value = p; opt.textContent = p;
                 sel.appendChild(opt);
             });
+
+            const savedP = localStorage.getItem('tx_last_phase');
+            if (savedP && PROGRAM_DATA[savedP]) {
+                sel.value = savedP;
+            }
             onPhaseChange();
         }
 
         function onPhaseChange() {
-            currentPhase = document.getElementById('phaseSelect')?.value;
+            currentPhase = document.getElementById('phaseSelect').value;
+            localStorage.setItem('tx_last_phase', currentPhase);
+
             const sel = document.getElementById('weekSelect');
-            if(!sel) return;
             sel.innerHTML = '';
             if (PROGRAM_DATA[currentPhase]) {
                 Object.keys(PROGRAM_DATA[currentPhase]).forEach(w => {
@@ -594,32 +775,354 @@
                     sel.appendChild(opt);
                 });
             }
+
+            const savedW = localStorage.getItem('tx_last_week');
+            if (savedW && PROGRAM_DATA[currentPhase]?.[savedW]) {
+                sel.value = savedW;
+            }
             onWeekChange();
         }
 
         function onWeekChange() {
-            currentPhase = document.getElementById('phaseSelect')?.value;
-            currentWeek = document.getElementById('weekSelect')?.value;
+            currentPhase = document.getElementById('phaseSelect').value;
+            currentWeek = document.getElementById('weekSelect').value;
+            localStorage.setItem('tx_last_week', currentWeek);
+
             const sel = document.getElementById('daySelect');
-            if(!sel) return;
             sel.innerHTML = '';
-            if (PROGRAM_DATA[currentPhase]?.[currentWeek]) {
+            if (PROGRAM_DATA[currentPhase] && PROGRAM_DATA[currentPhase][currentWeek]) {
                 Object.keys(PROGRAM_DATA[currentPhase][currentWeek]).forEach(d => {
                     let opt = document.createElement('option');
                     opt.value = d; opt.textContent = d;
                     sel.appendChild(opt);
                 });
             }
+
+            const savedD = localStorage.getItem('tx_last_day');
+            if (savedD && PROGRAM_DATA[currentPhase]?.[currentWeek]?.[savedD]) {
+                sel.value = savedD;
+            }
             renderWorkout();
         }
 
         function renderWorkout() {
-            // Standard rendering hook for workout table
+            currentPhase = document.getElementById('phaseSelect').value;
+            currentWeek = document.getElementById('weekSelect').value;
+            currentDay = document.getElementById('daySelect').value;
+
+            localStorage.setItem('tx_last_phase', currentPhase);
+            localStorage.setItem('tx_last_week', currentWeek);
+            localStorage.setItem('tx_last_day', currentDay);
+
+            checkResumeBanner();
+
+            const exercises = PROGRAM_DATA[currentPhase]?.[currentWeek]?.[currentDay] || [];
+            const container = document.getElementById('workoutContainer');
+            container.innerHTML = '';
+
+            if (exercises.length === 0) {
+                container.innerHTML = '<div class="p-4 bg-slate-900 border border-slate-800 rounded-xl text-xs text-slate-400">No exercises found for this day.</div>';
+                return;
+            }
+
+            exercises.forEach((ex, exIdx) => {
+                const sets = parseInt(ex.Sets) || 1;
+                let checksHtml = '<div class="flex flex-wrap gap-2 mt-2.5">';
+                
+                for (let s = 1; s <= sets; s++) {
+                    const checkKey = `${currentPhase}_${currentWeek}_${currentDay}_${exIdx}_s${s}`;
+                    const weightKey = `${currentPhase}_${currentWeek}_${currentDay}_${exIdx}_wt_s${s}`;
+                    
+                    const checked = localStorage.getItem(checkKey) === 'true';
+                    const savedWeight = localStorage.getItem(weightKey) || '';
+
+                    checksHtml += `
+                        <div class="flex items-center space-x-1.5 bg-slate-950 px-2.5 py-1 rounded-lg border border-slate-800 text-[10px]">
+                            <span class="font-bold text-amber-400">S${s}</span>
+                            <input type="checkbox" ${checked ? 'checked' : ''} onchange="localStorage.setItem('${checkKey}', this.checked); updateDashboardMetrics(); checkResumeBanner();">
+                            <input type="number" placeholder="lbs" value="${savedWeight}" oninput="localStorage.setItem('${weightKey}', this.value); renderPRTracker();" class="w-12 bg-slate-900 border border-slate-700 rounded text-center text-amber-300 font-bold focus:outline-none focus:border-amber-500 py-0.5 text-[10px]">
+                        </div>
+                    `;
+                }
+                checksHtml += '</div>';
+
+                const tempoBadge = ex.Tempo ? `<span class="text-[9px] text-amber-300 bg-amber-950/60 px-1.5 py-0.5 rounded border border-amber-800/50 ml-2">${ex.Tempo}</span>` : '';
+
+                container.innerHTML += `
+                    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-3.5 space-y-1 shadow-lg">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[10px] font-extrabold text-amber-400 uppercase bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20">${ex.Series || 'Ex'}</span>
+                            <span class="text-[11px] text-slate-400 font-semibold">Target: <strong class="text-slate-200">${ex.Wt || 'BW'}</strong></span>
+                        </div>
+                        <h4 class="font-bold text-slate-100 text-xs flex items-center">${ex.Exercise || 'Exercise'} ${tempoBadge}</h4>
+                        <div class="flex justify-between text-[11px] text-slate-400">
+                            <span>Sets: <strong>${ex.Sets || '-'}</strong> | Reps: <strong>${ex.Reps || '-'}</strong></span>
+                            <span>Rest: <strong>${ex.Rest || '-'}</strong> | RPE: <strong>${ex.RPE || '-'}</strong></span>
+                        </div>
+                        ${checksHtml}
+                    </div>
+                `;
+            });
+
+            updateDashboardMetrics();
+        }
+
+        function getActiveOrNextWorkout() {
+            if (!PROGRAM_DATA || Object.keys(PROGRAM_DATA).length === 0) return null;
+
+            let phases = Object.keys(PROGRAM_DATA);
+            let p = localStorage.getItem('tx_last_phase') || phases[0];
+            if (!PROGRAM_DATA[p]) p = phases[0];
+
+            let weeks = Object.keys(PROGRAM_DATA[p] || {});
+            let w = localStorage.getItem('tx_last_week') || weeks[0];
+            if (!PROGRAM_DATA[p]?.[w]) w = weeks[0];
+
+            let days = Object.keys(PROGRAM_DATA[p]?.[w] || {});
+            let d = localStorage.getItem('tx_last_day') || days[0];
+            if (!PROGRAM_DATA[p]?.[w]?.[d]) d = days[0];
+
+            const exercises = PROGRAM_DATA[p]?.[w]?.[d] || [];
+            let totalSets = 0;
+            let checkedSets = 0;
+
+            exercises.forEach((ex, exIdx) => {
+                const sets = parseInt(ex.Sets) || 1;
+                totalSets += sets;
+                for (let s = 1; s <= sets; s++) {
+                    const checkKey = `${p}_${w}_${d}_${exIdx}_s${s}`;
+                    if (localStorage.getItem(checkKey) === 'true') checkedSets++;
+                }
+            });
+
+            if (totalSets > 0 && checkedSets === totalSets) {
+                let nextP = p, nextW = w, nextD = d;
+                let dayIdx = days.indexOf(d);
+
+                if (dayIdx >= 0 && dayIdx < days.length - 1) {
+                    nextD = days[dayIdx + 1];
+                } else {
+                    let weekIdx = weeks.indexOf(w);
+                    if (weekIdx >= 0 && weekIdx < weeks.length - 1) {
+                        nextW = weeks[weekIdx + 1];
+                        let nextDays = Object.keys(PROGRAM_DATA[p]?.[nextW] || {});
+                        nextD = nextDays[0] || d;
+                    } else {
+                        let phaseIdx = phases.indexOf(p);
+                        if (phaseIdx >= 0 && phaseIdx < phases.length - 1) {
+                            nextP = phases[phaseIdx + 1];
+                            let nextWeeks = Object.keys(PROGRAM_DATA[nextP] || {});
+                            nextW = nextWeeks[0] || w;
+                            let nextDays = Object.keys(PROGRAM_DATA[nextP]?.[nextW] || {});
+                            nextD = nextDays[0] || d;
+                        }
+                    }
+                }
+                return { phase: nextP, week: nextW, day: nextD, isNext: true };
+            }
+
+            return { phase: p, week: w, day: d, isNext: false };
+        }
+
+        function checkResumeBanner() {
+            const activeObj = getActiveOrNextWorkout();
+            const banner = document.getElementById('resumeBanner');
+            const tag = document.getElementById('resumeStatusTag');
+            const text = document.getElementById('resumeText');
+            const btn = document.getElementById('resumeBtn');
+
+            if (activeObj && banner && text) {
+                const shortP = activeObj.phase.split(':')[0] || activeObj.phase;
+                if (activeObj.isNext) {
+                    if (tag) tag.textContent = "Next Workout Up";
+                    text.textContent = `${shortP} • ${activeObj.week} • ${activeObj.day}`;
+                    if (btn) btn.innerHTML = '⚡ Start Next Lift';
+                } else {
+                    if (tag) tag.textContent = "In Progress";
+                    text.textContent = `${shortP} • ${activeObj.week} • ${activeObj.day}`;
+                    if (btn) btn.innerHTML = '⚡ Resume Lift';
+                }
+                banner.classList.remove('hidden');
+            }
+        }
+
+        function jumpToLastWorkout() {
+            const activeObj = getActiveOrNextWorkout();
+            if (activeObj) {
+                const pSel = document.getElementById('phaseSelect');
+                if (pSel && PROGRAM_DATA[activeObj.phase]) {
+                    pSel.value = activeObj.phase;
+                    onPhaseChange();
+                }
+                const wSel = document.getElementById('weekSelect');
+                if (wSel && PROGRAM_DATA[activeObj.phase]?.[activeObj.week]) {
+                    wSel.value = activeObj.week;
+                    onWeekChange();
+                }
+                const dSel = document.getElementById('daySelect');
+                if (dSel && PROGRAM_DATA[activeObj.phase]?.[activeObj.week]?.[activeObj.day]) {
+                    dSel.value = activeObj.day;
+                    renderWorkout();
+                }
+            }
+            switchTab('workouts');
+        }
+
+        function updateDashboardMetrics() {
+            if (!PROGRAM_DATA || Object.keys(PROGRAM_DATA).length === 0) return;
+            
+            if (!currentPhase) currentPhase = Object.keys(PROGRAM_DATA)[0];
+            if (!currentWeek && PROGRAM_DATA[currentPhase]) currentWeek = Object.keys(PROGRAM_DATA[currentPhase])[0];
+
+            const deloadShield = document.getElementById('deloadShield');
+            if (deloadShield) {
+                if (currentWeek.includes('Week 4') || currentWeek.includes('Week 8') || currentWeek.includes('Week 12')) {
+                    deloadShield.classList.remove('hidden');
+                } else {
+                    deloadShield.classList.add('hidden');
+                }
+            }
+
+            let phaseTotalSets = 0;
+            let phaseCheckedSets = 0;
+
+            const weeksInPhase = PROGRAM_DATA[currentPhase] || {};
+            for (let weekKey in weeksInPhase) {
+                const daysInWeek = weeksInPhase[weekKey] || {};
+                for (let dayKey in daysInWeek) {
+                    const exercises = daysInWeek[dayKey] || [];
+                    exercises.forEach((ex, exIdx) => {
+                        const sets = parseInt(ex.Sets) || 1;
+                        phaseTotalSets += sets;
+                        for (let s = 1; s <= sets; s++) {
+                            const checkKey = `${currentPhase}_${weekKey}_${dayKey}_${exIdx}_s${s}`;
+                            if (localStorage.getItem(checkKey) === 'true') phaseCheckedSets++;
+                        }
+                    });
+                }
+            }
+
+            const phasePct = phaseTotalSets > 0 ? Math.round((phaseCheckedSets / phaseTotalSets) * 100) : 0;
+            
+            const dashPhaseSets = document.getElementById('dashPhaseSets');
+            if (dashPhaseSets) dashPhaseSets.textContent = `${phaseCheckedSets} / ${phaseTotalSets} Sets`;
+            
+            const dashPhasePct = document.getElementById('dashPhasePct');
+            if (dashPhasePct) dashPhasePct.textContent = `${phasePct}% Completed`;
+            
+            const dashActivePhase = document.getElementById('dashActivePhase');
+            if (dashActivePhase) dashActivePhase.textContent = currentPhase.split(':')[0] || currentPhase;
+            
+            const dashActiveWeek = document.getElementById('dashActiveWeek');
+            if (dashActiveWeek) dashActiveWeek.textContent = currentWeek;
+
+            renderWeeklyVolumeChart();
+            checkResumeBanner();
+        }
+
+        function renderWeeklyVolumeChart() {
+            const container = document.getElementById('weeklyVolumeChart');
+            if (!container || !PROGRAM_DATA) return;
+
+            let html = '';
+            let maxSetsInAnyWeek = 1;
+            let weekStats = [];
+            let weekCounter = 1;
+
+            for (let phaseKey in PROGRAM_DATA) {
+                for (let weekKey in PROGRAM_DATA[phaseKey]) {
+                    let wTotal = 0;
+                    let wDone = 0;
+                    const days = PROGRAM_DATA[phaseKey][weekKey];
+                    for (let dayKey in days) {
+                        const exercises = days[dayKey];
+                        exercises.forEach((ex, exIdx) => {
+                            const sets = parseInt(ex.Sets) || 1;
+                            wTotal += sets;
+                            for (let s = 1; s <= sets; s++) {
+                                const checkKey = `${phaseKey}_${weekKey}_${dayKey}_${exIdx}_s${s}`;
+                                if (localStorage.getItem(checkKey) === 'true') wDone++;
+                            }
+                        });
+                    }
+                    if (wTotal > maxSetsInAnyWeek) maxSetsInAnyWeek = wTotal;
+                    
+                    const match = weekKey.match(/\d+/);
+                    const wNum = match ? match[0] : weekCounter;
+                    const shortLabel = `W${wNum}`;
+                    weekCounter++;
+
+                    const isCurrent = (weekKey === currentWeek);
+                    weekStats.push({
+                        weekLabel: shortLabel,
+                        total: wTotal,
+                        done: wDone,
+                        isCurrent: isCurrent
+                    });
+                }
+            }
+
+            weekStats.forEach(stat => {
+                const fillPct = stat.total > 0 ? Math.min(100, Math.round((stat.done / stat.total) * 100)) : 0;
+                const barHeightPct = Math.max(18, Math.round((stat.total / maxSetsInAnyWeek) * 100));
+                
+                const activeRing = stat.isCurrent ? 'ring-2 ring-amber-500 bg-amber-500/10' : 'bg-slate-950 border-slate-800';
+                const labelColor = stat.isCurrent ? 'text-amber-400 font-extrabold' : 'text-slate-400 font-semibold';
+
+                html += `
+                    <div class="flex-1 min-w-0 flex flex-col items-center h-full justify-end px-0">
+                        <span class="text-[8px] font-extrabold text-amber-400 mb-1">${stat.done > 0 ? stat.done : ''}</span>
+                        <div class="w-2 sm:w-3.5 rounded-t border flex flex-col justify-end overflow-hidden ${activeRing}" style="height: ${barHeightPct}%;">
+                            <div class="w-full bg-gradient-to-t from-amber-600 to-amber-400 rounded-t transition-all duration-500 shadow-sm" style="height: ${fillPct}%;"></div>
+                        </div>
+                        <span class="text-[8px] sm:text-[9px] ${labelColor} mt-1.5 whitespace-nowrap">${stat.weekLabel}</span>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
         }
 
         function generateBadge() {
-            document.getElementById('badgeTitle').textContent = "TXP Workout Summary";
-            document.getElementById('badgeSub').textContent = "Active Protocol State";
+            if (!PROGRAM_DATA || !currentPhase || !currentWeek || !currentDay) return;
+            const exercises = PROGRAM_DATA[currentPhase]?.[currentWeek]?.[currentDay] || [];
+
+            let totalSets = 0;
+            let checkedSets = 0;
+            let listHtml = '';
+
+            exercises.forEach((ex, exIdx) => {
+                const sets = parseInt(ex.Sets) || 1;
+                totalSets += sets;
+
+                for (let s = 1; s <= sets; s++) {
+                    const checkKey = `${currentPhase}_${currentWeek}_${currentDay}_${exIdx}_s${s}`;
+                    if (localStorage.getItem(checkKey) === 'true') checkedSets++;
+                }
+
+                const seriesBadge = ex.Series ? `<span class="text-[9px] font-extrabold text-amber-400 bg-amber-500/10 px-1.5 py-0.5 rounded border border-amber-500/20 mr-1.5">${ex.Series}</span>` : '';
+                const setsRepsStr = `${ex.Sets || '-'} Sets × ${ex.Reps || '-'} Reps`;
+
+                listHtml += `
+                    <div class="flex justify-between items-center py-1 border-b border-slate-900/60 last:border-0">
+                        <div class="flex items-center">
+                            ${seriesBadge}
+                            <span class="font-bold text-slate-200 text-xs">${ex.Exercise}</span>
+                        </div>
+                        <span class="text-[11px] font-extrabold text-amber-400 whitespace-nowrap ml-2">${setsRepsStr}</span>
+                    </div>
+                `;
+            });
+
+            const pct = totalSets > 0 ? Math.round((checkedSets / totalSets) * 100) : 0;
+
+            document.getElementById('badgeTitle').textContent = currentDay;
+            document.getElementById('badgeSub').textContent = `${currentPhase.split(':')[0]} • ${currentWeek}`;
+            document.getElementById('badgeSetsDone').textContent = `${checkedSets} / ${totalSets}`;
+            document.getElementById('badgePercent').textContent = `${pct}%`;
+            document.getElementById('badgeExerciseList').innerHTML = listHtml;
+            document.getElementById('badgeDate').textContent = new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+
             document.getElementById('badgeModal').classList.remove('hidden');
         }
 
@@ -628,20 +1131,85 @@
         }
 
         function exportCSV() {
-            alert("CSV export initialized.");
+            if (!PROGRAM_DATA || Object.keys(PROGRAM_DATA).length === 0) {
+                alert("Program data not loaded yet.");
+                return;
+            }
+
+            let rows = [
+                ["Phase", "Week", "Day", "Series", "Exercise", "Set", "Completed", "Weight Lifted (lbs)"]
+            ];
+
+            for (let phase in PROGRAM_DATA) {
+                for (let week in PROGRAM_DATA[phase]) {
+                    for (let day in PROGRAM_DATA[phase][week]) {
+                        const exercises = PROGRAM_DATA[phase][week][day];
+                        exercises.forEach((ex, exIdx) => {
+                            const sets = parseInt(ex.Sets) || 1;
+                            for (let s = 1; s <= sets; s++) {
+                                const checkKey = `${phase}_${week}_${day}_${exIdx}_s${s}`;
+                                const weightKey = `${phase}_${week}_${day}_${exIdx}_wt_s${s}`;
+                                
+                                const checked = localStorage.getItem(checkKey) === 'true' ? 'YES' : 'NO';
+                                const weight = localStorage.getItem(weightKey) || '';
+
+                                rows.push([
+                                    phase,
+                                    week,
+                                    day,
+                                    ex.Series || '',
+                                    ex.Exercise || '',
+                                    `Set ${s}`,
+                                    checked,
+                                    weight
+                                ]);
+                            }
+                        });
+                    }
+                }
+            }
+
+            const notes = localStorage.getItem('tx_notes');
+            const hyd = localStorage.getItem('tx_hydration') || '0';
+            const pump = localStorage.getItem('tx_score_pump') || '-';
+            const joints = localStorage.getItem('tx_score_joints') || '-';
+            const sleep = localStorage.getItem('tx_score_sleep') || '-';
+
+            rows.push([]);
+            rows.push(["DAILY PROTOCOL SUMMARY"]);
+            rows.push(["Hydration Level", `${hyd}%`]);
+            rows.push(["Pump Score", pump]);
+            rows.push(["Joint Integrity", joints]);
+            rows.push(["Sleep Quality", sleep]);
+            if (notes) rows.push(["Session Notes", notes]);
+
+            let csvContent = rows.map(e => e.map(val => `"${String(val).replace(/"/g, '""')}"`).join(",")).join("\n");
+
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement("a");
+            const url = URL.createObjectURL(blob);
+            link.setAttribute("href", url);
+            link.setAttribute("download", `tx_pierce_workout_history.csv`);
+            link.style.visibility = 'hidden';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
         }
 
         function calcPeptides() {
-            const rBac = parseFloat(document.getElementById('reta_bac')?.value) || 2.0;
-            const bBac = parseFloat(document.getElementById('bpc_bac')?.value) || 2.0;
-            if (document.getElementById('reta_conc')) document.getElementById('reta_conc').textContent = (10 / rBac).toFixed(2) + ' mg/mL';
-            if (document.getElementById('bpc_conc')) document.getElementById('bpc_conc').textContent = (10 / bBac).toFixed(2) + ' mg/mL';
+            const rBac = parseFloat(document.getElementById('reta_bac').value) || 2.0;
+            const bBac = parseFloat(document.getElementById('bpc_bac').value) || 2.0;
+
+            document.getElementById('reta_conc').textContent = (10 / rBac).toFixed(2) + ' mg/mL';
+            document.getElementById('reta_draw').textContent = (250 / ((10 / rBac) * 10)).toFixed(1) + ' u';
+
+            document.getElementById('bpc_conc').textContent = (10 / bBac).toFixed(2) + ' mg/mL';
+            document.getElementById('bpc_draw').textContent = (500 / ((10 / bBac) * 10)).toFixed(1) + ' u';
         }
 
         function renderPeptideSchedule() {
             const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
             const tbody = document.getElementById('peptideMatrix');
-            if(!tbody) return;
             tbody.innerHTML = '';
             days.forEach((d, idx) => {
                 tbody.innerHTML += `
@@ -660,9 +1228,8 @@
         }
 
         function loadSavedNotes() {
-            if (localStorage.getItem('tx_notes') && document.getElementById('sessionNotes')) {
-                document.getElementById('sessionNotes').value = localStorage.getItem('tx_notes');
-            }
+            const saved = localStorage.getItem('tx_notes');
+            if (saved) document.getElementById('sessionNotes').value = saved;
         }
 
         function resetData() {
