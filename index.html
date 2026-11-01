@@ -344,29 +344,39 @@
             </div>
         </div>
 
-        <!-- NUTRITION TAB -->
+        <!-- NUTRITION TAB (DYNAMIC FUELING CUSTOMIZER) -->
         <div id="tab-nutrition" class="tab-content space-y-4">
-            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-xl">
-                <h2 class="font-extrabold text-slate-100 text-sm flex items-center gap-2"><span class="text-amber-500">🥩</span> Macro Targets (~2,800 kcal)</h2>
-                <p class="text-[11px] text-slate-400 mt-1">200g Protein • 315g Carbohydrates • 80g Fat</p>
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-xl space-y-3">
+                <div class="flex items-center justify-between">
+                    <h2 class="font-extrabold text-slate-100 text-sm flex items-center gap-2">
+                        <span class="text-amber-500">🥩</span> Macro Targets & Dynamic Fueling
+                    </h2>
+                    <span class="text-[10px] font-bold bg-amber-500/10 text-amber-400 px-2 py-0.5 rounded border border-amber-500/20">~2,800 kcal</span>
+                </div>
+                <p class="text-[11px] text-slate-400">200g Protein • 315g Carbohydrates • 80g Fat. Set your wake up and lift times below to auto-adjust your meal windows.</p>
+
+                <!-- WAKE & LIFT TIME CUSTOMIZER -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
+                    <div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800 flex items-center justify-between">
+                        <div>
+                            <label class="block text-[10px] font-bold text-amber-400 uppercase tracking-wider">⏰ Wake Up Time</label>
+                            <p class="text-[9px] text-slate-400">Starts morning hydration & baseline</p>
+                        </div>
+                        <input type="time" id="wakeUpTime" value="04:00" onchange="updateDynamicNutrition()" class="bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 font-bold text-amber-400 text-xs focus:outline-none focus:border-amber-500">
+                    </div>
+                    <div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800 flex items-center justify-between">
+                        <div>
+                            <label class="block text-[10px] font-bold text-amber-400 uppercase tracking-wider">🏋️ Lift / Workout Time</label>
+                            <p class="text-[9px] text-slate-400">Sets Pre- & Post-workout meals</p>
+                        </div>
+                        <input type="time" id="liftStartTime" value="05:00" onchange="updateDynamicNutrition()" class="bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 font-bold text-amber-400 text-xs focus:outline-none focus:border-amber-500">
+                    </div>
+                </div>
             </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-3.5 space-y-1">
-                    <h4 class="font-bold text-amber-400">1. Pre-Workout (4:15 AM)</h4>
-                    <p class="text-slate-300">10g P | 30g C | Banana + ½ scoop Whey</p>
-                </div>
-                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-3.5 space-y-1">
-                    <h4 class="font-bold text-amber-400">2. Breakfast (6:30 AM)</h4>
-                    <p class="text-slate-300">40g P | 75g C | 15g F | Eggs, Oats & Berries</p>
-                </div>
-                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-3.5 space-y-1">
-                    <h4 class="font-bold text-amber-400">3. Lunch (12:00 PM)</h4>
-                    <p class="text-slate-300">45g P | 75g C | 20g F | Chicken, Rice & Avocado</p>
-                </div>
-                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-3.5 space-y-1">
-                    <h4 class="font-bold text-amber-400">4. Dinner (7:00 PM)</h4>
-                    <p class="text-slate-300">50g P | 70g C | 25g F | Sirloin, Sweet Potato & Green Beans</p>
-                </div>
+
+            <!-- DYNAMICALLY POPULATED MEAL CARDS CONTAINER -->
+            <div id="dynamicNutritionCards" class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                <!-- Dynamically calculated via JS -->
             </div>
         </div>
 
@@ -458,6 +468,13 @@
             loadHydration();
             loadCheckinScores();
             
+            // Restore saved wake and lift times or default to 04:00 AM & 05:00 AM
+            const savedWake = localStorage.getItem('tx_wake_time') || '04:00';
+            const savedLift = localStorage.getItem('tx_lift_time') || '05:00';
+            if (document.getElementById('wakeUpTime')) document.getElementById('wakeUpTime').value = savedWake;
+            if (document.getElementById('liftStartTime')) document.getElementById('liftStartTime').value = savedLift;
+            updateDynamicNutrition();
+
             setInterval(updateFuelingClock, 60000);
 
             const filesToTry = ['program_data-v3.json', 'program_data-v2.json', 'program_data.json'];
@@ -489,6 +506,85 @@
             renderPRTracker();
         });
 
+        function minutesToTimeStr(totalMins) {
+            let m = ((totalMins % 1440) + 1440) % 1440;
+            let hours = Math.floor(m / 60);
+            let mins = m % 60;
+            let period = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            hours = hours ? hours : 12;
+            let minStr = mins < 10 ? '0' + mins : mins;
+            return `${hours}:${minStr} ${period}`;
+        }
+
+        function updateDynamicNutrition() {
+            const wakeInput = document.getElementById('wakeUpTime')?.value || '04:00';
+            const liftInput = document.getElementById('liftStartTime')?.value || '05:00';
+
+            localStorage.setItem('tx_wake_time', wakeInput);
+            localStorage.setItem('tx_lift_time', liftInput);
+
+            const [wH, wM] = wakeInput.split(':').map(Number);
+            const [lH, lM] = liftInput.split(':').map(Number);
+
+            const wakeMins = wH * 60 + wM;
+            const liftMins = lH * 60 + lM;
+
+            let meals = [];
+
+            // Morning Workout Schedule (Lift before 11:00 AM)
+            if (liftMins < 11 * 60) {
+                const preMins = Math.max(wakeMins + 15, liftMins - 45);
+                const breakfastMins = liftMins + 90;
+                const lunchMins = breakfastMins + 330;
+                const snackMins = lunchMins + 210;
+                const dinnerMins = snackMins + 210;
+
+                meals = [
+                    { name: "1. Pre-Workout Fuel", time: minutesToTimeStr(preMins), macros: "10g P | 30g C | ~170 kcal", detail: "Banana (1 medium) + ½ scoop Whey Protein powder" },
+                    { name: "2. Post-Workout Breakfast", time: minutesToTimeStr(breakfastMins), macros: "40g P | 75g C | 15g F | ~600 kcal", detail: "2 whole eggs + ¾ cup egg whites, 1 cup rolled oats, ½ cup berries" },
+                    { name: "3. High-Protein Lunch", time: minutesToTimeStr(lunchMins), macros: "45g P | 75g C | 20g F | ~660 kcal", detail: "5 oz cooked chicken breast, 1.75 cups Jasmine rice, ½ avocado" },
+                    { name: "4. Afternoon Snack", time: minutesToTimeStr(snackMins), macros: "35g P | 40g C | 15g F | ~435 kcal", detail: "1.25 cups Non-Fat Greek Yogurt, 18-20 almonds, 1.5 cups berries" },
+                    { name: "5. Anabolic Dinner", time: minutesToTimeStr(dinnerMins), macros: "50g P | 70g C | 25g F | ~705 kcal", detail: "6.5 oz Top Sirloin steak, baked sweet potato, steamed green beans" }
+                ];
+            } else { // Afternoon / Evening Workout Schedule
+                const bkmMins = wakeMins + 30;
+                const lunchMins = bkmMins + 300;
+                const preMins = liftMins - 45;
+                const dinnerMins = liftMins + 90;
+                const snackMins = dinnerMins + 180;
+
+                meals = [
+                    { name: "1. Morning Breakfast", time: minutesToTimeStr(bkmMins), macros: "40g P | 75g C | 15g F | ~600 kcal", detail: "2 whole eggs + ¾ cup egg whites, 1 cup rolled oats, ½ cup berries" },
+                    { name: "2. High-Protein Lunch", time: minutesToTimeStr(lunchMins), macros: "45g P | 75g C | 20g F | ~660 kcal", detail: "5 oz cooked chicken breast, 1.75 cups Jasmine rice, ½ avocado" },
+                    { name: "3. Pre-Workout Fuel", time: minutesToTimeStr(preMins), macros: "10g P | 30g C | ~170 kcal", detail: "Banana (1 medium) + ½ scoop Whey Protein powder" },
+                    { name: "4. Post-Workout Dinner", time: minutesToTimeStr(dinnerMins), macros: "50g P | 70g C | 25g F | ~705 kcal", detail: "6.5 oz Top Sirloin steak, baked sweet potato, steamed green beans" },
+                    { name: "5. Night Recovery Snack", time: minutesToTimeStr(snackMins), macros: "35g P | 40g C | 15g F | ~435 kcal", detail: "1.25 cups Non-Fat Greek Yogurt, 18-20 almonds, 1.5 cups berries" }
+                ];
+            }
+
+            const container = document.getElementById('dynamicNutritionCards');
+            if (container) {
+                let html = '';
+                meals.forEach(m => {
+                    html += `
+                        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-3.5 space-y-1 shadow-lg">
+                            <div class="flex items-center justify-between">
+                                <h4 class="font-bold text-amber-400 text-xs">${m.name}</h4>
+                                <span class="text-[10px] font-black bg-slate-950 text-slate-200 px-2 py-0.5 rounded-lg border border-slate-800">${m.time}</span>
+                            </div>
+                            <p class="text-[11px] text-slate-300 font-semibold">${m.macros}</p>
+                            <p class="text-[10px] text-slate-400">${m.detail}</p>
+                        </div>
+                    `;
+                });
+                container.innerHTML = html;
+            }
+
+            // Sync Dashboard header next fueling clock
+            updateFuelingClock();
+        }
+
         function checkDailyReset() {
             const today = new Date().toLocaleDateString('en-CA');
             const lastDate = localStorage.getItem('tx_last_active_date');
@@ -514,6 +610,11 @@
         }
 
         function updateFuelingClock() {
+            const liftInput = localStorage.getItem('tx_lift_time') || '05:00';
+            const [lH, lM] = liftInput.split(':').map(Number);
+            const liftMins = lH * 60 + lM;
+            const preMins = liftMins - 45;
+
             const now = new Date();
             const mins = now.getHours() * 60 + now.getMinutes();
 
@@ -521,14 +622,14 @@
             let detail = "50g Protein | 70g Carbs | 25g Fat";
             let time = "7:00 PM";
 
-            if (mins < 255) {
+            if (mins < liftMins) {
                 name = "Pre-Workout Fuel";
                 detail = "10g Protein | 30g Carbs (Banana + Whey)";
-                time = "4:15 AM";
-            } else if (mins < 390) {
+                time = minutesToTimeStr(preMins);
+            } else if (mins < liftMins + 240) {
                 name = "Anabolic Breakfast";
                 detail = "40g Protein | 75g Carbs | 15g Fat";
-                time = "6:30 AM";
+                time = minutesToTimeStr(liftMins + 90);
             } else if (mins < 720) {
                 name = "High-Protein Lunch";
                 detail = "45g Protein | 75g Carbs | 20g Fat";
@@ -631,7 +732,7 @@
                 gain.connect(ctx.destination);
                 osc.start();
                 osc.stop(ctx.currentTime + 0.6);
-                if (navigator.vibrate) navigator.vibrate([200, 100, 200, 100, 300]);
+                if (navigator.vibrate) navigator.vibrate();
             } catch(e) {}
         }
 
@@ -642,7 +743,7 @@
 
         function loadHydration() {
             const saved = parseInt(localStorage.getItem('tx_hydration')) || 0;
-            [25, 50, 75, 100].forEach(val => {
+            [1-4].forEach(val => {
                 const btn = document.getElementById(`hyd-${val}`);
                 if (btn) {
                     if (saved === val) {
@@ -871,16 +972,16 @@
             if (!PROGRAM_DATA || Object.keys(PROGRAM_DATA).length === 0) return null;
 
             let phases = Object.keys(PROGRAM_DATA);
-            let p = localStorage.getItem('tx_last_phase') || phases[0];
-            if (!PROGRAM_DATA[p]) p = phases[0];
+            let p = localStorage.getItem('tx_last_phase') || phases;
+            if (!PROGRAM_DATA[p]) p = phases;
 
             let weeks = Object.keys(PROGRAM_DATA[p] || {});
-            let w = localStorage.getItem('tx_last_week') || weeks[0];
-            if (!PROGRAM_DATA[p]?.[w]) w = weeks[0];
+            let w = localStorage.getItem('tx_last_week') || weeks;
+            if (!PROGRAM_DATA[p]?.[w]) w = weeks;
 
             let days = Object.keys(PROGRAM_DATA[p]?.[w] || {});
-            let d = localStorage.getItem('tx_last_day') || days[0];
-            if (!PROGRAM_DATA[p]?.[w]?.[d]) d = days[0];
+            let d = localStorage.getItem('tx_last_day') || days;
+            if (!PROGRAM_DATA[p]?.[w]?.[d]) d = days;
 
             const exercises = PROGRAM_DATA[p]?.[w]?.[d] || [];
             let totalSets = 0;
@@ -906,15 +1007,15 @@
                     if (weekIdx >= 0 && weekIdx < weeks.length - 1) {
                         nextW = weeks[weekIdx + 1];
                         let nextDays = Object.keys(PROGRAM_DATA[p]?.[nextW] || {});
-                        nextD = nextDays[0] || d;
+                        nextD = nextDays || d;
                     } else {
                         let phaseIdx = phases.indexOf(p);
                         if (phaseIdx >= 0 && phaseIdx < phases.length - 1) {
                             nextP = phases[phaseIdx + 1];
                             let nextWeeks = Object.keys(PROGRAM_DATA[nextP] || {});
-                            nextW = nextWeeks[0] || w;
+                            nextW = nextWeeks || w;
                             let nextDays = Object.keys(PROGRAM_DATA[nextP]?.[nextW] || {});
-                            nextD = nextDays[0] || d;
+                            nextD = nextDays || d;
                         }
                     }
                 }
@@ -932,7 +1033,7 @@
             const btn = document.getElementById('resumeBtn');
 
             if (activeObj && banner && text) {
-                const shortP = activeObj.phase.split(':')[0] || activeObj.phase;
+                const shortP = activeObj.phase.split(':') || activeObj.phase;
                 if (activeObj.isNext) {
                     if (tag) tag.textContent = "Next Workout Up";
                     text.textContent = `${shortP} • ${activeObj.week} • ${activeObj.day}`;
@@ -971,8 +1072,8 @@
         function updateDashboardMetrics() {
             if (!PROGRAM_DATA || Object.keys(PROGRAM_DATA).length === 0) return;
             
-            if (!currentPhase) currentPhase = Object.keys(PROGRAM_DATA)[0];
-            if (!currentWeek && PROGRAM_DATA[currentPhase]) currentWeek = Object.keys(PROGRAM_DATA[currentPhase])[0];
+            if (!currentPhase) currentPhase = Object.keys(PROGRAM_DATA);
+            if (!currentWeek && PROGRAM_DATA[currentPhase]) currentWeek = Object.keys(PROGRAM_DATA[currentPhase]);
 
             const deloadShield = document.getElementById('deloadShield');
             if (deloadShield) {
@@ -1011,7 +1112,7 @@
             if (dashPhasePct) dashPhasePct.textContent = `${phasePct}% Completed`;
             
             const dashActivePhase = document.getElementById('dashActivePhase');
-            if (dashActivePhase) dashActivePhase.textContent = currentPhase.split(':')[0] || currentPhase;
+            if (dashActivePhase) dashActivePhase.textContent = currentPhase.split(':') || currentPhase;
             
             const dashActiveWeek = document.getElementById('dashActiveWeek');
             if (dashActiveWeek) dashActiveWeek.textContent = currentWeek;
@@ -1048,7 +1149,7 @@
                     if (wTotal > maxSetsInAnyWeek) maxSetsInAnyWeek = wTotal;
                     
                     const match = weekKey.match(/\d+/);
-                    const wNum = match ? match[0] : weekCounter;
+                    const wNum = match ? match : weekCounter;
                     const shortLabel = `W${wNum}`;
                     weekCounter++;
 
@@ -1117,7 +1218,7 @@
             const pct = totalSets > 0 ? Math.round((checkedSets / totalSets) * 100) : 0;
 
             document.getElementById('badgeTitle').textContent = currentDay;
-            document.getElementById('badgeSub').textContent = `${currentPhase.split(':')[0]} • ${currentWeek}`;
+            document.getElementById('badgeSub').textContent = `${currentPhase.split(':')} • ${currentWeek}`;
             document.getElementById('badgeSetsDone').textContent = `${checkedSets} / ${totalSets}`;
             document.getElementById('badgePercent').textContent = `${pct}%`;
             document.getElementById('badgeExerciseList').innerHTML = listHtml;
@@ -1174,9 +1275,13 @@
             const pump = localStorage.getItem('tx_score_pump') || '-';
             const joints = localStorage.getItem('tx_score_joints') || '-';
             const sleep = localStorage.getItem('tx_score_sleep') || '-';
+            const wake = localStorage.getItem('tx_wake_time') || '04:00';
+            const lift = localStorage.getItem('tx_lift_time') || '05:00';
 
             rows.push([]);
             rows.push(["DAILY PROTOCOL SUMMARY"]);
+            rows.push(["Wake Up Time", wake]);
+            rows.push(["Lift Time", lift]);
             rows.push(["Hydration Level", `${hyd}%`]);
             rows.push(["Pump Score", pump]);
             rows.push(["Joint Integrity", joints]);
