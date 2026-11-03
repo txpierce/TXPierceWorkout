@@ -393,7 +393,7 @@
                 </div>
             </div>
 
-            <!-- DYNAMICALLY POPULATED MEAL CARDS CONTAINER -->
+            <!-- DYNAMICALLY POPULATED MEAL CARDS CONTAINER WITH CHECKBOXES -->
             <div id="dynamicNutritionCards" class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
                 <!-- Dynamically calculated via JS -->
             </div>
@@ -549,12 +549,18 @@
         function saveAllDailyEntries() {
             const todayStr = new Date().toISOString().split('T')[0];
             
+            let checkedMeals = 0;
+            for (let i = 0; i < 5; i++) {
+                if (localStorage.getItem(`tx_meal_check_${i}`) === 'true') checkedMeals++;
+            }
+
             const dailyEntry = {
                 date: todayStr,
                 phase: currentPhase || 'Unknown Phase',
                 week: currentWeek || 'Unknown Week',
                 day: currentDay || 'Unknown Day',
                 waterPercentage: parseInt(localStorage.getItem('tx_hydration')) || 0,
+                mealsCompleted: `${checkedMeals}/5`,
                 recoveryScores: {
                     pump: document.getElementById('scorePump')?.value || '-',
                     joints: document.getElementById('scoreJoints')?.value || '-',
@@ -621,17 +627,21 @@
                             <span class="text-[10px] font-extrabold text-slate-300">${shortPhase}</span>
                         </div>
 
-                        <div class="grid grid-cols-3 gap-1.5 text-center text-[10px]">
+                        <div class="grid grid-cols-4 gap-1 text-center text-[9px]">
                             <div class="bg-slate-900 p-1.5 rounded-xl border border-slate-800/60">
                                 <span class="block text-slate-400 font-bold mb-0.5">Hydration</span>
                                 <span class="font-extrabold text-amber-400">${entry.waterPercentage || 0}%</span>
                             </div>
                             <div class="bg-slate-900 p-1.5 rounded-xl border border-slate-800/60">
-                                <span class="block text-slate-400 font-bold mb-0.5">Pump / Joint / Sleep</span>
-                                <span class="font-extrabold text-emerald-400">${pScores.pump || '-'}/${pScores.joints || '-'}/${pScores.sleep || '-'}</span>
+                                <span class="block text-slate-400 font-bold mb-0.5">Meals</span>
+                                <span class="font-extrabold text-emerald-400">${entry.mealsCompleted || '0/5'}</span>
                             </div>
                             <div class="bg-slate-900 p-1.5 rounded-xl border border-slate-800/60">
-                                <span class="block text-slate-400 font-bold mb-0.5">Workout Day</span>
+                                <span class="block text-slate-400 font-bold mb-0.5">P / J / S</span>
+                                <span class="font-extrabold text-amber-400">${pScores.pump || '-'}/${pScores.joints || '-'}/${pScores.sleep || '-'}</span>
+                            </div>
+                            <div class="bg-slate-900 p-1.5 rounded-xl border border-slate-800/60">
+                                <span class="block text-slate-400 font-bold mb-0.5">Workout</span>
                                 <span class="font-extrabold text-slate-200 truncate block">${entry.day || 'Day'}</span>
                             </div>
                         </div>
@@ -708,15 +718,19 @@
             const container = document.getElementById('dynamicNutritionCards');
             if (container) {
                 let html = '';
-                meals.forEach(m => {
+                meals.forEach((m, idx) => {
+                    const isChecked = localStorage.getItem(`tx_meal_check_${idx}`) === 'true';
                     html += `
-                        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-3.5 space-y-1 shadow-lg">
+                        <div class="bg-slate-900 border ${isChecked ? 'border-emerald-500/60 bg-emerald-950/10' : 'border-slate-800'} rounded-2xl p-3.5 space-y-1 shadow-lg transition">
                             <div class="flex items-center justify-between">
-                                <h4 class="font-bold text-amber-400 text-xs">${m.name}</h4>
+                                <div class="flex items-center space-x-2">
+                                    <input type="checkbox" ${isChecked ? 'checked' : ''} onchange="toggleMealCheck(${idx}, this.checked)" class="w-4 h-4 rounded border-slate-700 bg-slate-950 accent-amber-500 cursor-pointer">
+                                    <h4 class="font-bold ${isChecked ? 'text-emerald-400 line-through' : 'text-amber-400'} text-xs">${m.name}</h4>
+                                </div>
                                 <span class="text-[10px] font-black bg-slate-950 text-slate-200 px-2 py-0.5 rounded-lg border border-slate-800">${m.time}</span>
                             </div>
-                            <p class="text-[11px] text-slate-300 font-semibold">${m.macros}</p>
-                            <p class="text-[10px] text-slate-400">${m.detail}</p>
+                            <p class="text-[11px] text-slate-300 font-semibold pl-6">${m.macros}</p>
+                            <p class="text-[10px] text-slate-400 pl-6">${m.detail}</p>
                         </div>
                     `;
                 });
@@ -724,6 +738,11 @@
             }
 
             updateFuelingClock();
+        }
+
+        function toggleMealCheck(idx, checked) {
+            localStorage.setItem(`tx_meal_check_${idx}`, checked);
+            updateDynamicNutrition();
         }
 
         function checkDailyReset() {
@@ -735,6 +754,9 @@
                 localStorage.setItem('tx_score_pump', '-');
                 localStorage.setItem('tx_score_joints', '-');
                 localStorage.setItem('tx_score_sleep', '-');
+                for (let i = 0; i < 5; i++) {
+                    localStorage.removeItem(`tx_meal_check_${i}`);
+                }
                 localStorage.setItem('tx_last_active_date', today);
             }
         }
@@ -1217,7 +1239,7 @@
             if (!currentWeek && PROGRAM_DATA[currentPhase]) currentWeek = Object.keys(PROGRAM_DATA[currentPhase])[0];
 
             const deloadShield = document.getElementById('deloadShield');
-            if (deloadShield) {
+            if (deloadShield && currentWeek) {
                 if (currentWeek.includes('Week 4') || currentWeek.includes('Week 8') || currentWeek.includes('Week 12') || currentWeek.includes('Week 13') || currentWeek.includes('Week 14')) {
                     deloadShield.classList.remove('hidden');
                 } else {
@@ -1419,11 +1441,17 @@
             const wake = localStorage.getItem('tx_wake_time') || '04:00';
             const lift = localStorage.getItem('tx_lift_time') || '05:00';
 
+            let checkedMeals = 0;
+            for (let i = 0; i < 5; i++) {
+                if (localStorage.getItem(`tx_meal_check_${i}`) === 'true') checkedMeals++;
+            }
+
             rows.push([]);
             rows.push(["DAILY PROTOCOL SUMMARY"]);
             rows.push(["Wake Up Time", wake]);
             rows.push(["Lift Time", lift]);
             rows.push(["Hydration Level", `${hyd}%`]);
+            rows.push(["Meals Logged", `${checkedMeals}/5`]);
             rows.push(["Pump Score", pump]);
             rows.push(["Joint Integrity", joints]);
             rows.push(["Sleep Quality", sleep]);
@@ -1479,7 +1507,7 @@
         }
 
         function resetData() {
-            if (confirm('Reset set checkmarks, weights, hydration, and ratings?')) {
+            if (confirm('Reset set checkmarks, weights, hydration, meals, and ratings?')) {
                 localStorage.clear();
                 location.reload();
             }
