@@ -22,7 +22,7 @@
         <div class="max-w-3xl mx-auto px-4 py-3 flex items-center justify-between">
             <div>
                 <h1 class="font-extrabold text-base text-amber-500 tracking-tight leading-none">TX PIERCE APP</h1>
-                <p class="text-[10px] text-slate-400 mt-0.5">12-Week Architecture & Progression Hub</p>
+                <p class="text-[10px] text-slate-400 mt-0.5">14-Week Architecture & Progression Hub</p>
             </div>
             <div class="flex items-center space-x-2">
                 <button onclick="exportCSV()" class="text-[11px] bg-slate-800 hover:bg-slate-700 text-slate-200 px-2.5 py-1.5 rounded-lg font-bold border border-slate-700 transition">📥 CSV</button>
@@ -70,12 +70,12 @@
                 </button>
             </div>
 
-            <!-- DELOAD & JOINT PROTECTION SHIELD (ACTIVE ON WEEKS 4, 8, 12) -->
+            <!-- DELOAD & JOINT PROTECTION SHIELD (ACTIVE ON WEEKS 4, 8, 12, 13, 14) -->
             <div id="deloadShield" class="hidden bg-gradient-to-r from-amber-950/80 via-slate-900 to-slate-950 border border-amber-500/60 rounded-2xl p-3.5 shadow-xl flex items-center gap-3">
                 <span class="text-2xl">🛡️</span>
                 <div>
-                    <h4 class="font-extrabold text-xs text-amber-400 uppercase tracking-wide">Deload & Joint Protection Week Active</h4>
-                    <p class="text-[10px] text-slate-300 mt-0.5">Cap RPE at 6–7. Prioritize joint restoration, high-rep pump & slow 3–4s eccentric tempos!</p>
+                    <h4 class="font-extrabold text-xs text-amber-400 uppercase tracking-wide">Deload & Joint Protection Active</h4>
+                    <p class="text-[10px] text-slate-300 mt-0.5">Cap RPE at 5–7. Prioritize joint restoration, TRX mobility, walking & sauna recovery!</p>
                 </div>
             </div>
 
@@ -85,7 +85,7 @@
                     <div>
                         <span class="text-[9px] font-extrabold uppercase bg-amber-500/10 text-amber-400 px-2 py-0.5 rounded border border-amber-500/20">Athletic Command Center</span>
                         <h2 class="font-extrabold text-base text-slate-100 mt-1">Welcome Back, TX Pierce</h2>
-                        <p class="text-[11px] text-slate-400">12-Week Metabolic Hypertrophy Blueprint</p>
+                        <p class="text-[11px] text-slate-400">14-Week Metabolic Hypertrophy & Active Recovery Blueprint</p>
                     </div>
                 </div>
             </div>
@@ -187,13 +187,13 @@
                 </div>
             </div>
 
-            <!-- 12-WEEK VOLUME MATRIX -->
+            <!-- 14-WEEK VOLUME MATRIX -->
             <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-xl space-y-3">
                 <div class="flex items-center justify-between border-b border-slate-800 pb-2">
                     <h3 class="font-bold text-xs text-slate-100 flex items-center gap-1.5">
-                        <span class="text-amber-500">📊</span> 12-Week Volume & Completion Matrix
+                        <span class="text-amber-500">📊</span> 14-Week Volume & Completion Matrix
                     </h3>
-                    <span class="text-[10px] text-amber-400 font-bold">W1–W12 Matrix</span>
+                    <span class="text-[10px] text-amber-400 font-bold">W1–W14 Matrix</span>
                 </div>
                 <div class="w-full overflow-hidden">
                     <div id="weeklyVolumeChart" class="flex items-end justify-between h-40 gap-0.5 sm:gap-1 pt-6 px-0.5 w-full"></div>
@@ -232,20 +232,24 @@
             <!-- PROGRAM OVERVIEW & PHASE ROADMAP -->
             <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-xl space-y-2">
                 <h3 class="font-bold text-xs text-slate-100 flex items-center gap-1.5">
-                    <span class="text-amber-500">🏆</span> 12-Week Architecture Roadmap
+                    <span class="text-amber-500">🏆</span> 14-Week Architecture Roadmap
                 </h3>
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-[11px] pt-1">
+                <div class="grid grid-cols-1 sm:grid-cols-4 gap-2 text-[11px] pt-1">
                     <div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800/80">
-                        <span class="font-bold text-amber-400 block mb-0.5">Phase 1: Base Phase (W1-4)</span>
-                        <p class="text-slate-400 text-[10px]">Movement quality, 5x5 baseline to 6x4 overload & joint deload.</p>
+                        <span class="font-bold text-amber-400 block mb-0.5">Phase 1: Base (W1-4)</span>
+                        <p class="text-slate-400 text-[10px]">5x5 baseline to 6x4 overload & joint deload.</p>
                     </div>
                     <div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800/80">
-                        <span class="font-bold text-amber-400 block mb-0.5">Phase 2: Structural Shift (W5-8)</span>
-                        <p class="text-slate-400 text-[10px]">Incline/Hack angles, 3s eccentric tempos & non-competing tri-sets.</p>
+                        <span class="font-bold text-amber-400 block mb-0.5">Phase 2: Structural (W5-8)</span>
+                        <p class="text-slate-400 text-[10px]">Incline/Hack angles & 3s eccentric tempos.</p>
                     </div>
                     <div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800/80">
-                        <span class="font-bold text-amber-400 block mb-0.5">Phase 3: Peak Hypertrophy (W9-12)</span>
-                        <p class="text-slate-400 text-[10px]">Peak density, mechanical drop sets, 30-45s rest & pump deload.</p>
+                        <span class="font-bold text-amber-400 block mb-0.5">Phase 3: Peak (W9-12)</span>
+                        <p class="text-slate-400 text-[10px]">Peak density, mechanical drops & pump deload.</p>
+                    </div>
+                    <div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800/80">
+                        <span class="font-bold text-amber-400 block mb-0.5">Phase 4: Deload (W13-14)</span>
+                        <p class="text-slate-400 text-[10px]">TRX, Bodyweight, Walking, Sauna & Theragun.</p>
                     </div>
                 </div>
             </div>
@@ -278,6 +282,15 @@
             <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-xl space-y-2">
                 <h3 class="font-bold text-slate-100 text-xs tracking-wide flex items-center gap-2"><span class="text-amber-500">📝</span> Session Review Notes</h3>
                 <textarea id="sessionNotes" oninput="saveNotes()" rows="2" placeholder="Log joint feedback, pump quality, fatigue, progression notes..." class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-xs text-slate-200 focus:outline-none focus:border-amber-500"></textarea>
+            </div>
+
+            <!-- SAVE ALL DAILY ENTRIES BUTTON -->
+            <div class="pt-1">
+                <button onclick="saveAllDailyEntries()" class="w-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-extrabold text-xs py-3 px-4 rounded-xl shadow-lg transition transform active:scale-95 flex items-center justify-center space-x-2">
+                    <span>💾</span>
+                    <span>Save All Daily Entries (Water, Recovery & Workout)</span>
+                </button>
+                <div id="saveNotification" class="text-center text-[10px] text-amber-400 font-bold mt-1.5 h-4"></div>
             </div>
         </div>
 
@@ -477,7 +490,7 @@
 
             setInterval(updateFuelingClock, 60000);
 
-            const filesToTry = ['program_data-v3.json', 'program_data-v2.json', 'program_data.json'];
+            const filesToTry = ['program_data-v4.json', 'program_data-v3.json', 'program_data-v2.json', 'program_data.json'];
             let loaded = false;
 
             for (let filename of filesToTry) {
@@ -496,7 +509,7 @@
 
             if (!loaded) {
                 document.getElementById('workoutContainer').innerHTML = 
-                    '<div class="p-4 bg-red-950 border border-red-800 rounded-xl text-xs text-red-200 font-bold">⚠️ Error loading JSON data. Ensure program_data-v3.json is uploaded to root.</div>';
+                    '<div class="p-4 bg-red-950 border border-red-800 rounded-xl text-xs text-red-200 font-bold">⚠️ Error loading JSON data. Ensure program_data-v4.json is uploaded to root.</div>';
             }
 
             calcPeptides();
@@ -505,6 +518,37 @@
             checkResumeBanner();
             renderPRTracker();
         });
+
+        function saveAllDailyEntries() {
+            const todayStr = new Date().toISOString().split('T')[0];
+            
+            const dailyEntry = {
+                date: todayStr,
+                phase: currentPhase || 'Unknown Phase',
+                week: currentWeek || 'Unknown Week',
+                day: currentDay || 'Unknown Day',
+                waterPercentage: parseInt(localStorage.getItem('tx_hydration')) || 0,
+                recoveryScores: {
+                    pump: document.getElementById('scorePump')?.value || '-',
+                    joints: document.getElementById('scoreJoints')?.value || '-',
+                    sleep: document.getElementById('scoreSleep')?.value || '-'
+                },
+                sessionNotes: document.getElementById('sessionNotes')?.value || '',
+                timestamp: new Date().toLocaleTimeString()
+            };
+
+            let historyLog = JSON.parse(localStorage.getItem('tx_daily_history_log')) || {};
+            historyLog[todayStr] = dailyEntry;
+            localStorage.setItem('tx_daily_history_log', JSON.stringify(historyLog));
+
+            const notif = document.getElementById('saveNotification');
+            if (notif) {
+                notif.textContent = `Successfully saved entries for ${todayStr}!`;
+                setTimeout(() => {
+                    notif.textContent = '';
+                }, 3000);
+            }
+        }
 
         function minutesToTimeStr(totalMins) {
             let m = ((totalMins % 1440) + 1440) % 1440;
@@ -532,7 +576,6 @@
 
             let meals = [];
 
-            // Morning Workout Schedule (Lift before 11:00 AM)
             if (liftMins < 11 * 60) {
                 const preMins = Math.max(wakeMins + 15, liftMins - 45);
                 const breakfastMins = liftMins + 90;
@@ -542,12 +585,12 @@
 
                 meals = [
                     { name: "1. Pre-Workout Fuel", time: minutesToTimeStr(preMins), macros: "10g P | 30g C | ~170 kcal", detail: "Banana (1 medium) + ½ scoop Whey Protein powder" },
-                    { name: "2. Post-Workout Breakfast", time: minutesToTimeStr(breakfastMins), macros: "40g P | 75g C | 15g F | ~600 kcal", detail: "1 Scoop Protein + 1 cup rolled oats + Coffee" },
-                    { name: "3. High-Protein Lunch", time: minutesToTimeStr(lunchMins), macros: "45g P | 75g C | 20g F | ~660 kcal", detail: "5 oz Protein, 1.75 cups rice, ½ avocado" },
-                    { name: "4. Afternoon Snack", time: minutesToTimeStr(snackMins), macros: "35g P | 40g C | 15g F | ~435 kcal", detail: "1.25 cups Non-Fat Greek Yogurt, 18-20 trail mix, 1.5 cups berries" },
-                    { name: "5. Anabolic Dinner", time: minutesToTimeStr(dinnerMins), macros: "50g P | 70g C | 25g F | ~705 kcal", detail: "7 oz  Protein, baked sweet potato, steamed green beans" }
+                    { name: "2. Post-Workout Breakfast", time: minutesToTimeStr(breakfastMins), macros: "40g P | 75g C | 15g F | ~600 kcal", detail: "2 whole eggs + ¾ cup egg whites, 1 cup rolled oats, ½ cup berries" },
+                    { name: "3. High-Protein Lunch", time: minutesToTimeStr(lunchMins), macros: "45g P | 75g C | 20g F | ~660 kcal", detail: "5 oz cooked chicken breast, 1.75 cups Jasmine rice, ½ avocado" },
+                    { name: "4. Afternoon Snack", time: minutesToTimeStr(snackMins), macros: "35g P | 40g C | 15g F | ~435 kcal", detail: "1.25 cups Non-Fat Greek Yogurt, 18-20 almonds, 1.5 cups berries" },
+                    { name: "5. Anabolic Dinner", time: minutesToTimeStr(dinnerMins), macros: "50g P | 70g C | 25g F | ~705 kcal", detail: "6.5 oz Top Sirloin steak, baked sweet potato, steamed green beans" }
                 ];
-            } else { // Afternoon / Evening Workout Schedule
+            } else {
                 const bkmMins = wakeMins + 30;
                 const lunchMins = bkmMins + 300;
                 const preMins = liftMins - 45;
@@ -581,7 +624,6 @@
                 container.innerHTML = html;
             }
 
-            // Sync Dashboard header next fueling clock
             updateFuelingClock();
         }
 
@@ -743,7 +785,7 @@
 
         function loadHydration() {
             const saved = parseInt(localStorage.getItem('tx_hydration')) || 0;
-            [1-4].forEach(val => {
+            [25, 50, 75, 100].forEach(val => {
                 const btn = document.getElementById(`hyd-${val}`);
                 if (btn) {
                     if (saved === val) {
@@ -972,16 +1014,16 @@
             if (!PROGRAM_DATA || Object.keys(PROGRAM_DATA).length === 0) return null;
 
             let phases = Object.keys(PROGRAM_DATA);
-            let p = localStorage.getItem('tx_last_phase') || phases;
-            if (!PROGRAM_DATA[p]) p = phases;
+            let p = localStorage.getItem('tx_last_phase') || phases[0];
+            if (!PROGRAM_DATA[p]) p = phases[0];
 
             let weeks = Object.keys(PROGRAM_DATA[p] || {});
-            let w = localStorage.getItem('tx_last_week') || weeks;
-            if (!PROGRAM_DATA[p]?.[w]) w = weeks;
+            let w = localStorage.getItem('tx_last_week') || weeks[0];
+            if (!PROGRAM_DATA[p]?.[w]) w = weeks[0];
 
             let days = Object.keys(PROGRAM_DATA[p]?.[w] || {});
-            let d = localStorage.getItem('tx_last_day') || days;
-            if (!PROGRAM_DATA[p]?.[w]?.[d]) d = days;
+            let d = localStorage.getItem('tx_last_day') || days[0];
+            if (!PROGRAM_DATA[p]?.[w]?.[d]) d = days[0];
 
             const exercises = PROGRAM_DATA[p]?.[w]?.[d] || [];
             let totalSets = 0;
@@ -1007,15 +1049,15 @@
                     if (weekIdx >= 0 && weekIdx < weeks.length - 1) {
                         nextW = weeks[weekIdx + 1];
                         let nextDays = Object.keys(PROGRAM_DATA[p]?.[nextW] || {});
-                        nextD = nextDays || d;
+                        nextD = nextDays[0] || d;
                     } else {
                         let phaseIdx = phases.indexOf(p);
                         if (phaseIdx >= 0 && phaseIdx < phases.length - 1) {
                             nextP = phases[phaseIdx + 1];
                             let nextWeeks = Object.keys(PROGRAM_DATA[nextP] || {});
-                            nextW = nextWeeks || w;
+                            nextW = nextWeeks[0] || w;
                             let nextDays = Object.keys(PROGRAM_DATA[nextP]?.[nextW] || {});
-                            nextD = nextDays || d;
+                            nextD = nextDays[0] || d;
                         }
                     }
                 }
@@ -1033,7 +1075,7 @@
             const btn = document.getElementById('resumeBtn');
 
             if (activeObj && banner && text) {
-                const shortP = activeObj.phase.split(':') || activeObj.phase;
+                const shortP = activeObj.phase.split(':')[0] || activeObj.phase;
                 if (activeObj.isNext) {
                     if (tag) tag.textContent = "Next Workout Up";
                     text.textContent = `${shortP} • ${activeObj.week} • ${activeObj.day}`;
@@ -1072,12 +1114,12 @@
         function updateDashboardMetrics() {
             if (!PROGRAM_DATA || Object.keys(PROGRAM_DATA).length === 0) return;
             
-            if (!currentPhase) currentPhase = Object.keys(PROGRAM_DATA);
-            if (!currentWeek && PROGRAM_DATA[currentPhase]) currentWeek = Object.keys(PROGRAM_DATA[currentPhase]);
+            if (!currentPhase) currentPhase = Object.keys(PROGRAM_DATA)[0];
+            if (!currentWeek && PROGRAM_DATA[currentPhase]) currentWeek = Object.keys(PROGRAM_DATA[currentPhase])[0];
 
             const deloadShield = document.getElementById('deloadShield');
             if (deloadShield) {
-                if (currentWeek.includes('Week 4') || currentWeek.includes('Week 8') || currentWeek.includes('Week 12')) {
+                if (currentWeek.includes('Week 4') || currentWeek.includes('Week 8') || currentWeek.includes('Week 12') || currentWeek.includes('Week 13') || currentWeek.includes('Week 14')) {
                     deloadShield.classList.remove('hidden');
                 } else {
                     deloadShield.classList.add('hidden');
@@ -1112,7 +1154,7 @@
             if (dashPhasePct) dashPhasePct.textContent = `${phasePct}% Completed`;
             
             const dashActivePhase = document.getElementById('dashActivePhase');
-            if (dashActivePhase) dashActivePhase.textContent = currentPhase.split(':') || currentPhase;
+            if (dashActivePhase) dashActivePhase.textContent = currentPhase.split(':')[0] || currentPhase;
             
             const dashActiveWeek = document.getElementById('dashActiveWeek');
             if (dashActiveWeek) dashActiveWeek.textContent = currentWeek;
@@ -1149,7 +1191,7 @@
                     if (wTotal > maxSetsInAnyWeek) maxSetsInAnyWeek = wTotal;
                     
                     const match = weekKey.match(/\d+/);
-                    const wNum = match ? match : weekCounter;
+                    const wNum = match ? match[0] : weekCounter;
                     const shortLabel = `W${wNum}`;
                     weekCounter++;
 
@@ -1218,7 +1260,7 @@
             const pct = totalSets > 0 ? Math.round((checkedSets / totalSets) * 100) : 0;
 
             document.getElementById('badgeTitle').textContent = currentDay;
-            document.getElementById('badgeSub').textContent = `${currentPhase.split(':')} • ${currentWeek}`;
+            document.getElementById('badgeSub').textContent = `${currentPhase.split(':')[0]} • ${currentWeek}`;
             document.getElementById('badgeSetsDone').textContent = `${checkedSets} / ${totalSets}`;
             document.getElementById('badgePercent').textContent = `${pct}%`;
             document.getElementById('badgeExerciseList').innerHTML = listHtml;
