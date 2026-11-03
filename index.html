@@ -59,6 +59,18 @@
                 <span class="text-[9px] font-extrabold uppercase text-amber-500 bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20">LIVE PROTOCOL</span>
             </div>
 
+            <!-- 🔥 DAILY PROTOCOL CONSISTENCY STREAK BANNER -->
+            <div class="bg-gradient-to-r from-amber-500/10 via-slate-900 to-slate-950 border border-amber-500/40 rounded-2xl p-3.5 shadow-xl flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <span class="text-2xl">🔥</span>
+                    <div>
+                        <h4 id="streakText" class="font-extrabold text-xs text-amber-400">0-Day Protocol Streak</h4>
+                        <p id="streakSub" class="text-[10px] text-slate-300">Complete today's log & tap 'Save Daily Entry' to start your streak!</p>
+                    </div>
+                </div>
+                <span id="streakBadge" class="text-[10px] font-black bg-slate-800 text-slate-400 px-2.5 py-1 rounded-xl border border-slate-700">START TODAY</span>
+            </div>
+
             <!-- RESUME / NEXT WORKOUT QUICK-LAUNCH BANNER -->
             <div id="resumeBanner" class="hidden bg-slate-950 border border-amber-500/40 rounded-2xl p-3.5 shadow-xl flex items-center justify-between">
                 <div>
@@ -507,6 +519,7 @@
             checkDailyReset();
             loadHydration();
             loadCheckinScores();
+            updateStreakDisplay();
             
             const savedWake = localStorage.getItem('tx_wake_time') || '04:00';
             const savedLift = localStorage.getItem('tx_lift_time') || '05:00';
@@ -544,6 +557,64 @@
             checkResumeBanner();
             renderPRTracker();
         });
+
+        function updateStreakDisplay() {
+            const historyLog = JSON.parse(localStorage.getItem('tx_daily_history_log')) || {};
+            const today = new Date().toLocaleDateString('en-CA');
+            
+            const yesterdayDate = new Date();
+            yesterdayDate.setDate(yesterdayDate.getDate() - 1);
+            const yesterday = yesterdayDate.toLocaleDateString('en-CA');
+
+            let streak = 0;
+            let checkDate = new Date();
+
+            if (!historyLog[today]) {
+                if (historyLog[yesterday]) {
+                    checkDate = yesterdayDate;
+                } else {
+                    checkDate = null;
+                }
+            }
+
+            if (checkDate) {
+                while (true) {
+                    const dateStr = checkDate.toLocaleDateString('en-CA');
+                    if (historyLog[dateStr]) {
+                        streak++;
+                        checkDate.setDate(checkDate.getDate() - 1);
+                    } else {
+                        break;
+                    }
+                }
+            }
+
+            const streakText = document.getElementById('streakText');
+            const streakSub = document.getElementById('streakSub');
+            const streakBadge = document.getElementById('streakBadge');
+
+            if (streakText) {
+                if (streak === 0) {
+                    streakText.textContent = "0-Day Protocol Streak";
+                    if (streakSub) streakSub.textContent = "Complete today's log & tap 'Save Daily Entry' to start your streak!";
+                    if (streakBadge) {
+                        streakBadge.textContent = "START TODAY";
+                        streakBadge.className = "text-[10px] font-black bg-slate-800 text-slate-400 px-2.5 py-1 rounded-xl border border-slate-700";
+                    }
+                } else {
+                    streakText.textContent = `${streak}-Day Protocol Streak`;
+                    if (streakSub) streakSub.textContent = historyLog[today] 
+                        ? "Today's protocol locked in! Excellent consistency." 
+                        : "Yesterday completed! Log today's entry to extend your streak.";
+                    if (streakBadge) {
+                        streakBadge.textContent = historyLog[today] ? "LOCKED IN 🔥" : "DUE TODAY";
+                        streakBadge.className = historyLog[today] 
+                            ? "text-[10px] font-black bg-amber-500 text-slate-950 px-2.5 py-1 rounded-xl shadow"
+                            : "text-[10px] font-black bg-amber-500/20 text-amber-400 px-2.5 py-1 rounded-xl border border-amber-500/40 animate-pulse";
+                    }
+                }
+            }
+        }
 
         // HELPER FUNCTIONS FOR SMART PROGRESSIVE OVERLOAD TARGET CALCULATIONS
         function getAvgReps(repsStr) {
@@ -622,7 +693,7 @@
         }
 
         function saveAllDailyEntries() {
-            const todayStr = new Date().toISOString().split('T');
+            const todayStr = new Date().toLocaleDateString('en-CA');
             
             let checkedMeals = 0;
             for (let i = 0; i < 5; i++) {
@@ -648,6 +719,8 @@
             let historyLog = JSON.parse(localStorage.getItem('tx_daily_history_log')) || {};
             historyLog[todayStr] = dailyEntry;
             localStorage.setItem('tx_daily_history_log', JSON.stringify(historyLog));
+
+            updateStreakDisplay();
 
             const notif = document.getElementById('saveNotification');
             if (notif) {
@@ -1082,6 +1155,7 @@
             if (tabId === 'dashboard') {
                 updateDashboardMetrics();
                 renderPRTracker();
+                updateStreakDisplay();
             }
         }
 
