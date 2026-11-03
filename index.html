@@ -508,7 +508,6 @@
             loadHydration();
             loadCheckinScores();
             
-            // Restore saved wake and lift times or default to 04:00 AM & 05:00 AM
             const savedWake = localStorage.getItem('tx_wake_time') || '04:00';
             const savedLift = localStorage.getItem('tx_lift_time') || '05:00';
             if (document.getElementById('wakeUpTime')) document.getElementById('wakeUpTime').value = savedWake;
@@ -546,8 +545,84 @@
             renderPRTracker();
         });
 
+        // HELPER FUNCTIONS FOR SMART PROGRESSIVE OVERLOAD TARGET CALCULATIONS
+        function getAvgReps(repsStr) {
+            if (!repsStr) return 10;
+            const parts = String(repsStr).split('-').map(n => parseFloat(n.trim()));
+            if (parts.length === 2 && !isNaN(parts[0]) && !isNaN(parts[1])) {
+                return (parts[0] + parts[1]) / 2;
+            }
+            const single = parseFloat(repsStr);
+            return !isNaN(single) ? single : 10;
+        }
+
+        function getPrevWeekKey(phase, week) {
+            if (!PROGRAM_DATA[phase]) return null;
+            const weeks = Object.keys(PROGRAM_DATA[phase]);
+            const idx = weeks.indexOf(week);
+            if (idx > 0) {
+                return weeks[idx - 1];
+            }
+            return null;
+        }
+
+        function getSmartWeightRecommendation(phase, week, day, ex, exIdx, setNum) {
+            const prevWeek = getPrevWeekKey(phase, week);
+            if (!prevWeek || !PROGRAM_DATA[phase]?.[prevWeek]?.[day]) {
+                return { targetWt: null, lastWt: null };
+            }
+
+            const prevExercises = PROGRAM_DATA[phase][prevWeek][day];
+            let prevEx = prevExercises.find(e => e.Exercise === ex.Exercise) || prevExercises[exIdx];
+            if (!prevEx) return { targetWt: null, lastWt: null };
+
+            const prevExIdx = prevExercises.indexOf(prevEx);
+            const prevWeightKey = `${phase}_${prevWeek}_${day}_${prevExIdx}_wt_s${setNum}`;
+            const lastWt = parseFloat(localStorage.getItem(prevWeightKey));
+
+            if (isNaN(lastWt) || lastWt <= 0) {
+                return { targetWt: null, lastWt: null };
+            }
+
+            const prevRpe = parseFloat(prevEx.RPE) || 8.0;
+            const thisRpe = parseFloat(ex.RPE) || 8.0;
+
+            const prevAvgReps = getAvgReps(prevEx.Reps);
+            const thisAvgReps = getAvgReps(ex.Reps);
+
+            const rpeDiff = thisRpe - prevRpe;
+            const repDiff = prevAvgReps - thisAvgReps;
+
+            let pctChange = (rpeDiff * 0.025) + (repDiff * 0.025);
+
+            if (pctChange === 0) {
+                pctChange = 0.025; // 2.5% standard weekly overload
+            }
+
+            let calculatedTarget = lastWt * (1 + pctChange);
+            let roundedTarget;
+            if (lastWt >= 50) {
+                roundedTarget = Math.round(calculatedTarget / 5) * 5;
+                if (roundedTarget <= lastWt && pctChange > 0) roundedTarget = lastWt + 5;
+            } else {
+                roundedTarget = Math.round(calculatedTarget / 2.5) * 2.5;
+                if (roundedTarget <= lastWt && pctChange > 0) roundedTarget = lastWt + 2.5;
+            }
+
+            return {
+                targetWt: roundedTarget,
+                lastWt: lastWt
+            };
+        }
+
+        function fillTargetWeight(weightKey, targetVal) {
+            localStorage.setItem(weightKey, targetVal);
+            renderWorkout();
+            renderPRTracker();
+        }
+
         function saveAllDailyEntries() {
-            const todayStr = new Date().toISOString().split('T')[0];
+            const todayStr = new Date().toISOString().split('T');
             
             let checkedMeals = 0;
             for (let i = 0; i < 5; i++) {
@@ -615,7 +690,7 @@
                 const entry = historyLog[dateStr];
                 const pScores = entry.recoveryScores || {};
                 const notesText = entry.sessionNotes ? entry.sessionNotes : 'No review notes written.';
-                const shortPhase = entry.phase ? entry.phase.split(':')[0] : 'Phase';
+                const shortPhase = entry.phase ? entry.phase.split(':') : 'Phase';
 
                 html += `
                     <div class="bg-slate-950 border border-slate-800/80 rounded-2xl p-3 space-y-2">
@@ -1092,7 +1167,8 @@
             exercises.forEach((ex, exIdx) => {
                 const sets = parseInt(ex.Sets) || 1;
                 let checksHtml = '<div class="flex flex-wrap gap-2 mt-2.5">';
-                
+                let exSmartRec = null;
+
                 for (let s = 1; s <= sets; s++) {
                     const checkKey = `${currentPhase}_${currentWeek}_${currentDay}_${exIdx}_s${s}`;
                     const weightKey = `${currentPhase}_${currentWeek}_${currentDay}_${exIdx}_wt_s${s}`;
@@ -1100,17 +1176,32 @@
                     const checked = localStorage.getItem(checkKey) === 'true';
                     const savedWeight = localStorage.getItem(weightKey) || '';
 
+                    const smartRec = getSmartWeightRecommendation(currentPhase, currentWeek, currentDay, ex, exIdx, s);
+                    if (smartRec.targetWt && !exSmartRec) exSmartRec = smartRec;
+
+                    const placeholderText = smartRec.targetWt ? `Tgt: ${smartRec.targetWt}` : 'lbs';
+                    const quickFillBtn = (smartRec.targetWt && !savedWeight) ? 
+                        `<button onclick="fillTargetWeight('${weightKey}', ${smartRec.targetWt})" class="text-[9px] bg-amber-500/20 text-amber-400 hover:bg-amber-500 hover:text-slate-950 px-1.5 py-0.5 rounded font-extrabold transition whitespace-nowrap">+${smartRec.targetWt}</button>` : '';
+
                     checksHtml += `
-                        <div class="flex items-center space-x-1.5 bg-slate-950 px-2.5 py-1 rounded-lg border border-slate-800 text-[10px]">
+                        <div class="flex items-center space-x-1.5 bg-slate-950 px-2 py-1 rounded-lg border border-slate-800 text-[10px]">
                             <span class="font-bold text-amber-400">S${s}</span>
                             <input type="checkbox" ${checked ? 'checked' : ''} onchange="localStorage.setItem('${checkKey}', this.checked); updateDashboardMetrics(); checkResumeBanner();">
-                            <input type="number" placeholder="lbs" value="${savedWeight}" oninput="localStorage.setItem('${weightKey}', this.value); renderPRTracker();" class="w-12 bg-slate-900 border border-slate-700 rounded text-center text-amber-300 font-bold focus:outline-none focus:border-amber-500 py-0.5 text-[10px]">
+                            <input type="number" placeholder="${placeholderText}" value="${savedWeight}" oninput="localStorage.setItem('${weightKey}', this.value); renderPRTracker();" class="w-16 bg-slate-900 border border-slate-700 rounded text-center text-amber-300 font-bold focus:outline-none focus:border-amber-500 py-0.5 text-[10px]">
+                            ${quickFillBtn}
                         </div>
                     `;
                 }
                 checksHtml += '</div>';
 
                 const tempoBadge = ex.Tempo ? `<span class="text-[9px] text-amber-300 bg-amber-950/60 px-1.5 py-0.5 rounded border border-amber-800/50 ml-2">${ex.Tempo}</span>` : '';
+                
+                const overloadHeaderBadge = exSmartRec ? `
+                    <div class="mt-1 flex items-center justify-between text-[10px] text-amber-400 bg-amber-500/10 px-2 py-1 rounded-lg border border-amber-500/20">
+                        <span>📈 Smart Overload Target: <strong>${exSmartRec.targetWt} lbs</strong></span>
+                        <span class="text-slate-400 text-[9px]">(Last Wk: ${exSmartRec.lastWt} lbs)</span>
+                    </div>
+                ` : '';
 
                 container.innerHTML += `
                     <div class="bg-slate-900 border border-slate-800 rounded-2xl p-3.5 space-y-1 shadow-lg">
@@ -1123,6 +1214,7 @@
                             <span>Sets: <strong>${ex.Sets || '-'}</strong> | Reps: <strong>${ex.Reps || '-'}</strong></span>
                             <span>Rest: <strong>${ex.Rest || '-'}</strong> | RPE: <strong>${ex.RPE || '-'}</strong></span>
                         </div>
+                        ${overloadHeaderBadge}
                         ${checksHtml}
                     </div>
                 `;
