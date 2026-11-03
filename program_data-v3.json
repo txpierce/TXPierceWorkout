@@ -5452,9 +5452,8 @@ To accommodate your setup, **all infrared sauna sessions have been removed**, an
                 {"Series": "Recovery", "Exercise": "Long Outdoor Walk & Hydration", "Sets": 1, "Reps": "40 min", "Rest": "-", "RPE": "2", "Wt": "BW"},
                 {"Series": "Mobility", "Exercise": "Full-Body Deep Static Stretching Sequence", "Sets": 1, "Reps": "15 min", "Rest": "-", "RPE": "2", "Wt": "BW"},
                 {"Series": "Recovery", "Exercise": "Complete Full-Body Theragun & Foam Rolling Session", "Sets": 1, "Reps": "15 min", "Rest": "-", "RPE": "2", "Wt": "Tool"}
-            ]
-        }
+                  }
+      ]
     }
+  }
 }
-
-```
