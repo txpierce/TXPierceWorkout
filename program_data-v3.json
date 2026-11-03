@@ -5329,12 +5329,6 @@
       ]
     }
   },
-Here is your updated JSON block for the **TRX & Bodyweight Deload Phase**.
-
-To accommodate your setup, **all infrared sauna sessions have been removed**, and every single day has been equipped with specific, named **stretching, foam rolling, and Theragun routines** instead.
-
-```json
-{
     "Phase: TRX & Bodyweight Deload Protocol": {
         "Week D1: Active Joint Restoration (TRX Focus)": {
             "Day 1: Push": [
