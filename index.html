@@ -822,6 +822,56 @@
             container.innerHTML = html;
         }
 
+        function setMacroMode(mode) {
+            localStorage.setItem('tx_macro_mode', mode);
+            updateDynamicNutrition();
+            updateDashboardMetrics();
+        }
+
+        function exportBackupJSON() {
+            let backupObj = {};
+            for (let i = 0; i < localStorage.length; i++) {
+                let key = localStorage.key(i);
+                if (key.startsWith('tx_') || key.includes('_')) {
+                    backupObj[key] = localStorage.getItem(key);
+                }
+            }
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(backupObj, null, 2));
+            const dlAnchor = document.createElement('a');
+            const todayStr = new Date().toISOString().split('T')[0];
+            dlAnchor.setAttribute("href", dataStr);
+            dlAnchor.setAttribute("download", `tx_pierce_app_backup_${todayStr}.json`);
+            document.body.appendChild(dlAnchor);
+            dlAnchor.click();
+            dlAnchor.remove();
+        }
+
+        function triggerRestoreJSON() {
+            document.getElementById('jsonFileInput').click();
+        }
+
+        function restoreBackupJSON(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const data = JSON.parse(e.target.result);
+                    let count = 0;
+                    for (let key in data) {
+                        localStorage.setItem(key, data[key]);
+                        count++;
+                    }
+                    alert(`Successfully restored ${count} protocol log entries! Reloading app...`);
+                    location.reload();
+                } catch (err) {
+                    alert("Error parsing backup JSON file. Ensure it is a valid TX Pierce App backup file.");
+                }
+            };
+            reader.readAsText(file);
+        }
+
         function minutesToTimeStr(totalMins) {
             let m = ((totalMins % 1440) + 1440) % 1440;
             let hours = Math.floor(m / 60);
@@ -831,12 +881,6 @@
             hours = hours ? hours : 12;
             let minStr = mins < 10 ? '0' + mins : mins;
             return `${hours}:${minStr} ${period}`;
-        }
-
-        function setMacroMode(mode) {
-            localStorage.setItem('tx_macro_mode', mode);
-            updateDynamicNutrition();
-            updateDashboardMetrics();
         }
 
         function updateDynamicNutrition() {
@@ -1295,8 +1339,25 @@
             const container = document.getElementById('workoutContainer');
             container.innerHTML = '';
 
+            const isRecoveryDay = currentDay.toLowerCase().includes('recovery') || currentDay.toLowerCase().includes('mobility') || currentDay.toLowerCase().includes('off') || currentDay.toLowerCase().includes('rest');
+
+            if (isRecoveryDay) {
+                container.innerHTML += `
+                    <div class="bg-gradient-to-r from-emerald-950/80 via-slate-900 to-slate-950 border border-emerald-500/50 rounded-2xl p-4 shadow-xl space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[9px] font-extrabold uppercase bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded border border-emerald-500/30">Active Recovery Protocol</span>
+                            <span class="text-[10px] text-slate-400 font-bold">Joint Restoration & CNS Reset</span>
+                        </div>
+                        <h3 class="font-extrabold text-sm text-slate-100 flex items-center gap-2">
+                            <span>🧘</span> Active Recovery & Joint-Mobility Checklist
+                        </h3>
+                        <p class="text-[11px] text-slate-300">Complete these targeted mobility drills, low-intensity cardio, and tissue therapy protocols to restore joint fluid and optimize central nervous system recovery.</p>
+                    </div>
+                `;
+            }
+
             if (exercises.length === 0) {
-                container.innerHTML = '<div class="p-4 bg-slate-900 border border-slate-800 rounded-xl text-xs text-slate-400">No exercises found for this day.</div>';
+                container.innerHTML += '<div class="p-4 bg-slate-900 border border-slate-800 rounded-xl text-xs text-slate-400">No exercises found for this day.</div>';
                 return;
             }
 
@@ -1315,18 +1376,30 @@
                     const smartRec = getSmartWeightRecommendation(currentPhase, currentWeek, currentDay, ex, exIdx, s);
                     if (smartRec.targetWt && !exSmartRec) exSmartRec = smartRec;
 
-                    const placeholderText = smartRec.targetWt ? `Tgt: ${smartRec.targetWt}` : 'lbs';
-                    const quickFillBtn = (smartRec.targetWt && !savedWeight) ? 
-                        `<button onclick="fillTargetWeight('${weightKey}', ${smartRec.targetWt})" class="text-[9px] bg-amber-500/20 text-amber-400 hover:bg-amber-500 hover:text-slate-950 px-1.5 py-0.5 rounded font-extrabold transition whitespace-nowrap">+${smartRec.targetWt}</button>` : '';
+                    const isNoWeightEx = (ex.Wt === '-' || ex.Wt === 'BW' || ex.Wt === 'Bodyweight' || (ex.Series && (ex.Series.includes('Mobility') || ex.Series.includes('Rest') || ex.Series.includes('Cardio'))));
+                    
+                    if (isNoWeightEx) {
+                        checksHtml += `
+                            <div class="flex items-center space-x-1.5 bg-slate-950 px-2.5 py-1 rounded-lg border ${checked ? 'border-emerald-500/60 bg-emerald-950/20' : 'border-slate-800'} text-[10px]">
+                                <span class="font-bold ${checked ? 'text-emerald-400' : 'text-amber-400'}">Set ${s}</span>
+                                <input type="checkbox" ${checked ? 'checked' : ''} onchange="localStorage.setItem('${checkKey}', this.checked); updateDashboardMetrics(); checkResumeBanner(); renderWorkout();" class="w-4 h-4 rounded border-slate-700 bg-slate-950 accent-emerald-500 cursor-pointer">
+                                <span class="text-[9px] font-bold ${checked ? 'text-emerald-400' : 'text-slate-400'}">${checked ? 'Completed ✓' : (ex.Wt || 'BW')}</span>
+                            </div>
+                        `;
+                    } else {
+                        const placeholderText = smartRec.targetWt ? `Tgt: ${smartRec.targetWt}` : 'lbs';
+                        const quickFillBtn = (smartRec.targetWt && !savedWeight) ? 
+                            `<button onclick="fillTargetWeight('${weightKey}', ${smartRec.targetWt})" class="text-[9px] bg-amber-500/20 text-amber-400 hover:bg-amber-500 hover:text-slate-950 px-1.5 py-0.5 rounded font-extrabold transition whitespace-nowrap">+${smartRec.targetWt}</button>` : '';
 
-                    checksHtml += `
-                        <div class="flex items-center space-x-1.5 bg-slate-950 px-2 py-1 rounded-lg border border-slate-800 text-[10px]">
-                            <span class="font-bold text-amber-400">S${s}</span>
-                            <input type="checkbox" ${checked ? 'checked' : ''} onchange="localStorage.setItem('${checkKey}', this.checked); updateDashboardMetrics(); checkResumeBanner();">
-                            <input type="number" placeholder="${placeholderText}" value="${savedWeight}" oninput="localStorage.setItem('${weightKey}', this.value); renderPRTracker();" class="w-16 bg-slate-900 border border-slate-700 rounded text-center text-amber-300 font-bold focus:outline-none focus:border-amber-500 py-0.5 text-[10px]">
-                            ${quickFillBtn}
-                        </div>
-                    `;
+                        checksHtml += `
+                            <div class="flex items-center space-x-1.5 bg-slate-950 px-2 py-1 rounded-lg border border-slate-800 text-[10px]">
+                                <span class="font-bold text-amber-400">S${s}</span>
+                                <input type="checkbox" ${checked ? 'checked' : ''} onchange="localStorage.setItem('${checkKey}', this.checked); updateDashboardMetrics(); checkResumeBanner();">
+                                <input type="number" placeholder="${placeholderText}" value="${savedWeight}" oninput="localStorage.setItem('${weightKey}', this.value); renderPRTracker();" class="w-16 bg-slate-900 border border-slate-700 rounded text-center text-amber-300 font-bold focus:outline-none focus:border-amber-500 py-0.5 text-[10px]">
+                                ${quickFillBtn}
+                            </div>
+                        `;
+                    }
                 }
                 checksHtml += '</div>';
 
@@ -1626,50 +1699,6 @@
 
         function closeBadge() {
             document.getElementById('badgeModal').classList.add('hidden');
-        }
-
-        function exportBackupJSON() {
-            let backupObj = {};
-            for (let i = 0; i < localStorage.length; i++) {
-                let key = localStorage.key(i);
-                if (key.startsWith('tx_') || key.includes('_')) {
-                    backupObj[key] = localStorage.getItem(key);
-                }
-            }
-            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(backupObj, null, 2));
-            const dlAnchor = document.createElement('a');
-            const todayStr = new Date().toISOString().split('T')[0];
-            dlAnchor.setAttribute("href", dataStr);
-            dlAnchor.setAttribute("download", `tx_pierce_app_backup_${todayStr}.json`);
-            document.body.appendChild(dlAnchor);
-            dlAnchor.click();
-            dlAnchor.remove();
-        }
-
-        function triggerRestoreJSON() {
-            document.getElementById('jsonFileInput').click();
-        }
-
-        function restoreBackupJSON(event) {
-            const file = event.target.files[0];
-            if (!file) return;
-
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                try {
-                    const data = JSON.parse(e.target.result);
-                    let count = 0;
-                    for (let key in data) {
-                        localStorage.setItem(key, data[key]);
-                        count++;
-                    }
-                    alert(`Successfully restored ${count} protocol log entries! Reloading app...`);
-                    location.reload();
-                } catch (err) {
-                    alert("Error parsing backup JSON file. Ensure it is a valid TX Pierce App backup file.");
-                }
-            };
-            reader.readAsText(file);
         }
 
         function exportCSV() {
